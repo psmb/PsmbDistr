@@ -1,0 +1,14 @@
+{
+    "name": "sfi/site",
+    "type": "typo3-flow-site",
+    "description": "Website package. See distribution for more info.",
+    "require": {
+        "typo3/neos": "*",
+        "psmb/term": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Sfi\\Site": "Classes"
+        }
+    }
+}

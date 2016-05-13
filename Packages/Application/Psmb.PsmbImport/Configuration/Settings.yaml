@@ -1,0 +1,21 @@
+Ttree:
+  ContentRepositoryImporter:
+    sources:
+      default:
+        host: db
+        driver: pdo_mysql
+        dbname: db
+        user: admin
+        password: pass
+        charset: UTF8
+    presets:
+      'base':
+        'category':
+          label: 'Import Categories'
+          dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
+          dataProviderOptions:
+            source: 'default'
+          importerClassName: 'Psmb\PsmbImport\CategoryImporter'
+          importerOptions:
+            targetNodeType: 'Sfi.Site:Tag'
+            siteNodePath: '/sites/site'

@@ -1,0 +1,51 @@
+include: NodeTypes/**/*.ts2
+
+# This is a default page object.
+prototype(Sfi.Site:Root) < prototype(TYPO3.Neos:Page) {
+	head {
+		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('common.sitetitle.short', null, [], null, 'Sfi.Site')}
+		stylesheets.site = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
+			sectionName = 'stylesheets'
+		}
+		javascripts.headScripts = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
+			sectionName = 'headScripts'
+		}
+	}
+	# TODO: htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
+	bodyTag.attributes.class = 'Page'
+	bodyTag.attributes.id = ${'Page-' + q(node).property('_name')}
+	body {
+		templatePath = 'resource://Sfi.Site/Private/Templates/Root.html'
+		partialRootPath = 'resource://Sfi.Site/Private/Partials'
+		layoutRootPath = 'resource://Sfi.Site/Private/Layouts'
+
+		mainMenu = Menu {
+			entryLevel = 1
+			maximumLevels = 2
+		}
+
+		main = PrimaryContent {
+			renderByType {
+				condition = TRUE
+				type = ${q(node).property('_nodeType.name')}
+			}
+		}
+
+		javascripts.bodyScripts = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
+			partialRootPath = 'resource://Sfi.Site/Private/Partials'
+			sectionName = 'bodyScripts'
+		}
+	}
+}
+
+root.fallbackPage {
+	@position = 'before default'
+	condition = TRUE
+	type = 'Sfi.Site:Root'
+}
+
+# Disable stupid layout mechanism
+root.layout>

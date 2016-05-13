@@ -1,0 +1,5 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<header class="Header">
+	<h1>{f:translate(package:'Sfi.Site', id:'common.sitetitle.full')}</h1>
+	{mainMenu -> f:format.raw()}
+</header>

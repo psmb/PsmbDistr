@@ -1,0 +1,6 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:render partial="Header" arguments="{_all}"/>
+	<main>
+		{main -> f:format.raw()}
+	</main>
+<f:render partial="Footer"  arguments="{_all}"/>

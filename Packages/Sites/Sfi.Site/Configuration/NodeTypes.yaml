@@ -1,0 +1,121 @@
+
+# Define Aloha presets to reuse throughout the document
+blah: &alohaPlain
+  placeholder: 'Enter title here'
+  format:
+    b: false
+    i: false
+    u: false
+    sub: false
+    sup: false
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
+  table: {  }
+  list: {  }
+  link:
+    a: false
+  alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Enter title here'
+  format:
+    b: true
+    i: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
+  table: {  }
+  list: {  }
+  link:
+    a: true
+  alignment: {  }
+
+'TYPO3.Neos.NodeTypes:Page':
+  abstract: TRUE
+
+'Sfi.Site:Page':
+  superTypes:
+    'TYPO3.Neos.NodeTypes:Page': true
+  ui:
+    label: 'Обычная страница'
+
+'Sfi.Site:Tag':
+  superTypes:
+    'TYPO3.Neos:Document': true
+    'Psmb.Term:TermMixin': true
+  ui:
+    label: 'Категория'
+  properties:
+    originalIdentifier:
+      type: string
+
+'Sfi.Site:News':
+  superTypes:
+    - 'TYPO3.Neos:Document'
+  ui:
+    label: 'Новость'
+    inspector:
+        groups:
+          news:
+            label: 'Атрибуты новости'
+  childNodes:
+    coverCollection:
+      type: 'TYPO3.Neos:ContentCollection'
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    title:
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Заголовок новости'
+    teaser:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Тизер'
+    date:
+      type: DateTime
+      defaultValue: 'now'
+      ui:
+        label: 'Дата'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            format: 'd-m-Y H:i'
+      validation:
+        'TYPO3.Neos/Validation/DateTimeValidator': []
+    author:
+      type: string
+      ui:
+        label: 'Автор'
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Автор'
+    tags:
+      type: references
+      ui:
+        label: 'Тэги'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:Tag'
+    originalIdentifier:
+      type: string

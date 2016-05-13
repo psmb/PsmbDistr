@@ -1,0 +1,6 @@
+prototype(Sfi.Site:Page) {
+	layoutRootPath = 'resource://Sfi.Site/Private/Layouts'
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+}
