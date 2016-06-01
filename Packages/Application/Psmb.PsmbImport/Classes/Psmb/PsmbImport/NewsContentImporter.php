@@ -59,6 +59,7 @@ class NewsContentImporter extends Importer
         return null;
     }
     $newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
+    $newsNode->setProperty('credit', $data['credit']);
     $mainCollection = $newsNode->getNode('main');
 
     if ($data['coverImage']['filename']) {

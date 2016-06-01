@@ -13,8 +13,6 @@ Ttree:
         'category':
           label: 'Import Categories'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'categories'
@@ -22,8 +20,6 @@ Ttree:
         'page':
           label: 'Import Pages as Categories'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\PageDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'pages'
@@ -31,8 +27,6 @@ Ttree:
         'news':
           label: 'Import News'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\NewsImporter'
           importerOptions:
             targetNode: 'news'
@@ -41,8 +35,6 @@ Ttree:
         'newsPageRelation':
           label: 'Import relations between News and parent page'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\NewsPageRelationImporter'
           importerOptions:
             siteNodePath: '/sites/site'
@@ -50,8 +42,6 @@ Ttree:
         'newsCategoryRelation':
           label: 'Import relations between News and categories'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsCategoryRelationDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\NewsCategoryRelationImporter'
           importerOptions:
             siteNodePath: '/sites/site'
@@ -59,8 +49,6 @@ Ttree:
         'newsRelation':
           label: 'Import relations between News items'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsRelationDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\NewsRelationImporter'
           importerOptions:
             siteNodePath: '/sites/site'
@@ -68,8 +56,6 @@ Ttree:
         'newsFiles':
           label: 'Import news files'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsFileDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\NewsFileImporter'
           importerOptions:
             siteNodePath: '/sites/site'
@@ -77,8 +63,6 @@ Ttree:
         'newsContent':
           label: 'Import news content'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsContentDataProvider'
-          dataProviderOptions:
-            source: 'default'
           importerClassName: 'Psmb\PsmbImport\NewsContentImporter'
           importerOptions:
             siteNodePath: '/sites/site'

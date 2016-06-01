@@ -1,21 +1,27 @@
 prototype(Psmb.NodeTypes:Text) < prototype(TYPO3.TypoScript:Tag) {
   content = ${q(node).property('text')}
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Headline) < prototype(TYPO3.TypoScript:Tag) {
   content = ${q(node).property('text')}
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Blockquote) < prototype(TYPO3.TypoScript:Tag) {
   content = ${q(node).property('text')}
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Section) < prototype(TYPO3.TypoScript:Tag) {
   content = ${q(node).property('text')}
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Aside) < prototype(TYPO3.TypoScript:Tag) {
   content = ${q(node).property('text')}
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Image) < prototype(TYPO3.Neos:ImageTag) {
   asset = ${q(node).property('image')}
   maximumWidth = 900
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Asset) < prototype(TYPO3.TypoScript:Tag) {
   tagName = 'a'
@@ -23,4 +29,5 @@ prototype(Psmb.NodeTypes:Asset) < prototype(TYPO3.TypoScript:Tag) {
   attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
   content = ${q(node).property('title')}
   @process.wrap = ${'<div>' + value + '</div>'}
+  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }

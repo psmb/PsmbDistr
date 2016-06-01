@@ -106,14 +106,14 @@ blah: &alohaRich
             format: 'd-m-Y H:i'
       validation:
         'TYPO3.Neos/Validation/DateTimeValidator': []
-    author:
+    credit:
       type: string
       ui:
-        label: 'Автор'
+        label: 'Авторство'
         inlineEditable: true
         aloha:
           <<: *alohaPlain
-          placeholder: 'Автор'
+          placeholder: 'Авторство'
     tags:
       type: references
       ui:

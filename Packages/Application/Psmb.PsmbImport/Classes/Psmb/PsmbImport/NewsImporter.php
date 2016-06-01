@@ -43,9 +43,9 @@ class NewsImporter extends Importer
     $title = $data['title'];
     $externalIdentifier = $data['__externalIdentifier'];
     $desiredNodeName = Slug::create($title)->getValue();
-    // if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
-      // return null;
-    // }
+    if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
+      return null;
+    }
     $nodeTemplate->setProperty('title', $title);
     $nodeTemplate->setProperty('teaser', $data['teaser']);
     $nodeTemplate->setProperty('important', $data['important']);

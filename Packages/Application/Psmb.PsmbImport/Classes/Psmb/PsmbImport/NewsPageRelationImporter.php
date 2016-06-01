@@ -38,6 +38,9 @@ class NewsPageRelationImporter extends Importer
     $tagNode = $this->siteNode->getNode($tagRecordMapping->getNodePath());
 
     $tags = $newsNode->getProperty('tags');
+    if ($tags === null) {
+      $tags = [];
+    }
     if (!in_array($tagNode, $tags)) {
       $tags[] = $tagNode;
       $newsNode->setProperty('tags', $tags);
