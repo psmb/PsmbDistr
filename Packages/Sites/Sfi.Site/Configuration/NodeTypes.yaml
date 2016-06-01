@@ -45,7 +45,7 @@ blah: &alohaRich
 
 'Sfi.Site:Page':
   superTypes:
-    'TYPO3.Neos.NodeTypes:Page': true
+    'TYPO3.Neos:Document': true
   ui:
     label: 'Обычная страница'
 
@@ -65,11 +65,11 @@ blah: &alohaRich
   ui:
     label: 'Новость'
     inspector:
-        groups:
-          news:
-            label: 'Атрибуты новости'
+      groups:
+        news:
+          label: 'Атрибуты новости'
   childNodes:
-    coverCollection:
+    galery:
       type: 'TYPO3.Neos:ContentCollection'
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -87,6 +87,13 @@ blah: &alohaRich
         aloha:
           <<: *alohaRich
           placeholder: 'Тизер'
+    announcementPlace:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaRich
+          placeholder: 'Город для анонса (не используется)'
     date:
       type: DateTime
       defaultValue: 'now'
@@ -117,5 +124,69 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:Tag'
+    relatedNews:
+      type: references
+      ui:
+        label: 'Связанные новости'
+        reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:News'
+    coverImage:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото обложки (если незадано, используется первая фото изнутри)'
+        reloadIfChanged: TRUE
+        inspector:
+          group: 'news'
+    important:
+      type: boolean
+      ui:
+        label: 'Важная новость'
+        inspector:
+          group: 'news'
     originalIdentifier:
       type: string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'Sfi.Site:Epigraph':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Эпиграф'
+  properties:
+    text:
+      type: string
+
+'Sfi.YouTube:YouTube':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'YouTube'
+    inspector:
+      groups:
+        image:
+          label: 'YouTube'
+  properties:
+    caption:
+      type: string
+    videoUrl:
+      type: string
+      ui:
+        reloadIfChanged: TRUE
+        inspector:
+          group: image

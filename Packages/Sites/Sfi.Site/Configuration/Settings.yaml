@@ -7,6 +7,9 @@ TYPO3:
       navigateComponent:
         nodeTree:
           loadingDepth: 1
+          presets:
+            default:
+              baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
   # TYPO3CR:
   #   contentDimensions:
   #     'language':

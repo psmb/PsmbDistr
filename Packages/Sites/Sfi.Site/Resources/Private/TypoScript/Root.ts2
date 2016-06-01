@@ -1,3 +1,4 @@
+include: TypoScriptObjects/**/*.ts2
 include: NodeTypes/**/*.ts2
 
 # This is a default page object.
@@ -23,7 +24,7 @@ prototype(Sfi.Site:Root) < prototype(TYPO3.Neos:Page) {
 
 		mainMenu = Menu {
 			entryLevel = 1
-			maximumLevels = 2
+			maximumLevels = 1
 		}
 
 		main = PrimaryContent {
@@ -32,6 +33,10 @@ prototype(Sfi.Site:Root) < prototype(TYPO3.Neos:Page) {
 				type = ${q(node).property('_nodeType.name')}
 			}
 		}
+
+		createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
+	    type = 'Sfi.Site:News'
+	  }
 
 		javascripts.bodyScripts = TYPO3.TypoScript:Template {
 			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
@@ -49,3 +54,6 @@ root.fallbackPage {
 
 # Disable stupid layout mechanism
 root.layout>
+
+prototype(TYPO3.Neos:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+root.@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}

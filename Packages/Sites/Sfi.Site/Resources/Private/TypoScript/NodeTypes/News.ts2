@@ -1,0 +1,13 @@
+prototype(Sfi.Site:News) {
+  main = TYPO3.Neos:ContentCollection {
+    nodePath = 'main'
+  }
+}
+
+prototype(Sfi.Site:NewsShort) < prototype(TYPO3.TypoScript:Tag) {
+  tagName = 'a'
+  attributes.href = TYPO3.Neos:NodeUri {
+    node = ${node}
+  }
+  content = ${q(node).property('title')}
+}

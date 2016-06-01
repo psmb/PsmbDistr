@@ -2,8 +2,9 @@
 namespace Psmb\PsmbImport\DataProvider;
 
 use Ttree\ContentRepositoryImporter\DataProvider\DataProvider;
+use Ttree\ContentRepositoryImporter\DataType\StringValue;
 
-class CategoryDataProvider extends DataProvider {
+class PageDataProvider extends DataProvider {
   protected $result;
   /**
    * @return array
@@ -17,18 +18,17 @@ class CategoryDataProvider extends DataProvider {
 
   private function fetchByParent($parent = 0) {
     $query = $this->createQuery()
-        ->select('*')
-        ->from('sys_category')
-        ->where('parent = :parent AND hidden=0 AND deleted=0')
-        ->setParameter(':parent', $parent)
-        ->orderBy('sorting');
+      ->select('*')
+      ->from('pages', 'p')
+      ->where('p.pid = :parent AND p.hidden=0 AND p.deleted=0')
+      ->setParameter(':parent', $parent)
+      ->orderBy('p.sorting');
     $statement = $query->execute();
     while ($record = $statement->fetch()) {
       $this->result[] = [
-        '__externalIdentifier' => (integer)$record['uid'],
-        '__parentIdentifier' => (integer)$record['parent'],
-        'title' => String::create($record['title'])->getValue(),
-        'replaceVariants' => String::create(str_replace("\n", ", ", $record['altnames']))->getValue()
+        '__externalIdentifier' => StringValue::create("p" . $record['uid'])->getValue(),
+        '__parentIdentifier' => $record['pid'] ? StringValue::create("p" . $record['pid'])->getValue() : null,
+        'title' => StringValue::create($record['title'])->getValue()
       ];
       $this->fetchByParent($record['uid']);
     }

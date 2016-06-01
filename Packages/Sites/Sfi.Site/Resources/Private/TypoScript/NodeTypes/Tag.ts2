@@ -1,0 +1,9 @@
+prototype(Sfi.Site:Tag) {
+	newsList = Flowpack.Listable:List {
+		prototype(Flowpack.Listable:Listable) {
+			@context.sortProperty = 'date'
+			@context.paginationEnabled = ${true}
+			collection = ${q(site).find('[instanceof Sfi.Site:News]').filterByReference('tags', documentNode).get()}
+		}
+	}
+}

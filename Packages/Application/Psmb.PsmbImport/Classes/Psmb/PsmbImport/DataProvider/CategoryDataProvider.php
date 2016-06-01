@@ -26,16 +26,16 @@ class CategoryDataProvider extends DataProvider {
     $statement = $query->execute();
     while ($record = $statement->fetch()) {
       $this->result[] = [
-        '__externalIdentifier' => (integer)$record['uid'],
-        '__parentIdentifier' => (integer)$record['parent'],
+        '__externalIdentifier' => StringValue::create('c' . $record['uid'])->getValue(),
+        '__parentIdentifier' => $record['parent'] ? StringValue::create('c' . $record['parent'])->getValue() : null,
         'title' => StringValue::create($record['title'])->getValue(),
-        'replaceVariants' => StringValue::create($this->transformNewlinesToCsv($record['altnames']))->getValue()
+        'replaceVariants' => StringValue::create($this->replaceNewlinesToCsv($record['altnames']))->getValue()
       ];
       $this->fetchByParent($record['uid']);
     }
   }
 
-  private function transformNewlinesToCsv($string) {
+  private function replaceNewlinesToCsv($string) {
     return str_replace("\n", ", ", $string);
   }
 }
