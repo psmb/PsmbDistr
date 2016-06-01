@@ -3,6 +3,7 @@
 /Data/
 /Packages/Application/*
 !/Packages/Application/Psmb.PsmbImport/
+!/Packages/Application/Psmb.NodeTypes/
 /Packages/Framework/
 /Packages/Libraries/
 /Web/_Resources/
@@ -18,6 +19,7 @@
 /Upgrading.rst
 /composer.lock
 /beard.lock
+/uploads
 
 # Various temporary files
 .fuse_hidden

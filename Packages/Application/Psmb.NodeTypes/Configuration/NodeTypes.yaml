@@ -1,0 +1,92 @@
+'Psmb.NodeTypes:Text':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Текст'
+  properties:
+    text:
+      type: string
+
+'Psmb.NodeTypes:Headline':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Заголовок'
+  properties:
+    text:
+      type: string
+
+'Psmb.NodeTypes:Blockquote':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Цитата-врез'
+  properties:
+    text:
+      type: string
+
+'Psmb.NodeTypes:Section':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Секция'
+  properties:
+    text:
+      type: string
+
+'Psmb.NodeTypes:Aside':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'На полях'
+  properties:
+    text:
+      type: string
+
+
+'Psmb.NodeTypes:Image':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Картинка'
+    inspector:
+      groups:
+        image:
+          label: 'Изображение'
+  properties:
+    alt:
+      type: string
+    caption:
+      type: string
+    image:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Изображение'
+        reloadIfChanged: TRUE
+        inspector:
+          group: image
+
+
+'Psmb.NodeTypes:Asset':
+  superTypes:
+    'TYPO3.Neos:Content': true
+  ui:
+    label: 'Файл'
+    inspector:
+      groups:
+        asset:
+          label: 'Файл'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Подпись к файлу'
+    asset:
+      type: TYPO3\Media\Domain\Model\Asset
+      ui:
+        inspector:
+          group: asset
+        label: 'Файл'
+        reloadIfChanged: true
