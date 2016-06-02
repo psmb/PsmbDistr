@@ -27,14 +27,6 @@ class NewsContentDataProvider extends DataProvider {
 
 	protected function getContent($record) {
 		$media = $this->getMedia($record['uid']);
-    if (isset($media[0]['dontShowInside'])) {
-      $innerImages = array_filter($media, function ($i) {
-        return $i['dontShowInside'];
-      });
-      $coverImage = reset($innerImages);
-    } else {
-      $coverImage = null;
-    }
 
     $bodytext = $this->parseBodytext($record['bodytext']);
     $contentArray = preg_split(
@@ -50,7 +42,7 @@ class NewsContentDataProvider extends DataProvider {
     );
 
     $contentArray = array_filter(array_map('trim', $contentArray));
-    $lastMediaIndex = 0;
+    $lastMediaIndex = 0; // this var will be used for chopping lefover images for gallery, so we set it to 1, to chop the first image used for cover, if not overriden from content
     $author = '';
     $contentArray = array_map(function ($i) use ($media, &$lastMediaIndex, &$author) {
       if (preg_match('/^<p>\[\[MEDIA(\d+)\]\]<\/p>$/', $i, $matches)) {
@@ -92,17 +84,32 @@ class NewsContentDataProvider extends DataProvider {
     }, $contentArray);
     $contentArray = array_filter($contentArray);
 
-    // Get all unused images for gallery
-    $lastImageOffset = array_search($lastMediaIndex, array_keys($media));
-    if ($lastImageOffset !== false) {
-      $gallery = array_slice($media, $lastImageOffset + 1, null, true);
-    } else {
-      $gallery = null;
+    $thumbImage = null;
+    $coverImage = null;
+    $gallery = null;
+    if (!empty($media)) {
+      // Cover image is always the first media item
+      $coverImage = $media[0];
+      $showOutsideMedia = array_filter($media, function ($i) {
+        return $i['showOutside'];
+      });
+      if (!empty($showOutsideMedia)) {
+        // We set dedicated thumb image to the firs image marked with showOutside, or else it would fallback to cover
+        $thumbImage = reset($showOutsideMedia);
+      }
+
+      // Get all unused images for gallery
+      $lastImageOffset = array_search($lastMediaIndex, array_keys($media));
+      if ($lastImageOffset !== false) {
+        $gallery = array_slice($media, $lastImageOffset + 1, null, true);
+      }
     }
 
     return [
+      'media' => $media,
       'main' => $contentArray,
       'coverImage' => $coverImage,
+      'thumbImage' => $thumbImage,
       'credit' => $author,
       'gallery' => $gallery
     ];
@@ -110,7 +117,8 @@ class NewsContentDataProvider extends DataProvider {
 
 	protected function getMedia($parent) {
 		$result = [];
-		$query = $this->createQuery()
+		$query = $this->getDatabaseConnection()
+      ->createQueryBuilder()
       ->select('*')
       ->from('tx_news_domain_model_media', 'm')
       ->where('m.parent = :parent AND m.hidden=0 AND m.deleted=0')
@@ -123,14 +131,14 @@ class NewsContentDataProvider extends DataProvider {
           '_type' => 'Psmb.NodeTypes:Image',
           'caption' => $record['caption'],
           'filename' => $record['image'],
-          'dontShowInside' => $record['showinpreview']
+          'showOutside' => $record['showinpreview']
         ];
       } else if ($record['type'] == 1) {
   			$mediaItem = [
   				'_type' => 'Sfi.YouTube:YouTube',
   				'videoUrl' => $record['multimedia'],
   				'caption' => $record['caption'],
-  				'dontShowInside' => $record['showinpreview']
+  				'showOutside' => $record['showinpreview']
   			];
       }
 			$result[] = $mediaItem;
@@ -146,7 +154,7 @@ class NewsContentDataProvider extends DataProvider {
     // i -> em
 		$bodytext = preg_replace('/<i>(.*?)<\/i>/i', '<em>$1</em>', $bodytext);
     // Wrap empty lines with paragraph tag
-		$bodytext = preg_replace('/^((<em>|<strong>|<a|\w|\[\[).*?)([\r\n]|$)/mui', '<p>$1</p>', $bodytext);
+		$bodytext = preg_replace('/^((<em>|<strong>|<a|[^<]).*?)([\r\n]|$)/mui', '<p>$1</p>', $bodytext);
 		// Handle link tags
 		$bodytext = preg_replace_callback(
 			'@<link\s+(\S*)[^>]*>([^<]*)</link>@ui',

@@ -46,6 +46,7 @@ class NewsContentImporter extends Importer
    */
   public function processRecord(NodeTemplate $nodeTemplate, array $data)
   {
+    $this->log(print_r($data,1));
     $this->unsetAllNodeTemplateProperties($nodeTemplate);
 
     $externalIdentifier = $data['__externalIdentifier'];
@@ -60,43 +61,64 @@ class NewsContentImporter extends Importer
     }
     $newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
     $newsNode->setProperty('credit', $data['credit']);
-    $mainCollection = $newsNode->getNode('main');
 
-    if ($data['coverImage']['filename']) {
-      $filePath = $this->getFilePath($data['coverImage']['filename']);
+    if (isset($data['thumbImage']['filename'])) {
+      $filePath = $this->getFilePath($data['thumbImage']['filename']);
       if ($filePath) {
         $image = $this->importImage($filePath);
-        $newsNode->setProperty('coverImage', $image);
+        $newsNode->setProperty('thumbImage', $image);
       }
     }
 
-    foreach ($data['main'] as $contentItem) {
-      $nodeTemplate = new NodeTemplate();
-      $nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType($contentItem['_type']));
-      switch ($contentItem['_type']) {
-        case 'Psmb.NodeTypes:Text':
-          $nodeTemplate->setProperty('text', $contentItem['text']);
-          break;
-        case 'Psmb.NodeTypes:Image':
-          $filePath = $this->getFilePath($contentItem['filename']);
-          if ($filePath) {
-            $image = $this->importImage($filePath);
-            $nodeTemplate->setProperty('image', $image);
-            $nodeTemplate->setProperty('caption', $contentItem['caption']);
-          }
-          break;
-        case 'Sfi.YouTube:YouTube':
-          $nodeTemplate->setProperty('videoUrl', $contentItem['videoUrl']);
-          $nodeTemplate->setProperty('caption', $contentItem['caption']);
-          break;
-
-        default:
-          $nodeTemplate->setProperty('text', $contentItem['text']);
-          break;
-      }
-      $mainCollection->createNodeFromTemplate($nodeTemplate);
+    if (isset($data['coverImage'])) {
+      $coverCollection = $newsNode->getNode('cover');
+      $imageTemplate = $this->processContentItem($data['coverImage']);
+      $coverCollection->createNodeFromTemplate($imageTemplate);
     }
+
+    if (is_array($data['main'])) {
+      $mainCollection = $newsNode->getNode('main');
+      foreach ($data['main'] as $contentItem) {
+        $nodeTemplate = $this->processContentItem($contentItem);
+        $mainCollection->createNodeFromTemplate($nodeTemplate);
+      }
+    }
+
+    if (is_array($data['gallery'])) {
+      $galleryCollection = $newsNode->getNode('gallery');
+      foreach ($data['gallery'] as $contentItem) {
+        $nodeTemplate = $this->processContentItem($contentItem);
+        $galleryCollection->createNodeFromTemplate($nodeTemplate);
+      }
+    }
+
     $this->registerNodeProcessing($newsNode, $externalIdentifier);
+  }
+
+  protected function processContentItem($contentItem) {
+    $nodeTemplate = new NodeTemplate();
+    $nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType($contentItem['_type']));
+    switch ($contentItem['_type']) {
+      case 'Psmb.NodeTypes:Text':
+        $nodeTemplate->setProperty('text', $contentItem['text']);
+        break;
+      case 'Psmb.NodeTypes:Image':
+        $filePath = $this->getFilePath($contentItem['filename']);
+        if ($filePath) {
+          $image = $this->importImage($filePath);
+          $nodeTemplate->setProperty('image', $image);
+          $nodeTemplate->setProperty('caption', $contentItem['caption']);
+        }
+        break;
+      case 'Sfi.YouTube:YouTube':
+        $nodeTemplate->setProperty('videoUrl', $contentItem['videoUrl']);
+        $nodeTemplate->setProperty('caption', $contentItem['caption']);
+        break;
+      default:
+        $nodeTemplate->setProperty('text', $contentItem['text']);
+        break;
+    }
+    return $nodeTemplate;
   }
 
   protected function getFilePath($fileName) {

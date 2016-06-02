@@ -69,9 +69,11 @@ blah: &alohaRich
         news:
           label: 'Атрибуты новости'
   childNodes:
-    galery:
+    cover:
       type: 'TYPO3.Neos:ContentCollection'
     main:
+      type: 'TYPO3.Neos:ContentCollection'
+    gallery:
       type: 'TYPO3.Neos:ContentCollection'
   properties:
     title:
@@ -134,10 +136,10 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:News'
-    coverImage:
+    thumbImage:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
-        label: 'Фото обложки (если незадано, используется первая фото изнутри)'
+        label: 'Фото снаружи (если незадано, используется фото из обложки)'
         reloadIfChanged: TRUE
         inspector:
           group: 'news'
