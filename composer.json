@@ -7,12 +7,12 @@
     },
     "require": {
         "typo3/neos": "~2.1.0",
-        "typo3/neos-kickstarter": "~2.1.0",
         "typo3/imagine": "@dev",
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
         "ttree/contentrepositoryimporter": "^2.0",
-        "flowpack/listable": "^0.4.1"
+        "flowpack/listable": "^0.4.1",
+        "sfi/youtube": "^0.1.5"
     },
     "scripts": {
         "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
