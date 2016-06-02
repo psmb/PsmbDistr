@@ -88,8 +88,15 @@ class NewsContentDataProvider extends DataProvider {
     $coverImage = null;
     $gallery = null;
     if (!empty($media)) {
-      // Cover image is always the first media item
-      $coverImage = $media[0];
+      // Choose cover image: firs non-"showOutside"
+      $showInsideMedia = array_filter($media, function ($i) {
+        return !$i['showOutside'];
+      });
+      if (!empty($showInsideMedia)) {
+        $coverImage = reset($showInsideMedia);
+      }
+
+      // Choose thumb image: first "showOutside" or none
       $showOutsideMedia = array_filter($media, function ($i) {
         return $i['showOutside'];
       });
