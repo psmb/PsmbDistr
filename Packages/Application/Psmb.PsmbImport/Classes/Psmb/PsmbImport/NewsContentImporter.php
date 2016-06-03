@@ -46,7 +46,7 @@ class NewsContentImporter extends Importer
    */
   public function processRecord(NodeTemplate $nodeTemplate, array $data)
   {
-    $this->log(print_r($data,1));
+    // $this->log(print_r($data,1));
     $this->unsetAllNodeTemplateProperties($nodeTemplate);
 
     $externalIdentifier = $data['__externalIdentifier'];
@@ -70,10 +70,10 @@ class NewsContentImporter extends Importer
       }
     }
 
-    if (isset($data['coverImage'])) {
+    if (isset($data['coverMedia'])) {
       $coverCollection = $newsNode->getNode('cover');
-      $imageTemplate = $this->processContentItem($data['coverImage']);
-      $coverCollection->createNodeFromTemplate($imageTemplate);
+      $coverNodeTemplate = $this->processContentItem($data['coverMedia']);
+      $coverCollection->createNodeFromTemplate($coverNodeTemplate);
     }
 
     if (is_array($data['main'])) {

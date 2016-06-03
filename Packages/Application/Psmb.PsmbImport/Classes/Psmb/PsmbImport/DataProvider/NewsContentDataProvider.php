@@ -42,7 +42,7 @@ class NewsContentDataProvider extends DataProvider {
     );
 
     $contentArray = array_filter(array_map('trim', $contentArray));
-    $lastMediaIndex = 0; // this var will be used for chopping lefover images for gallery, so we set it to 1, to chop the first image used for cover, if not overriden from content
+    $lastMediaIndex = null; // this var will be used for chopping lefover images for gallery, so we set it to 1, to chop the first image used for cover, if not overriden from content
     $author = '';
     $contentArray = array_map(function ($i) use ($media, &$lastMediaIndex, &$author) {
       if (preg_match('/^<p>\[\[MEDIA(\d+)\]\]<\/p>$/', $i, $matches)) {
@@ -73,7 +73,7 @@ class NewsContentDataProvider extends DataProvider {
           'text' => $matches[1]
         ];
       } else if (preg_match('/^<p\s+class="author">(.+?)<\/p>$/', $i, $matches)){
-        $author .= $matches[1] . "\n";
+        $author .= $matches[1] . "<br>";
         return null;
       } else {
         return $i ? [
@@ -85,7 +85,7 @@ class NewsContentDataProvider extends DataProvider {
     $contentArray = array_filter($contentArray);
 
     $thumbImage = null;
-    $coverImage = null;
+    $coverMedia = null;
     $gallery = null;
     if (!empty($media)) {
       // Choose cover image: firs non-"showOutside"
@@ -93,7 +93,10 @@ class NewsContentDataProvider extends DataProvider {
         return !$i['showOutside'];
       });
       if (!empty($showInsideMedia)) {
-        $coverImage = reset($showInsideMedia);
+        $coverMedia = reset($showInsideMedia);
+        if ($lastMediaIndex === null) {
+          $lastMediaIndex = array_search($coverMedia, $media);
+        }
       }
 
       // Choose thumb image: first "showOutside" or none
@@ -106,16 +109,13 @@ class NewsContentDataProvider extends DataProvider {
       }
 
       // Get all unused images for gallery
-      $lastImageOffset = array_search($lastMediaIndex, array_keys($media));
-      if ($lastImageOffset !== false) {
-        $gallery = array_slice($media, $lastImageOffset + 1, null, true);
-      }
+      $gallery = array_slice($media, $lastMediaIndex + 1, null, true);
     }
 
     return [
       'media' => $media,
       'main' => $contentArray,
-      'coverImage' => $coverImage,
+      'coverMedia' => $coverMedia,
       'thumbImage' => $thumbImage,
       'credit' => $author,
       'gallery' => $gallery
