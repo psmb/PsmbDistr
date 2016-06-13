@@ -4,7 +4,11 @@ prototype(Sfi.Site:News) < prototype(T:Array) {
 	main = T:Array {
 		@process.tmpl = ${'<div class="large-9 medium-9 columns news-detail__content">' + value + '</div>'}
 		title = ${'<h1 class="alpha">' + node.properties.title + '</h1>'}
-		date = ${'<div class="news-detail__tagline"><div class="news-detail__date">' + Date.format(node.properties.date, 'd M Y') + '</div></div>'}
+		tagline = T:Array {
+			@process.tmpl = ${'<div class="news-detail__tagline">' + value + '</div>'}
+			date = ${'<div class="news-detail__date">' + Date.format(node.properties.date, 'd M Y') + '</div>'}
+			tagList = Sfi.Site:TagList
+		}
 		teaser = ${'<div class="lead">' + node.properties.teaser + '</div>'}
 		cover = TYPO3.Neos:ContentCollection {
 			nodePath = 'cover'
@@ -15,18 +19,14 @@ prototype(Sfi.Site:News) < prototype(T:Array) {
 				nodePath = 'main'
 			}
 			credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
-			newsList = Flowpack.Listable:List {
-				@context.wrapClass = 'row-spacing-top--large'
-				@context.listTitle = 'Ссылки по теме'
-				@context.listTitleClass = 'block-title--strong'
-				prototype(Flowpack.Listable:Listable) {
-					@context.sortProperty = 'date'
-					@context.paginationEnabled = ${false}
-					@context.listClass = 'medium-block-grid-2'
-					@context.itemClass = 'media-small'
-					@context.itemRenderer = 'Sfi.Site:NewsShort'
-					collection = ${q(node).property('relatedNews')}
-				}
+			newsList = T:Collection {
+				@process.tmlp = ${'<div class="row-spacing-top--large">
+						<div class="block-title--strong">Ссылки по теме</div>
+						<ul class="medium-block-grid-2">' + value + '</ul>
+					</div>'}
+				collection = ${q(node).property('relatedNews')}
+				itemName = 'node'
+				itemRenderer = Sfi.Site:NewsShort
 			}
 		}
 	}
@@ -44,7 +44,7 @@ prototype(Sfi.Site:NewsThumb) < prototype(T:Value) {
 
 prototype(Sfi.Site:NewsShort) < prototype(T:Value) {
 	value = T:Tag {
-		@process.tmpl = ${'<div class="media-small__wrap">' + value + '</div>'}
+		@process.tmpl = ${'<li class="media-small"><div class="media-small__wrap">' + value + '</div></li>'}
 		tagName = 'a'
 		attributes.href = NodeUri {
 			node = ${node}

@@ -1,4 +1,5 @@
 namespace: T=TYPO3.TypoScript
+include: Objects/**/*.ts2
 include: NodeTypes/**/*.ts2
 include: Override.ts2
 
