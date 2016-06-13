@@ -6,10 +6,16 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "~2.1.0",
+        "neos/neos-development-collection": "@dev",
+        "neos/flow-development-collection": "@dev",
+        "typo3/party": "@dev",
+        "typo3/neos-seo": "@dev",
         "typo3/imagine": "@dev",
+        "typo3/twitter-bootstrap": "@dev",
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
+        "flowpack/neos-frontendlogin": "@dev",
+
         "ttree/contentrepositoryimporter": "^2.0",
         "flowpack/listable": "^0.4.1",
         "sfi/youtube": "^0.1.5",
