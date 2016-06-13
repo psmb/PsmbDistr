@@ -61,7 +61,7 @@ class NewsFileImporter extends Importer
   }
 
   protected function importFile ($fileName) {
-    $filePath = FLOW_PATH_ROOT . '/uploads/' . $fileName;
+    $filePath = FLOW_PATH_ROOT . 'uploads/' . $fileName;
   	$resource = $this->resourceManager->importResource($filePath);
   	$asset = new Asset($resource);
   	$this->assetRepository->add($asset);

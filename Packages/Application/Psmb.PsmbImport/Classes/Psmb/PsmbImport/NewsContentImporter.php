@@ -123,7 +123,7 @@ class NewsContentImporter extends Importer
 
   protected function getFilePath($fileName) {
     if (in_array(pathinfo(strtolower($fileName), PATHINFO_EXTENSION), ["jpg", "jpeg", "gif"])) {
-      $filePath = FLOW_PATH_ROOT . '/uploads/' . $fileName;
+      $filePath = FLOW_PATH_ROOT . 'uploads/' . $fileName;
       if (!file_exists($filePath)) {
         $this->log("Missing file: " . $filePath);
       } else {
