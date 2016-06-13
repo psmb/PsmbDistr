@@ -1,4 +1,7 @@
 prototype(Sfi.Site:News) {
+  cover = TYPO3.Neos:ContentCollection {
+    nodePath = 'cover'
+  }
   main = TYPO3.Neos:ContentCollection {
     nodePath = 'main'
   }
