@@ -13,10 +13,22 @@ prototype(Sfi.Site:News) < prototype(T:Tag) {
           cover = TYPO3.Neos:ContentCollection {
             nodePath = 'cover'
           }
-          main = TYPO3.Neos:ContentCollection {
-            nodePath = 'main'
+          content = T:Tag {
+            attributes.class = 'large-10 large-offset-2 columns'
+            content = T:Array {
+              main = TYPO3.Neos:ContentCollection {
+                nodePath = 'main'
+              }
+              credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
+              newsList = Flowpack.Listable:List {
+            		prototype(Flowpack.Listable:Listable) {
+            			@context.sortProperty = 'date'
+            			@context.paginationEnabled = ${false}
+            			collection = ${q(node).property('relatedNews')}
+            		}
+            	}
+            }
           }
-          credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
         }
       }
       sidebar = T:Tag {
