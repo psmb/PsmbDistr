@@ -18,9 +18,18 @@ prototype(Psmb.NodeTypes:Aside) < prototype(TYPO3.TypoScript:Tag) {
   content = ${q(node).property('text')}
   @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
-prototype(Psmb.NodeTypes:Image) < prototype(TYPO3.Neos:ImageTag) {
-  asset = ${q(node).property('image')}
-  maximumWidth = 900
+prototype(Psmb.NodeTypes:Image) < prototype(TYPO3.TypoScript:Tag) {
+  tagName = 'figure'
+  content = TYPO3.TypoScript:Array {
+    image = TYPO3.Neos:ImageTag {
+      asset = ${q(node).property('image')}
+      maximumWidth = 900
+    }
+    caption = TYPO3.TypoScript:Tag {
+      tagName = 'figcaption'
+      content = ${q(node).property('caption')}
+    }
+  }
   @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Asset) < prototype(TYPO3.TypoScript:Tag) {
