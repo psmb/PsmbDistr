@@ -16,9 +16,15 @@ prototype(Sfi.Site:News) < prototype(T:Array) {
 			}
 			credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
 			newsList = Flowpack.Listable:List {
+				@context.wrapClass = 'row-spacing-top--large'
+				@context.listTitle = 'Ссылки по теме'
+				@context.listTitleClass = 'block-title--strong'
 				prototype(Flowpack.Listable:Listable) {
 					@context.sortProperty = 'date'
 					@context.paginationEnabled = ${false}
+					@context.listClass = 'medium-block-grid-2'
+					@context.itemClass = 'media-small'
+					@context.itemRenderer = 'Sfi.Site:NewsShort'
 					collection = ${q(node).property('relatedNews')}
 				}
 			}
@@ -31,10 +37,29 @@ prototype(Sfi.Site:News) < prototype(T:Array) {
 	}
 }
 
-prototype(Sfi.Site:NewsShort) < prototype(T:Tag) {
-	tagName = 'a'
-	attributes.href = TYPO3.Neos:NodeUri {
-		node = ${node}
+# Get thumb from news node
+prototype(Sfi.Site:NewsThumb) < prototype(T:Value) {
+	value = ${q(node).property('thumbImage') ? q(node).property('thumbImage') : q(node).children('cover').children('[instanceof Psmb.NodeTypes:Image]').first().property('image')}
+}
+
+prototype(Sfi.Site:NewsShort) < prototype(T:Value) {
+	value = T:Tag {
+		@process.tmpl = ${'<div class="media-small__wrap">' + value + '</div>'}
+		tagName = 'a'
+		attributes.href = NodeUri {
+			node = ${node}
+		}
+		content = T:Array {
+			image = ImageTag {
+				attributes.class = 'media-small__image media-small--left__image'
+				asset = Sfi.Site:NewsThumb
+				# No idea why this is needed
+				maximumWidth>
+				width = 60
+				height = 60
+				allowCropping = TRUE
+			}
+			body = ${'<div class="media-small__body"><h3 class="media-small__title">' + node.properties.title + '</h3></div>'}
+		}
 	}
-	content = ${q(node).property('title')}
 }
