@@ -1,0 +1,27 @@
+.footer{
+	color: white;
+}
+
+.footer__sitemap,.footer__copyright{
+	padding: 2*$u 0;
+}
+
+.footer__copyright{
+	@extend .service-small--inv;
+	margin: 0;
+}
+
+.footer .sitemap{
+	padding: 0 2*$u;
+	border-right-style: solid;
+	border-right-width: 1px;
+}
+
+.sitemap__item{
+	@extend .service-small--inv;
+	margin: $u/2 0;
+}
+
+.sitemap__header{
+	@extend .service-large--inv;
+}

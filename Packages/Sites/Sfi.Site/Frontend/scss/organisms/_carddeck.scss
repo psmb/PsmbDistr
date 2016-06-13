@@ -1,0 +1,86 @@
+
+.carddeck{
+	list-style-type: none;
+	img{
+		float: left;
+		height: inherit;
+		margin-right: $u;
+	}
+	h1 {
+		margin-top: $u;
+	}
+	h1:hover:hover {
+		color: $primary-color !important;
+	}
+}
+
+.carddeck__slide{
+	section{
+		padding: 1rem 2rem;
+		margin-left: 208px;
+	}
+	.wrap{
+		min-width: 556px;
+	}
+
+	h3{
+		@extend .gamma;
+	}
+	img{max-width: inherit !important;}
+	p{
+		@extend .service-small--gray;
+	}
+	width:12% !important;
+	height:rem-calc(308);
+	float:right;
+	box-shadow: 2px 0px 3px #666;
+	transition: width 0.3s ease;
+	overflow:hidden;
+
+	background: $gray-bg;
+	position: relative !important;
+	margin: 0% !important;
+	cursor: pointer;
+}
+.carddeck__slide:after {
+	content: '';
+	background: black;
+	opacity: 0.33;
+	width: 100% !important;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0;
+
+}
+.carddeck__slide.active{
+	width:64% !important;
+	cursor: inherit;
+}
+.carddeck__slide.active:after{display: none;}
+.carddeck__slide:hover:after{opacity: 0;}
+
+.carddeck__arrows {
+	a:hover {
+		color: $primary-color !important;
+	}
+	position: absolute;
+	bottom: 0;
+	left: 207px;
+	right: 0;
+	.prev,.next{
+		width: 50%;
+		float: left;
+		border-top: 1px solid #aaa;
+		height: 3.125rem;
+		display: block;
+		text-align: center;
+		font-size: 50px;
+		font-weight: 300;
+		font-family: serif;
+		color: #666;
+		font-style: normal;
+		line-height: 38px;
+	}
+	.prev{border-right: 1px solid #aaa;}
+}

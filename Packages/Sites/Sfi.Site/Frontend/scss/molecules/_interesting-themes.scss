@@ -1,0 +1,21 @@
+.interesting-themes{
+	border: 2px solid white;
+	padding: 2*$u;
+	margin-bottom: 2*$u;
+}
+
+.interesting-themes__label{
+	@extend .action;
+}
+
+.interesting-themes__item{
+	@extend .epsilon;
+}
+
+.interesting-themes__item a.active{
+	color: $primary-color;
+}
+
+.interesting-themes .maxlist-more{
+	@extend .action--small;
+}

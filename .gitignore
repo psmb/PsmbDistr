@@ -5,6 +5,8 @@
 !/Packages/Application/Psmb.PsmbImport/
 !/Packages/Application/Psmb.NodeTypes/
 /Packages/Framework/
+/Packages/Neos/
+/Packages/Plugins/
 /Packages/Libraries/
 /Web/_Resources/
 /Web/index.php

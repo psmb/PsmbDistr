@@ -1,0 +1,112 @@
+/*doc
+---
+title: Mixins
+name: 00_mixins
+category: atoms
+---
+Various helper mixins and placeholders.
+
+```
+%single-margins{
+  margin-top: $u;
+  margin-bottom: $u;
+}
+%sesquialteral-margins{
+  margin-top: 1.5*$u;
+  margin-bottom: 1.5*$u;
+}
+%double-margins{
+  margin-top: 2*$u;
+  margin-bottom: 2*$u;
+}
+%vertical-margins{
+  @extend %single-margins;
+}
+
+%image-styling{
+}
+
+@mixin vertical-align{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+```
+ */
+
+.single-margins,%single-margins{
+  margin-top: $u;
+  margin-bottom: $u;
+}
+.sesquialteral-margins,%sesquialteral-margins{
+  margin-top: 1.5*$u;
+  margin-bottom: 1.5*$u;
+}
+.double-margins,%double-margins{
+  margin-top: 2*$u;
+  margin-bottom: 2*$u;
+}
+.vertical-margins,%vertical-margins{
+  @extend %single-margins;
+}
+
+.single-margin-top{
+  margin-top: $u;
+}
+.single-margin-bottom{
+  margin-top: 2*$u;
+}
+
+
+
+%image-styling{
+}
+
+%gradient-tint{
+  position: absolute;
+  top: 40%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%);
+}
+
+@mixin triangle-border($size, $color){
+  position: relative;
+  border-left: 2px solid $color;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 8*$u;
+    border-style: solid;
+    border-color: transparent;
+    border-width: $size $size $size 0;
+  }
+
+  &:before {
+    border-right-color: $color;
+    left: -$size;
+  }
+
+  &:after {
+    border-right-color: white;
+    left: 3px - $size;
+  }
+}
+
+
+@mixin vertical-align{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.box-shadow{
+  box-shadow: 1px 2px 2px rgba(150, 150, 150, 0.5);
+  margin: emCalc(10);
+  background: white;
+}

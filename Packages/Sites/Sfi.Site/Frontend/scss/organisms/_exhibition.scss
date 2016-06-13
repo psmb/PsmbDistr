@@ -1,0 +1,7 @@
+.exhibition-stats {
+	@extend .box-shadow;
+	text-align: center;
+	background-color: white;
+	padding: 2*$u $u;
+	margin: 0;
+}

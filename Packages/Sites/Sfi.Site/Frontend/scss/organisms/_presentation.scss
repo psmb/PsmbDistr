@@ -1,0 +1,38 @@
+.teachers{
+	li{
+		padding: 0;
+		position: relative;
+	}
+	img{
+		width: 100%;
+	}
+	.teachers__caption{
+		@extend .delta--navy;
+		position: absolute;
+		display: block;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		text-align: center;
+		padding: 0 $u;
+	}
+}
+
+
+.presentation-sections-menu__item{
+	.section-color-bd{
+		border-bottom-width: 3px;
+		border-bottom-style: solid;
+	}
+}
+
+.teachers__imgwrap:before {
+	display: block;
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0) 60%,rgba(0,0,0,0.9) 90%);
+	right: 0;
+}

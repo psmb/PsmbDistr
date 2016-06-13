@@ -1,0 +1,29 @@
+.book__image {
+	outline: 4px solid white;
+	outline-offset: -4px;
+	margin: -4px;
+}
+
+.book--new .book__image {
+	outline-color: $gray-bg;
+	width: 100%;
+	height: 400px;
+}
+
+[class*="block-grid-"] > li.book--old {
+	clear: none !important;
+	height: 350px;
+}
+
+.book__wrap {
+	padding: $u;
+}
+.book__wrap:hover {
+	background: white;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.20);
+	transition: all 0.3s;
+}
+.book--new .book__wrap:hover .book__image {
+	outline-color: white;
+	transition: all 0.3s;
+}

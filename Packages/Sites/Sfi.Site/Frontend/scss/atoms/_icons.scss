@@ -1,0 +1,11 @@
+.icon {
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+.icon-tag {
+	@extend .icon;
+	background-image: url('/typo3conf/ext/speciality/Resources/Public/Icons/icon-tag.png');
+}

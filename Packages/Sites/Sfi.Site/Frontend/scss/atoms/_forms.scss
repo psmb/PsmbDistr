@@ -1,0 +1,7 @@
+input, textarea, select{
+	@extend .service-small--gray;
+	border: 1px solid $gray-line;
+	padding: $u;
+	margin: 0 0 2*$u 0 !important;
+	width: 100%;
+}

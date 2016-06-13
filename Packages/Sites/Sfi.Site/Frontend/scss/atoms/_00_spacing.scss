@@ -1,0 +1,133 @@
+// TODO: remove legacy spacing
+
+$u: 12px;
+$intervals: (
+    none: 0,
+    small: 1,
+    large: 3
+);
+
+@each $intervalName, $intervalValue in $intervals {
+    .row-spacing--#{$intervalName} {
+        padding: $intervalValue*$u !important;
+    }
+    .row-spacing-vertical--#{$intervalName} {
+        padding: $intervalValue*$u 0 !important;
+    }
+    .row-spacing-horizontal--#{$intervalName} {
+        padding: 0 $intervalValue*$u !important;
+    }
+    .row-spacing-top--#{$intervalName} {
+        padding-top: $intervalValue*$u !important;
+    }
+    .row-spacing-right--#{$intervalName} {
+        padding-right: $intervalValue*$u !important;
+    }
+    .row-spacing-bottom--#{$intervalName} {
+        padding-bottom: $intervalValue*$u !important;
+    }
+    .row-spacing-left--#{$intervalName} {
+        padding-left: $intervalValue*$u !important;
+    }
+}
+// TODO: Fix this
+.row-spacing {
+    padding: 2*$u !important;
+}
+.row-spacing-vertical {
+    padding: 2*$u 0 !important;
+}
+.row-spacing-horizontal {
+    padding: 0 2*$u !important;
+}
+.row-spacing-top {
+    padding-top: 2*$u !important;
+}
+.row-spacing-right {
+    padding-right: 2*$u !important;
+}
+.row-spacing-bottom {
+    padding-bottom: 2*$u !important;
+}
+.row-spacing-left {
+    padding-left: 2*$u !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Spacing from SFI
+
+$u: 12px;
+$spacingBetweenContentBlocks: 3*$u;
+
+$intervals: (
+    none: 0,
+    half: 0.5,
+    single: 1,
+    sesquialteral: 1.5,
+    double: 2,
+    triple: 3
+);
+
+@each $intervalName, $intervalValue in $intervals {
+    .margin-#{$intervalName}{
+        margin: $intervalValue*$u !important;
+    }
+    .marginVertical-#{$intervalName}{
+        margin-top: $intervalValue*$u !important;
+        margin-bottom: $intervalValue*$u !important;
+    }
+    .marginHorizontal-#{$intervalName}{
+        margin-left: $intervalValue*$u !important;
+        margin-right: $intervalValue*$u !important;
+    }
+    .marginTop-#{$intervalName}{
+        margin-top: $intervalValue*$u !important;
+    }
+    .marginRight-#{$intervalName}{
+        margin-right: $intervalValue*$u !important;
+    }
+    .marginBottom-#{$intervalName}{
+        margin-bottom: $intervalValue*$u !important;
+    }
+    .marginLeft-#{$intervalName}{
+        margin-left: $intervalValue*$u !important;
+    }
+
+    .padding-#{$intervalName}{
+        padding: $intervalValue*$u !important;
+    }
+    .paddingVertical-#{$intervalName}{
+        padding-top: $intervalValue*$u !important;
+        padding-bottom: $intervalValue*$u !important;
+    }
+    .paddingHorizontal-#{$intervalName}{
+        padding-left: $intervalValue*$u !important;
+        padding-right: $intervalValue*$u !important;
+    }
+    .paddingTop-#{$intervalName}{
+        padding-top: $intervalValue*$u !important;
+    }
+    .paddingRight-#{$intervalName}{
+        padding-right: $intervalValue*$u !important;
+    }
+    .paddingBottom-#{$intervalName}{
+        padding-bottom: $intervalValue*$u !important;
+    }
+    .paddingLeft-#{$intervalName}{
+        padding-left: $intervalValue*$u !important;
+    }
+}

@@ -1,0 +1,31 @@
+
+/*doc
+---
+title: Themes collection
+name: themes
+category: organisms
+---
+A very onteresting themes!
+Uses `triangle-border` mixin.
+
+ */
+ .themes{
+ 	@include triangle-border(2*$u, $gray-line);
+	padding-left: 2*$u;
+	margin-bottom: 8*$u;
+
+	// TODO: ugly piece of code
+	.is-active{
+		position: relative;
+	}
+	.is-active:before{
+		content: '';
+		border-left: solid 3px;
+		border-color: inherit;
+		position: absolute;
+		height: 100%;
+		left: -2*$u;
+		top: 0;
+	}
+
+}

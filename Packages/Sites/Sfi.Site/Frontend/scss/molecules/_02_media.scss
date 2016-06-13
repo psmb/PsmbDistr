@@ -1,0 +1,643 @@
+/*doc
+---
+title: Media elements
+name: 02_media
+category: molecules
+---
+*/
+
+/*doc
+---
+title: Media element
+name: media
+parent: 02_media
+category:
+- molecules
+- media
+---
+Media news element. Used in `.stream` and in `.news-latest` organisms.
+
+```html_example
+<div class="media">
+	<div class="media__wrap" >
+		<a class="media__image" href="#"><img src="http://placehold.it/185x200"></a>
+		<div class="media__body">
+			<div class="media__header-wrap">
+				<span class="media__date">04.06</span>
+				<h3 class="media__title">
+					<a href="/cerkov-i-obshchestvo/article/rossijanam-pokazhut-poslednii-adres-zhertv-politichesk-4862/">Россиянам покажут «Последний адрес» жертв политических репрессий</a>
+				</h3>
+				<a class="media__teaser" href="/cerkov-i-obshchestvo/article/rossijanam-pokazhut-poslednii-adres-zhertv-politichesk-4862/">
+					Журналист и издатель Сергей Пархоменко рассказал членам Христорождественского братства о своем...
+				</a>
+			</div>
+			<span class="media__category">
+				<a href="/cerkov-i-obshchestvo/">Церковь и общество</a>
+			</span>
+		</div>
+	</div>
+</div>
+```
+```
+.media{}
+	.media__wrap{
+		background: white;
+		border-bottom: 4px solid;
+	}
+
+	.media__body{
+		padding: $u;
+	}
+
+	.media__title{
+		@extend .epsilon;
+	}
+
+	.media__teaser{
+		display: none;
+	}
+
+	.media__date{
+		@extend .service;
+	}
+	.media__category{
+		@extend .service;
+		position: absolute;
+		bottom: 4px;
+	}
+```
+*/
+.media__wrap{
+
+	overflow: hidden;
+	background: white;
+	// Border color is defined is .section-color-bd
+	border-bottom: 4px solid;
+}
+	.media__body{
+		bottom: 4px;
+		left: 0;
+		right: 0;
+		background: white;
+		padding: $u;
+	}
+
+	.media:hover .media__body{
+		position: absolute;
+	}
+	
+	// .media__image img{
+	// 	width: 100%;
+	// }
+
+	.media__header-wrap{
+		padding-bottom: $u;
+	}
+
+	.media__title{
+		@extend .gamma;
+	}
+
+	.media__teaser{
+		max-height: 0;
+		overflow: hidden;
+		display: block;
+		
+		@extend .zeta;
+	}
+	.media:hover .media__teaser{
+		transition: all 0.5s;
+	}
+	.media:hover .media__teaser{
+		max-height: 120px;
+	}
+
+	.media__date{
+		@extend .service;
+	}
+	.media__category{
+		@extend .service;
+		position: absolute;
+		bottom: 4px;
+	}
+	.media:hover .media__category{
+		bottom: 0;
+	}
+
+.media.video:after,.media.audio:after,.media.photo:after{
+	content: '';
+	position: absolute;
+	width: 24px;
+	height: 18px;
+	background-color: white;
+	top: 0px;
+	background-position: 4px;
+	right: 0px;
+	background-repeat: no-repeat;
+}
+.media.video:after{
+	background-image: url("/typo3conf/ext/speciality/Resources/Public/Icons/icon-video.png");
+}
+.media.audio:after{
+	background-image: url("/typo3conf/ext/speciality/Resources/Public/Icons/icon-audio.png");
+}
+.media.photo:after{
+	background-image: url("/typo3conf/ext/speciality/Resources/Public/Icons/icon-photo.png");
+}
+
+//TODO: Hackish fixes for mobile
+@media #{$small-only} {
+	.media__body{
+		position: absolute;
+	}
+	.media__teaser{
+		max-height: 120px;
+	}
+}
+
+/*doc
+---
+title: Important media element
+name: media-important
+parent: 02_media
+category:
+- molecules
+- media-important
+---
+Important news. Used in `.news-stream`. 
+*/
+
+.media-important__wrap{
+		position: relative;
+		// Border color is defined is .section-color-bd
+		border-bottom: 3px solid;
+	}
+	.media-important__gradient{
+		@extend %gradient-tint;
+	}
+	.media-important__overlay{
+		position: absolute;
+		bottom: 0;
+		padding: $u;
+	}
+	.media-important__hiding{
+		max-height: 0;
+		overflow: hidden;
+		transition: all 0.5s;
+	}
+	.media-important:hover .media-important__hiding{
+		max-height: 100px;
+	}
+	.media-important__title{
+		@extend .important-title;
+		@media #{$small-only}{
+			font-size: rem-calc(18);
+			text-transform: initial;
+			letter-spacing: 0;
+		}
+	}
+
+	.media-important__category,.media-important__date{
+		@extend .service;
+		color: white;
+	}
+	.media-important__teaser{
+		@extend .paragraph--small;
+		line-height: 1.3;
+		color: white;
+	}
+
+/*doc
+---
+title: Slide media element
+name: media-slide
+parent: 02_media
+category:
+- molecules
+- media-slide
+---
+Used in .news-carousel__orbit-slides.
+
+```html_example
+<div class="media-slide">
+	<div class="media-slide__wrap">
+		<img src="http://placehold.it/590x355" width="590" height="355" alt="">
+		<div class="media-slide__body">
+			<div class="media-slide__overlay">
+				<span class="media-slide__category">
+					<a href="/molitva-i-bogosluzhenie/">Молитва и богослужение</a>
+				</span>
+				<h3 class="media-slide__title">
+					<a href="/molitva-i-bogosluzhenie/article/ispoved-i-pokajanie-v-drevnosti-i-segodnja-4863/">Исповедь и покаяние в древности и сегодня</a>
+				</h3>
+			</div>
+			<div class="media-slide__hanging">
+				<span class="media-slide__date">
+					05.06
+				</span>
+				<div class="media-slide__teaser">
+					<a href="/molitva-i-bogosluzhenie/article/ispoved-i-pokajanie-v-drevnosti-i-segodnja-4863/">О смысле покаяния и неформальной подготовке к исповеди размышляет духовный попечитель Преображенского братства священник Георгий Кочетков</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+```
+*/
+.media-slide{
+	background: white;
+}
+	.media-slide__wrap{
+		position: relative;
+	}
+	.media-slide__gradient{
+		@extend %gradient-tint;
+	}
+	.media-slide__overlay{
+		position: absolute;
+		bottom: 0;
+		padding: $u;
+	}
+	.media-slide__title{
+		@extend .important-title;
+	}
+	.media-slide__category{
+		@extend .service;
+		color: white;
+		border-bottom: 3px solid;
+		display: inline-block;
+		margin-bottom: 0;
+		line-height: 1.7;
+	}
+	.media-slide__body{
+		padding: $u;
+	}
+	.media-slide__date{
+		@extend .service;
+	}
+	.media-slide__teaser{
+		@extend .paragraph--small;
+		line-height: 1.3;
+		margin-top: 6px;
+	}
+
+
+
+
+/*doc
+---
+title: Slide menu media element
+name: media-slide-menu
+parent: 02_media
+category:
+- molecules
+- media-slide-menu
+---
+Used in related news.
+
+```html_example
+```
+
+*/
+.media-slide-menu{
+	position: relative;
+	overflow: hidden;
+	
+}
+
+	.media-slide-menu__link{
+		height: 71px;	
+		display: block;
+	}
+	.media-slide-menu__body{
+		height: 71px;	
+		padding-left: 2*$u;
+		border-bottom: 1px solid $gray-line;
+	}
+	.media-slide-menu:first-child .media-slide-menu__body{
+		border-top: 1px solid $gray-line;
+	}
+
+	.media-slide-menu__title{
+		@extend .delta;
+		@include vertical-align;
+		margin: 0;
+	}
+	.media-slide-menu:hover	.media-slide-menu__title{
+		color: $navy--light;
+	}
+
+	.media-slide-menu__image{
+		float: left;
+		padding-right: $u;
+	}
+	.media-slide-menu__read-more{
+		display: none;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 10;
+		width: 72px;
+		height: 71px;
+		line-height: 68px;
+		border-bottom: 1px solid $gray-line;
+
+		text-decoration: underline;
+		font-style: italic;
+		font-size: rem-calc(13);
+	}
+	.media-slide-menu__read-more:hover{
+		text-decoration: none !important;
+	}
+
+	.media-slide-menu:first-child .media-slide-menu__read-more{
+		border-top: 1px solid $gray-line;
+	}
+
+.media-slide-menu__link.active{
+	background: url('/typo3conf/ext/speciality/Resources/Public/Icons/icon-arrow-navy.png') no-repeat left;
+	margin-right: 6*$u;
+	
+	.media-slide-menu__title{
+		color: $navy--light;
+		font-weight: 600;
+	}
+	.media-slide-menu__image{display: none;}
+}
+.media-slide-menu__link.active+.media-slide-menu__read-more{display: block;}
+
+/*doc
+---
+title: Minimal media element
+name: media-minimal
+parent: 02_media
+category:
+- molecules
+- media-minimal
+---
+Used for external news, but may be used elsewhere.
+
+```html_example
+<div class="media-minimal">
+    <div class="media-minimal__wrap">
+        <div class="media-minimal__date">06.06</div>
+        <h3 class="media-minimal__title">
+            <a href="/aktualnoe/vse-novosti/v-rossii/article/1-ijunja-sostojalas-obshchecerkovnaja-akcija-rossija-za-zhiz-4869/">
+                1 июня состоялась общецерковная акция «Россия — за жизнь! Россия — без абортов!»
+            </a>
+        </h3>
+    </div>
+</div>
+```
+*/
+.media-minimal{
+}
+	.media-minimal__wrap{
+	}
+
+	.media-minimal__date{
+		@extend .service;
+	}
+
+	.media-minimal__title{
+		@extend .epsilon;
+		margin: 0;
+		margin-top: $u/4;
+	}
+.media-minimal:hover{
+	color: $navy--light !important;
+}
+
+.media-minimal--tight__date{
+	@extend .media-minimal__date;
+	margin-bottom: $u/4;
+}
+
+/*doc
+---
+title: Small media element
+name: media-small
+parent: 02_media
+category:
+- molecules
+- media-small
+---
+Used in related news.
+
+```html_example
+<div class="media-small--right">
+	<div class="media-small--right__wrap">	
+		<a class="media-small--right__image" href="#"><img src="http://placehold.it/60x60" ></a>	
+		<div class="media-small--right__body">
+			<h3 class="media-small--right__title">
+				<a href="#">Пока звучит слово правды... Сегодня – день погребения священника Павла Адельгейма</a>
+			</h3>
+		</div>
+	</div>
+</div>
+```
+
+*/
+.media-small{
+	@extend .clearfix;
+}
+
+	.media-small__title{
+		@extend .service-small--gray-light;
+	}
+
+	.media-small--left__image{
+		float: left;
+		padding-right: $u;
+	}
+
+	.media-small--right__image{
+		float: right;
+		padding-left: $u;
+	}
+
+
+/*doc
+---
+title: Announcement small media element
+name: media--announcement
+parent: 02_media
+category:
+- molecules
+- media--announcement
+---
+Explicitly defined as announcement (small, minimal, etc.), because that's the only thing it could possibly be used for.
+
+```html_example
+<div class="media-announcement">
+    <div class="media--announcement__wrap">
+    	<div>
+	        <span class="media-announcement__date">07.06 /</span>
+	        <span class="media-announcement__town">Москва</span>
+        </div>
+        <h3 class="media-announcement__title">
+            <a href="/aktualnoe/anonsy/article/ekaterinburg-seminar-ot-ravnodushija-k-velikodushiju-4838/">
+                Екатеринбург. Семинар «От равнодушия к великодушию – неожиданные пути возрождения человека и общества»
+            </a>
+        </h3>
+    </div>
+</div>
+```
+*/
+.media-announcement{
+	@extend %vertical-margins;
+	padding-bottom: 0 !important;
+}
+	.media-announcement__wrap{
+	}
+
+	.media-announcement__date,.media-announcement__town{
+		@extend .service;
+		color: $primary-color;
+		font-weight: 600;
+	}
+
+	.media-announcement__title{
+		@extend .service-small--gray;
+		font-size: rem-calc(12);
+		line-height: 1.2;
+		margin: $u/2 0;
+	}
+	
+	.media-announcement.topnews .media-announcement__title {
+		color: $scarlet;
+	}
+
+
+/*doc
+---
+title: Media quote
+name: media-quote
+parent: 02_media
+category:
+- molecules
+- media-quote
+---
+Explicitly defined as announcement (small, minimal, etc.), because that's the only thing it could possibly be used for.
+
+```html_example
+<div class="media-quote--blog">
+	<div class="media-quote--blog__image">
+		<img alt="Андрей Васенев" src="http://placehold.it/84x84" width="84" height="84" title="vasenev">
+	</div>
+	<div class="media-quote--blog__body">
+		<span class="media-quote--blog__author">
+			<a title="Профиль" target="_blank" href="#"><img width="16px" src="http://www.snob.ru/favicon.ico">Андрей Васенев</a>
+		</span>
+		<h3 class="media-quote--blog__title">«Про мертвого бомжа и веру в Бога»</h3>
+	</div>
+</div>
+```
+```
+.media-quote--blog{
+}
+	.media-quote--blog__image{
+		text-align: center;
+		img{border-radius: 50%;}
+	}
+
+	.media-quote--blog__author{
+		@extend .service-small;
+	}
+
+	.media-quote--blog__title{
+		@extend .blockquote--small;
+	}
+
+```
+*/
+.media-quote{
+	position: relative;
+	margin: 2*$u 0;
+}
+	.media-quote__image{
+		text-align: center;
+		img{border-radius: 50%;}
+	}
+
+	.media-quote__author{
+		@extend .service-small;
+	}
+
+	.media-quote__title{
+		@extend .blockquote--small;
+	}
+
+
+.media-quote--blog__author{
+	@extend .service-small;
+	text-align: center;
+	display: block;
+}
+.media-quote--enc__wrap{
+	float: left;
+	width: 200px;
+	padding-right: 24px;
+}
+.media-quote--enc__author{
+	@extend .service-small--navy-light;
+}
+.media-quote--enc__author:before{
+	content: '\2014 \00A0';
+}
+.media-quote--enc__letter{
+	position: absolute;
+	top: $u;
+	padding: $u/2 $u*3/4;
+	background: $gray-bg;
+	font-weight: bold;
+	font-size: rem-calc(28);
+}
+
+/*doc
+---
+title: Media promo
+name: media-promo
+parent: 02_media
+category:
+- molecules
+- media-promo
+---
+Explicitly defined as announcement (small, minimal, etc.), because that's the only thing it could possibly be used for.
+
+```html_example
+<div class="media-promo">
+	<img class="media-promo__image" src="/fileadmin/_processed_/csm_Penguins_7fc2e2403f.jpg" width="200" height="260" alt="">
+	<h3 class="media-promo__title">Крещение детей</h3> 
+	<div class="media-promo__count-number">4</div> 
+	<div class="media-promo__count">материалов</div> 
+</div>
+```
+*/
+.media-promo{
+	position: relative;
+	text-align: center;
+	display: inline-block;
+}
+.media-promo__tint{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,0.5);  
+}
+.media-promo__wrap{
+	position: relative;
+	top: 82px;
+}
+.media-promo__title{
+	@extend .service-large--inv;
+}
+.media-promo__count{
+	@extend .service-small--inv;
+}
+.media-promo__count-number{
+	padding: 0 $u/2;
+	display: inline-block;
+}

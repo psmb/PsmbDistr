@@ -1,0 +1,19 @@
+
+.filter-bar{
+	padding-bottom: 1.5*$u;
+	padding-top: 0;
+
+	display: table;
+	margin: 0 auto;
+	margin-top: 18px;
+}
+
+.filter-bar__item{
+	display: inline-block;
+	padding: 1rem;
+	@extend .block-title;
+
+	&.active{
+		color: $primary-color;
+	}
+}

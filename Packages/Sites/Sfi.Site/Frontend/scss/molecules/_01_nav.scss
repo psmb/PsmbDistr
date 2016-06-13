@@ -1,0 +1,202 @@
+/*doc
+---
+title: Navigation elements
+name: 02_nav
+category: molecules
+---
+ */
+
+/*doc
+---
+title: Sections menu
+name: sections-menu
+parent: 02_nav
+category:
+- molecules
+- sections-menu
+---
+Main menu of website sections.
+
+```html_example
+<ul class="sections-menu">
+    <li class="sections-menu__item">
+        <a href="/obshchinno-bratskaja-zhizn/">Община и братство</a>
+    </li>
+    <li class="sections-menu__item current">
+        <a href="/missija-i-katekhizacija/">Миссия и катехизация</a>
+    </li>
+    <li class="sections-menu__item ">
+        <a href="/cerkov-i-obshchestvo/">Церковь и общество</a>
+    </li>
+    <li class="sections-menu__item">
+        <a href="/molitva-i-bogosluzhenie/">Молитва и богослужение</a>
+    </li>
+</ul>
+```
+ */
+.sections-menu {
+	overflow: hidden;
+	clear: both;
+	margin: $u 0;
+
+	.sections-menu__item {
+		float: left;
+		padding: $u/2 1.5*$u;
+
+		font-size: rem-calc(14);
+		font-weight: 600;
+	}
+}
+@media #{$small-only} {
+	.sections-menu {
+		.sections-menu__item {
+			border-bottom: 1px solid $gray-line;
+		}
+		.sections-menu__item.active {
+			background: $primary-color;
+			a {color:white;}
+		}
+		a {
+			padding: $u;
+			margin: 0;
+			display: block;
+		}
+	}
+}
+/*doc
+---
+title: Breadcrumbs menu
+name: breadcrumbs
+parent: 02_nav
+category:
+- molecules
+- breadcrumbs
+---
+Breadcrumbs menu.
+TODO: refactor color and possibly margins
+
+```html_example
+<div class="breadcrumbs"><a href="/" target="_self" title="Преображенское содружество малых православных братств">Главная</a>&nbsp;&gt;&nbsp;<a href="/molitva-i-bogosluzhenie/" target="_self" title="Молитва и богослужение">Молитва и богослужение</a></div>
+```
+ */
+.breadcrumbs {
+	@extend .service-small--gray-light;
+	a {
+		margin: 0 $u/2;
+	}
+}
+
+
+
+/*doc
+---
+title: Secondary navigation
+name: secondary-nav
+parent: 02_nav
+category:
+- molecules
+- secondary-nav
+---
+Main menu of website sections.
+
+```html_example
+<ul class="sections-menu">
+    <li class="sections-menu__item">
+        <a href="/obshchinno-bratskaja-zhizn/">Община и братство</a>
+    </li>
+    <li class="sections-menu__item current">
+        <a href="/missija-i-katekhizacija/">Миссия и катехизация</a>
+    </li>
+    <li class="sections-menu__item ">
+        <a href="/cerkov-i-obshchestvo/">Церковь и общество</a>
+    </li>
+    <li class="sections-menu__item">
+        <a href="/molitva-i-bogosluzhenie/">Молитва и богослужение</a>
+    </li>
+</ul>
+```
+ */
+.secondary-nav {
+	@include clearfix;
+}
+	.secondary-nav__item {
+		float: left;
+		margin: $u;
+
+
+	}
+	.secondary-nav__item--alt {
+		float: left;
+		margin-top: 1.5*$u;
+
+		@extend .service-small--gray-light;
+	}
+
+	.secondary-nav__item-label {
+		font-size: rem-calc(14);
+		text-transform: lowercase;
+		font-variant: small-caps;
+		color: $gray--dark;
+
+		img{
+			padding-right: $u/2;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media #{$medium-up} {
+	.mobile-nav__menu, .mobile-nav__toggle {
+		display: none;
+	}
+}
+.mobile-nav__menu {
+	position: fixed;
+	top: 0;
+	right: -20*$u;
+	width: 20*$u;
+	height: 100%;
+	overflow: scroll;
+	box-shadow: $gray-line -2px 0 2px;
+	transition: ease-in-out 0.3s;
+}
+.mobile-nav__content{
+	transition: ease-in-out 0.3s;
+}
+.mobile-nav-is-open .mobile-nav__content{
+	position: relative;
+	transform: translateX(-20*$u);
+}
+.mobile-nav-is-open .mobile-nav__menu{
+	transform: translateX(-20*$u);
+}
+
+.mobile-nav__toggle{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: $u;
+
+	span {
+		display: block;
+		width: 3*$u;
+		height: 5px;
+		background-color: $primary-color;
+		border-radius: 3px;
+		margin: $u/2 0;
+	}
+}

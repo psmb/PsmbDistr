@@ -1,0 +1,67 @@
+/*doc
+---
+title: Header
+name: header
+category: organisms
+---
+Organisms are not yet documented. TODO: document organisms.
+ */
+
+.lower-bar{
+	clear: both;
+}
+
+.page-57 .lower-bar{
+	position: absolute;
+	top: 745px;
+}
+
+
+
+
+
+
+
+
+
+body.page-57 .top-bar{
+	height: emCalc(66);
+}
+.top-bar{
+	height: 100px;
+	
+	border-bottom: 2px solid;
+	@media only screen and (min-width: 1380px){
+		.title-area{
+			margin-left: -69px;
+		}
+	}
+	
+	ul.title-area > li{
+		float: left;
+	}
+	div.upper-bar{
+		height: 55px;
+		border-bottom: 1px solid #eee;
+	}
+	
+	.toggle-topbar{
+		position: initial;
+		a{
+			line-height: 75px;
+			height:	initial;
+			font-weight: 400;
+			span:before{
+				content: "\25bc";
+				display: inline-block;
+				margin-right: rem-calc(7);
+				@include transform(scale(1.8,1));
+			}
+		}
+	}
+	&.expanded .top-bar-section {
+		position: absolute;
+		display: block;
+		left: rem-calc(389) !important;
+	}
+}

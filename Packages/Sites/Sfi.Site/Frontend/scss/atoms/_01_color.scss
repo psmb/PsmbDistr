@@ -1,0 +1,131 @@
+/*doc
+---
+title: Colors
+name: 01_color
+category: atoms
+---
+ */
+/*doc
+---
+title: Base colors
+name: 01_base-colors
+parent: 01_color
+category:
+- atoms
+- 01_base-colors
+---
+Base colors for the project. Try to not use this directly, but through proxy variables like `$primary-color` etc.
+
+```html_example
+<div style="padding: 30px;">
+	<span style="background:#2a4072; padding:30px;color:white;">navy--dark</span>
+	<span style="background:#3b5ba1; padding:30px;">navy--light</span>
+	<span style="background:#151515; padding:30px;color:white;">gray--dark</span>
+	<span style="background:#656565; padding:30px;">gray</span>
+	<span style="background:#878787; padding:30px;">gray--light</span>
+	<span style="background:#d7d7d7; padding:30px;">gray-line</span>
+	<span style="background:#eae7e4; padding:30px;">gray-bg</span>
+</div>
+```
+ */
+// $navy--light: #3b5ba1;
+$navy--light: #495fb0;
+// $navy--dark: darken($navy--light,25%);
+$navy--dark: #364384;
+//#2a4072;
+$gray: #656565;
+$gray--dark: #151515;
+$gray--light: #878787;
+$gray-line: #d7d7d7;
+$gray-bg: #eae7e4;
+// Second order of mappings. TODO: document this section.
+$primary-color: $navy--light;
+
+/*doc
+---
+title: Section colors
+name: 02_section-colors
+parent: 01_color
+category:
+- atoms
+- 02_section-colors
+---
+Section colors. Applied using helper classes: `.section-color` `.section-color-bg` `.section-color-bd`
+
+```html_example
+<div style="padding: 30px;">
+	<span style="background:#ed492e; padding:30px;">scarlet</span>
+	<span style="background:#dc3067; padding:30px;">pink</span>
+	<span style="background:#af52aa; padding:30px;">violet</span>
+	<span style="background:#008899; padding:30px;">marine</span>
+	<span style="background:#1e9463; padding:30px;">emerald</span>
+	<span style="background:#61902f; padding:30px;">grass</span>
+	<span style="background:#edad00; padding:30px;">yellow</span>
+	<span style="background:#e87f23; padding:30px;">orange</span>
+</div>
+```
+ */ 
+$scarlet: #ed492e; 
+$pink: #dc3067; 
+$violet: #af52aa; 
+$marine: #008899;
+$emerald: #1e9463;
+$grass: #61902f;
+$yellow: #edad00;
+$orange: #e87f23;
+
+
+@mixin colormix($pageclass, $color){
+	#{$pageclass}{
+		.section-color{
+			color: $color;
+			border-color: $color;
+		}
+		.section-color-bg{
+			background: $color;
+		}
+		.section-color-bd{
+			border-color: $color;
+		}
+		.section-color-bg--darken{
+			background: darken($color,20%);
+		}
+		.section-color-bd--darken{
+			border-color: darken($color,20%);
+		}
+		blockquote{
+			:before{background: $color;}
+		}
+	}	
+}
+
+
+//main
+@include colormix("body",$navy--light);
+//OBJ
+@include colormix(".page-58",$grass);
+//Mission
+@include colormix(".page-59",$emerald);
+//Society
+@include colormix(".page-343",$violet);
+//Prayer
+@include colormix(".page-66",$scarlet);
+//Martyrs
+@include colormix(".page-65",$pink);
+//Churching
+@include colormix(".page-92",$orange);
+//Charity
+@include colormix(".page-62",$marine);
+//SFI
+@include colormix(".page-60",$yellow);
+
+//Ascetics
+// .page-63{
+// 	.section-color{
+// 		color: ;
+// 		border-color: ;
+// 	}
+// 	blockquote{
+// 		:before{background: ;}
+// 	}
+// }

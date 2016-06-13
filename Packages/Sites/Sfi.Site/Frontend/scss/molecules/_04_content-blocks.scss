@@ -1,0 +1,102 @@
+/*doc
+---
+title: Content blocks
+name: 04_content-blocks
+category: molecules
+---
+ */
+
+/*doc
+---
+title: Block title Divider
+name: block-title-divider
+parent: 04_content-blocks
+category:
+- molecules
+- block-title-divider
+---
+Based on atom .block-title. Adds underline and spacings.
+TODO: review colour
+
+```html_example
+<h1 class="block-title-divider"><span>Block title divider example.</span></h1>
+```
+```
+.block-title-divider{
+	@extend .block-title;
+	padding-top: 3*$u;
+	margin-bottom: $u;
+	> span:after {
+		width: rem-calc(4*$u);
+		height: rem-calc($u);
+		display: block;
+		border-bottom: 3px solid #222;
+		content: '';
+	}
+}
+```
+ */
+.block-title-divider{
+	@extend .block-title;
+	margin-top: 2*$u;
+	margin-bottom: $u;
+	> span:after {
+		width: rem-calc(4*$u);
+		height: rem-calc($u);
+		display: block;
+		border-bottom: 3px solid #222;
+		content: '';
+	}
+}
+  
+// TODO: refactor line into different class
+.block-title-divider-small{
+	@extend .service;
+	border-bottom: 1px solid $gray-line;
+	margin: $u/2 0;
+	> span{
+		display: inline-block;
+		position: relative;
+		background: white;
+		margin-bottom: -2px;
+		top: $u/2;
+		padding-right: $u;
+	}
+}
+
+
+/*doc
+---
+title: Jump to comments
+name: to-comments
+parent: 04_content-blocks
+category:
+- molecules
+- to-comments
+---
+
+```html_example
+<div class="to-comments">
+	<a href="#disqus_thread">Комментировать</a>
+</div>
+```
+```
+.to-comments{
+	@extend .action;
+	@extend %vertical-margins;
+	border-top: 1px solid $gray-line;
+	text-align: center;
+	padding-top: $u;
+	margin: 6*$u 0;
+}
+```
+ */
+
+.to-comments{
+	@extend .action;
+	@extend %vertical-margins;
+	border-top: 1px solid $gray-line;
+	text-align: center;
+	padding-top: $u;
+	margin: 6*$u 0;
+}

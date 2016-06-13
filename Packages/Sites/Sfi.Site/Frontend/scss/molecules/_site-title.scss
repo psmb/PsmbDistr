@@ -1,0 +1,90 @@
+/*doc
+---
+title: Site title
+name: site-title
+category:
+- molecules
+- site-title
+---
+
+```html_example
+<h1 class="site-title">
+    <a class="site-title__logo" href="/">
+        <img src="/typo3conf/ext/speciality/Resources/Public/Images/psmb_small_logo.png" class="left" alt="Преображенское братство"/>
+    </a>
+    <a class="site-title__title" href="/">
+        Преображенское
+        <br>братство
+    </a>
+</h1>
+```
+```
+.site-title{
+	@extend %vertical-margins;
+}
+	.site-title__logo{
+		display: block;
+		margin: 0 $u;
+		float: left;
+	}
+	.site-title__title{
+		display: block;
+		padding: $u/2 0;
+
+		font-size: rem-calc(16);
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		line-height: 1.1;
+	}
+```
+ */
+.site-title{
+	overflow: auto;
+	margin: $u/2 0;
+}
+	.site-title__logo{
+		display: block;
+		margin-right: $u;
+		float: left;
+	}
+	.site-title__title{
+		display: block;
+		padding: $u/2 0;
+		float: left;
+
+		font-size: rem-calc(25);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		line-height: 1.2;
+		color: $navy--light;
+	}
+@media #{$small-only} { 
+	.site-title__title{
+		font-size: rem-calc(18);
+		width: 200px;
+		padding-top: 3px;
+	}
+}
+
+.site-title-small{
+	overflow: auto;
+	margin: $u/2 0;
+}
+	.site-title-small__logo{
+		display: block;
+		margin-right: $u;
+		float: left;
+	}
+	.site-title-small__title{
+		display: block;
+		padding: $u/2 0;
+		float: left;
+
+		font-size: rem-calc(16);
+		font-weight: 400;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		line-height: 1.2;
+	}

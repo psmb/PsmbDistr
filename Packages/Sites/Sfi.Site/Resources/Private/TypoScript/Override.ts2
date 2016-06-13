@@ -1,0 +1,10 @@
+prototype(Psmb.NodeTypes:Text) {
+  attributes.class = 'rte-text'
+}
+prototype(Psmb.NodeTypes:Headline) < prototype(TYPO3.TypoScript:Tag) {
+  attributes.class = 'rte-text'
+}
+prototype(Psmb.NodeTypes:Image) < prototype(TYPO3.TypoScript:Tag) {
+  attributes.class = 'figure'
+  content.caption.attributes.class = 'figure__caption'
+}

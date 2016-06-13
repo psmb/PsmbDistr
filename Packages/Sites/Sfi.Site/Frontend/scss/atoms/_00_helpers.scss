@@ -1,0 +1,98 @@
+/*doc
+---
+title: Helper classes
+name: 00_helpers
+category:
+- atoms
+- 00_helpers
+---
+Various helper classes, in addition to those inherited from Foundation.
+ */
+
+/*doc
+---
+title: Gray background
+name: bg-gray
+parent: 00_helpers
+category:
+- atoms
+- bg-gray
+---
+TODO: refactor color;
+
+```html_example
+<p class="bg-gray">This block has gray background</p>
+```
+ */
+.bg-gray {
+	background: $gray-bg;
+}
+.bg-navy--light {
+	background: $navy--light;
+}
+.bg-navy--dark {
+	background: $navy--dark;
+}
+.bg-white {
+	background: white;
+}
+
+
+/*doc
+---
+title: Fixed width
+name: fixed-width
+parent: 00_helpers
+category:
+- atoms
+- fixed-width
+---
+Limits width for container. TODO: check what's up with that float thing
+
+```html_example
+<div class="fixed-width"><p>This block is width-limited</p></div>
+```
+ */
+.fixed-width {
+	max-width: emCalc(1200);
+	margin: 0 auto !important;
+	overflow: hidden;
+}
+
+// Spacing is in separate file now
+
+.white {
+	color: white !important;
+}
+.navy--light {
+	color: $navy--light !important;
+}
+.primary-color {
+	color: $primary-color !important;
+}
+
+
+.center {
+	text-align: center;
+}
+
+
+.no-margin {
+	margin: 0 !important;
+}
+.no-padding {
+	padding: 0 !important;
+}
+
+.row-no-padding .columns {
+	padding: 0 !important;
+	img {
+		width: 100%;
+	}
+}
+
+
+
+.round {
+	border-radius: 50%;
+}

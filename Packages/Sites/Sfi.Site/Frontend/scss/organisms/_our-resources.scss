@@ -1,0 +1,100 @@
+.our-resources{
+	.tabs.vertical{
+		width: 350px;
+	}	
+	.tabs-content.vertical{
+		background: white;
+		overflow: hidden;
+	}
+	img{
+		display: none;
+	}
+	@media #{$medium-up} {
+		.tabs-content.vertical{
+			width: 700px;
+			width: calc(100% - 350px);
+			height: 292px;
+			margin: 0;
+			padding: 1rem 1.5rem 1rem 0;
+			.content {
+				padding: 0;
+			}
+		}
+		.wrap{
+			margin-left: 1rem;
+		}
+
+	}
+	@media #{$large-up} {
+		img{
+			height: 292px;
+			float: left;
+			display: block;
+			margin-top: -1rem;
+		}
+		.wrap{
+			width: calc(100% - 264px);
+		}
+	}
+}
+
+.our-resources{
+	margin-bottom: 2*$u;
+}
+
+
+
+.our-resources__description{
+	@extend .paragraph--small;
+	line-height: 1.3;
+}
+
+.our-resources__link{
+	a{
+		@extend .link;
+		display: inline-block;
+		position: relative;
+		background: white;
+		margin-bottom:-$u;
+		top: $u/2;
+		padding-right: $u;
+	}
+	border-bottom: 1px solid $gray-line; 
+	margin-bottom: $u;
+}
+
+
+.our-resources {
+	.tabs dd > a{
+		background: $navy--dark url('/typo3conf/ext/speciality/Resources/Public/Images/our_sites_logos.png') no-repeat 70px 0px;
+		color: white;
+		width: 350px;
+		height: 73px;
+		border-top: 1px solid $gray-line;
+	}
+	.tabs dd.active a{
+		background-color: $navy--light;
+	}
+	.tabs dd#tab_sfi > a{ background-position: 70px 0px;}
+	.tabs dd#tab_ogk > a{ background-position: 70px -155px;}
+	.tabs dd#tab_kateheo > a{ background-position: 70px -239px;}
+	.tabs dd#tab_kifa > a{ background-position: 70px -72px;}
+	
+	// .tabs dd#tab_sfi.active > a{ background-position: -234px 0px;}
+	// .tabs dd#tab_ogk.active > a{ background-position: -234px -155px;}
+	// .tabs dd#tab_kateheo.active > a{ background-position: -234px -239px;}
+	// .tabs dd#tab_kifa.active > a{ background-position: -234px -72px;}
+}
+
+
+.rss_widget__item{
+	clear: none !important;
+}
+
+.rss-widget__title{
+	@extend .service-small--gray-dark;
+}
+
+.rss-widget__date{
+	@extend .service;
+}

@@ -1,0 +1,66 @@
+/*doc
+---
+title: Stream
+name: stream
+category: organisms
+---
+Stream of .media molecules.
+
+ */
+
+ .stream{
+ 	position: relative;
+ }
+.stream__item{
+	width: 276px;
+	margin-bottom: 2*$u;
+	float: left;
+}
+.stream__item .media__wrap{
+	height: 357px;
+}
+
+.stream__item .media__wrap{
+	height: 357px;
+}
+
+.stream--archive-announcement .stream__item .media__wrap{
+	height: auto;
+}
+.stream--archive{
+	padding-top: 2*$u; 
+}
+.stream__item.media-important{
+	width: 576px;
+}
+
+
+.stream__loadmore{
+	@extend .action;
+	max-width: 588px;
+	margin: 0 auto;
+	text-align: center;
+	display: block;
+	padding: $u*3/4 0;
+	border: 1px solid $primary-color;
+
+	margin-bottom: 2*$u;
+
+	transition: background 0.3s;
+	&:hover{
+		background: white;
+	}
+	//TODO: hack
+	&.to_top{
+		position: absolute;
+		top: 124px;
+		left: 0;
+		right: 0;
+	}
+}
+
+@media #{$small-only} {
+	.stream__content,.stream__item,.stream__item.media-important{
+		width: auto !important;
+	}
+}

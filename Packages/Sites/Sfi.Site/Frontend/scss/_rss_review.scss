@@ -1,0 +1,55 @@
+.rss_review{
+	.tabs.vertical{
+		width: 350px;
+	}	
+	.tabs-content.vertical{
+		*{ font-size: rem-calc(13);	}
+		.news-list-date{ font-size: rem-calc(10);	}
+		h3 a{color: #666;}
+		background: white;
+	}
+	img{display: none;}
+	@media #{$medium-up} {
+		.tabs-content.vertical{
+			width: 700px;
+			width: calc(100% - 350px);
+			height: 292px;
+			margin: 0;
+			padding: 1rem 1.5rem 1rem 0;
+			.content {
+				padding: 0;
+			}
+		}
+		.wrap{
+			margin-left: 1rem;
+		}
+
+	}
+	@media #{$large-up} {
+		img{
+			height: 292px;
+			float: left;
+			display: block;
+			margin-top: -1rem;
+		}
+		.wrap{
+			margin-left: rem-calc(264);
+		}
+	}
+
+	.rss_widget .item{
+		clear: none;
+	}
+	p.description{max-width: 48rem;}
+	p.link{
+		border-bottom: 1px solid #ccc;
+		margin-top: 1rem;
+		a{
+			display: inline-block;
+			float: left;
+			margin-top: rem-calc(-11);
+			padding-right: 1rem;
+			background: white;
+		}
+	}
+}

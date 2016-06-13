@@ -1,0 +1,23 @@
+.tabs dd > a{
+	@extend .block-title--inv;
+	padding: $u 2*$u;
+}
+.tabs.tabs--light{
+	padding: $u 0;
+	dd > a{
+		@extend .important-title--small-strong;
+		background: initial;
+		padding: $u/2 0;
+		margin: 0 $u;
+	}
+	dd.active > a, dd > a:hover{
+		border-bottom:3px solid;
+		background: initial;
+	}
+}
+
+.tabs-content > .content{
+	padding: 0;
+}
+
+

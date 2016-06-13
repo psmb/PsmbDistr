@@ -1,0 +1,45 @@
+/*doc
+---
+title: News detail
+name: news-detail
+category: organisms
+---
+So far, only padding set for `sidebar`.
+
+ */
+.news-detail{}
+	.news-detail__sidebar{
+		
+	}
+@media #{$large-up}{
+	.news-detail__sidebar{
+		padding-left: 3*$u;
+	}
+	.news-detail .blockquote{
+		margin-left: -22%;
+	}
+}
+
+.news-detail__date{
+	@extend .service;
+	padding-right: $u;
+	margin-right: $u;
+	border-right: 1px solid $gray-line;
+}
+
+	.news-detail__share{
+		margin: $u;
+		opacity: 0.7;
+	}
+	
+@media #{$large-up}{
+	.news-detail__share{
+		position: absolute;
+		left: -72px;
+		top: -276px !important;
+
+		img{
+			display: block;
+		}
+	}
+}

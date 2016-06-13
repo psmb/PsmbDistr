@@ -1,0 +1,174 @@
+.sections-intro{
+	position: relative;
+}
+.sections-intro__wrap{
+	padding: 15% 0 10% 0;
+}
+.sections-intro__title{
+	background-color: white;
+	padding: $u 2*$u;
+	color: $primary-color;
+	font-size: rem-calc(36);
+}
+.sections-intro__subtitle{
+	color: white;
+	background-color: rgba(0,0,0,0.5);
+	padding: $u;
+}
+
+.sections__cards{
+	margin: 0;
+	background: white;
+	li{
+		padding: 0 1px;
+	}
+	img{
+		width: 100%;
+	}
+}
+.sections__cards-body{
+	padding: 0.5*$u 2*$u; 
+}
+
+
+
+// OBJ
+.page-58 {
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/obj/intro.jpg');
+		background-size: cover;
+		background-position-y: 28%;
+	}
+	.sections-intro__wrap {
+		padding: 15% 0 20% 0;
+	}
+	.blockquote:before {
+		display: none;
+	}
+	.floated-image {
+		margin-top: $u;
+		margin-right: 2*$u;
+	}
+
+	// TODO: THIS IS AN OOCSS ANTI-PATTERN
+	.timeline {
+		overflow: auto;
+		img {
+			float: left;
+			margin-top: $u;
+			margin-right: 2*$u;
+			@media #{$large-up} {
+				margin-right: 3*$u;
+			}
+		}
+	}
+}
+
+// MiK
+.page-59 {
+	.sections-intro {
+		background: url('/fileadmin/section_pics/mik.jpg');
+		background-size: cover;
+		background-position: top;
+	}
+	.sections-intro__wrap {
+		padding: 20% 0 5% 0;
+	}
+	.blockquote:before {
+		display: none;
+	}
+	.saints li {
+		padding-bottom: 0;
+	}
+	.saints img {
+		border-radius: 50%;
+	}
+	.saints__saint {
+		width: 135px;
+		text-align: center;
+	}
+}
+
+// Miloserdie
+.page-62 {
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/charity/intro.jpg');
+		background-size: cover;
+		background-position: bottom;
+	}
+}
+
+.page-63 .sections-intro {
+	background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/ascetics/intro.jpg');
+	background-size: cover;
+}
+.page-92 .sections-intro {
+	background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/youth/intro.jpg');
+	background-size: cover;
+	background-position-y: 70%;
+}
+
+.page-60 {
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/education/intro.jpg');
+		background-size: cover;
+	}
+	.blockquote:before {
+		display: none;
+	}
+}
+.golden-section {
+	background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/education/pattern-gold.png');
+	.link{
+		color: white;
+	}
+}
+
+// New martyrs
+.page-65{
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/newmartyrs/intro.jpg');
+		background-size: cover;
+	}
+	.blockquote:before {
+		display: none;
+	}
+}
+
+// Prayer
+.page-66 .sections-intro {
+	background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/prayer/intro.jpg');
+	background-size: cover;
+}
+
+// Society
+.page-343 {
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/society/intro.jpg');
+		background-size: cover;
+	}
+	.blockquote:before {
+		display: none;
+	}
+}
+
+.page-343 {
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/sections/society/intro.jpg');
+		background-size: cover;
+	}
+	.blockquote:before {
+		display: none;
+	}
+}
+
+.page-366 {
+	.sections-intro {
+		background: url('/typo3conf/ext/speciality/Resources/Public/Images/25y/cover.jpg');
+		background-size: cover;
+		background-position: 0px 100%;
+	}
+	.sections-intro__wrap {
+		padding: 13% 0 12% 0;
+	}
+}

@@ -1,0 +1,254 @@
+$rem-base: 16px;
+
+
+
+
+html, body {
+	height: 100%;
+}
+
+.larger-text{
+	font-size: 1.1em;
+}
+header{
+	background: white;
+}
+header h1 {
+	font-size: 1.125rem;//page title
+	line-height: 42px;
+	padding-left: rem-calc(55); 
+	a{
+		color: inherit; 
+	}
+}
+.video-wrapper{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+}
+.flex-video{
+	padding-bottom: 56.5%;
+	padding-top: 0em;
+	margin-bottom: 0em;
+}
+.fullheight{
+	display: block;
+	position: relative; 
+	width: 100%;
+	height: 0;
+	padding-bottom: 42%;
+	margin-bottom: 50px;
+	min-height: 33rem;
+	@include transition-property(all);
+	@include transition-duration(0.5s);
+	@include transition-timing-function(ease);
+
+	.fullheight-inner{
+		background: grey;
+		width: 100%;
+		height: 100%;
+		min-height: 33rem;
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-size: auto, cover;
+		background-image: url("/typo3conf/ext/speciality/Resources/Public/Images/pattern.png"), url("/typo3conf/ext/speciality/Resources/Public/Images/baptism.jpg");
+	}
+	&.collapsed{
+		padding-bottom: 0px;
+		min-height: 13rem;
+		.fullheight-inner{min-height: 13rem;}
+		.hero{
+			h1,.love-brotherhood{
+				display: none;
+			}
+			margin-top: 0rem;
+			.play-video{
+				position: absolute;
+				top: 0.3rem;
+				left: 50%;
+			}
+		}
+	}
+}
+
+.hero {
+	color: white;
+	margin-top: 14%;
+	margin-left: 0em;
+	text-align: center;
+	h1{
+		line-height: 1;
+		font-weight: 300;
+		color: white;
+		font-size: emCalc(80);
+		text-transform: uppercase;
+		text-shadow: 1px 1px 0px black;
+		font-size: 5rem;
+		letter-spacing: 1px;
+		
+		
+	}
+	a{
+		color: white !important;
+		text-decoration: none;
+		border-bottom: 1px solid #2757c0;
+	}
+	a:hover{
+		background: #2757c0;
+	}
+	.love-brotherhood{
+		font-size: 1.125rem;
+		text-shadow: 0px 0px 5px black;
+	}
+
+	.play-video{
+		display: inline-block;
+		border: 1px solid white;
+		border-radius: 50%;
+		padding: 27px 29px 27px 36px;
+		color: white;
+	}
+}
+
+.hero h1{
+	.char1 {
+		vertical-align: top;
+		margin-left: 0.064em;
+	}
+	
+	.char2 {
+		vertical-align: top;
+	}
+	
+	.char3 {
+		vertical-align: top;
+		margin-left: -0.037em;
+	}
+
+	.char4 {
+		vertical-align: top;
+		margin-left: -0.037em;
+	}
+
+	.char5 {
+		vertical-align: top;
+		margin-left: -0.009em;
+	}
+
+	.char6 {
+		vertical-align: top;
+		margin-left: 0.028em;
+	}
+
+	.char7 {
+		vertical-align: top;
+		margin-left: 0.018em;
+	}
+
+	.char8 {
+		vertical-align: top;
+		margin-left: 0.009em;
+	}
+
+	.char9 {
+		display: block;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.f3-widget-paginator{
+	display: none;
+}
+
+.row.news_list_latest{
+	margin-top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+footer{
+	height: 20rem;
+	background: $navy;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+/*try to be more specific with selectors*/
+.magellan-container[style*="position: fixed;"] {
+	margin-top: 0 !important;
+	margin-left: 0 !important;
+	&:before{content: '';}
+}
+.magellan-container{
+	
+	padding: 6px 16px 6px 32px;
+	background: #f3f3f3;
+	box-shadow: 1px 2px 2px rgba(150, 150, 150, 0.5);
+	position: relative;
+	.sub-nav{
+		margin: 0;
+		padding: 0;
+	}
+	dd{
+		font-size: rem-calc(12);
+		margin: 3px 6px !important;
+	}
+	dd.nav-label{
+		font-style: italic;
+		color: #222;
+		line-height: 1.5 !important;
+	}
+	dd.active a{
+		background: $navy;
+		color: white !important;
+		font-weight: bold;
+	}
+	dd:nth-child(2) a{border-left: 0px;}
+	a{
+		font-size: rem-calc(12);
+		line-height: 1.1 !important;
+		color: #1e2b43 !important;
+		font-weight: bold;
+		border-left:1px solid grey;
+		display: inline-block;
+		padding: 3px 8px !important;
+	}
+}
+body.page-57 .magellan-container{
+	margin-top: -90px;
+	margin-left: -11px;
+}
+
+

@@ -1,0 +1,46 @@
+/*doc
+---
+title: Figure with caption
+name: figure
+category:
+- molecules
+- figure
+---
+
+```html_example
+<figure class="figure">
+<img src="http://placehold.it/185x200" width="185" height="200">
+<figcaption class="figure__caption">Image caption</figcaption></figure>
+```
+```
+.figure{
+	display: table;
+}
+	.figure__caption{
+		@extend .epsilon;
+
+		display: table-caption;
+		caption-side: bottom;
+
+		margin: 0;
+		padding: $u;
+
+		background-color: $gray-bg;
+	}
+```
+ */
+.figure{
+	margin: 2*$u 0;
+	display: table;
+}
+	.figure__caption{
+		@extend .service-small--gray-dark;
+
+		display: table-caption;
+		caption-side: bottom;
+		
+		margin: 0;
+		padding: 1.5*$u 3*$u;
+
+		background-color: $gray-bg;
+	}

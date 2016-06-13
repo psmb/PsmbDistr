@@ -1,0 +1,25 @@
+//conf image
+#c55 {
+margin-top: 24px;
+}
+
+.hide{
+	display: none !important;
+}
+
+.page-344 .page-content {
+	@extend .fixed-width;
+	padding: 0 $u;
+	& > .csc-default {
+		width: 33%;
+		float: left;
+		&:nth-child(3n+1) {
+			clear: left;
+		}
+		padding-right: 3*$u;
+		padding-bottom: 3*$u;
+	}
+	.media-quote__image, .media-quote--blog__author {
+		text-align: left;
+	}
+}

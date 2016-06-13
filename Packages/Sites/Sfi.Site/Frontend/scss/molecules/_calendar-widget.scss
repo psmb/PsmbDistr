@@ -1,0 +1,6 @@
+.calendar-widget{}
+	.calendar-widget__date{
+		font-size: rem-calc(2.5*$u);
+		margin-right: $u/2;
+		color: #c765df;
+	}

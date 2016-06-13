@@ -1,0 +1,62 @@
+.stripe{
+	@include clearfix;
+	padding: 0;
+	background: $navy--light;
+	margin-bottom: 2*$u;
+}
+
+.stripe__item{
+	@extend .service-small--inv;
+	float: left;
+	
+	margin: $u/2 0;
+	margin-right: 2*$u;
+
+	border-bottom: 2px solid transparent;
+}
+
+.stripe__item--link.active,.stripe__item--link:hover{
+	border-bottom: 2px solid white;
+	display: inline-block;
+}
+
+.stripe__item--label{
+	text-transform: uppercase;
+}
+
+
+
+.theme-stripe .stripe__item > a{
+	display: none;
+}
+.theme-stripe .stripe__item .stripe__item > a{
+	display: block;
+}
+
+
+.stripe .filters{
+	width: 30000px;
+}
+
+.stripe__item .stripe__item{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+
+
+
+
+.stripe-thick{
+	background-color: $navy--light;
+}
+.stripe-thick__item{
+	@extend .service-small--inv;
+	margin: 0;
+	padding: $u !important;
+	margin-bottom: -5000px;
+	padding-bottom: 5000px + $u !important;
+}
+.stripe-thick__item.active{
+	background-color: $navy--dark;
+}

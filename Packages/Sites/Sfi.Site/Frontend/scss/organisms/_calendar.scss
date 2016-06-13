@@ -1,0 +1,140 @@
+.cal{
+
+	/**
+	 * DASHBOARD
+	 */
+	.row.dashboard{
+		padding: 1rem 0;
+	}
+
+	.dash{
+		border: 1px solid white;
+		overflow: hidden;
+		padding: 9px 16px 0 16px;
+		min-width: 197px;
+		display: inline-block;
+	}
+		.dash__day{
+			text-align: center;
+			text-transform: lowercase;
+			font-size: rem-calc(25);
+			line-height: 1.6;
+			span{border-bottom: 1px solid $primary-color; padding-bottom: 8px;}
+			margin-bottom: 2*$u;
+		}
+		.dash__dates {
+			width: 50%;
+			float: left;
+			text-transform: lowercase;
+			text-align: center;
+			margin-bottom: 1*$u;
+		}
+			.dash__dates--new-style .day_date{
+				border-right: 1px solid white;
+			}
+			.dash__dates--old-style{
+				color: #8d8b88;
+			}
+			.dash__dates .day_date{
+				font-size: rem-calc(33);
+				line-height: 0.85;
+				display: block;
+				padding: 0 12px;
+			}
+			.dash__dates .month_month{
+				font-size: rem-calc(13);
+				line-height: 1.5;
+			}
+			.dash__dates .title{
+				display: block;
+				font-size: rem-calc(13);
+				line-height: 1.5;
+				font-style: italic;
+			}
+	
+
+	.day-link{
+		font-size: rem-calc(13);
+		color: #3d3c3b;
+		text-decoration: underline;
+		padding: 28px 0;
+	}
+	.day-link--prev{
+		float: right;
+	}
+	.day-link--next{
+		float: left;
+	}
+	.day-link--prev:before{
+		content: '< ';
+	}
+	.day-link--next:after{
+		content: ' >';
+	}
+
+	/* 
+	 * WEEK TITLE BLOCK
+	 */
+	.week-title{
+		background: #c31c1c;
+		h4{
+			@extend .stripe__item;
+			font-size: rem-calc(1.5*$u);
+		}
+		.post{
+			font-size: rem-calc(16);
+			font-style: italic;
+		}
+	}
+
+
+
+	// .cal__section{
+	// 	font-size: rem-calc(13);
+	// 	p{
+	// 		font-size: rem-calc(13);
+	// 		margin-bottom: 0;
+	// 		line-height: 1.9;
+	// 	}
+	// } 
+
+	//Readings
+	#readings{
+		a{
+			font-size: rem-calc(16);
+			text-decoration: underline;
+		}
+		ul {
+			margin-bottom: 12px;
+		}
+	}
+
+	.button--showall{
+		display: inline-block;
+		background: white;
+		padding: 12px 10px;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: rem-calc(11);
+		color: #2b2b2b;
+	}
+
+	.button--bu-patriarhia{
+		color: #2b2b2b;
+		font-size: rem-calc(13);
+		font-style: italic;
+	}
+
+	//A few HACKs for saints
+	#saints{line-height: 1.6;}
+	#saints img {
+		padding-right: 10px;
+	}
+
+	// Hackish
+	h5{color: #c31c1c;}
+
+	p{
+		@extend .paragraph;
+	}
+}
