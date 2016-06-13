@@ -1,13 +1,34 @@
-prototype(Sfi.Site:News) {
-  cover = TYPO3.Neos:ContentCollection {
-    nodePath = 'cover'
-  }
-  main = TYPO3.Neos:ContentCollection {
-    nodePath = 'main'
+prototype(Sfi.Site:News)>
+prototype(Sfi.Site:News) < prototype(T:Tag) {
+  attributes.class = 'fixed-width'
+  content = T:Tag {
+    attributes.class = 'row news-detail'
+    content = T:Array {
+      main = T:Tag {
+        attributes.class = 'large-9 medium-9 columns news-detail__content'
+        content = T:Array {
+          title = ${'<h1 class="alpha">' + node.properties.title + '</h1>'}
+          date = ${'<div class="news-detail__tagline"><div class="news-detail__date">' + Date.format(node.properties.date, 'd M Y') + '</div></div>'}
+          teaser = ${'<div class="lead">' + node.properties.teaser + '</div>'}
+          cover = TYPO3.Neos:ContentCollection {
+            nodePath = 'cover'
+          }
+          main = TYPO3.Neos:ContentCollection {
+            nodePath = 'main'
+          }
+          credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
+        }
+      }
+      sidebar = T:Tag {
+        attributes.class = 'large-3 medium-3 columns news-detail__sidebar'
+        content = T:Array {
+        }
+      }
+    }
   }
 }
 
-prototype(Sfi.Site:NewsShort) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Site:NewsShort) < prototype(T:Tag) {
   tagName = 'a'
   attributes.href = TYPO3.Neos:NodeUri {
     node = ${node}

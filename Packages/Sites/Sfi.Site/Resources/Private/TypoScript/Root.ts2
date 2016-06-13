@@ -1,46 +1,49 @@
+namespace: T=TYPO3.TypoScript
 include: NodeTypes/**/*.ts2
+include: Override.ts2
 
-# This is a default page object.
-prototype(Sfi.Site:Root) < prototype(TYPO3.Neos:Page) {
+prototype(Sfi.Site:Root) < prototype(Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('common.sitetitle.short', null, [], null, 'Sfi.Site')}
-		stylesheets.site = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
-			sectionName = 'stylesheets'
-		}
-		javascripts.headScripts = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
-			sectionName = 'headScripts'
+		stylesheets.index = T:Tag {
+			tagName = 'link'
+			attributes {
+				href = T:ResourceUri {
+					path = 'resource://Sfi.Site/Public/built/index.css'
+				}
+				type = 'text/css'
+				rel = 'stylesheet'
+				media = 'all'
+			}
 		}
 	}
 	# TODO: htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
 	bodyTag.attributes.class = 'Page'
 	bodyTag.attributes.id = ${'Page-' + q(node).property('_name')}
-	body {
-		templatePath = 'resource://Sfi.Site/Private/Templates/Root.html'
-		partialRootPath = 'resource://Sfi.Site/Private/Partials'
-		layoutRootPath = 'resource://Sfi.Site/Private/Layouts'
 
-		mainMenu = Menu {
-			entryLevel = 1
-			maximumLevels = 1
-		}
+	body = T:Value {
+		value = T:Array {
+			mainMenu = Menu {
+				entryLevel = 1
+				maximumLevels = 1
+			}
 
-		main = PrimaryContent {
-			renderByType {
-				condition = TRUE
-				type = ${q(node).property('_nodeType.name')}
+			main = PrimaryContent {
+				renderByType {
+					condition = TRUE
+					type = ${q(node).property('_nodeType.name')}
+				}
+			}
+
+			createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
+				type = 'Sfi.Site:News'
 			}
 		}
-
-		createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
-	    type = 'Sfi.Site:News'
-	  }
-
-		javascripts.bodyScripts = TYPO3.TypoScript:Template {
-			templatePath = 'resource://Sfi.Site/Private/Partials/SharedResources.html'
-			partialRootPath = 'resource://Sfi.Site/Private/Partials'
-			sectionName = 'bodyScripts'
+		javascripts.index = T:Tag {
+			tagName = 'script'
+			attributes.src = T:ResourceUri {
+				path = 'resource://Sfi.Site/Public/built/index.js'
+			}
 		}
 	}
 }
