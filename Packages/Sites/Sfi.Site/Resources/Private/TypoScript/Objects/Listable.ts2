@@ -38,7 +38,7 @@ prototype(Sfi.Site:Pagination) < prototype(TYPO3.TypoScript:Collection) {
 	}
 }
 
-prototype(Sfi.Site:Listable) < prototype(T:Array) {
+prototype(Sfi.Site:Listable) < prototype(TYPO3.TypoScript:Array) {
 	@context.sortProperty = 'date'
 	@context.sortOrder = 'DESC'
 	@context.itemsPerPage = 10
@@ -46,7 +46,7 @@ prototype(Sfi.Site:Listable) < prototype(T:Array) {
 	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
 	@context.collection = 'to-be-set'
 
-	list = T:Collection {
+	list = TYPO3.TypoScript:Collection {
 		@process.tmlp = ${'<ul>' + value + '</ul>'}
 		collection = ${collection}
 		collection.@process.sort = ${value && value.count() > 0 && sortProperty ? value.sort(sortProperty, sortOrder) : value}
