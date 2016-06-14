@@ -1,42 +1,43 @@
 prototype(Psmb.NodeTypes:Text) < prototype(TYPO3.TypoScript:Tag) {
-  content = ${q(node).property('text')}
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	content = ${q(node).property('text')}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Headline) < prototype(TYPO3.TypoScript:Tag) {
-  content = ${q(node).property('text')}
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	content = ${q(node).property('text')}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Blockquote) < prototype(TYPO3.TypoScript:Tag) {
-  content = ${q(node).property('text')}
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	content = ${q(node).property('text')}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Section) < prototype(TYPO3.TypoScript:Tag) {
-  content = ${q(node).property('text')}
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	content = ${q(node).property('text')}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Aside) < prototype(TYPO3.TypoScript:Tag) {
-  content = ${q(node).property('text')}
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	content = ${q(node).property('text')}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Image) < prototype(TYPO3.TypoScript:Tag) {
-  tagName = 'figure'
-  content = TYPO3.TypoScript:Array {
-    image = TYPO3.Neos:ImageTag {
-      asset = ${q(node).property('image')}
-      maximumWidth = 900
-    }
-    caption = TYPO3.TypoScript:Tag {
-      tagName = 'figcaption'
-      content = ${q(node).property('caption')}
-    }
-  }
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	tagName = 'figure'
+	content = TYPO3.TypoScript:Array {
+		image = TYPO3.Neos:ImageTag {
+			asset = ${q(node).property('image')}
+			maximumWidth = 900
+		}
+		caption = TYPO3.TypoScript:Tag {
+			tagName = 'figcaption'
+			content = ${q(node).property('caption')}
+			@if.captionIsSet = ${q(node).property('caption') ? true : false}
+		}
+	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Asset) < prototype(TYPO3.TypoScript:Tag) {
-  tagName = 'a'
-  attributes.href = ${'asset://' + node.properties.asset.identifier}
-  attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
-  content = ${q(node).property('title')}
-  @process.wrap = ${'<div>' + value + '</div>'}
-  @process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	tagName = 'a'
+	attributes.href = ${'asset://' + node.properties.asset.identifier}
+	attributes.href.@process.convertUris = TYPO3.Neos:ConvertUris
+	content = ${q(node).property('title')}
+	@process.wrap = ${'<div>' + value + '</div>'}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }

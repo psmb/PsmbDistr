@@ -1,0 +1,4 @@
+prototype(Sfi.Site:NewsList) < prototype(Sfi.Site:Listable) {
+	@context.collection = ${q(site).find('[instanceof Sfi.Site:News]').filterByReference('tags', documentNode)}
+	list.itemRenderer = Sfi.Site:NewsShort
+}

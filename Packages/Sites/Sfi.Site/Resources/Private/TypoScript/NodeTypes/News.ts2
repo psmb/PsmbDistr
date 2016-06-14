@@ -19,15 +19,7 @@ prototype(Sfi.Site:News) < prototype(T:Array) {
 				nodePath = 'main'
 			}
 			credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
-			newsList = T:Collection {
-				@process.tmlp = ${'<div class="row-spacing-top--large">
-						<div class="block-title--strong">Ссылки по теме</div>
-						<ul class="medium-block-grid-2">' + value + '</ul>
-					</div>'}
-				collection = ${q(node).property('relatedNews')}
-				itemName = 'node'
-				itemRenderer = Sfi.Site:NewsShort
-			}
+			newsList = Sfi.Site:NewsRelatedList
 		}
 	}
 	sidebar = T:Tag {

@@ -1,0 +1,58 @@
+# The future listable
+prototype(Sfi.Site:PaginationArray) {
+	@class = 'Sfi\\Site\\TypoScript\\PaginationArrayImplementation'
+}
+prototype(Sfi.Site:Pagination) < prototype(TYPO3.TypoScript:Collection) {
+	# Expects the following context vars to be set: currentPage, maximumNumberOfLinks, collection, itemsPerPage
+	@process.tmpl = ${'<ul>' + value + '</ul>'}
+	collection = Sfi.Site:PaginationArray {
+		currentPage = ${currentPage}
+		maximumNumberOfLinks = ${maxNumberOfLinks}
+		count = ${collection.count()}
+		itemsPerPage = ${itemsPerPage}
+	}
+	itemName = 'i'
+	itemRenderer = TYPO3.TypoScript:Case {
+		@process.tmpl = ${'<li>' + value + '</li>'}
+		separator {
+			condition = ${i == '...'}
+			renderer = ${i}
+		}
+		currentPage {
+			condition = ${i == currentPage}
+			renderer = ${i}
+		}
+		link {
+			condition = ${true}
+			renderer = TYPO3.TypoScript:Tag {
+				tagName = 'a'
+				attributes.href = NodeUri {
+					node = ${documentNode}
+					additionalParams = TYPO3.TypoScript:RawArray {
+						currentPage = ${i}
+					}
+				}
+				content = ${ i}
+			}
+		}
+	}
+}
+
+prototype(Sfi.Site:Listable) < prototype(T:Array) {
+	@context.sortProperty = 'date'
+	@context.sortOrder = 'DESC'
+	@context.itemsPerPage = 10
+	@context.maxNumberOfLinks = 10
+	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
+	@context.collection = 'to-be-set'
+
+	list = T:Collection {
+		@process.tmlp = ${'<ul>' + value + '</ul>'}
+		collection = ${collection}
+		collection.@process.sort = ${value && value.count() > 0 && sortProperty ? value.sort(sortProperty, sortOrder) : value}
+		collection.@process.paginate = ${value.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).get()}
+		itemName = 'node'
+		itemRenderer = ContentCase
+	}
+	pagination = Sfi.Site:Pagination
+}

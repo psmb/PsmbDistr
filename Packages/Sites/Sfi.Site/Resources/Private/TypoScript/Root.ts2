@@ -24,9 +24,21 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 
 	body = T:Value {
 		value = T:Array {
-			mainMenu = Menu {
-				entryLevel = 1
-				maximumLevels = 1
+			mainMenu = T:Collection {
+				@process.tmpl = ${'<ul class="sections-menu">' + value + '</ul>'}
+				collection = ${q(site).find('#f65d6394-7d07-4c13-8c1b-5e743caebacd').children().get()}
+				itemName = 'node'
+				itemRenderer = T:Tag {
+					tagName = 'li'
+					attributes.class = ${node == documentNode ? 'sections-menu__item section-color current' : 'sections-menu__item'}
+					content = T:Tag {
+						tagName = 'a'
+						attributes.href = NodeUri {
+							node = ${node}
+						}
+						content = ${node.properties.title}
+					}
+				}
 			}
 
 			main = PrimaryContent {
@@ -58,5 +70,5 @@ root.fallbackPage {
 # Disable stupid layout mechanism
 root.layout>
 
-prototype(TYPO3.Neos:Page).@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
-root.@cache.entryIdentifier.pagination = ${request.pluginArguments.listable-paginate.currentPage}
+prototype(TYPO3.Neos:Page).@cache.entryIdentifier.pagination = ${request.arguments.currentPage}
+root.@cache.entryIdentifier.pagination = ${request.arguments.currentPage}
