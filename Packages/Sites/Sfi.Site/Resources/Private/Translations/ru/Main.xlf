@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" source-language="ru" datatype="plaintext">
+		<body>
+			<trans-unit id="global.fulltitle">
+				<source>Преображенское братство</source>
+			</trans-unit>
+			<trans-unit id="global.shorttitle">
+				<source>Преображенское братство</source>
+			</trans-unit>
+			<trans-unit id="tomain">
+				<source>На главную</source>
+			</trans-unit>
+			<trans-unit id="footer.sectionsNav">
+				<source>Разделы сайта</source>
+			</trans-unit>
+			<trans-unit id="footer.ourProjectsNav">
+				<source>Наши проекты</source>
+			</trans-unit>
+			<trans-unit id="footer.miscNav">
+				<source>Разное</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

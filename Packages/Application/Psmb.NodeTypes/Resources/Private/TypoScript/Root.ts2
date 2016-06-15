@@ -7,14 +7,17 @@ prototype(Psmb.NodeTypes:Headline) < prototype(TYPO3.TypoScript:Tag) {
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Blockquote) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'blockquote'
 	content = ${q(node).property('text')}
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Section) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'section'
 	content = ${q(node).property('text')}
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 prototype(Psmb.NodeTypes:Aside) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'aside'
 	content = ${q(node).property('text')}
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }

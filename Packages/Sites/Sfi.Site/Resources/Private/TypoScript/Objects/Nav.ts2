@@ -1,0 +1,48 @@
+prototype(Sfi.Site:SectionsNav) < prototype(T:Collection) {
+	collection = ${q(site).find('#f65d6394-7d07-4c13-8c1b-5e743caebacd').children().get()}
+	itemName = 'node'
+	itemRenderer = T:Tag {
+		tagName = 'li'
+		attributes.class = 'sitemap__item'
+		attributes.class.@process.menuClass = ${value + (node == documentNode && ' current')}
+		content = T:Tag {
+			tagName = 'a'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${node.properties.title}
+		}
+	}
+}
+prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
+	collection = ${q(site).find('#dddd2fdd-bb86-40f9-8f3c-23853779009d').children().get()}
+	itemName = 'node'
+	itemRenderer = T:Tag {
+		tagName = 'li'
+		attributes.class = 'sitemap__item'
+		attributes.class.@process.menuClass = ${value + (node == documentNode && ' current')}
+		content = T:Tag {
+			tagName = 'a'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${node.properties.title}
+		}
+	}
+}
+prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
+	collection = ${q(site).find('#550caffe-592a-4699-bf69-5b7a7215c09a').children().get()}
+	itemName = 'node'
+	itemRenderer = T:Tag {
+		tagName = 'li'
+		attributes.class = 'sitemap__item'
+		attributes.class.@process.menuClass = ${value + (node == documentNode && ' current')}
+		content = T:Tag {
+			tagName = 'a'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${node.properties.title}
+		}
+	}
+}

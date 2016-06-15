@@ -1,4 +1,7 @@
 TYPO3:
+  Flow:
+    i18n:
+      defaultLocale: 'ru'
   Neos:
     typoScript:
       autoInclude:
@@ -10,6 +13,7 @@ TYPO3:
           presets:
             default:
               baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
+
   # TYPO3CR:
   #   contentDimensions:
   #     'language':

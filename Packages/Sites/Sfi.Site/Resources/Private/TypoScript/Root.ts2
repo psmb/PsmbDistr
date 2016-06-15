@@ -5,7 +5,7 @@ include: Override.ts2
 
 prototype(Sfi.Site:Root) < prototype(Page) {
 	head {
-		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('common.sitetitle.short', null, [], null, 'Sfi.Site')}
+		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('global.shorttitle', null, [], null, 'Sfi.Site')}
 		stylesheets.index = T:Tag {
 			tagName = 'link'
 			attributes {
@@ -24,30 +24,31 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 
 	body = T:Value {
 		value = T:Array {
-			mainMenu = T:Collection {
-				@process.tmpl = ${'<ul class="sections-menu">' + value + '</ul>'}
-				collection = ${q(site).find('#f65d6394-7d07-4c13-8c1b-5e743caebacd').children().get()}
-				itemName = 'node'
-				itemRenderer = T:Tag {
-					tagName = 'li'
-					attributes.class = ${node == documentNode ? 'sections-menu__item section-color current' : 'sections-menu__item'}
-					content = T:Tag {
-						tagName = 'a'
-						attributes.href = NodeUri {
-							node = ${node}
-						}
-						content = ${node.properties.title}
+			header = T:Template {
+				templatePath = 'resource://Sfi.Site/Private/Partials/Header.html'
+				sectionsNav = Sfi.Site:SectionsNav {
+					@process.tmpl = ${'<ul class="sections-menu">' + value + '</ul>'}
+					itemRenderer.attributes {
+						class = 'sections-menu__item'
+						class.@process.menuClass = ${value + (node == documentNode && ' current section-color')}
 					}
 				}
 			}
-
-			main = PrimaryContent {
-				renderByType {
-					condition = TRUE
-					type = ${q(node).property('_nodeType.name')}
+			mobileNavContentWrap = T:Array {
+				@process.tmpl = ${'<div class="container mobile-nav__content">' + value + '</div>'}
+				main = PrimaryContent {
+					renderByType {
+						condition = TRUE
+						type = ${q(node).property('_nodeType.name')}
+					}
+				}
+				footer = T:Template {
+					templatePath = 'resource://Sfi.Site/Private/Partials/Footer.html'
+					sectionsNav = Sfi.Site:SectionsNav
+					ourProjectsNav = Sfi.Site:OurProjectsNav
+					miscNav = Sfi.Site:MiscNav
 				}
 			}
-
 			createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
 				type = 'Sfi.Site:News'
 			}
@@ -60,6 +61,9 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 		}
 	}
 }
+
+
+
 
 root.fallbackPage {
 	@position = 'before default'
