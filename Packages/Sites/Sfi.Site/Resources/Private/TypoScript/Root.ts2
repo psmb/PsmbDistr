@@ -6,6 +6,14 @@ include: Override.ts2
 prototype(Sfi.Site:Root) < prototype(Page) {
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('global.shorttitle', null, [], null, 'Sfi.Site')}
+		stylesheets.fonts = T:Tag {
+			tagName = 'link'
+			attributes {
+				href = 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700&subset=latin,cyrillic'
+				type = 'text/css'
+				rel = 'stylesheet'
+			}
+		}
 		stylesheets.index = T:Tag {
 			tagName = 'link'
 			attributes {
@@ -14,7 +22,6 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 				}
 				type = 'text/css'
 				rel = 'stylesheet'
-				media = 'all'
 			}
 		}
 	}
@@ -24,35 +31,28 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 
 	body = T:Value {
 		value = T:Array {
-			header = T:Template {
-				templatePath = 'resource://Sfi.Site/Private/Partials/Header.html'
-				sectionsNav = Sfi.Site:SectionsNav {
-					@process.tmpl = ${'<ul class="sections-menu">' + value + '</ul>'}
-					itemRenderer.attributes {
-						class = 'sections-menu__item'
-						class.@process.menuClass = ${value + (node == documentNode && ' current section-color')}
-					}
-				}
-			}
+			header = Sfi.Site:Header
+
 			mobileNavContentWrap = T:Array {
 				@process.tmpl = ${'<div class="container mobile-nav__content">' + value + '</div>'}
+
 				main = PrimaryContent {
 					renderByType {
 						condition = TRUE
 						type = ${q(node).property('_nodeType.name')}
 					}
 				}
-				footer = T:Template {
-					templatePath = 'resource://Sfi.Site/Private/Partials/Footer.html'
-					sectionsNav = Sfi.Site:SectionsNav
-					ourProjectsNav = Sfi.Site:OurProjectsNav
-					miscNav = Sfi.Site:MiscNav
-				}
+
+				footer = Sfi.Site:Footer
+			}
+			mobileNav = Sfi.Site:SectionsNav {
+				@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}
 			}
 			createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
 				type = 'Sfi.Site:News'
 			}
 		}
+
 		javascripts.index = T:Tag {
 			tagName = 'script'
 			attributes.src = T:ResourceUri {
@@ -65,7 +65,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 
 
 
-root.fallbackPage {
+root.thePage {
 	@position = 'before default'
 	condition = TRUE
 	type = 'Sfi.Site:Root'

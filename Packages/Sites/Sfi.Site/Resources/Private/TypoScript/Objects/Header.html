@@ -12,8 +12,8 @@
 					</neos:link.node>
 				</h1>
 				<div class="left hide-for-small-only">
-					<!-- TODO -->
-					<neos:link.node node="~" class="light-button" />
+					{aboutUsLink -> f:format.raw()}
+					<neos:link.node node="{aboutUsNode}" class="light-button" />
 				</div>
 				<div class="right">
 					{secondaryNav -> f:format.raw()}

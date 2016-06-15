@@ -1,0 +1,6 @@
+prototype(Sfi.Site:Footer) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Footer.html'
+	sectionsNav = Sfi.Site:FooterSectionsNav
+	ourProjectsNav = Sfi.Site:OurProjectsNav
+	miscNav = Sfi.Site:MiscNav
+}

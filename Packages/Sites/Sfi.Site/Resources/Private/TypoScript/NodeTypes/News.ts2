@@ -1,32 +1,13 @@
-prototype(Sfi.Site:News)>
-prototype(Sfi.Site:News) < prototype(T:Array) {
-	@process.tmpl = ${'<div class="fixed-width"><div class="row news-detail">' + value + '</div></div>'}
-	main = T:Array {
-		@process.tmpl = ${'<div class="large-9 medium-9 columns news-detail__content">' + value + '</div>'}
-		title = ${'<h1 class="alpha">' + node.properties.title + '</h1>'}
-		tagline = T:Array {
-			@process.tmpl = ${'<div class="news-detail__tagline">' + value + '</div>'}
-			date = ${'<div class="news-detail__date">' + Date.format(node.properties.date, 'd M Y') + '</div>'}
-			tagList = Sfi.Site:TagList
-		}
-		teaser = ${'<div class="lead">' + node.properties.teaser + '</div>'}
-		cover = TYPO3.Neos:ContentCollection {
-			nodePath = 'cover'
-		}
-		content = T:Array {
-			@process.tmpl = ${'<div class="large-10 large-offset-2 columns">' + value + '</div>'}
-			main = TYPO3.Neos:ContentCollection {
-				nodePath = 'main'
-			}
-			credit = ${'<div class="rte-text"><div class="author">' + node.properties.credit + '</div></div>'}
-			newsList = Sfi.Site:NewsRelatedList
-		}
+prototype(Sfi.Site:News) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/News.html'
+	tagList = Sfi.Site:TagList
+	cover = TYPO3.Neos:ContentCollection {
+		nodePath = 'cover'
 	}
-	sidebar = T:Tag {
-		attributes.class = 'large-3 medium-3 columns news-detail__sidebar'
-		content = T:Array {
-		}
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
 	}
+	newsList = Sfi.Site:NewsRelatedList
 }
 
 # Get thumb from news node
