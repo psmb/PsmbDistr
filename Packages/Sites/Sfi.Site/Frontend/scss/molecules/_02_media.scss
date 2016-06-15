@@ -136,13 +136,13 @@ Media news element. Used in `.stream` and in `.news-latest` organisms.
 	background-repeat: no-repeat;
 }
 .media.video:after{
-	background-image: url("/typo3conf/ext/speciality/Resources/Public/Icons/icon-video.png");
+	background-image: url("/_Resources/Static/Packages/Sfi.Site/Icons/icon-video.png");
 }
 .media.audio:after{
-	background-image: url("/typo3conf/ext/speciality/Resources/Public/Icons/icon-audio.png");
+	background-image: url("/_Resources/Static/Packages/Sfi.Site/Icons/icon-audio.png");
 }
 .media.photo:after{
-	background-image: url("/typo3conf/ext/speciality/Resources/Public/Icons/icon-photo.png");
+	background-image: url("/_Resources/Static/Packages/Sfi.Site/Icons/icon-photo.png");
 }
 
 //TODO: Hackish fixes for mobile
@@ -355,7 +355,7 @@ Used in related news.
 	}
 
 .media-slide-menu__link.active{
-	background: url('/typo3conf/ext/speciality/Resources/Public/Icons/icon-arrow-navy.png') no-repeat left;
+	background: url('/_Resources/Static/Packages/Sfi.Site/Icons/icon-arrow-navy.png') no-repeat left;
 	margin-right: 6*$u;
 	
 	.media-slide-menu__title{

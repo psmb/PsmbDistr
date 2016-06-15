@@ -11,7 +11,7 @@
 	right: 0;
 	height: 3*$u;
 	background-color: white; 
-	background: white center 90% no-repeat url('/typo3conf/ext/speciality/Resources/Public/Icons/icon-arrow-down.png');
+	background: white center 90% no-repeat url('/_Resources/Static/Packages/Sfi.Site/Icons/icon-arrow-down.png');
 	cursor: pointer;
 	&:before{
 		border-top: 1px solid $gray-line;
@@ -26,5 +26,5 @@
 }
 .is-expanded .read-more__switch{
 	position: static;
-	background-image: url('/typo3conf/ext/speciality/Resources/Public/Icons/icon-arrow-up.png');
+	background-image: url('/_Resources/Static/Packages/Sfi.Site/Icons/icon-arrow-up.png');
 }
