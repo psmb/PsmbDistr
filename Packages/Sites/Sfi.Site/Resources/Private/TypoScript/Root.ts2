@@ -30,29 +30,8 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 	bodyTag.attributes.id = ${'Page-' + q(node).property('_name')}
 
 	body = T:Value {
-		value = T:Array {
-			header = Sfi.Site:Header
-
-			mobileNavContentWrap = T:Array {
-				@process.tmpl = ${'<div class="container mobile-nav__content">' + value + '</div>'}
-
-				main = PrimaryContent {
-					renderByType {
-						condition = TRUE
-						type = ${q(node).property('_nodeType.name')}
-					}
-				}
-
-				footer = Sfi.Site:Footer
-			}
-			mobileNav = Sfi.Site:SectionsNav {
-				@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}
-			}
-			createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
-				type = 'Sfi.Site:News'
-			}
-		}
-
+		value = Sfi.Site:Body
+		# Don't be surprised, this is appended in @process in Page prototype
 		javascripts.index = T:Tag {
 			tagName = 'script'
 			attributes.src = T:ResourceUri {
@@ -61,9 +40,6 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 		}
 	}
 }
-
-
-
 
 root.thePage {
 	@position = 'start'

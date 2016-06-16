@@ -1,0 +1,17 @@
+prototype(Sfi.Site:Body) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Body.html'
+	header = Sfi.Site:Header
+	main = PrimaryContent {
+		renderByType {
+			condition = TRUE
+			type = ${q(node).property('_nodeType.name')}
+		}
+	}
+	footer = Sfi.Site:Footer
+	mobileNav = Sfi.Site:SectionsNav {
+		@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}
+	}
+	createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
+		type = 'Sfi.Site:News'
+	}
+}
