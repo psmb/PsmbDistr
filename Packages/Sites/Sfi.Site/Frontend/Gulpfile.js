@@ -13,6 +13,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var inputAssets = [
 ];
 var inputJs = [
+	'./node_modules/imagesloaded/imagesloaded.pkgd.min.js',
 	'./vendor_js/**/*.js',
 	'./js/**/*.js'
 ];

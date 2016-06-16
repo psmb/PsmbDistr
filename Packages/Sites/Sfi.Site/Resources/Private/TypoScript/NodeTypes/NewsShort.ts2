@@ -1,0 +1,30 @@
+prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/NewsShort.html'
+	sectionName = ${node.properties.important ? 'important' : 'normal'}
+	attributes = T:Attributes {
+		class = T:RawArray {
+			base = 'media js-media'
+			important = ${node.properties.important && 'media-important'}
+			stream = ${isStream && 'stream__item js-stream__item'}
+			photo = 'TODO'
+			video = 'TODO'
+			audio = 'TODO'
+		}
+	}
+	title = ${String.cropAtWord(node.properties.title, 90, '...')}
+	teaser = ${String.cropAtWord(node.properties.teaser, 100, '...')}
+	date = ${node.properties.date}
+	categoryTitle = 'Todo'
+	nodeUri = NodeUri {
+		node = ${node}
+	}
+	thumbUri = ImageUri {
+		attributes.class = 'media-small__image media-small--left__image'
+		asset = Sfi.Site:NewsThumb
+		# No idea why this is needed
+		maximumWidth>
+		width = ${node.properties.important ? 576 : 276}
+		height = ${node.properties.important ? 354 : 200}
+		allowCropping = TRUE
+	}
+}

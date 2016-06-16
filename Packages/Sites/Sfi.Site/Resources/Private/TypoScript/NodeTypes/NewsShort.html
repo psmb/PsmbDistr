@@ -1,0 +1,40 @@
+<f:section name="normal">
+	<li{attributes -> f:format.raw()}>
+		<a href="{nodeUri}" title={title}>
+			<div class="media__wrap section-color-bd">
+				<img class="media__image" src={thumbUri} alt={title} />
+				<div class="media__body">
+					<div class="media__header-wrap">
+						<span class="media__date">
+							<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+						</span>
+						<h3 class="media__title">{title}</h3>
+						<div class="media__teaser">{teaser}</div>
+					</div>
+					<span class="media__category">{categoryTitle}</span>
+				</div>
+			</div>
+		</a>
+	</li>
+</f:section>
+
+<f:section name="important">
+	<li{attributes -> f:format.raw()}>
+		<a href="{nodeUri}" title={title}>
+			<div class="media-important__wrap section-color-bd">
+				<div class="media-important__gradient"></div>
+				<div class="media-important__overlay">
+					<div class="media-important__date">
+						<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+					</div>
+					<h3 class="media-important__title">{title}</h3>
+					<div class="media-important__hiding">
+						<div class="media-important__teaser">{teaser}</div>
+						<div class="media-important__category">{categoryTitle}</div>
+					</div>
+				</div>
+				<img class="media__image" src={thumbUri} alt={title} />
+			</div>
+		</a>
+	</li>
+</f:section>
