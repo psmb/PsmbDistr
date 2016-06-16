@@ -66,7 +66,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 
 
 root.thePage {
-	@position = 'before default'
+	@position = 'start'
 	condition = TRUE
 	type = 'Sfi.Site:Root'
 }
@@ -74,5 +74,5 @@ root.thePage {
 # Disable stupid layout mechanism
 root.layout>
 
-prototype(TYPO3.Neos:Page).@cache.entryIdentifier.pagination = ${request.arguments.currentPage}
-root.@cache.entryIdentifier.pagination = ${request.arguments.currentPage}
+prototype(T:GlobalCacheIdentifiers).pagination = ${request.arguments.currentPage}
+prototype(T:GlobalCacheIdentifiers).ajax = ${request.arguments.ajax}

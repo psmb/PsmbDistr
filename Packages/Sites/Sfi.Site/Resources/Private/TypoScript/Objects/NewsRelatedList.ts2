@@ -1,11 +1,18 @@
-prototype(Sfi.Site:NewsRelatedList) < prototype(T:Collection) {
-	@context.relatedNews = ${q(node).property('relatedNews')}
-	@if.isNotEmpty = ${ Type.isArray(relatedNews) && !Array.isEmpty(relatedNews)}
-	@process.tmlp = ${'<div class="row-spacing-top--large">
-		 <div class="block-title--strong">Ссылки по теме</div>
-		 <ul class="medium-block-grid-2">' + value + '</ul>
-	 </div>'}
-	collection = ${relatedNews}
-	itemName = 'node'
-	itemRenderer = Sfi.Site:NewsShort
+prototype(Sfi.Site:NewsRelatedList) < prototype(T:Array) {
+	@process.tmlp = ${'<div class="row-spacing-top--large">' + value + '</div>'}
+	title = '<div class="block-title--strong">Ссылки по теме</div>'
+	list = T:Collection {
+		@process.tmlp = ${'<ul class="medium-block-grid-2">' + value + '</ul>'}
+		@context.relatedNews = ${q(node).property('relatedNews')}
+		@if.isNotEmpty = ${ Type.isArray(relatedNews) && !Array.isEmpty(relatedNews)}
+		collection = ${relatedNews}
+		itemName = 'node'
+		itemRenderer = Sfi.Site:NewsShort
+		@cache {
+			mode = 'cached'
+			entryTags {
+				1 = 'NodeType_Sfi.Site:News'
+			}
+		}
+	}
 }
