@@ -4,7 +4,10 @@
     "description": "Website package. See distribution for more info.",
     "require": {
         "typo3/neos": "*",
-        "psmb/term": "*"
+        "psmb/term": "*",
+        "typo3/typo3cr-search": "*",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "*",
+        "flowpack/searchplugin": "*"
     },
     "autoload": {
         "psr-0": {

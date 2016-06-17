@@ -15,7 +15,7 @@ prototype(Sfi.Site:NewsThumb) < prototype(T:Value) {
 	value = ${q(node).property('thumbImage') ? q(node).property('thumbImage') : q(node).children('cover').children('[instanceof Psmb.NodeTypes:Image]').first().property('image')}
 }
 
-prototype(Sfi.Site:NewsShort) < prototype(T:Value) {
+prototype(Sfi.Site:NewsShortSmall) < prototype(T:Value) {
 	value = T:Tag {
 		@process.tmpl = ${'<li class="media-small"><div class="media-small__wrap">' + value + '</div></li>'}
 		tagName = 'a'

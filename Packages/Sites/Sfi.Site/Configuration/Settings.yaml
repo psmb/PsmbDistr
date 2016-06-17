@@ -30,3 +30,9 @@ TYPO3:
   #           label: 'English'
   #           values: ['en']
   #           uriSegment: 'en'
+Flowpack:
+  ElasticSearch:
+    clients:
+      default:
+        - host: es
+          port: 9200

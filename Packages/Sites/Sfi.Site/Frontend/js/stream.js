@@ -14,22 +14,40 @@
 
 	Stream(document.querySelector('.js-stream'));
 	function Stream(node) {
-		var nextPage = 1;
+		if (!node) {
+			return null;
+		}
+		var currentPage = 1;
+		var media = '';
 		var content = node.querySelector('.js-stream__content');
 		var loadMore = node.querySelector('.js-stream__loadmore');
+		var filterBar = node.querySelector('.js-filter-bar');
 
-		if (loadMore && content) {
+		if (loadMore && content && filterBar) {
 			loadMore.addEventListener('click', function (evt) {
 				evt.preventDefault();
 				load();
 			});
+			filterBar.addEventListener('click', function (evt) {
+				evt.preventDefault();
+				if (evt.target && evt.target.nodeName === 'A') {
+					content.innerHTML = '';
+					media = evt.target.getAttribute('data-filter');
+					currentPage = 1;
+					load();
+				}
+			});
+			load();
 		}
-		load();
 
 		function load() {
+			var url = '?ajax=true&currentPage=' + currentPage;
+			if (media) {
+				url += '&media=' + media;
+			}
 			var request = new XMLHttpRequest();
-			request.open('GET', '?ajax=true&currentPage=' + nextPage, true);
-			loadMore.innerHTML = 'загрузка...';
+			request.open('GET', url, true);
+			loadMore.innerHTML = '<img id="spinner" src="/_Resources/Static/Packages/Sfi.Site/Images/spinner.gif">';
 			loadMore.disabled = true;
 			request.onload = function () {
 				if (this.status >= 200 && this.status < 400) {
@@ -47,14 +65,15 @@
 						// Relayout isotope
 						iso.layout();
 						media_fix_height();
+
+						loadMore.disabled = false;
+						currentPage++;
+						// If nothing left to load
+						if (!resp.loadMore) {
+							loadMore.innerHTML = 'конец!';
+							loadMore.disabled = true;
+						}
 					});
-					loadMore.disabled = false;
-					nextPage++;
-					// If nothing left to load
-					if (!resp.loadMore) {
-						loadMore.innerHTML = 'конец!';
-						loadMore.disabled = true;
-					}
 				}
 			};
 			request.send();

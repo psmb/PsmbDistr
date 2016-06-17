@@ -1,28 +1,85 @@
-prototype(Sfi.Site:Stream) < prototype(TYPO3.TypoScript:Value) {
-	@context.sortProperty = 'date'
-	@context.sortOrder = 'DESC'
-	@context.itemsPerPage = 10
-	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
-	@context.collection = ${q(site).find('[instanceof Sfi.Site:News]').filterByReference('tags', documentNode)}
+prototype(Sfi.Site:Stream) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Stream.html'
+	filterBar = T:Array {
+		all = TYPO3.TypoScript:Tag {
+			tagName = 'a'
+			attributes.data-filter = ''
+			attributes.class = 'filter-bar__item js-filter-bar--autoload'
+			attributes.href = '#'
+			content = 'все материалы'
+		}
+		video = TYPO3.TypoScript:Tag {
+			tagName = 'a'
+			attributes.data-filter = 'video'
+			attributes.class = 'filter-bar__item'
+			attributes.href = '#'
+			content = 'видео'
+		}
+		photo = TYPO3.TypoScript:Tag {
+			tagName = 'a'
+			attributes.data-filter = 'photo'
+			attributes.class = 'filter-bar__item'
+			attributes.href = '#'
+			content = 'фото'
+		}
+		audio = TYPO3.TypoScript:Tag {
+			tagName = 'a'
+			attributes.data-filter = 'audio'
+			attributes.class = 'filter-bar__item'
+			attributes.href = '#'
+			content = 'аудио'
+		}
+	}
+}
 
-	value = TYPO3.TypoScript:Collection {
-		@process.tmlp = ${'<ul>' + value + '</ul>'}
-		collection = ${collection}
-		collection.@process.sort = ${value && value.count() > 0 && sortProperty ? value.sort(sortProperty, sortOrder) : value}
-		collection.@process.paginate = ${value.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).get()}
-		itemName = 'node'
-		itemRenderer = Sfi.Site:NewsShort
-		@cache {
-			mode = 'cached'
-			entryTags {
-				1 = 'NodeType_Sfi.Site:News'
+
+prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
+	@context.ourNewsNode = ${q(site).find('#325feee6-c595-4c32-9ea9-9e8cdcb50fae').get(0)}
+	@context.photoNode = ${q(site).find('#820b1082-cf64-4d40-8ad8-0c2c182c4869').get(0)}
+	@context.audioNode = ${q(site).find('#1a6f4e72-6e4f-4681-8be4-812093c4b22b').get(0)}
+	@context.videoNode = ${q(site).find('#886689e7-3c3f-4b17-80c4-d2e39e3e500f').get(0)}
+
+	@context.itemsPerPage = 12
+	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
+	# Used in NewsShort
+	@context.isStream = ${true}
+	value = T:RawArray {
+		@context.query = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('tags', documentNode).exactMatch('tags', ourNewsNode)}
+		@context.query.@process.filter = T:Case {
+			photo {
+				condition = ${request.arguments.media == 'photo'}
+				renderer = ${value.exactMatch('tags', photoNode)}
+			}
+			audio {
+				condition = ${request.arguments.media == 'audio'}
+				renderer = ${value.exactMatch('tags', audioNode)}
+			}
+			video {
+				condition = ${request.arguments.media == 'video'}
+				renderer = ${value.exactMatch('tags', videoNode)}
+			}
+			default {
+				condition = ${true}
+				renderer = ${value}
 			}
 		}
+
+
+
+		content = TYPO3.TypoScript:Collection {
+			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
+			itemName = 'node'
+			itemRenderer = Sfi.Site:NewsShort
+		}
+
+		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
+
+		@process.json = ${Json.stringify(value)}
 	}
 }
 
 root.stream {
 	@position = 'before thePage'
 	condition = ${request.arguments.ajax == 'true'}
-	renderer = Sfi.Site:Stream
+	renderer = Sfi.Site:StreamAjax
 }

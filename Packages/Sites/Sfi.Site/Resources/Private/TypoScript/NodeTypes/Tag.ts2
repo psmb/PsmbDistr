@@ -1,4 +1,5 @@
 prototype(Sfi.Site:Tag)>
 prototype(Sfi.Site:Tag) < prototype(T:Array) {
-	newsList = Sfi.Site:NewsList
+	@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="large-9 columns">' + value + '</div></div></div>'}
+	newsList = Sfi.Site:Stream
 }
