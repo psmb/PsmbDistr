@@ -1,6 +1,6 @@
 prototype(Sfi.Site:Header) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Header.html'
-	sectionsNav = Sfi.Site:SectionsNav
+	# sectionsNav = Sfi.Site:SectionsNav
 	secondaryNav = Sfi.Site:SecondaryNav
 	aboutUsNode = ${q(site).find('#112b7249-b9c0-420d-9f52-41085e813ceb').get(0)}
 }

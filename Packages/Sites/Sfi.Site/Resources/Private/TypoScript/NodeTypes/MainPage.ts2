@@ -1,0 +1,6 @@
+prototype(Sfi.Site:MainPage) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/MainPage.html'
+	announcementsList = Sfi.Site:AnnouncementsList
+	externalNews = Sfi.Site:NewsExternalList
+	stream = Sfi.Site:Stream
+}

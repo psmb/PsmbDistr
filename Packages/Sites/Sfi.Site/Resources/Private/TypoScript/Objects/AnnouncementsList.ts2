@@ -1,0 +1,26 @@
+prototype(Sfi.Site:AnnouncementsList) < prototype(T:Array) {
+	@context.collection = ${q(site).find('[instanceof Sfi.Site:News]').filterByReference('tags', documentNode)}
+	list = T:Collection {
+		@process.tmpl = ${'<ul class="large-block-grid-3 medium-block-grid-3 small-block-grid-2">' + value + '</ul>'}
+		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'announcement').sortAsc('date').greaterThan('date', Date.format(Date.Now(), "Y-m-d\TH:i:sP")).limit(6).execute()}
+		itemName = 'node'
+		itemRenderer = Sfi.Site:AnnouncementShort
+	}
+	link = T:Tag {
+		@process.tmpl = ${'<div>' + value + '</div>'}
+		tagName = 'a'
+		attributes.class = 'service'
+		attributes.href = NodeUri {
+			# TODO: link to real news archive
+			node = ${site}
+		}
+		# TODO i18n
+		content = 'Архив анонсов'
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = 'NodeType_Sfi.Site:News'
+		}
+	}
+}

@@ -1,0 +1,85 @@
+
+<div class="row stripe section-color-bg magellan-container" data-magellan-expedition="fixed"  data-options="destination_threshold:65;">
+	<div class="fixed-width">
+		<div class="columns">
+			<dl>
+				<dd class="stripe__item stripe__item--label">
+					<a href="#" title="Наверх">На этой странице</a>
+				</dd>
+				<dd class="stripe__item stripe__item--link" data-magellan-arrival="announcements">
+					<a href="#announcements">Анонсы</a>
+				</dd>
+				<dd class="stripe__item stripe__item--link" data-magellan-arrival="news">
+					<a href="#news">Последние материалы</a>
+				</dd>
+				<dd class="stripe__item stripe__item--link" data-magellan-arrival="smi">
+					<a href="#smi">Обзор СМИ</a>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="fixed-width">
+		<div class="columns" style="padding-bottom: 12px">
+			<a name="announcements"></a>
+			<h2 data-magellan-destination="announcements" class="block-title-divider" style="margin-top: 0; margin-bottom: 0;">
+				<span>Анонсы</span>
+			</h2>
+			{announcementsList -> f:format.raw()}
+		</div>
+	</div>
+</div>
+<div class="row bg-gray">
+	<div class="fixed-width">
+		<div class="large-9 columns">
+			{stream -> f:format.raw()}
+		</div>
+		<div class="large-3 columns" style="padding-top: 52px;">
+			БРАТСКАЯ ЭНЦИКЛОПЕДИЯ
+			<div class="interesting-themes js-interesting-themes">
+				<span class="interesting-themes__label">Интересные темы</span>
+				<section class="filters js-filter-bar">
+					ИНТЕРЕСНЫЕ ТЕМЫ
+				</section>
+			</div>
+
+			<div class="wrap blogs" >
+				<a name="blogs"></a>
+				<h2 data-magellan-destination="blogs" class="block-title-divider">
+					<span>Пишут в блогах</span>
+				</h2>
+				БЛОГИ
+				class="action--small primary-color"Еще
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row bg-gray paddingBottom-single">
+	<div class="fixed-width">
+		<div class="columns news_list_foreign">
+			<a name="smi"></a>
+			<h2 data-magellan-destination="smi" class="block-title-divider">
+				<span>Обзор СМИ</span>
+			</h2>
+			{externalNews -> f:format.raw()}
+		</div>
+	</div>
+</div>
+
+<div class="row" >
+	<div class="fixed-width">
+		<div class="large-9 medium-9 columns single-margin-top" >
+			<div class="">
+				Выставки/Конференции
+			</div>
+		</div>
+
+		<div class="large-2 large-offset-1 medium-3 columns "  >
+
+		</div>
+
+	</div>
+</div>

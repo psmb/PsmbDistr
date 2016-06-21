@@ -39,7 +39,7 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 	# Used in NewsShort
 	@context.isStream = ${true}
 	value = T:RawArray {
-		@context.query = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('sections', documentNode)}
+		@context.query = ${Search.query(site).nodeType('Sfi.Site:News')}
 		@context.query.@process.filter = T:Case {
 			photo {
 				condition = ${request.arguments.media == 'photo'}
@@ -70,6 +70,12 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
 
 		@process.json = ${Json.stringify(value)}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = 'NodeType_Sfi.Site:News'
+		}
 	}
 }
 

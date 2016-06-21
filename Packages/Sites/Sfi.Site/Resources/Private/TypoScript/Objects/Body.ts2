@@ -8,9 +8,9 @@ prototype(Sfi.Site:Body) < prototype(T:Template) {
 		}
 	}
 	footer = Sfi.Site:Footer
-	mobileNav = Sfi.Site:SectionsNav {
-		@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}
-	}
+	# mobileNav = Sfi.Site:SectionsNav {
+	#	@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}
+	# }
 	createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
 		type = 'Sfi.Site:News'
 	}

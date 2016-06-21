@@ -1,10 +1,10 @@
 prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/NewsShort.html'
-	sectionName = ${node.properties.important ? 'important' : 'normal'}
+	sectionName = ${node.properties.isImportant ? 'important' : 'normal'}
 	attributes = T:Attributes {
 		class = T:RawArray {
 			base = 'media js-media'
-			important = ${node.properties.important && 'media-important'}
+			important = ${node.properties.isImportant && 'media-important'}
 			stream = ${isStream && 'stream__item js-stream__item'}
 			photo = 'TODO'
 			video = 'TODO'
@@ -23,8 +23,8 @@ prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 		asset = Sfi.Site:NewsThumb
 		# No idea why this is needed
 		maximumWidth>
-		width = ${node.properties.important ? 576 : 276}
-		height = ${node.properties.important ? 354 : 200}
+		width = ${node.properties.isImportant ? 576 : 276}
+		height = ${node.properties.isImportant ? 354 : 200}
 		allowCropping = TRUE
 	}
 }

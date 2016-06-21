@@ -1,0 +1,32 @@
+<li class="media-announcement">
+	<a href="{nodeUri}" title="{title}">
+		<div class="media-announcement__wrap">
+			<div>
+				<span class="media-announcement__date">
+					<f:if condition="{dateStart}">
+						<f:then>
+							<f:if condition="{f:format.date(date:'now', format:'U')} > {f:format.date(date:dateStart, format:'U')}">
+								<f:then>
+									<!-- TODO i18n -->
+									до <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+								</f:then>
+								<f:else>
+									с <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{dateStart}</f:format.date>
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+						</f:else>
+					</f:if>
+				/</span>
+				<f:if condition="{announcementPlace}">
+					<span class="media-announcement__town">{announcementPlace}</span>
+				</f:if>
+			</div>
+			<h3 class="media-announcement__title">
+				{title}
+			</h3>
+		</div>
+	</a>
+</li>

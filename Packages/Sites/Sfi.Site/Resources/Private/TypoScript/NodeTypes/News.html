@@ -3,9 +3,11 @@
 		<div class="large-9 medium-9 columns news-detail__content">
 			<h1 class="alpha">{title}</h1>
 			<div class="news-detail__tagline">
-				<div class="news-detail__date">
-					<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
-				</div>
+				<f:if condition="{type} != 'announcement'">
+					<div class="news-detail__date">
+						<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+					</div>
+				</f:if>
 				{tagList -> f:format.raw()}
 			</div>
 			<div class="lead">{teaser -> f:format.raw()}</div>

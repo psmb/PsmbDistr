@@ -1,0 +1,25 @@
+prototype(Sfi.Site:NewsExternalList) < prototype(T:Array) {
+	list = T:Collection {
+		@process.tmpl = ${'<ul class="large-block-grid-6 medium-block-grid-6 small-block-grid-2">' + value + '</ul>'}
+		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'externalNews').sortDesc('date').limit(6).execute()}
+		itemName = 'node'
+		itemRenderer = Sfi.Site:NewsExternalShort
+	}
+	link = T:Tag {
+		@process.tmpl = ${'<div>' + value + '</div>'}
+		tagName = 'a'
+		attributes.class = 'service'
+		attributes.href = NodeUri {
+			# TODO: link to real news archive
+			node = ${site}
+		}
+		# TODO i18n
+		content = 'Архив материалов'
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = 'NodeType_Sfi.Site:News'
+		}
+	}
+}
