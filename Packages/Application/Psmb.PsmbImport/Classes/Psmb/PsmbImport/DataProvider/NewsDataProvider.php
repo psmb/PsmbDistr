@@ -19,13 +19,20 @@ class NewsDataProvider extends DataProvider {
 		while ($record = $statement->fetch()) {
 			$date = new \DateTime();
 			$date->setTimestamp($record['datetime']);
+			if (isset($record['archive'])) {
+				$dateStart = new \DateTime();
+				$dateStart->setTimestamp($record['archive']);
+			} else {
+				$dateStart = null;
+			}
 			$result[] = [
 				'__externalIdentifier' => (int)$record['uid'],
 				'__parentPageIdentifier' => 'p' . $record['pid'],
 				'title' => StringValue::create($record['title'])->getValue(),
 				'teaser' => StringValue::create($record['teaser'])->getValue(),
 				'bodytext' => StringValue::create($record['bodytext'])->getValue(),
-				'datetime' => $date,
+				'date' => $date,
+				'dateStart' => $dateStart,
 				'important' => $record['istopnews'],
 				'announcementPlace' => $record['author_email'] // Don't ask me why...
 			];
