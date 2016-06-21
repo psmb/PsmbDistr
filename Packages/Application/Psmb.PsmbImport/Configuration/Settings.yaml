@@ -54,6 +54,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'collections'
+            flatten: true
             siteNodePath: '/sites/site'
         'page':
           label: 'Import Sections'
@@ -70,7 +71,7 @@ Ttree:
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsDataProvider'
           importerClassName: 'Psmb\PsmbImport\NewsImporter'
           importerOptions:
-            targetNode: 'news'
+            targetNode: 'a'
             siteNodePath: '/sites/site'
           batchSize: 100
         'newsPageRelation':

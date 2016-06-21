@@ -62,7 +62,16 @@ class CategoryImporter extends Importer
 			$nodeTemplate->setProperty('replaceVariants', $data['replaceVariants']);
 		}
 
-		$parentNode = $data['__parentIdentifier'] ? $this->getCategoryByOriginalId($data['__parentIdentifier']) : $this->storageNode;
+		// Flatten category tree under one node
+		if ($this->options['flatten']) {
+			// Skip top level nodes (parentIdentifier is null on top level)
+			if (!$data['__parentIdentifier']) {
+				return null;
+			}
+			$parentNode = $this->storageNode;
+		} else {
+			$parentNode = $data['__parentIdentifier'] ? $this->getCategoryByOriginalId($data['__parentIdentifier']) : $this->storageNode;
+		}
 		if (!$parentNode) {
 			throw new \Exception("No parent node found with identifier " . $data['__parentIdentifier'], 1);
 		}
