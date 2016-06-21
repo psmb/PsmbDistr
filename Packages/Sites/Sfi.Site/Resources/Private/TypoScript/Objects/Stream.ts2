@@ -34,33 +34,28 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 
 
 prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
-	@context.ourNewsNode = ${q(site).find('#325feee6-c595-4c32-9ea9-9e8cdcb50fae').get(0)}
-	@context.photoNode = ${q(site).find('#820b1082-cf64-4d40-8ad8-0c2c182c4869').get(0)}
-	@context.audioNode = ${q(site).find('#1a6f4e72-6e4f-4681-8be4-812093c4b22b').get(0)}
-	@context.videoNode = ${q(site).find('#886689e7-3c3f-4b17-80c4-d2e39e3e500f').get(0)}
-
 	@context.itemsPerPage = 12
 	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
 	# Used in NewsShort
 	@context.isStream = ${true}
 	value = T:RawArray {
-		@context.query = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('tags', documentNode).exactMatch('tags', ourNewsNode)}
+		@context.query = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('sections', documentNode)}
 		@context.query.@process.filter = T:Case {
 			photo {
 				condition = ${request.arguments.media == 'photo'}
-				renderer = ${value.exactMatch('tags', photoNode)}
+				renderer = ${value.exactMatch('isPhoto', true)}
 			}
 			audio {
 				condition = ${request.arguments.media == 'audio'}
-				renderer = ${value.exactMatch('tags', audioNode)}
+				renderer = ${value.exactMatch('isAudio', true)}
 			}
 			video {
 				condition = ${request.arguments.media == 'video'}
-				renderer = ${value.exactMatch('tags', videoNode)}
+				renderer = ${value.exactMatch('isVideo', true)}
 			}
 			default {
 				condition = ${true}
-				renderer = ${value}
+				renderer = ${value.exactMatch('type', 'ourNews')}
 			}
 		}
 

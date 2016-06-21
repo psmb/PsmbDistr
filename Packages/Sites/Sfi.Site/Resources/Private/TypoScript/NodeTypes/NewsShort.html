@@ -2,7 +2,9 @@
 	<li{attributes -> f:format.raw()}>
 		<a href="{nodeUri}" title={title}>
 			<div class="media__wrap section-color-bd">
-				<img class="media__image" src={thumbUri} alt={title} />
+				<f:if condition="{thumbUri}">
+					<img class="media__image" src="{thumbUri}" alt="{title}" />
+				</f:if>
 				<div class="media__body">
 					<div class="media__header-wrap">
 						<span class="media__date">
