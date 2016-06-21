@@ -49,7 +49,10 @@ class NewsImporter extends Importer
 		$nodeTemplate->setProperty('title', $title);
 		$nodeTemplate->setProperty('teaser', $data['teaser']);
 		$nodeTemplate->setProperty('isImportant', $data['important']);
-		$nodeTemplate->setProperty('date', $data['datetime']);
+		$nodeTemplate->setProperty('date', $data['date']);
+		if ($data['dateStart']) {
+			$nodeTemplate->setProperty('dateStart', $data['dateStart']);
+		}
 		$nodeTemplate->setProperty('announcementPlace', $data['announcementPlace']);
 		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
 
