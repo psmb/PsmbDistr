@@ -11,17 +11,17 @@ use Ttree\ContentRepositoryImporter\DataType\Slug;
 
 abstract class Importer extends BaseImporter
 {
-  /**
-  * @Flow\Inject
-  * @var NodeServiceInterface
-  */
-  protected $nodeService;
+	/**
+	* @Flow\Inject
+	* @var NodeServiceInterface
+	*/
+	protected $nodeService;
 
-  protected function createUniqueNode($parentNode, $nodeTemplate, $proposedNodeName) {
-    // run ./flow node:repair later on to generate nodepath segments
-    $nodeName = $this->nodeService->generateUniqueNodeName($parentNode->getPath());
-    $nodeTemplate->setName($nodeName);
-    $nodeTemplate->setProperty('uriPathSegment', $nodeName);
-    return $parentNode->createNodeFromTemplate($nodeTemplate);
-  }
+	protected function createUniqueNode($parentNode, $nodeTemplate, $proposedNodeName) {
+		// run ./flow node:repair later on to generate nodepath segments
+		$nodeName = $this->nodeService->generateUniqueNodeName($parentNode->getPath());
+		$nodeTemplate->setName($nodeName);
+		$nodeTemplate->setProperty('uriPathSegment', $nodeName);
+		return $parentNode->createNodeFromTemplate($nodeTemplate);
+	}
 }

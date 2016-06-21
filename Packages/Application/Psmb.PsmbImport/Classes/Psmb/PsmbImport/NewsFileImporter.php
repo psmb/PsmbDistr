@@ -12,59 +12,59 @@ use Ttree\ContentRepositoryImporter\DataType\Slug;
 
 class NewsFileImporter extends Importer
 {
-  /**
-   * @Flow\Inject
-   * @var ResourceManager
-   */
-  protected $resourceManager;
+	/**
+	 * @Flow\Inject
+	 * @var ResourceManager
+	 */
+	protected $resourceManager;
 
-  /**
-   * @Flow\Inject
-   * @var AssetRepository
-   */
-  protected $assetRepository;
+	/**
+	 * @Flow\Inject
+	 * @var AssetRepository
+	 */
+	protected $assetRepository;
 
-  public function process()
-  {
-    $nodeTemplate = new NodeTemplate();
-    $nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Psmb.NodeTypes:Asset'));
-    $this->processBatch($nodeTemplate);
-  }
+	public function process()
+	{
+		$nodeTemplate = new NodeTemplate();
+		$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Psmb.NodeTypes:Asset'));
+		$this->processBatch($nodeTemplate);
+	}
 
-  /**
-   * @param NodeTemplate $nodeTemplate
-   * @param array $data
-   */
-  public function processRecord(NodeTemplate $nodeTemplate, array $data)
-  {
-    $this->unsetAllNodeTemplateProperties($nodeTemplate);
+	/**
+	 * @param NodeTemplate $nodeTemplate
+	 * @param array $data
+	 */
+	public function processRecord(NodeTemplate $nodeTemplate, array $data)
+	{
+		$this->unsetAllNodeTemplateProperties($nodeTemplate);
 
-    $externalIdentifier = $data['__externalIdentifier'];
-    if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
-      return null;
-    }
+		$externalIdentifier = $data['__externalIdentifier'];
+		if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
+			return null;
+		}
 
-    $newsRecordMapping = $this->processedNodeService->get('Psmb\PsmbImport\NewsImporter', $data['__parentIdentifier']);
-    if ($newsRecordMapping) {
-      $newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
-      $mainCollection = $newsNode->getNode('main');
+		$newsRecordMapping = $this->processedNodeService->get('Psmb\PsmbImport\NewsImporter', $data['__parentIdentifier']);
+		if ($newsRecordMapping) {
+			$newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
+			$mainCollection = $newsNode->getNode('main');
 
-      $asset = $this->importFile($data['filename']);
-      $nodeTemplate->setProperty('asset', $asset);
-      $nodeTemplate->setProperty('title', $data['title']);
-      $mainCollection->createNodeFromTemplate($nodeTemplate);
-      $this->registerNodeProcessing($newsNode, $externalIdentifier);
-    } else {
-      $this->log("No news node with identifier " . $data['__parentIdentifier']);
-      return null;
-    }
-  }
+			$asset = $this->importFile($data['filename']);
+			$nodeTemplate->setProperty('asset', $asset);
+			$nodeTemplate->setProperty('title', $data['title']);
+			$mainCollection->createNodeFromTemplate($nodeTemplate);
+			$this->registerNodeProcessing($newsNode, $externalIdentifier);
+		} else {
+			$this->log("No news node with identifier " . $data['__parentIdentifier']);
+			return null;
+		}
+	}
 
-  protected function importFile ($fileName) {
-    $filePath = FLOW_PATH_ROOT . 'uploads/' . $fileName;
-  	$resource = $this->resourceManager->importResource($filePath);
-  	$asset = new Asset($resource);
-  	$this->assetRepository->add($asset);
-  	return $asset;
-  }
+	protected function importFile ($fileName) {
+		$filePath = FLOW_PATH_ROOT . 'uploads/' . $fileName;
+		$resource = $this->resourceManager->importResource($filePath);
+		$asset = new Asset($resource);
+		$this->assetRepository->add($asset);
+		return $asset;
+	}
 }

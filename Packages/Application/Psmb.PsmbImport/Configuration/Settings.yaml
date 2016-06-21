@@ -9,21 +9,62 @@ Ttree:
         password: pass
         charset: UTF8
     presets:
-      'base':
-        'category':
-          label: 'Import Categories'
+      'ground':
+        'conferences':
+          label: 'Import Conferences'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
+          dataProviderOptions:
+            startingPoint: 4
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
-            targetNode: 'categories'
+            targetNode: 'events/conferences'
+            siteNodePath: '/sites/site'
+        'tagsPeople':
+          label: 'Import People'
+          dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
+          dataProviderOptions:
+            startingPoint: 2
+          importerClassName: 'Psmb\PsmbImport\CategoryImporter'
+          importerOptions:
+            targetNode: 'tags/people'
+            siteNodePath: '/sites/site'
+        'tagsMovements':
+          label: 'Import Movements'
+          dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
+          dataProviderOptions:
+            startingPoint: 14
+          importerClassName: 'Psmb\PsmbImport\CategoryImporter'
+          importerOptions:
+            targetNode: 'tags/movements'
+            siteNodePath: '/sites/site'
+        'exhibitions':
+          label: 'Import Exhibitions'
+          dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
+          dataProviderOptions:
+            startingPoint: 20
+          importerClassName: 'Psmb\PsmbImport\CategoryImporter'
+          importerOptions:
+            targetNode: 'events/exhibitions'
+            siteNodePath: '/sites/site'
+        'collections':
+          label: 'Import Themes'
+          dataProviderClassName: 'Psmb\PsmbImport\DataProvider\CategoryDataProvider'
+          dataProviderOptions:
+            startingPoint: 91
+          importerClassName: 'Psmb\PsmbImport\CategoryImporter'
+          importerOptions:
+            targetNode: 'collections'
             siteNodePath: '/sites/site'
         'page':
-          label: 'Import Pages as Categories'
+          label: 'Import Sections'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\PageDataProvider'
+          dataProviderOptions:
+            startingPoint: 111
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
-            targetNode: 'pages'
+            targetNode: 'sections'
             siteNodePath: '/sites/site'
+      'base':
         'news':
           label: 'Import News'
           dataProviderClassName: 'Psmb\PsmbImport\DataProvider\NewsDataProvider'
