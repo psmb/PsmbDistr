@@ -56,14 +56,20 @@ class CategoryImporter extends Importer
 			return null;
 		}
 
-		$nodeTemplate->setProperty('title', $title);
 		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
+		$nodeTemplate->setProperty('title', $title);
+		if (isset($data['navTitle'])) {
+			$nodeTemplate->setProperty('navTitle', $data['navTitle']);
+		}
 		if (isset($data['replaceVariants'])) {
 			$nodeTemplate->setProperty('replaceVariants', $data['replaceVariants']);
 		}
+		if (isset($data['coordinates'])) {
+			$nodeTemplate->setProperty('coordinates', $data['coordinates']);
+		}
 
 		// Flatten category tree under one node
-		if ($this->options['flatten']) {
+		if (isset($this->options['flatten'])) {
 			// Skip top level nodes (parentIdentifier is null on top level)
 			if (!$data['__parentIdentifier']) {
 				return null;
