@@ -180,6 +180,7 @@ blah: &alohaRich
         elasticSearchMapping:
           type: string
           index: not_analyzed
+        indexing: ${value}
     tags:
       type: references
       ui:
@@ -189,7 +190,7 @@ blah: &alohaRich
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:Tag'
+              - 'Sfi.Site:AbstractTag'
     sections:
       type: references
       ui:
@@ -199,7 +200,7 @@ blah: &alohaRich
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:Tag'
+              - 'Sfi.Site:AbstractTag'
             startingPoint: '/sites/site/pages/node-575b9aad625a1/node-575b9aad769f1'
             threshold: 1
     collections:
@@ -211,17 +212,30 @@ blah: &alohaRich
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:Tag'
-    events:
+              - 'Sfi.Site:AbstractTag'
+            startingPoint: '/sites/site/collections'
+    projects:
       type: references
       ui:
-        label: 'Конференции/Выставки/Фестивали'
+        label: 'Проекты (Конференции/Выставки/...)'
         reloadIfChanged: true
         inspector:
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:Tag'
+              - 'Sfi.Site:AbstractTag'
+            startingPoint: '/sites/site/projects'
+    places:
+      type: references
+      ui:
+        label: 'Места'
+        reloadIfChanged: true
+        inspector:
+          group: newsRelations
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:PlaceTag'
+            startingPoint: '/sites/site/places'
 
     relatedNews:
       type: references
