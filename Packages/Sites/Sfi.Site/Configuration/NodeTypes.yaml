@@ -55,18 +55,38 @@ blah: &alohaRich
   ui:
     label: 'Главная страница'
 
-'Sfi.Site:Tag':
+'Sfi.Site:AbstractTag':
+  abstract: true
   superTypes:
     'TYPO3.Neos:Document': true
     'Psmb.Term:TermMixin': true
-  ui:
-    label: 'Категория'
   properties:
+    navTitle:
+      type: string
+      ui:
+        label: 'Короткое название (для меню)'
+        inspector:
+          group: document
     originalIdentifier:
       type: string
 
+'Sfi.Site:Tag':
+  superTypes:
+    'Sfi.Site:AbstractTag': true
+  ui:
+    label: 'Категория'
 
-
+'Sfi.Site:PlaceTag':
+  superTypes:
+    'Sfi.Site:AbstractTag': true
+  ui:
+    label: 'Место'
+  properties:
+    coordinates:
+      type: string
+      ui:
+        inspector:
+          group: document
 
 
 

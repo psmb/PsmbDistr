@@ -27,10 +27,12 @@ class CategoryDataProvider extends DataProvider {
 		$statement = $query->execute();
 		while ($record = $statement->fetch()) {
 			$this->result[] = [
-				'__externalIdentifier' => StringValue::create('c' . $record['uid'])->getValue(),
-				'__parentIdentifier' => ($record['parent'] == 0 || $record['parent'] == $this->options['startingPoint']) ? null : StringValue::create('c' . $record['parent'])->getValue(),
-				'title' => StringValue::create($record['title'])->getValue(),
-				'replaceVariants' => StringValue::create($this->replaceNewlinesToCsv($record['altnames']))->getValue()
+				'__externalIdentifier' => 'c' . $record['uid'],
+				'__parentIdentifier' => ($record['parent'] == 0 || $record['parent'] == $this->options['startingPoint']) ? null : 'c' . $record['parent'],
+				'title' => $record['fulltitle'] ? $record['fulltitle'] : $record['title'],
+				'navTitle' => $record['fulltitle'] ? $record['title'] : null,
+				'coordinates' => $record['coordinates'],
+				'replaceVariants' => $this->replaceNewlinesToCsv($record['altnames'])
 			];
 			$this->fetchByParent($record['uid']);
 		}
