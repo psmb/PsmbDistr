@@ -40,7 +40,12 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 	@context.isStream = ${true}
 	value = T:RawArray {
 		@context.query = ${Search.query(site).nodeType('Sfi.Site:News')}
-		@context.query.@process.filter = T:Case {
+		@context.query.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
+			{term: {tags: documentNode.identifier}},
+			{term: {places: documentNode.identifier}},
+			{term: {projects: documentNode.identifier}}
+		]})}
+		@context.query.@process.filterByType = T:Case {
 			photo {
 				condition = ${request.arguments.media == 'photo'}
 				renderer = ${value.exactMatch('isPhoto', true)}
