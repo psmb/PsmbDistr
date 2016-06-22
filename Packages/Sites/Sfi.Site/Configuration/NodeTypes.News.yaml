@@ -158,13 +158,14 @@ blah: &alohaRich
           group: 'news'
     type:
       type: string
-      defaultValue: 'ourNews'
       ui:
         label: 'Тип новости'
         inspector:
           group: newsRelations
           editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
+            allowEmpty: true
+            placeholder: 'Выберите тип новости'
             values:
               ourNews:
                 label: 'Наша новость (в потоке)'
