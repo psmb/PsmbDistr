@@ -52,7 +52,6 @@ prototype(Sfi.Site:Listable) < prototype(TYPO3.TypoScript:Array) {
 		collection = ${collection}
 		collection.@process.sort = ${value && value.count() > 0 && sortProperty ? value.sort(sortProperty, sortOrder) : value}
 		collection.@process.paginate = ${value.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).get()}
-		itemName = 'node'
 		itemRenderer = ContentCase
 	}
 	pagination = Sfi.Site:Pagination

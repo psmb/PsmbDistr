@@ -6,7 +6,6 @@ prototype(Sfi.Site:NewsRelatedList) < prototype(T:Array) {
 	list = T:Collection {
 		@process.tmlp = ${'<ul class="medium-block-grid-2">' + value + '</ul>'}
 		collection = ${relatedNews}
-		itemName = 'node'
 		itemRenderer = Sfi.Site:NewsShortSmall
 		@cache {
 			mode = 'cached'

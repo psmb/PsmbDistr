@@ -1,7 +1,6 @@
 prototype(Sfi.Site:SectionsNav) < prototype(T:Collection) {
 	@process.tmpl = ${'<ul class="sections-menu">' + value + '</ul>'}
 	collection = ${q(site).children('sections').children().get()}
-	itemName = 'node'
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sections-menu__item'
@@ -25,7 +24,6 @@ prototype(Sfi.Site:FooterSectionsNav) < prototype(Sfi.Site:SectionsNav) {
 
 prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 	collection = ${q(site).children('events').children().get()}
-	itemName = 'node'
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'
@@ -41,7 +39,6 @@ prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 }
 prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
 	collection = ${q(site).children('collections').children().get()}
-	itemName = 'node'
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'

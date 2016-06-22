@@ -63,7 +63,6 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 
 		content = TYPO3.TypoScript:Collection {
 			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
-			itemName = 'node'
 			itemRenderer = Sfi.Site:NewsShort
 		}
 

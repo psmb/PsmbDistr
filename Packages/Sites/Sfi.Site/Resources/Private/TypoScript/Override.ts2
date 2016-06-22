@@ -8,3 +8,7 @@ prototype(Psmb.NodeTypes:Image) < prototype(TYPO3.TypoScript:Tag) {
   attributes.class = 'figure'
   content.caption.attributes.class = 'figure__caption'
 }
+
+prototype(TYPO3.TypoScript:Collection) {
+	itemName = 'node'
+}

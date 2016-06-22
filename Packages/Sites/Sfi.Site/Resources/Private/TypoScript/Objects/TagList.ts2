@@ -1,7 +1,6 @@
 prototype(Sfi.Site:TagList) < prototype(T:Collection) {
 	@process.tmlp = ${'<span class="tag-list">' + value + '</span>'}
 	collection = ${q(q(node).property('tags')).filter('[instanceof Sfi.Site:Tag]').get()}
-	itemName = 'node'
 	itemRenderer = Sfi.Site:TagListItem
 }
 prototype(Sfi.Site:TagListItem) < prototype(T:Tag) {
