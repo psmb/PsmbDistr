@@ -11,6 +11,18 @@ class NewsCategoryRelationImporter extends Importer
 {
 	public function process()
 	{
+		// Create places node
+		$targetNodeName = 'places';
+		$this->storageNode = $this->siteNode->getNode($targetNodeName);
+		if ($this->storageNode === null) {
+			$storageNodeTemplate = new NodeTemplate();
+			$storageNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('TYPO3.Neos:Shortcut'));
+			$storageNodeTemplate->setProperty('title', $targetNodeName);
+			$storageNodeTemplate->setProperty('uriPathSegment', $targetNodeName);
+			$storageNodeTemplate->setName($targetNodeName);
+			$this->storageNode = $this->siteNode->createNodeFromTemplate($storageNodeTemplate);
+		}
+
 		$nodeTemplate = new NodeTemplate();
 		$this->processBatch($nodeTemplate);
 	}
@@ -53,19 +65,44 @@ class NewsCategoryRelationImporter extends Importer
 			}
 		}
 		if (isset($newsNode) && isset($tagNode)) {
+			$parentNodePath = $tagNode->getParentPath();
+			if (strrpos($parentNodePath, '/sites/site/projects/exhibitions/', -strlen($parentNodePath)) !== false) {
+				$originalTagNode = $tagNode;
+				$placeCategory = $this->getPlaceCategoryByTitle($tagNode);
+				$this->addTag($newsNode, $placeCategory, 'places');
+
+				// We set tagNode to its parent, to mark exhibition category
+				$tagNode = $originalTagNode->getParent();
+			}
 			$segment = explode('/', $tagNode->getParentPath())[3];
-			if (in_array($segment, ['tags', 'collections', 'events'])) {
-				$tags = $newsNode->getProperty($segment);
-				if (!is_array($tags)) {
-					$tags = [];
-				}
-				if (!in_array($tagNode, $tags)) {
-					$tags[] = $tagNode;
-					$newsNode->setProperty($segment, $tags);
-				}
+			if (in_array($segment, ['tags', 'collections', 'projects'])) {
+				$this->addTag($newsNode, $tagNode, $segment);
 			} else {
 				$this->log(sprintf('Unrecognized segment "%s"', $segment), LOG_ERR);
 			}
 		}
+	}
+	protected function addTag($newsNode, $tagNode, $property) {
+		$tags = $newsNode->getProperty($property);
+		if (!is_array($tags)) {
+			$tags = [];
+		}
+		if (!in_array($tagNode, $tags)) {
+			$tags[] = $tagNode;
+			$newsNode->setProperty($property, $tags);
+		}
+	}
+	protected function getPlaceCategoryByTitle($tagNode) {
+		$title = $tagNode->getProperty('title');
+		$q = new FlowQuery(array($this->storageNode));
+		$placeCategory = $q->children()->filter('[title = "' . $title . '"]')->get(0);
+		if (!$placeCategory) {
+			$nodeTemplate = new NodeTemplate();
+			$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Site:PlaceTag'));
+			$nodeTemplate->setProperty('title', $title);
+			$nodeTemplate->setProperty('coordinates', $tagNode->getProperty('coordinates'));
+			$placeCategory = $this->storageNode->createNodeFromTemplate($nodeTemplate);
+		}
+		return $placeCategory;
 	}
 }
