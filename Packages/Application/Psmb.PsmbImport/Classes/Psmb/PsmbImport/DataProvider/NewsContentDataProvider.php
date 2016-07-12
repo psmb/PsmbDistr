@@ -69,7 +69,7 @@ class NewsContentDataProvider extends DataProvider {
 				];
 			} else if (preg_match('/^<p\s+class="epigraph">(.+?)<\/p>$/', $i, $matches)){
 				return [
-					'_type' => 'Sfi.Site:Epigraph',
+					'_type' => 'Psmb.NodeTypes:Epigraph',
 					'text' => $matches[1]
 				];
 			} else if (preg_match('/^<p\s+class="author">(.+?)<\/p>$/', $i, $matches)){
