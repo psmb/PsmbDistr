@@ -3,7 +3,6 @@
 /Data/
 /Packages/Application/*
 !/Packages/Application/Psmb.PsmbImport/
-!/Packages/Application/Psmb.NodeTypes/
 /Packages/Framework/
 /Packages/Neos/
 /Packages/Plugins/
