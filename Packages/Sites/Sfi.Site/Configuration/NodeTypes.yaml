@@ -85,6 +85,7 @@ blah: &alohaRich
     coordinates:
       type: string
       ui:
+        label: 'Координаты'
         inspector:
           group: document
 
@@ -94,16 +95,6 @@ blah: &alohaRich
 
 
 
-
-
-'Sfi.Site:Epigraph':
-  superTypes:
-    'TYPO3.Neos:Content': true
-  ui:
-    label: 'Эпиграф'
-  properties:
-    text:
-      type: string
 
 'Sfi.YouTube:YouTube':
   superTypes:

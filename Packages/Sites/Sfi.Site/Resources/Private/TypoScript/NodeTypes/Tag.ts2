@@ -1,5 +1,12 @@
-prototype(Sfi.Site:Tag)>
-prototype(Sfi.Site:Tag) < prototype(T:Array) {
-	@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="large-9 columns">' + value + '</div></div></div>'}
-	newsList = Sfi.Site:Stream
+prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
+	title = ${'<div class="row"><div class="fixed-width"><h1 class="page-title"><div class="columns">' + node.properties.title + '</h1></div></div></div>'}
+	newsList = Sfi.Site:Stream {
+		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="large-9 columns">' + value + '</div></div></div>'}
+	}
 }
+
+prototype(Sfi.Site:Tag)>
+prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag)
+
+prototype(Sfi.Site:PlaceTag)>
+prototype(Sfi.Site:PlaceTag) < prototype(Sfi.Site:AbstractTag)

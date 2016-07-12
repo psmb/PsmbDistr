@@ -49,7 +49,3 @@ root.thePage {
 
 # Disable stupid layout mechanism
 root.layout>
-
-prototype(T:GlobalCacheIdentifiers).pagination = ${request.arguments.currentPage}
-prototype(T:GlobalCacheIdentifiers).ajax = ${request.arguments.ajax}
-prototype(T:GlobalCacheIdentifiers).media = ${request.arguments.media}

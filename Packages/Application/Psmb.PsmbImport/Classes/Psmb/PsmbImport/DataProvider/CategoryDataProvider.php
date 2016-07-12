@@ -29,8 +29,8 @@ class CategoryDataProvider extends DataProvider {
 			$this->result[] = [
 				'__externalIdentifier' => 'c' . $record['uid'],
 				'__parentIdentifier' => ($record['parent'] == 0 || $record['parent'] == $this->options['startingPoint']) ? null : 'c' . $record['parent'],
-				'title' => $record['fulltitle'] ? $record['fulltitle'] : $record['title'],
-				'navTitle' => $record['fulltitle'] ? $record['title'] : null,
+				'title' => $record['fullname'] ? $record['fullname'] : $record['title'],
+				'navTitle' => $record['fullname'] ? $record['title'] : null,
 				'coordinates' => $record['coordinates'],
 				'replaceVariants' => $this->replaceNewlinesToCsv($record['altnames'])
 			];

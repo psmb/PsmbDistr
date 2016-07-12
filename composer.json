@@ -20,6 +20,7 @@
         "flowpack/listable": "^0.4.1",
         "sfi/youtube": "^0.1.5",
         "psmb/term": "@dev",
+        "psmb/nodetypes": "@dev",
         "psmb/createnodebutton": "@dev",
         "typo3/typo3cr-search": "@dev",
         "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",

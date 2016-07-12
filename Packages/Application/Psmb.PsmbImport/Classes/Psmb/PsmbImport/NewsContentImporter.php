@@ -47,7 +47,6 @@ class NewsContentImporter extends Importer
 	public function processRecord(NodeTemplate $nodeTemplate, array $data)
 	{
 		// $this->log(print_r($data, 1));
-
 		$this->unsetAllNodeTemplateProperties($nodeTemplate);
 
 		$externalIdentifier = $data['__externalIdentifier'];

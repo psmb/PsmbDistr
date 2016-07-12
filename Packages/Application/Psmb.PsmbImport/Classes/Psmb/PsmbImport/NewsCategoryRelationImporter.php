@@ -97,8 +97,11 @@ class NewsCategoryRelationImporter extends Importer
 		$q = new FlowQuery(array($this->storageNode));
 		$placeCategory = $q->children()->filter('[title = "' . $title . '"]')->get(0);
 		if (!$placeCategory) {
+			$nodeName = Slug::create($title)->getValue();
 			$nodeTemplate = new NodeTemplate();
 			$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Site:PlaceTag'));
+			$nodeTemplate->setName($nodeName);
+			$nodeTemplate->setProperty('uriPathSegment', $nodeName);
 			$nodeTemplate->setProperty('title', $title);
 			$nodeTemplate->setProperty('coordinates', $tagNode->getProperty('coordinates'));
 			$placeCategory = $this->storageNode->createNodeFromTemplate($nodeTemplate);

@@ -64,14 +64,12 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 			}
 		}
 
-
-
+		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
+		aggregations = ${query.fieldBasedAggregation('isVideo', 'isVideo').fieldBasedAggregation('isPhoto', 'isPhoto').fieldBasedAggregation('isAudio', 'isAudio').fieldBasedAggregation('places', 'places').execute().aggregations}
 		content = TYPO3.TypoScript:Collection {
 			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
 			itemRenderer = Sfi.Site:NewsShort
 		}
-
-		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
 
 		@process.json = ${Json.stringify(value)}
 	}
@@ -80,11 +78,23 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 		entryTags {
 			1 = 'NodeType_Sfi.Site:News'
 		}
+		entryIdentifier {
+			pagination = ${request.arguments.currentPage}
+			ajax = ${request.arguments.ajax}
+			media = ${request.arguments.media}
+		}
 	}
 }
+
 
 root.stream {
 	@position = 'before thePage'
 	condition = ${request.arguments.ajax == 'true'}
 	renderer = Sfi.Site:StreamAjax
+}
+
+root.@cache.entryIdentifier {
+	pagination = ${request.arguments.currentPage}
+	ajax = ${request.arguments.ajax}
+	media = ${request.arguments.media}
 }
