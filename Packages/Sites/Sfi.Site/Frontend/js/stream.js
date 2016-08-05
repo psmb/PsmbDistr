@@ -20,6 +20,7 @@
 			}
 			var currentPage = 1;
 			var media = '';
+			var place = '';
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
 			var filterBar = node.querySelector('.js-filter-bar');
@@ -33,7 +34,8 @@
 					evt.preventDefault();
 					if (evt.target && evt.target.nodeName === 'A') {
 						content.innerHTML = '';
-						media = evt.target.getAttribute('data-filter');
+						media = evt.target.getAttribute('data-filter-media');
+						place = evt.target.getAttribute('data-filter-place');
 						currentPage = 1;
 						load();
 					}
@@ -45,6 +47,9 @@
 				var url = '?ajax=true&currentPage=' + currentPage;
 				if (media) {
 					url += '&media=' + media;
+				}
+				if (place) {
+					url += '&place=' + place;
 				}
 				var request = new XMLHttpRequest();
 				request.open('GET', url, true);

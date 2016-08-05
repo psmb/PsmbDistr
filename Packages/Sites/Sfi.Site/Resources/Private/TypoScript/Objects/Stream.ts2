@@ -1,72 +1,110 @@
 prototype(Sfi.Site:Stream) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Stream.html'
+	@context.query = Sfi.Site:StreamQuery
 	filterBar = T:Array {
+		@context.aggregations = Sfi.Site:StreamAggregations
 		all = TYPO3.TypoScript:Tag {
 			tagName = 'a'
-			attributes.data-filter = ''
+			attributes.data-filter-place = ''
+			attributes.data-filter-media = ''
 			attributes.class = 'filter-bar__item js-filter-bar--autoload'
 			attributes.href = '#'
 			content = 'все материалы'
+			content.@process.count = ${value + ' (' + query.count() + ')'}
 		}
-		video = TYPO3.TypoScript:Tag {
-			tagName = 'a'
-			attributes.data-filter = 'video'
-			attributes.class = 'filter-bar__item'
-			attributes.href = '#'
-			content = 'видео'
+		media = T:Collection {
+			collection = ${aggregations.media.buckets}
+			itemName = 'bucket'
+			itemKey = 'bucketName'
+			itemRenderer = T:Tag {
+				@if.notEmpty = ${bucket.doc_count > 0}
+				tagName = 'a'
+				attributes.data-filter-media = ${bucketName}
+				attributes.class = 'filter-bar__item'
+				attributes.href = '#'
+				content = T:Case {
+					isPhoto {
+						condition = ${bucketName == 'isPhoto'}
+						renderer = 'фото'
+					}
+					isVideo {
+						condition = ${bucketName == 'isVideo'}
+						renderer = 'видео'
+					}
+					isAudio {
+						condition = ${bucketName == 'isAudio'}
+						renderer = 'аудио'
+					}
+					@process.count = ${value + ' (' + bucket.doc_count + ')'}
+				}
+			}
 		}
-		photo = TYPO3.TypoScript:Tag {
-			tagName = 'a'
-			attributes.data-filter = 'photo'
-			attributes.class = 'filter-bar__item'
-			attributes.href = '#'
-			content = 'фото'
-		}
-		audio = TYPO3.TypoScript:Tag {
-			tagName = 'a'
-			attributes.data-filter = 'audio'
-			attributes.class = 'filter-bar__item'
-			attributes.href = '#'
-			content = 'аудио'
+		places = T:Collection {
+			collection = ${aggregations.places.buckets}
+			itemName = 'bucket'
+			itemRenderer = T:Tag {
+				tagName = 'a'
+				attributes.data-filter-place = ${bucket.key}
+				attributes.class = 'filter-bar__item'
+				attributes.href = '#'
+				content = ${q(site).find('#' + bucket.key).property('title')}
+				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+			}
 		}
 	}
 }
 
+prototype(Sfi.Site:StreamQuery) < prototype(T:Value) {
+	value = ${Search.query(site).nodeType('Sfi.Site:News')}
+	value.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
+		{term: {tags: documentNode.identifier}},
+		{term: {places: documentNode.identifier}},
+		{term: {projects: documentNode.identifier}}
+	]})}
+	value.@process.place = ${request.arguments.place ? value.exactMatch('places', request.arguments.place) : value}
+	value.@process.filterByType = T:Case {
+		photo {
+			condition = ${request.arguments.media == 'isPhoto'}
+			renderer = ${value.exactMatch('isPhoto', true)}
+		}
+		audio {
+			condition = ${request.arguments.media == 'isAudio'}
+			renderer = ${value.exactMatch('isAudio', true)}
+		}
+		video {
+			condition = ${request.arguments.media == 'isVideo'}
+			renderer = ${value.exactMatch('isVideo', true)}
+		}
+		default {
+			condition = ${true}
+			renderer = ${value.exactMatch('type', 'ourNews')}
+		}
+	}
+}
 
-prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
+prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
+	config = T:RawArray {
+		filters = T:RawArray {
+			filters = T:RawArray {
+				isPhoto = ${{term: {isPhoto: true}}}
+				isAudio = ${{term: {isAudio: true}}}
+				isVideo = ${{term: {isVideo: true}}}
+			}
+		}
+	}
+	value = ${query.aggregation('media', this.config).fieldBasedAggregation('places', 'places').execute().aggregations}
+}
+
+prototype(Sfi.Site:StreamAjax) < prototype(T:Value) {
 	@context.itemsPerPage = 12
 	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
 	# Used in NewsShort
 	@context.isStream = ${true}
+	@context.query = Sfi.Site:StreamQuery
 	value = T:RawArray {
-		@context.query = ${Search.query(site).nodeType('Sfi.Site:News')}
-		@context.query.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
-			{term: {tags: documentNode.identifier}},
-			{term: {places: documentNode.identifier}},
-			{term: {projects: documentNode.identifier}}
-		]})}
-		@context.query.@process.filterByType = T:Case {
-			photo {
-				condition = ${request.arguments.media == 'photo'}
-				renderer = ${value.exactMatch('isPhoto', true)}
-			}
-			audio {
-				condition = ${request.arguments.media == 'audio'}
-				renderer = ${value.exactMatch('isAudio', true)}
-			}
-			video {
-				condition = ${request.arguments.media == 'video'}
-				renderer = ${value.exactMatch('isVideo', true)}
-			}
-			default {
-				condition = ${true}
-				renderer = ${value.exactMatch('type', 'ourNews')}
-			}
-		}
-
 		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
-		aggregations = ${query.fieldBasedAggregation('isVideo', 'isVideo').fieldBasedAggregation('isPhoto', 'isPhoto').fieldBasedAggregation('isAudio', 'isAudio').fieldBasedAggregation('places', 'places').execute().aggregations}
-		content = TYPO3.TypoScript:Collection {
+		aggregations = Sfi.Site:StreamAggregations
+		content = T:Collection {
 			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
 			itemRenderer = Sfi.Site:NewsShort
 		}
@@ -79,8 +117,10 @@ prototype(Sfi.Site:StreamAjax) < prototype(TYPO3.TypoScript:Value) {
 			1 = 'NodeType_Sfi.Site:News'
 		}
 		entryIdentifier {
+			node = ${node}
 			pagination = ${request.arguments.currentPage}
 			ajax = ${request.arguments.ajax}
+			place = ${request.arguments.place}
 			media = ${request.arguments.media}
 		}
 	}
@@ -94,7 +134,9 @@ root.stream {
 }
 
 root.@cache.entryIdentifier {
+	node = ${node}
 	pagination = ${request.arguments.currentPage}
 	ajax = ${request.arguments.ajax}
+	place = ${request.arguments.place}
 	media = ${request.arguments.media}
 }
