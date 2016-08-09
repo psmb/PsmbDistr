@@ -1,4 +1,4 @@
-input, textarea, select{
+.input, .textarea, .select{
 	@extend .service-small--gray;
 	border: 1px solid $gray-line;
 	padding: $u;

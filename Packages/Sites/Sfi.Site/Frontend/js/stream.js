@@ -2,16 +2,6 @@
 	'use strict';
 
 	var onPageLoad = function () {
-		var iso = new Isotope( '.js-stream__content', {
-			itemSelector: '.js-stream__item',
-			sortBy: 'original-order',
-			masonry: {
-				columnWidth: 276,
-				gutter: 24,
-				isFitWidth: true
-			}
-		});
-
 
 		Stream(document.querySelector('.js-stream'));
 		function Stream(node) {
@@ -24,6 +14,18 @@
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
 			var filterBar = node.querySelector('.js-filter-bar');
+
+
+			var iso = new Isotope( '.js-stream__content', {
+				itemSelector: '.js-stream__item',
+				sortBy: 'original-order',
+				masonry: {
+					columnWidth: 276,
+					gutter: 24,
+					isFitWidth: true
+				}
+			});
+
 
 			if (loadMore && content && filterBar) {
 				loadMore.addEventListener('click', function (evt) {
