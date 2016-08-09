@@ -23,7 +23,7 @@
 <f:section name="important">
 	<li{attributes -> f:format.raw()}>
 		<a href="{nodeUri}" title={title}>
-			<div class="media-important__wrap section-color-bd">
+			<div class="media-important__wrap">
 				<div class="media-important__gradient"></div>
 				<div class="media-important__overlay">
 					<div class="media-important__date">
@@ -32,7 +32,6 @@
 					<h3 class="media-important__title">{title}</h3>
 					<div class="media-important__hiding">
 						<div class="media-important__teaser">{teaser}</div>
-						<div class="media-important__category">{categoryTitle}</div>
 					</div>
 				</div>
 				<img class="media__image" src={thumbUri} alt={title} />

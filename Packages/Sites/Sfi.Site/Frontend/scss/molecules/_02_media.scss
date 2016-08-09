@@ -71,8 +71,6 @@ Media news element. Used in `.stream` and in `.news-latest` organisms.
 
 	overflow: hidden;
 	background: white;
-	// Border color is defined is .section-color-bd
-	border-bottom: 4px solid;
 }
 	.media__body{
 		bottom: 4px;
@@ -85,7 +83,7 @@ Media news element. Used in `.stream` and in `.news-latest` organisms.
 	.media:hover .media__body{
 		position: absolute;
 	}
-	
+
 	// .media__image img{
 	// 	width: 100%;
 	// }
@@ -102,7 +100,7 @@ Media news element. Used in `.stream` and in `.news-latest` organisms.
 		max-height: 0;
 		overflow: hidden;
 		display: block;
-		
+
 		@extend .zeta;
 	}
 	.media:hover .media__teaser{
@@ -164,13 +162,11 @@ category:
 - molecules
 - media-important
 ---
-Important news. Used in `.news-stream`. 
+Important news. Used in `.news-stream`.
 */
 
 .media-important__wrap{
 		position: relative;
-		// Border color is defined is .section-color-bd
-		border-bottom: 3px solid;
 	}
 	.media-important__gradient{
 		@extend %gradient-tint;
@@ -302,15 +298,15 @@ Used in related news.
 .media-slide-menu{
 	position: relative;
 	overflow: hidden;
-	
+
 }
 
 	.media-slide-menu__link{
-		height: 71px;	
+		height: 71px;
 		display: block;
 	}
 	.media-slide-menu__body{
-		height: 71px;	
+		height: 71px;
 		padding-left: 2*$u;
 		border-bottom: 1px solid $gray-line;
 	}
@@ -357,7 +353,7 @@ Used in related news.
 .media-slide-menu__link.active{
 	background: url('/_Resources/Static/Packages/Sfi.Site/Icons/icon-arrow-navy.png') no-repeat left;
 	margin-right: 6*$u;
-	
+
 	.media-slide-menu__title{
 		color: $navy--light;
 		font-weight: 600;
@@ -426,8 +422,8 @@ Used in related news.
 
 ```html_example
 <div class="media-small--right">
-	<div class="media-small--right__wrap">	
-		<a class="media-small--right__image" href="#"><img src="http://placehold.it/60x60" ></a>	
+	<div class="media-small--right__wrap">
+		<a class="media-small--right__image" href="#"><img src="http://placehold.it/60x60" ></a>
 		<div class="media-small--right__body">
 			<h3 class="media-small--right__title">
 				<a href="#">Пока звучит слово правды... Сегодня – день погребения священника Павла Адельгейма</a>
@@ -503,7 +499,7 @@ Explicitly defined as announcement (small, minimal, etc.), because that's the on
 		line-height: 1.2;
 		margin: $u/2 0;
 	}
-	
+
 	.media-announcement.topnews .media-announcement__title {
 		color: $scarlet;
 	}
@@ -608,9 +604,9 @@ Explicitly defined as announcement (small, minimal, etc.), because that's the on
 ```html_example
 <div class="media-promo">
 	<img class="media-promo__image" src="/fileadmin/_processed_/csm_Penguins_7fc2e2403f.jpg" width="200" height="260" alt="">
-	<h3 class="media-promo__title">Крещение детей</h3> 
-	<div class="media-promo__count-number">4</div> 
-	<div class="media-promo__count">материалов</div> 
+	<h3 class="media-promo__title">Крещение детей</h3>
+	<div class="media-promo__count-number">4</div>
+	<div class="media-promo__count">материалов</div>
 </div>
 ```
 */
@@ -625,7 +621,7 @@ Explicitly defined as announcement (small, minimal, etc.), because that's the on
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background: rgba(0,0,0,0.5);  
+	background: rgba(0,0,0,0.5);
 }
 .media-promo__wrap{
 	position: relative;

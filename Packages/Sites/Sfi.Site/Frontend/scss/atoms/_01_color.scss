@@ -18,8 +18,8 @@ Base colors for the project. Try to not use this directly, but through proxy var
 
 ```html_example
 <div style="padding: 30px;">
-	<span style="background:#2a4072; padding:30px;color:white;">navy--dark</span>
-	<span style="background:#3b5ba1; padding:30px;">navy--light</span>
+	<span style="background:#1e5a86; padding:30px;color:white;">navy--dark</span>
+	<span style="background:#2a4072; padding:30px;">navy--light</span>
 	<span style="background:#151515; padding:30px;color:white;">gray--dark</span>
 	<span style="background:#656565; padding:30px;">gray</span>
 	<span style="background:#878787; padding:30px;">gray--light</span>
@@ -28,10 +28,8 @@ Base colors for the project. Try to not use this directly, but through proxy var
 </div>
 ```
  */
-// $navy--light: #3b5ba1;
-$navy--light: #495fb0;
-// $navy--dark: darken($navy--light,25%);
-$navy--dark: #364384;
+$navy--light: #1e5a86;
+$navy--dark: darken($navy--light,10%);
 //#2a4072;
 $gray: #656565;
 $gray--dark: #151515;
@@ -64,10 +62,10 @@ Section colors. Applied using helper classes: `.section-color` `.section-color-b
 	<span style="background:#e87f23; padding:30px;">orange</span>
 </div>
 ```
- */ 
-$scarlet: #ed492e; 
-$pink: #dc3067; 
-$violet: #af52aa; 
+ */
+$scarlet: #ed492e;
+$pink: #dc3067;
+$violet: #af52aa;
 $marine: #008899;
 $emerald: #1e9463;
 $grass: #61902f;
@@ -96,7 +94,7 @@ $orange: #e87f23;
 		blockquote{
 			:before{background: $color;}
 		}
-	}	
+	}
 }
 
 

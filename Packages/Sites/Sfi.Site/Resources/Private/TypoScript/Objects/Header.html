@@ -4,24 +4,18 @@
 		<div class="fixed-width" style="overflow:initial;">
 			<div class="columns">
 				<h1 class="site-title left">
-					<neos:link.node node="~" title="{f:translate(package:'Sfi.Site', id:'tomain')}" class="site-title__logo" >
-						<img src="/_Resources/Static/Packages/Sfi.Site/Images/psmb_small_logo.png" alt="{f:translate(package:'Sfi.Site', id:'global.fulltitle')}"/>
-					</neos:link.node>
-					<neos:link.node node="~" title="{f:translate(package:'Sfi.Site', id:'tomain')}" class="site-title__title" >
-						<f:translate package="Sfi.Site" id="global.fulltitle"/>
+					<neos:link.node node="~" title="{f:translate(package:'Sfi.Site', id:'tomain')}" class="site-title__logo" style="overflow: hidden">
+						<img width="300px" src="/_Resources/Static/Packages/Sfi.Site/Images/PsmbFish-ru.svg" alt="{f:translate(package:'Sfi.Site', id:'global.fulltitle')}"/>
 					</neos:link.node>
 				</h1>
 				<div class="left hide-for-small-only">
-					<neos:link.node node="{aboutUsNode}" class="light-button" />
 				</div>
-				<div class="right">
+				<div class="right" style="margin-top: 28px">
+					<neos:link.node node="{aboutUsNode}" class="light-button marginRight-double" />
 					{secondaryNav -> f:format.raw()}
 				</div>
 				<a href="#" class="mobile-nav__toggle js-mobile-nav__toggle show-for-small-only"><span></span><span></span><span></span></a>
 			</div>
 		</div>
-	</div>
-	<div class="header__lower-bar fixed-width hide-for-small-only">
-		{sectionsNav -> f:format.raw()}
 	</div>
 </nav>

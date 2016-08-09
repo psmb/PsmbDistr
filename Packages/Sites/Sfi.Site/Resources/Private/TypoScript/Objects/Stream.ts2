@@ -1,3 +1,44 @@
+prototype(Sfi.Site:StreamQuery) < prototype(T:Value) {
+	value = ${Search.query(site).nodeType('Sfi.Site:News')}
+	value.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
+		{term: {tags: documentNode.identifier}},
+		{term: {places: documentNode.identifier}},
+		{term: {projects: documentNode.identifier}}
+	]})}
+	value.@process.place = ${request.arguments.place ? value.exactMatch('places', request.arguments.place) : value}
+	value.@process.filterByType = T:Case {
+		photo {
+			condition = ${request.arguments.media == 'isPhoto'}
+			renderer = ${value.exactMatch('isPhoto', true)}
+		}
+		audio {
+			condition = ${request.arguments.media == 'isAudio'}
+			renderer = ${value.exactMatch('isAudio', true)}
+		}
+		video {
+			condition = ${request.arguments.media == 'isVideo'}
+			renderer = ${value.exactMatch('isVideo', true)}
+		}
+		default {
+			condition = ${true}
+			renderer = ${value.exactMatch('type', 'ourNews')}
+		}
+	}
+}
+
+prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
+	config = T:RawArray {
+		filters = T:RawArray {
+			filters = T:RawArray {
+				isPhoto = ${{term: {isPhoto: true}}}
+				isAudio = ${{term: {isAudio: true}}}
+				isVideo = ${{term: {isVideo: true}}}
+			}
+		}
+	}
+	value = ${query.aggregation('media', this.config).fieldBasedAggregation('places', 'places').execute().aggregations}
+}
+
 prototype(Sfi.Site:Stream) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Stream.html'
 	@context.query = Sfi.Site:StreamQuery
@@ -52,47 +93,6 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 			}
 		}
 	}
-}
-
-prototype(Sfi.Site:StreamQuery) < prototype(T:Value) {
-	value = ${Search.query(site).nodeType('Sfi.Site:News')}
-	value.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
-		{term: {tags: documentNode.identifier}},
-		{term: {places: documentNode.identifier}},
-		{term: {projects: documentNode.identifier}}
-	]})}
-	value.@process.place = ${request.arguments.place ? value.exactMatch('places', request.arguments.place) : value}
-	value.@process.filterByType = T:Case {
-		photo {
-			condition = ${request.arguments.media == 'isPhoto'}
-			renderer = ${value.exactMatch('isPhoto', true)}
-		}
-		audio {
-			condition = ${request.arguments.media == 'isAudio'}
-			renderer = ${value.exactMatch('isAudio', true)}
-		}
-		video {
-			condition = ${request.arguments.media == 'isVideo'}
-			renderer = ${value.exactMatch('isVideo', true)}
-		}
-		default {
-			condition = ${true}
-			renderer = ${value.exactMatch('type', 'ourNews')}
-		}
-	}
-}
-
-prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
-	config = T:RawArray {
-		filters = T:RawArray {
-			filters = T:RawArray {
-				isPhoto = ${{term: {isPhoto: true}}}
-				isAudio = ${{term: {isAudio: true}}}
-				isVideo = ${{term: {isVideo: true}}}
-			}
-		}
-	}
-	value = ${query.aggregation('media', this.config).fieldBasedAggregation('places', 'places').execute().aggregations}
 }
 
 prototype(Sfi.Site:StreamAjax) < prototype(T:Value) {

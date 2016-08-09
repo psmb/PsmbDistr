@@ -14,3 +14,9 @@
 	}
 }
 
+.button--alt {
+	background-color: $scarlet;
+	&:hover {
+		background-color: darken($scarlet, 15%);
+	}
+}

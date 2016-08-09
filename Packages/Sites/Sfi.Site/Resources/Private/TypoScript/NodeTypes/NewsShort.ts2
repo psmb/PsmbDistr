@@ -6,15 +6,14 @@ prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 			base = 'media js-media'
 			important = ${node.properties.isImportant && 'media-important'}
 			stream = ${isStream && 'stream__item js-stream__item'}
-			photo = 'TODO'
-			video = 'TODO'
-			audio = 'TODO'
+			photo = ${node.properties.isPhoto && 'photo'}
+			video = ${node.properties.isVideo && 'video'}
+			audio = ${node.properties.isAudio && 'audio'}
 		}
 	}
 	title = ${String.cropAtWord(node.properties.title, 90, '...')}
 	teaser = ${String.cropAtWord(node.properties.teaser, 100, '...')}
 	date = ${node.properties.date}
-	categoryTitle = 'Todo'
 	nodeUri = NodeUri {
 		node = ${node}
 	}

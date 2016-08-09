@@ -23,3 +23,64 @@ margin-top: 24px;
 		text-align: left;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+// FESTIVAL
+.Masthead {
+	background-position: center;
+	background-size: cover;
+}
+
+.Masthead-overlay {
+	background-color: rgba(75, 40, 40, .4);
+}
+
+.Masthead-summary {
+	p {
+		margin-bottom: $u;
+	}
+}
+
+.H0 {
+	font-size: rem-calc(36);
+	@media #{$medium-up}{
+		font-size: rem-calc(72);
+	}
+	font-weight: 600;
+	line-height: 1;
+}
+
+.H1Alt {
+	font-size: rem-calc(24);
+	@media #{$medium-up}{
+		font-size: rem-calc(36);
+	}
+	font-weight: 400;
+	font-style: italic;
+	line-height: 1.2;
+}
+
+.H2 {
+	font-size: rem-calc(22);
+	@media #{$medium-up}{
+		font-size: rem-calc(30);
+	}
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.Fox {
+	font-size: rem-calc(18);
+	font-weight: 400;
+	font-style: italic;
+	line-height: 1.2;
+}
