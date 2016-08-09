@@ -1,0 +1,28 @@
+prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
+	list = T:Collection {
+		@process.tmpl = ${'<div class="interesting-themes js-interesting-themes">
+			<span class="interesting-themes__label">Интересные темы</span>
+			<section class="filters js-filter-bar"><ul>' + value + '</ul></section>
+		</div>'}
+
+		@context.query = Sfi.Site:StreamQuery
+		aggregations = Sfi.Site:StreamAggregations
+		collection = ${this.aggregations.collections.buckets}
+		itemName = 'bucket'
+		itemRenderer = T:Tag {
+			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item">' + value + '</li>'}
+			tagName = 'a'
+			attributes.data-filter-collection = ${bucket.key}
+			attributes.class = 'js-filter-bar__item'
+			attributes.href = '#'
+			content = ${q(site).find('#' + bucket.key).property('title')}
+			content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+		}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = 'NodeType_Sfi.Site:Tag'
+		}
+	}
+}

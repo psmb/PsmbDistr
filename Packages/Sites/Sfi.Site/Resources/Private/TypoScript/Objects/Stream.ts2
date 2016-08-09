@@ -1,11 +1,14 @@
 prototype(Sfi.Site:StreamQuery) < prototype(T:Value) {
 	value = ${Search.query(site).nodeType('Sfi.Site:News')}
 	value.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
+		{term: {sections: documentNode.identifier}},
 		{term: {tags: documentNode.identifier}},
 		{term: {places: documentNode.identifier}},
-		{term: {projects: documentNode.identifier}}
+		{term: {projects: documentNode.identifier}},
+		{term: {collections: documentNode.identifier}}
 	]})}
 	value.@process.place = ${request.arguments.place ? value.exactMatch('places', request.arguments.place) : value}
+	value.@process.collection = ${request.arguments.collection ? value.exactMatch('collections', request.arguments.collection) : value}
 	value.@process.filterByType = T:Case {
 		photo {
 			condition = ${request.arguments.media == 'isPhoto'}
@@ -36,7 +39,7 @@ prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 			}
 		}
 	}
-	value = ${query.aggregation('media', this.config).fieldBasedAggregation('places', 'places').execute().aggregations}
+	value = ${query.aggregation('media', this.config).fieldBasedAggregation('collections', 'collections').fieldBasedAggregation('places', 'places').execute().aggregations}
 }
 
 prototype(Sfi.Site:Stream) < prototype(T:Template) {
@@ -47,8 +50,9 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 		all = TYPO3.TypoScript:Tag {
 			tagName = 'a'
 			attributes.data-filter-place = ''
+			attributes.data-filter-collection = ''
 			attributes.data-filter-media = ''
-			attributes.class = 'filter-bar__item js-filter-bar--autoload'
+			attributes.class = 'filter-bar__item js-filter-bar__item js-filter-bar--autoload'
 			attributes.href = '#'
 			content = 'все материалы'
 			content.@process.count = ${value + ' (' + query.count() + ')'}
@@ -61,7 +65,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 				@if.notEmpty = ${bucket.doc_count > 0}
 				tagName = 'a'
 				attributes.data-filter-media = ${bucketName}
-				attributes.class = 'filter-bar__item'
+				attributes.class = 'filter-bar__item js-filter-bar__item'
 				attributes.href = '#'
 				content = T:Case {
 					isPhoto {
@@ -86,7 +90,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 			itemRenderer = T:Tag {
 				tagName = 'a'
 				attributes.data-filter-place = ${bucket.key}
-				attributes.class = 'filter-bar__item'
+				attributes.class = 'filter-bar__item js-filter-bar__item'
 				attributes.href = '#'
 				content = ${q(site).find('#' + bucket.key).property('title')}
 				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
@@ -103,7 +107,6 @@ prototype(Sfi.Site:StreamAjax) < prototype(T:Value) {
 	@context.query = Sfi.Site:StreamQuery
 	value = T:RawArray {
 		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
-		aggregations = Sfi.Site:StreamAggregations
 		content = T:Collection {
 			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
 			itemRenderer = Sfi.Site:NewsShort
@@ -120,6 +123,7 @@ prototype(Sfi.Site:StreamAjax) < prototype(T:Value) {
 			node = ${node}
 			pagination = ${request.arguments.currentPage}
 			ajax = ${request.arguments.ajax}
+			collection = ${request.arguments.collection}
 			place = ${request.arguments.place}
 			media = ${request.arguments.media}
 		}
@@ -137,6 +141,7 @@ root.@cache.entryIdentifier {
 	node = ${node}
 	pagination = ${request.arguments.currentPage}
 	ajax = ${request.arguments.ajax}
+	collection = ${request.arguments.collection}
 	place = ${request.arguments.place}
 	media = ${request.arguments.media}
 }
