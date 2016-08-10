@@ -14,7 +14,7 @@
 			var collection = '';
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
-			var filterBars = document.querySelectorAll('.js-filter-bar');
+			var filterBars = document.getElementsByClassName('js-filter-bar');
 
 
 			var iso = new Isotope( '.js-stream__content', {
@@ -33,10 +33,17 @@
 					evt.preventDefault();
 					load();
 				});
-				Array.prototype.forEach.call(filterBars, function(filterBar){
+				Array.prototype.forEach.call(filterBars, function (filterBar) {
+					var filterBarItems = document.getElementsByClassName('js-filter-bar__item');
 					filterBar.addEventListener('click', function (evt) {
 						evt.preventDefault();
 						if (evt.target && evt.target.classList.contains('js-filter-bar__item')) {
+							Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
+								console.log(filterBarItem);
+								filterBarItem.classList.remove('active');
+							});
+							evt.target.classList.add('active');
+
 							content.innerHTML = '';
 							media = evt.target.getAttribute('data-filter-media');
 							place = evt.target.getAttribute('data-filter-place');

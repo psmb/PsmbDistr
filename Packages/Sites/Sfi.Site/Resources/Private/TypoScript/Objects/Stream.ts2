@@ -49,10 +49,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 		@context.aggregations = Sfi.Site:StreamAggregations
 		all = TYPO3.TypoScript:Tag {
 			tagName = 'a'
-			attributes.data-filter-place = ''
-			attributes.data-filter-collection = ''
-			attributes.data-filter-media = ''
-			attributes.class = 'filter-bar__item js-filter-bar__item js-filter-bar--autoload'
+			attributes.class = 'filter-bar__item js-filter-bar__item active'
 			attributes.href = '#'
 			content = 'все материалы'
 			content.@process.count = ${value + ' (' + query.count() + ')'}
@@ -84,18 +81,18 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 				}
 			}
 		}
-		places = T:Collection {
-			collection = ${aggregations.places.buckets}
-			itemName = 'bucket'
-			itemRenderer = T:Tag {
-				tagName = 'a'
-				attributes.data-filter-place = ${bucket.key}
-				attributes.class = 'filter-bar__item js-filter-bar__item'
-				attributes.href = '#'
-				content = ${q(site).find('#' + bucket.key).property('title')}
-				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
-			}
-		}
+#		places = T:Collection {
+#			collection = ${aggregations.places.buckets}
+#			itemName = 'bucket'
+#			itemRenderer = T:Tag {
+#				tagName = 'a'
+#				attributes.data-filter-place = ${bucket.key}
+#				attributes.class = 'filter-bar__item js-filter-bar__item'
+#				attributes.href = '#'
+#				content = ${q(site).find('#' + bucket.key).property('title')}
+#				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+#			}
+#		}
 	}
 }
 

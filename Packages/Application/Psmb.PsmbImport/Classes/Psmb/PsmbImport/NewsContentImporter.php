@@ -7,33 +7,9 @@ use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeTemplate;
 use Ttree\ContentRepositoryImporter\DataType\Slug;
 
-use TYPO3\Flow\Object\ObjectManagerInterface;
-use TYPO3\Flow\Resource\ResourceManager;
-use TYPO3\Media\Domain\Model\Image;
-use TYPO3\Media\Domain\Model\ImageVariant;
-use TYPO3\Media\Domain\Repository\ImageRepository;
-use TYPO3\Flow\Persistence\PersistenceManagerInterface;
 
 class NewsContentImporter extends Importer
 {
-	/**
-	 * @Flow\Inject
-	 * @var ObjectManagerInterface
-	 */
-	protected $objectManager;
-
-	/**
-	 * @Flow\Inject
-	 * @var ResourceManager
-	 */
-	protected $resourceManager;
-
-	/**
-	 * @Flow\Inject
-	 * @var ImageRepository
-	 */
-	protected $imageRepository;
-
 	public function process()
 	{
 		$nodeTemplate = new NodeTemplate();
@@ -63,7 +39,7 @@ class NewsContentImporter extends Importer
 		$newsNode->setProperty('credit', $data['credit']);
 
 		if (isset($data['thumbImage']['filename'])) {
-			$filePath = $this->getFilePath($data['thumbImage']['filename']);
+			$filePath = $this->getFilePath('uploads/' . $data['thumbImage']['filename']);
 			if ($filePath) {
 				$image = $this->importImage($filePath);
 				$newsNode->setProperty('thumbImage', $image);
@@ -103,7 +79,7 @@ class NewsContentImporter extends Importer
 				$nodeTemplate->setProperty('text', $contentItem['text']);
 				break;
 			case 'Psmb.NodeTypes:Image':
-				$filePath = $this->getFilePath($contentItem['filename']);
+				$filePath = $this->getFilePath('uploads/' . $contentItem['filename']);
 				if ($filePath) {
 					$image = $this->importImage($filePath);
 					$nodeTemplate->setProperty('image', $image);
@@ -119,29 +95,5 @@ class NewsContentImporter extends Importer
 				break;
 		}
 		return $nodeTemplate;
-	}
-
-	protected function getFilePath($fileName) {
-		if (in_array(pathinfo(strtolower($fileName), PATHINFO_EXTENSION), ["jpg", "jpeg", "gif", "png"])) {
-			$filePath = FLOW_PATH_ROOT . 'uploads/' . $fileName;
-			if (!file_exists($filePath)) {
-				$this->log("Missing file: " . $filePath);
-			} else {
-				return $filePath;
-			}
-		} else {
-			$this->log("Illegal mediaItem file extension of file: " . $fileName);
-			return null;
-		}
-	}
-
-	protected function importImage($filename) {
-		$resource = $this->resourceManager->importResource($filename);
-
-		$image = new Image($resource);
-		$this->imageRepository->add($image);
-
-		$processingInstructions = [];
-		return $this->objectManager->get('TYPO3\Media\Domain\Model\ImageVariant', $image, $processingInstructions);
 	}
 }

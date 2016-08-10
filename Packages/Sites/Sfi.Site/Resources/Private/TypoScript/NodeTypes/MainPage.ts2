@@ -4,4 +4,5 @@ prototype(Sfi.Site:MainPage) {
 	collectionsList = Sfi.Site:CollectionsList
 	externalNews = Sfi.Site:NewsExternalList
 	stream = Sfi.Site:Stream
+	blogList = Sfi.Site:BlogList
 }

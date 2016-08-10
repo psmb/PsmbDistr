@@ -1,0 +1,23 @@
+prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/BlogShort.html'
+
+	title = ${node.properties.title}
+	nodeUri = NodeUri {
+		node = ${node}
+	}
+	attributes = T:Attributes {
+		href = ${node.properties.isExternal ? node.properties.url : this.nodeUri}
+		target = ${node.properties.isExternal && '_blank'}
+	}
+
+	authorName = ${node.properties.author.properties.name}
+	thumbUri = ImageUri {
+		asset = ${node.properties.author.properties.photo}
+		# No idea why this is needed
+		maximumWidth>
+		width = 77
+		height = 77
+		allowCropping = TRUE
+		allowUpscaling = TRUE
+	}
+}

@@ -1,0 +1,85 @@
+# Define Aloha presets to reuse throughout the document
+blah: &alohaPlain
+  placeholder: 'Enter title here'
+  format:
+    b: false
+    i: false
+    u: false
+    sub: false
+    sup: false
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
+  table: {  }
+  list: {  }
+  link:
+    a: false
+  alignment: {  }
+
+blah: &alohaRich
+  placeholder: 'Enter title here'
+  format:
+    b: true
+    i: true
+    u: false
+    sub: true
+    sup: true
+    p: false
+    h1: false
+    h2: false
+    h3: false
+    pre: false
+    removeFormat: false
+  table: {  }
+  list: {  }
+  link:
+    a: true
+  alignment: {  }
+
+
+'Sfi.Site:Blog':
+  superTypes:
+    - 'TYPO3.Neos:Document'
+  ui:
+    label: 'Блог'
+    inspector:
+      groups:
+        blog:
+          label: 'Атрибуты материала'
+        newsRelations:
+          label: 'Отношения материала'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    title:
+      ui:
+        inlineEditable: true
+        aloha:
+          <<: *alohaPlain
+          placeholder: 'Заголовок блоговой записи'
+    author:
+      type: 'reference'
+      ui:
+        label: 'Автор'
+        inspector:
+          group: 'blog'
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:Author'
+            startingPoint: '/sites/site/author'
+    isExternal:
+      type: boolean
+      ui:
+        label: 'Внешняя блоговая запись'
+        inspector:
+          group: 'blog'
+    url:
+      type: 'string'
+      ui:
+        label: 'Ссылка'
+        inspector:
+          group: 'blog'

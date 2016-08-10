@@ -109,3 +109,11 @@ Ttree:
           importerOptions:
             siteNodePath: '/sites/site'
           batchSize: 100
+        'blogs':
+          label: 'Import blogs'
+          dataProviderClassName: 'Psmb\PsmbImport\DataProvider\BlogsDataProvider'
+          importerClassName: 'Psmb\PsmbImport\BlogsImporter'
+          importerOptions:
+            siteNodePath: '/sites/site'
+            targetNode: 'blogs'
+          batchSize: 100

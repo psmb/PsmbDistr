@@ -56,7 +56,6 @@ class NewsImporter extends Importer
 		$nodeTemplate->setProperty('announcementPlace', $data['announcementPlace']);
 		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
 
-		$node = $this->storageNode->createNodeFromTemplate($nodeTemplate);
 		$node = $this->createUniqueNode($this->storageNode, $nodeTemplate, $desiredNodeName);
 
 		$this->registerNodeProcessing($node, $externalIdentifier);
