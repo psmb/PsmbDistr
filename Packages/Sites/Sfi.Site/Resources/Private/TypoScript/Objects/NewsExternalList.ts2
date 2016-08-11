@@ -9,8 +9,7 @@ prototype(Sfi.Site:NewsExternalList) < prototype(T:Array) {
 		tagName = 'a'
 		attributes.class = 'service'
 		attributes.href = NodeUri {
-			# TODO: link to real news archive
-			node = ${site}
+			node = ${q(site).children('[uriPathSegment="obzor-smi"]').get(0)}
 		}
 		# TODO i18n
 		content = 'Архив материалов'

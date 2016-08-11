@@ -1,14 +1,9 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
-<a name="news"></a>
-<div data-magellan-destination="news">
-	<div class="stream js-stream" id="more_news" >
-		<h2 data-magellan-destination="top" class="block-title-divider left" style="margin-top: -5px;">
-			<span>Новое</span>
-		</h2>
-		<section class="filter-bar js-filter-bar">
-			{filterBar -> f:format.raw()}
-		</section>
-		<ul class="stream__content js-stream__content"></ul>
-		<a class="stream__loadmore js-stream__loadmore" href="#">загрузить еще</a>
-	</div>
+
+<div class="stream js-stream" id="more_news" >
+	<section class="filter-bar js-filter-bar">
+		{filterBar -> f:format.raw()}
+	</section>
+	<ul class="stream__content js-stream__content"></ul>
+	<a class="stream__loadmore js-stream__loadmore" href="#">загрузить еще</a>
 </div>

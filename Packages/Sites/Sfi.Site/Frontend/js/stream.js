@@ -8,10 +8,14 @@
 			if (!node) {
 				return null;
 			}
-			var currentPage = 1;
-			var media = '';
-			var place = '';
-			var collection = '';
+
+			var requestState = {
+				currentPage: 1,
+				media: '',
+				place: '',
+				collection: ''
+			};
+
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
 			var filterBars = document.getElementsByClassName('js-filter-bar');
@@ -39,16 +43,17 @@
 						evt.preventDefault();
 						if (evt.target && evt.target.classList.contains('js-filter-bar__item')) {
 							Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
-								console.log(filterBarItem);
 								filterBarItem.classList.remove('active');
 							});
 							evt.target.classList.add('active');
 
 							content.innerHTML = '';
-							media = evt.target.getAttribute('data-filter-media');
-							place = evt.target.getAttribute('data-filter-place');
-							collection = evt.target.getAttribute('data-filter-collection');
-							currentPage = 1;
+							requestState = {
+								media: evt.target.getAttribute('data-filter-media'),
+								place: evt.target.getAttribute('data-filter-place'),
+								collection: evt.target.getAttribute('data-filter-collection'),
+								currentPage: 1
+							};
 							load();
 						}
 					});
@@ -57,15 +62,15 @@
 			}
 
 			function load() {
-				var url = '?ajax=true&currentPage=' + currentPage;
-				if (media) {
-					url += '&media=' + media;
+				var url = '?ajax=true&currentPage=' + requestState.currentPage;
+				if (requestState.media) {
+					url += '&media=' + requestState.media;
 				}
-				if (place) {
-					url += '&place=' + place;
+				if (requestState.place) {
+					url += '&place=' + requestState.place;
 				}
-				if (collection) {
-					url += '&collection=' + collection;
+				if (requestState.collection) {
+					url += '&collection=' + requestState.collection;
 				}
 				var request = new XMLHttpRequest();
 				request.open('GET', url, true);
@@ -89,7 +94,7 @@
 							media_fix_height();
 
 							loadMore.disabled = false;
-							currentPage++;
+							requestState.currentPage++;
 							// If nothing left to load
 							if (!resp.loadMore) {
 								loadMore.innerHTML = 'конец!';

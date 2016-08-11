@@ -1,0 +1,9 @@
+prototype(Sfi.Site:Archive)>
+prototype(Sfi.Site:Archive) < prototype(T:Array) {
+	title.@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
+	title = ${'<h1 class="page-title paddingTop-double">' + node.properties.title + '</h1>'}
+	stream.@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
+	stream = Sfi.Site:Stream {
+		filterBar>
+	}
+}

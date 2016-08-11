@@ -55,6 +55,29 @@ blah: &alohaRich
   ui:
     label: 'Главная страница'
 
+'Sfi.Site:BlogArchive':
+  superTypes:
+    'TYPO3.Neos:Document': true
+  ui:
+    label: 'Архив блогов'
+
+'Sfi.Site:Archive':
+  superTypes:
+    'TYPO3.Neos:Document': true
+  ui:
+    label: 'Архив'
+
+'Sfi.Site:PresentationPage':
+  superTypes:
+    'TYPO3.Neos:Document': true
+  childNodes:
+    faces:
+      type: 'TYPO3.Neos:ContentCollection'
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
+  ui:
+    label: 'О нас'
+
 'Sfi.Site:AbstractTag':
   abstract: true
   superTypes:

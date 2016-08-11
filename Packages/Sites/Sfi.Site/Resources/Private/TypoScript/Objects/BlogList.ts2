@@ -3,22 +3,22 @@ prototype(Sfi.Site:BlogList) < prototype(T:Array) {
 		# collection = ${Search.query(site).nodeType('Sfi.Site:Blog').limit(6).execute()}
 		collection = ${Array.slice(Array.reverse(q(site).find('[instanceof Sfi.Site:Blog]').get()), 0, 3)}
 		itemRenderer = Sfi.Site:BlogShort
+
+		@cache {
+			mode = 'cached'
+			entryTags {
+				1 = 'NodeType_Sfi.Site:Blog'
+			}
+		}
 	}
 	link = T:Tag {
 		@process.tmpl = ${'<div>' + value + '</div>'}
 		tagName = 'a'
 		attributes.class = 'action--small primary-color'
 		attributes.href = NodeUri {
-			# TODO: link to real news archive
-			node = ${site}
+			node = ${q(site).children('[uriPathSegment="blogs"]').get(0)}
 		}
 		# TODO i18n
 		content = 'Еще'
-	}
-	@cache {
-		mode = 'cached'
-		entryTags {
-			1 = 'NodeType_Sfi.Site:Blog'
-		}
 	}
 }

@@ -35,7 +35,7 @@
 
 <div class="row">
 	<div class="fixed-width">
-		<div class="columns" style="padding-bottom: 12px">
+		<div class="columns paddingBottom-single">
 			<a name="announcements"></a>
 			<h2 data-magellan-destination="announcements" class="block-title-divider" style="margin-top: 0; margin-bottom: 0;">
 				<span>Анонсы</span>
@@ -47,10 +47,16 @@
 <div class="row bg-gray">
 	<div class="fixed-width">
 		<div class="large-9 columns">
-			{stream -> f:format.raw()}
+			<a name="news"></a>
+			<div data-magellan-destination="news">
+				<h2 data-magellan-destination="top" class="block-title-divider left" style="margin-top: -5px;">
+					<span>Новое</span>
+				</h2>
+				{stream -> f:format.raw()}
+			</div>
 		</div>
 		<div class="large-3 columns" style="padding-top: 52px;">
-			БРАТСКАЯ ЭНЦИКЛОПЕДИЯ
+			<!-- TODO: enc -->
 			{collectionsList -> f:format.raw()}
 
 			<div class="wrap blogs" >
