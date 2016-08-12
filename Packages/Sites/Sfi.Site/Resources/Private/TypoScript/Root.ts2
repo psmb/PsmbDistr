@@ -24,6 +24,16 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 				rel = 'stylesheet'
 			}
 		}
+		stylesheets.vendor = T:Tag {
+			tagName = 'link'
+			attributes {
+				href = T:ResourceUri {
+					path = 'resource://Sfi.Site/Public/built/vendor.css'
+				}
+				type = 'text/css'
+				rel = 'stylesheet'
+			}
+		}
 	}
 	# TODO: htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
 	bodyTag.attributes.class = 'Page'

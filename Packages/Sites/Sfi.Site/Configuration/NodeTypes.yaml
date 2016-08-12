@@ -40,9 +40,6 @@ blah: &alohaRich
     a: true
   alignment: {  }
 
-'TYPO3.Neos.NodeTypes:Page':
-  abstract: TRUE
-
 'Sfi.Site:Page':
   superTypes:
     'TYPO3.Neos:Document': true
@@ -77,6 +74,18 @@ blah: &alohaRich
       type: 'TYPO3.Neos:ContentCollection'
   ui:
     label: 'О нас'
+  properties:
+    teachers:
+      type: 'references'
+      ui:
+        label: 'Наши учителя'
+        reloadIfChanged: true
+        inspector:
+          group: document
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:AbstractTag'
+            startingPoint: '/sites/site/tags/people'
 
 'Sfi.Site:AbstractTag':
   abstract: true
@@ -92,6 +101,13 @@ blah: &alohaRich
           group: document
     originalIdentifier:
       type: string
+    thumbImage:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото снаружи'
+        reloadIfChanged: TRUE
+        inspector:
+          group: document
 
 'Sfi.Site:Tag':
   superTypes:

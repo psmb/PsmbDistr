@@ -1,0 +1,60 @@
+prototype(Sfi.Site:PresentationPage) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/PresentationPage.html'
+
+	faces = T:Collection {
+		@process.tmpl = ${'<div id="ri-grid" class="ri-grid ri-grid-size-2"><ul>' + value + '</ul></div>'}
+		itemName = 'asset'
+		collection = ${MediaQuery.imagesByTag('PresentationFaces')}
+		itemRenderer = ImageTag {
+			@process.tmpl = ${'<li><a href="/o-nas.html/#">' + value + '</a></li>'}
+			asset = ${asset}
+			width = 150
+			height = 150
+			allowCropping = ${true}
+			@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+		}
+	}
+
+	sections = T:Collection {
+		@process.tmpl = ${'<ul class="paddingTop-single">' + value + '</ul>'}
+		collection = ${q(site).children('sections').children().get()}
+		itemRenderer = T:Tag {
+			tagName = 'a'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${'<li class="paragraph primary-color">' + node.properties.title + '</li>'}
+		}
+	}
+
+	ourHistoryUri = NodeUri {
+		# TODO: Find correct article
+		node = ${q(site).find('#c8dfeed8-10ce-4422-ba81-394e846d620a').get(0)}
+	}
+
+	ourTeachers = T:Collection {
+		@process.tmpl = ${'<ul class="teachers [ large-block-grid-5 medium-block-grid-5 small-block-grid-2 ]">' + value + '</ul>'}
+		collection = ${node.properties.teachers}
+		itemRenderer = T:Tag {
+			@process.tmpl = ${'<li class="paragraph primary-color">' + value + '</li>'}
+			tagName = 'a'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = T:Array {
+				image = ImageTag {
+					@process.tmpl = ${'<div class="teachers__imgwrap">' + value + '</div>'}
+					asset = ${node.properties.thumbImage}
+					width = 242
+					height = 242
+					allowCropping = ${true}
+				}
+
+
+				caption = ${'<span class="teachers__caption">' + node.properties.title + '</span>'}
+			}
+		}
+
+
+	}
+}

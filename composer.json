@@ -26,6 +26,11 @@
         "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
         "flowpack/searchplugin": "@dev"
     },
+    "extra": {
+  		"neos": {
+  			"default-disabled-packages": ["flowpack/neos-frontendlogin", "typo3/neos-nodetypes"]
+  		}
+  	},
     "scripts": {
         "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
