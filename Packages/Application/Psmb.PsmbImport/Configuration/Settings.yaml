@@ -18,6 +18,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'projects/conferences'
+            targetNodeType: 'Sfi.Site:Project'
             siteNodePath: '/sites/site'
         'tagsPeople':
           label: 'Import People'
@@ -27,6 +28,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'tags/people'
+            targetNodeType: 'Sfi.Site:Tag'
             siteNodePath: '/sites/site'
         'tagsMovements':
           label: 'Import Movements'
@@ -36,6 +38,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'tags/movements'
+            targetNodeType: 'Sfi.Site:Tag'
             siteNodePath: '/sites/site'
         'exhibitions':
           label: 'Import Exhibitions'
@@ -45,6 +48,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'projects/exhibitions'
+            targetNodeType: 'Sfi.Site:Project'
             siteNodePath: '/sites/site'
         'collections':
           label: 'Import Themes'
@@ -54,6 +58,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'collections'
+            targetNodeType: 'Sfi.Site:Tag'
             flatten: true
             siteNodePath: '/sites/site'
         'page':
@@ -64,6 +69,7 @@ Ttree:
           importerClassName: 'Psmb\PsmbImport\CategoryImporter'
           importerOptions:
             targetNode: 'sections'
+            targetNodeType: 'Sfi.Site:Tag'
             siteNodePath: '/sites/site'
       'base':
         'news':

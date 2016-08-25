@@ -37,7 +37,7 @@ class CategoryImporter extends Importer
 		}
 
 		$nodeTemplate = new NodeTemplate();
-		$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Site:Tag'));
+		$nodeTemplate->setNodeType($this->nodeTypeManager->getNodeType($this->options['targetNodeType']));
 		$this->processBatch($nodeTemplate);
 	}
 
