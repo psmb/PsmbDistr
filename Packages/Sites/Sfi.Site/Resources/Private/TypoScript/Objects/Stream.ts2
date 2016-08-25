@@ -62,7 +62,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 	@context.query = Sfi.Site:StreamQuery
 	filterBar = T:Array {
 		@context.aggregations = Sfi.Site:StreamAggregations
-		all = TYPO3.TypoScript:Tag {
+		all = T:Tag {
 			tagName = 'a'
 			attributes.class = 'filter-bar__item js-filter-bar__item active'
 			attributes.href = '#'
@@ -75,10 +75,8 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 			itemKey = 'bucketName'
 			itemRenderer = T:Tag {
 				@if.notEmpty = ${bucket.doc_count > 0}
-				tagName = 'a'
 				attributes.data-filter-media = ${bucketName}
 				attributes.class = 'filter-bar__item js-filter-bar__item'
-				attributes.href = '#'
 				content = T:Case {
 					isPhoto {
 						condition = ${bucketName == 'isPhoto'}
@@ -96,18 +94,19 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 				}
 			}
 		}
-#		places = T:Collection {
-#			collection = ${aggregations.places.buckets}
-#			itemName = 'bucket'
-#			itemRenderer = T:Tag {
-#				tagName = 'a'
-#				attributes.data-filter-place = ${bucket.key}
-#				attributes.class = 'filter-bar__item js-filter-bar__item'
-#				attributes.href = '#'
-#				content = ${q(site).find('#' + bucket.key).property('title')}
-#				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
-#			}
-#		}
+		places = T:Collection {
+			collection = ${aggregations.places.buckets}
+			itemName = 'bucket'
+			itemRenderer = T:Tag {
+				@context.node = ${q(site).find('#' + bucket.key).get(0)}
+				attributes.data-filter-place = ${bucket.key}
+				attributes.data-place-title = ${node.properties.title}
+				attributes.data-place-coordinates = ${node.properties.coordinates}
+				attributes.class = 'filter-bar__item js-filter-bar__item js-place'
+				content = ${node.properties.title}
+				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+			}
+		}
 	}
 }
 
@@ -123,7 +122,6 @@ prototype(Sfi.Site:StreamAjax) < prototype(T:Value) {
 			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
 			itemRenderer = Sfi.Site:NewsShort
 		}
-
 		@process.json = ${Json.stringify(value)}
 	}
 	@cache {

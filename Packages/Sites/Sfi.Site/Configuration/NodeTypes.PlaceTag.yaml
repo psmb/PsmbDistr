@@ -1,0 +1,15 @@
+'Sfi.Site:PlaceTag':
+  superTypes:
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
+    'Sfi.Site:TagMixin': true
+  ui:
+    label: 'Место'
+  properties:
+    coordinates:
+      type: string
+      ui:
+        label: 'Координаты'
+        inspector:
+          group: document

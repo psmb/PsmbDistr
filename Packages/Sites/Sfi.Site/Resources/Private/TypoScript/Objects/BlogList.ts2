@@ -1,7 +1,6 @@
 prototype(Sfi.Site:BlogList) < prototype(T:Array) {
 	list = T:Collection {
-		# collection = ${Search.query(site).nodeType('Sfi.Site:Blog').limit(6).execute()}
-		collection = ${Array.slice(Array.reverse(q(site).find('[instanceof Sfi.Site:Blog]').get()), 0, 3)}
+		collection = ${Search.query(site).nodeType('Sfi.Site:Blog').sortDesc('__sortIndex').limit(6).execute()}
 		itemRenderer = Sfi.Site:BlogShort
 
 		@cache {

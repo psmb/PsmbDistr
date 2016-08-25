@@ -1,0 +1,11 @@
+'Sfi.Site:Tag':
+  superTypes:
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
+    'Sfi.Site:TagMixin': true
+  ui:
+    label: 'Категория'
+  childNodes:
+    main:
+      type: 'TYPO3.Neos:ContentCollection'
