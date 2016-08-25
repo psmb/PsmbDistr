@@ -5,4 +5,26 @@ prototype(Sfi.Site:MainPage) {
 	externalNews = Sfi.Site:NewsExternalList
 	stream = Sfi.Site:Stream
 	blogList = Sfi.Site:BlogList
+
+	projects = T:Collection {
+		@process.tmpl = ${'<div class="row paddingVertical-double"><div class="fixed-width">' + value + '</div></div>'}
+		collection = ${q(site).children('projects').children('[instanceof TYPO3.Neos:Document]').get()}
+		itemRenderer = T:Tag {
+			@process.tmpl = ${'<div class="small-12 medium-4 columns">' + value + '</div>'}
+			tagName = 'a'
+			attributes.style = 'position: relative; display: block'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = T:Array {
+				image = ImageTag {
+					asset = ${node.properties.image}
+					maximumWidth = 400
+					maximumHeight = 300
+					allowCropping = ${true}
+				}
+				title = ${'<div class="page-title color-white textAlign-center" style="position: absolute; top: 40%; left: 0; right: 0">' + node.properties.title + '</div>'}
+			}
+		}
+	}
 }
