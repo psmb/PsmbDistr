@@ -1,0 +1,28 @@
+'Sfi.Site:NavTitleMixin':
+  abstract: true
+  properties:
+    navTitle:
+      type: string
+      ui:
+        label: 'Короткое название (для меню)'
+        inspector:
+          group: document
+
+'Sfi.Site:ImageMixin':
+  abstract: true
+  properties:
+    image:
+      type: TYPO3\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото снаружи'
+        reloadIfChanged: TRUE
+        inspector:
+          group: document
+
+'Sfi.Site:TagMixin':
+  abstract: true
+  superTypes:
+    'Psmb.Term:TermMixin': true
+  properties:
+    originalIdentifier:
+      type: string

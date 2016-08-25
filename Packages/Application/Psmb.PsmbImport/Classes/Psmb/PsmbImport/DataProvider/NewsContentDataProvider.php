@@ -84,7 +84,7 @@ class NewsContentDataProvider extends DataProvider {
 		}, $contentArray);
 		$contentArray = array_filter($contentArray);
 
-		$thumbImage = null;
+		$image = null;
 		$coverMedia = null;
 		$gallery = null;
 		if (!empty($media)) {
@@ -105,7 +105,7 @@ class NewsContentDataProvider extends DataProvider {
 			});
 			if (!empty($showOutsideMedia)) {
 				// We set dedicated thumb image to the firs image marked with showOutside, or else it would fallback to cover
-				$thumbImage = reset($showOutsideMedia);
+				$image = reset($showOutsideMedia);
 			}
 
 			// Get all unused images for gallery
@@ -116,7 +116,7 @@ class NewsContentDataProvider extends DataProvider {
 			'media' => $media,
 			'main' => $contentArray,
 			'coverMedia' => $coverMedia,
-			'thumbImage' => $thumbImage,
+			'image' => $image,
 			'credit' => $author,
 			'gallery' => $gallery
 		];

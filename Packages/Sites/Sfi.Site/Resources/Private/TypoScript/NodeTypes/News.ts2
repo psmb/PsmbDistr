@@ -12,7 +12,7 @@ prototype(Sfi.Site:News) {
 
 # Get thumb from news node
 prototype(Sfi.Site:NewsThumb) < prototype(T:Value) {
-	value = ${q(node).property('thumbImage') ? q(node).property('thumbImage') : q(node).children('cover').children('[instanceof Psmb.NodeTypes:Image]').first().property('image')}
+	value = ${q(node).property('image') ? q(node).property('image') : q(node).children('cover').children('[instanceof Psmb.NodeTypes:Image]').first().property('image')}
 }
 
 prototype(Sfi.Site:NewsShortSmall) < prototype(T:Value) {

@@ -44,7 +44,7 @@ prototype(Sfi.Site:PresentationPage) {
 			content = T:Array {
 				image = ImageTag {
 					@process.tmpl = ${'<div class="teachers__imgwrap">' + value + '</div>'}
-					asset = ${node.properties.thumbImage}
+					asset = ${node.properties.image}
 					width = 242
 					height = 242
 					allowCropping = ${true}

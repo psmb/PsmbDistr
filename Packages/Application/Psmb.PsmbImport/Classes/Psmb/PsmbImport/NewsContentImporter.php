@@ -38,11 +38,11 @@ class NewsContentImporter extends Importer
 		$newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
 		$newsNode->setProperty('credit', $data['credit']);
 
-		if (isset($data['thumbImage']['filename'])) {
-			$filePath = $this->getFilePath('uploads/' . $data['thumbImage']['filename']);
+		if (isset($data['image']['filename'])) {
+			$filePath = $this->getFilePath('uploads/' . $data['image']['filename']);
 			if ($filePath) {
 				$image = $this->importImage($filePath);
-				$newsNode->setProperty('thumbImage', $image);
+				$newsNode->setProperty('image', $image);
 			}
 		}
 

@@ -149,7 +149,7 @@ blah: &alohaRich
         label: 'Аудио'
         inspector:
           group: news
-    thumbImage:
+    image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото снаружи (если не задано, используется фото из обложки (cover))'
