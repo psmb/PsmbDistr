@@ -1,0 +1,27 @@
+root.redirect {
+	@position = 'before shortcut'
+	condition = ${q(documentNode).property('uriPathSegment') == 'redirect' && node.context.workspaceName == 'live'}
+	renderer = TYPO3.TypoScript:Http.Message {
+		@context.targetNode = ${q(Search.query(site).nodeType('Sfi.Site:News').exactMatch('originalIdentifier', request.arguments.id).execute()).get(0)}
+		httpResponseHead {
+			statusCode = 301
+			headers.Location = TYPO3.Neos:NodeUri{
+				node = ${targetNode}
+			}
+			@if.nodeIsFound = ${targetNode ? true : false}
+		}
+		errorMessage = "Извините, но мы потеряли эту статью"
+		errorMessage.@if.nodeIsNotFound = ${targetNode ? false : true}
+		@cache {
+			mode = 'cached'
+			entryIdentifier {
+				1 = ${request.arguments.id}
+			}
+			entryTags {
+				1 = 'NodeType_Sfi.Site:News'
+			}
+		}
+	}
+}
+
+root.@cache.entryIdentifier.id = ${request.arguments.id}
