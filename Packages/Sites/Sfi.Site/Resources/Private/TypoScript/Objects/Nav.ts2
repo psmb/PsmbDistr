@@ -1,6 +1,22 @@
+prototype(Sfi.Site:Breadcrumbs) < prototype(T:Collection) {
+	@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="container"><nav class="breadcrumbs">' + value + '</nav></div></div></div>'}
+	@context.query = ${q(documentNode).parents('[_hiddenInIndex != true]')}
+	@if.notEmpty = ${query.count() > 0}
+	collection = ${Array.reverse(query.get())}
+	iterationName = 'iterator'
+	itemRenderer = T:Tag {
+		tagName = 'a'
+		attributes.href = NodeUri {
+			node = ${node}
+		}
+		content = ${node.properties.navTitle || node.properties.title}
+		@process.addArrow = ${iterator.isLast ? value : value + '&nbsp;>&nbsp;'}
+	}
+}
+
 prototype(Sfi.Site:SectionsNav) < prototype(T:Collection) {
 	@process.tmpl = ${'<ul class="sections-menu">' + value + '</ul>'}
-	collection = ${q(site).children('sections').children().get()}
+	collection = ${q(site).children('sections').children('[_hiddenInIndex != true]').get()}
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sections-menu__item'
@@ -13,6 +29,15 @@ prototype(Sfi.Site:SectionsNav) < prototype(T:Collection) {
 			content = ${node.properties.title}
 		}
 	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${documentNode}
+		}
+		entryTags {
+			1 = ${'DescendantOf_' + q(site).children('sections').get(0).identifier}
+		}
+	}
 }
 
 prototype(Sfi.Site:FooterSectionsNav) < prototype(Sfi.Site:SectionsNav) {
@@ -23,7 +48,7 @@ prototype(Sfi.Site:FooterSectionsNav) < prototype(Sfi.Site:SectionsNav) {
 }
 
 prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
-	collection = ${q(site).children('events').children().get()}
+	collection = ${q(site).children('projects').children('[_hiddenInIndex != true]').get()}
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'
@@ -36,9 +61,18 @@ prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 			content = ${node.properties.title}
 		}
 	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${documentNode}
+		}
+		entryTags {
+			1 = ${'DescendantOf_' + q(site).children('projects').get(0).identifier}
+		}
+	}
 }
 prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
-	collection = ${q(site).children('collections').children().get()}
+	collection = ${q(site).children('collections').children('[_hiddenInIndex != true]').get()}
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'
@@ -49,6 +83,15 @@ prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
 				node = ${node}
 			}
 			content = ${node.properties.title}
+		}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${documentNode}
+		}
+		entryTags {
+			1 = ${'DescendantOf_' + q(site).children('collections').get(0).identifier}
 		}
 	}
 }
