@@ -1,0 +1,28 @@
+prototype(Sfi.Site:Project) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Project.html'
+
+	projectType = ${q(node).parent().property('title')}
+	title = ${node.properties.title}
+
+	projectsMenu = T:Collection {
+		@process.tmpl = ${'<ul class="small-block-grid-2 medium-block-grid-4 large-block-grid-7" style="margin:0">' + value + '</ul>'}
+		collection = ${q(node).parent().children().get()}
+		itemRenderer = T:Tag {
+			tagName = 'li'
+			attributes.class = ${'stripe-thick__item' + (node == documentNode && ' active')}
+			content = T:Tag {
+				tagName = 'a'
+				attributes.href = NodeUri {
+					node = ${node}
+				}
+				content = ${node.properties.navTitle || node.properties.title}
+			}
+		}
+	}
+
+	main = ContentCollection {
+		nodePath = 'main'
+	}
+
+	stream = Sfi.Site:Stream
+}

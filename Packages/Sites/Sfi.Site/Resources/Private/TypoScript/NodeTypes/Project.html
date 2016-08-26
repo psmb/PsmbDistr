@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="fixed-width">
+		<div class="columns">
+			<h1 class="page-title">{projectType}</h1>
+		</div>
+	</div>
+</div>
+<div class="row stripe-thick">
+	<div class="fixed-width">
+		{projectsMenu -> f:format.raw()}
+	</div>
+</div>
+<div class="bg-gray">
+	<div class="fixed-width">
+		<div class="columns">
+			<h1 class="alpha">{title}</h1>
+			{main -> f:format.raw()}
+		</div>
+	</div>
+</div>
+{map -> f:format.raw()}
+<div class="bg-gray">
+	<div class="fixed-width">
+		<div class="columns">
+			<a name="news"></a>
+			<div data-magellan-destination="news">
+				{stream -> f:format.raw()}
+			</div>
+		</div>
+	</div>
+</div>
