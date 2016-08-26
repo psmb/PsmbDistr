@@ -1,12 +1,53 @@
 prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
-	title = ${'<div class="row"><div class="fixed-width"><h1 class="page-title"><div class="columns">' + node.properties.title + '</h1></div></div></div>'}
+	title = ${'<div class="row"><div class="fixed-width"><div class="columns"><h1 class="page-title">' + node.properties.title + '</h1></div></div></div>'}
 	newsList = Sfi.Site:Stream {
 		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="large-9 columns">' + value + '</div></div></div>'}
 	}
 }
 
 prototype(Sfi.Site:Tag)>
-prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag)
+prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag) {
+	newsList.@if.notRoot = ${node.name != 'tags'}
+	tagsMenu = T:Array {
+		tagsHeader = T:Collection {
+			@process.tmpl = ${'<div class="stripe"><div class="fixed-width"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
+			collection = ${q(site).children('tags').children().get()}
+			iterationName = 'iterator'
+			itemRenderer = T:Tag {
+				tagName = 'dd'
+				attributes.class = ${node.name == 'people' ? 'active' : ''}
+				content = T:Tag {
+					tagName = 'a'
+					attributes.href = ${'#' + node.name}
+					content = ${node.properties.title}
+				}
+			}
+		}
+		tagsContent = T:Collection {
+			@process.tmpl = ${'<div class="fixed-width"><div class="tabs-content">' + value + '</div></div>'}
+			collection = ${q(site).children('tags').children().get()}
+			iterationName = 'iterator'
+			itemRenderer = T:Collection {
+				@process.tmpl = ${'<div class="content ' + (node.name == 'people' && 'active') +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
+				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').sort('title', 'ASC').get()}
+				itemRenderer = T:Tag {
+					@process.tmpl = ${'<li class="epsilon">' + value + '</li>'}
+					tagName = 'a'
+					attributes.href = NodeUri {
+						node = ${node}
+					}
+					content = ${node.properties.title}
+				}
+			}
+		}
+		@cache {
+			mode = 'cached'
+			entryTags {
+				1 = 'NodeType_Sfi.Site:Tag'
+			}
+		}
+	}
+}
 
 prototype(Sfi.Site:PlaceTag)>
 prototype(Sfi.Site:PlaceTag) < prototype(Sfi.Site:AbstractTag)

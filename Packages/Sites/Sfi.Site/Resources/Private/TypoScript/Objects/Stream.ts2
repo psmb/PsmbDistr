@@ -53,7 +53,9 @@ prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 			}
 		}
 	}
-	value = ${query.aggregation('media', this.config).fieldBasedAggregation('collections', 'collections').fieldBasedAggregation('places', 'places').execute().aggregations}
+	value = ${query.aggregation('media', this.config).fieldBasedAggregation('collections', 'collections')}
+	value.@process.addPlaces = ${showPlaces ? value.fieldBasedAggregation('places', 'places') : value}
+	value.@process.execute = ${value.execute().aggregations}
 }
 
 prototype(Sfi.Site:Stream) < prototype(T:Template) {
@@ -106,6 +108,8 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 				content = ${node.properties.title}
 				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
 			}
+			# Set from Exhibitions
+			@if.notMain = ${showPlaces ? true : false}
 		}
 	}
 }
