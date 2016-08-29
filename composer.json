@@ -14,7 +14,12 @@
         "typo3/twitter-bootstrap": "@dev",
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
-        "flowpack/neos-frontendlogin": "@dev",
+
+        "typo3/buildessentials": "dev-master",
+        "mikey179/vfsstream": "~1.6",
+        "phpunit/phpunit": "~4.8 || ~5.4.0",
+        "symfony/css-selector": "~2.0",
+        "flowpack/behat": "dev-master",
 
         "ttree/contentrepositoryimporter": "^2.0",
         "flowpack/listable": "^0.4.1",

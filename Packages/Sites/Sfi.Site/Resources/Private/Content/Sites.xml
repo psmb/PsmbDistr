@@ -3,13 +3,13 @@
  <site name="Site" state="1" siteResourcesPackageKey="Sfi.Site" siteNodeName="site">
   <nodes formatVersion="2.0">
    <node nodeName="site">
-    <variant workspace="live" nodeType="Sfi.Site:Tag" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
+    <variant workspace="live" nodeType="Sfi.Site:MainPage" sortingIndex="100" version="1" removed="" hidden="" hiddenInIndex="">
      <dimensions>
 
      </dimensions>
      <accessRoles __type="array"/>
      <properties>
-      <title __type="string">Home</title>
+      <title __type="string">Главная</title>
       <uriPathSegment __type="string">home</uriPathSegment>
      </properties>
     </variant>
