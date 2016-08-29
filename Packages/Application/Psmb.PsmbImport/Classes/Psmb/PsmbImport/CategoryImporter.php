@@ -88,6 +88,6 @@ class CategoryImporter extends Importer
 
 	protected function getCategoryByOriginalId($id) {
 		$q = new FlowQuery(array($this->siteNode));
-		return $q->find('[instanceof Sfi.Site:Tag]')->filter('[originalIdentifier = "' . $id	.'"]')->get(0);
+		return $q->find('[instanceof ' . $this->options['targetNodeType'] . ']')->filter('[originalIdentifier = "' . $id	.'"]')->get(0);
 	}
 }
