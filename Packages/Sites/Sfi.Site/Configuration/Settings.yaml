@@ -36,3 +36,6 @@ Flowpack:
       default:
         - host: es
           port: 9200
+Sfi:
+  YouTube:
+    className: 'YouTube flex-video widescreen'
