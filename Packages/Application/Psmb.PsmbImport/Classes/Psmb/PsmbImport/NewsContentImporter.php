@@ -32,8 +32,8 @@ class NewsContentImporter extends Importer
 
 		$newsRecordMapping = $this->processedNodeService->get('Psmb\PsmbImport\NewsImporter', $data['__externalIdentifier']);
 		if ($newsRecordMapping === null) {
-				$this->log(sprintf('Skip "%s", missing node', $data['__externalIdentifier']), LOG_ERR);
-				return null;
+			$this->log(sprintf('Skip "%s", missing node', $data['__externalIdentifier']), LOG_ERR);
+			return null;
 		}
 		$newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
 		$newsNode->setProperty('credit', $data['credit']);

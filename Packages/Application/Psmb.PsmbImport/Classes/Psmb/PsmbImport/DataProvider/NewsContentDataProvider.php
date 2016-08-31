@@ -88,7 +88,7 @@ class NewsContentDataProvider extends DataProvider {
 		$coverMedia = null;
 		$gallery = null;
 		if (!empty($media)) {
-			// Choose cover image: firs non-"showOutside"
+			// Choose cover image: first non-"showOutside"
 			$showInsideMedia = array_filter($media, function ($i) {
 				return !$i['showOutside'];
 			});
@@ -103,8 +103,8 @@ class NewsContentDataProvider extends DataProvider {
 			$showOutsideMedia = array_filter($media, function ($i) {
 				return $i['showOutside'];
 			});
+			// We set dedicated thumb image to the first image marked with showOutside, or else it would fallback to cover
 			if (!empty($showOutsideMedia)) {
-				// We set dedicated thumb image to the firs image marked with showOutside, or else it would fallback to cover
 				$image = reset($showOutsideMedia);
 			}
 
