@@ -1,0 +1,32 @@
+prototype(Sfi.Site:CollectionArticles) < prototype(T:Array) {
+	@context.collection = ${q(node).property('collections')[0]}
+	@process.tmpl = ${'<div class="themes">' + value + '</div>'}
+	@if.collectionExists = ${collection ? true : false}
+	title = ${'<h3 class="gamma">' + collection.properties.title + '</h3>'}
+	list = T:Collection {
+		@process.tmpl = ${'<ul class="themes__articles">' + value + '</ul>'}
+		@context.query = Sfi.Site:StreamQuery
+		aggregations = Sfi.Site:StreamAggregations
+		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('collections', collection.identifier).sortDesc('date').execute()}
+		itemName = 'node'
+		itemRenderer = Sfi.Site:NewsCollectionShort
+	}
+	more = T:Tag {
+		tagName = 'a'
+		attributes.style = 'display: block'
+		attributes.class = 'delta--navy marginTop-single'
+		attributes.href = NodeUri {
+			node = ${collection}
+		}
+		content = 'еще'
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = 'NodeType_Sfi.Site:Tag'
+		}
+	}
+}

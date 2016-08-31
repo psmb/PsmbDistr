@@ -1,21 +1,22 @@
-.interesting-themes{
+.interesting-themes {
 	border: 2px solid white;
 	padding: 2*$u;
 	margin-bottom: 2*$u;
 }
 
-.interesting-themes__label{
+.interesting-themes__label {
 	@extend .action;
 }
 
-.interesting-themes__item{
+.interesting-themes__item {
 	@extend .epsilon;
+	cursor: pointer;
 }
 
-.interesting-themes__item a.active{
+.interesting-themes__item .active {
 	color: $primary-color;
 }
 
-.interesting-themes .maxlist-more{
+.interesting-themes .maxlist-more {
 	@extend .action--small;
 }

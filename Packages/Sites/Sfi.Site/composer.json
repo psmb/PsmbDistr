@@ -4,10 +4,16 @@
     "description": "Website package. See distribution for more info.",
     "require": {
         "typo3/neos": "*",
+        "ttree/contentrepositoryimporter": "*",
+        "flowpack/listable": "*",
+        "sfi/youtube": "*",
         "psmb/term": "*",
+        "psmb/nodetypes": "*",
+        "psmb/createnodebutton": "*",
         "typo3/typo3cr-search": "*",
         "flowpack/elasticsearch-contentrepositoryadaptor": "*",
-        "flowpack/searchplugin": "*"
+        "flowpack/searchplugin": "*",
+        "sfi/grid": "*"
     },
     "autoload": {
         "psr-0": {

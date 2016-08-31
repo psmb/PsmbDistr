@@ -4,9 +4,7 @@
 			<h1 class="alpha">{title}</h1>
 			<div class="news-detail__tagline">
 				<f:if condition="{type} != 'announcement'">
-					<div class="news-detail__date">
-						<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
-					</div>
+					<span class="news-detail__date"><f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date></span>
 				</f:if>
 				{tagList -> f:format.raw()}
 			</div>
@@ -16,9 +14,31 @@
 				{main -> f:format.raw()}
 				<div class="rte-text"><div class="author">{credit -> f:format.raw()}</div></div>
 				{newsList -> f:format.raw()}
+
+				<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+				<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="vkontakte,facebook,lj"></div>
+
+				<div class="to-comments">
+					<a href="#disqus_thread">Комментировать</a>
+				</div>
 			</div>
 		</div>
 		<div class="large-3 medium-3 columns news-detail__sidebar">
+			{collectionArticles -> f:format.raw()}
+		</div>
+	</div>
+</div>
+<div class="row bg-gray">
+	<div class="fixed-width">
+		<div class="columns">
+			{stream -> f:format.raw()}
+		</div>
+	</div>
+</div>
+<div class="fixed-width">
+	<div class="row">
+		<div class="large-10 large-offset-1 columns">
+			{disqus -> f:format.raw()}
 		</div>
 	</div>
 </div>

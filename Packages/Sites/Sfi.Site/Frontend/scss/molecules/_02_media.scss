@@ -168,6 +168,9 @@ Important news. Used in `.news-stream`.
 .media-important__wrap{
 		position: relative;
 	}
+	.media-important__wrap img {
+		width: 100%;
+	}
 	.media-important__gradient{
 		@extend %gradient-tint;
 	}
@@ -388,23 +391,26 @@ Used for external news, but may be used elsewhere.
 */
 .media-minimal{
 }
-	.media-minimal__wrap{
+.media-minimal.active {
+	color: $navy--light !important;
+}
+	.media-minimal__wrap {
 	}
 
-	.media-minimal__date{
+	.media-minimal__date {
 		@extend .service;
 	}
 
-	.media-minimal__title{
+	.media-minimal__title {
 		@extend .epsilon;
 		margin: 0;
 		margin-top: $u/4;
 	}
-.media-minimal:hover{
+.media-minimal:hover {
 	color: $navy--light !important;
 }
 
-.media-minimal--tight__date{
+.media-minimal--tight__date {
 	@extend .media-minimal__date;
 	margin-bottom: $u/4;
 }

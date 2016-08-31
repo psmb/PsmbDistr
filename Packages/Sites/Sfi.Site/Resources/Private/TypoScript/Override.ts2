@@ -1,12 +1,13 @@
 prototype(Psmb.NodeTypes:Text) {
-  attributes.class = 'rte-text'
+	attributes.class = 'rte-text'
+  content.@process.replaceTags = Psmb.Term:ReplaceTerms
 }
 prototype(Psmb.NodeTypes:Headline) {
-  attributes.class = 'rte-text'
+	attributes.class = 'rte-text'
 }
 prototype(Psmb.NodeTypes:Image) {
-  attributes.class = 'figure'
-  content.caption.attributes.class = 'figure__caption'
+	attributes.class = 'figure'
+	content.caption.attributes.class = 'figure__caption'
 }
 
 prototype(TYPO3.TypoScript:Collection) {

@@ -49,10 +49,22 @@ class NewsFileImporter extends Importer
 			$newsNode = $this->siteNode->getNode($newsRecordMapping->getNodePath());
 			$mainCollection = $newsNode->getNode('main');
 
+			if(strtolower(pathinfo($data['filename'], PATHINFO_EXTENSION)) === 'mp3') {
+				$targetCollection = $mainCollection->getNode('audio');
+				if (!$targetCollection) {
+					$audioNodeTemplate = new NodeTemplate();
+					$audioNodeTemplate->setNodeType($this->nodeTypeManager->getNodeType('Sfi.Site:AudioPlayer'));
+					$audioNodeTemplate->setName('audio');
+					$targetCollection = $mainCollection->createNodeFromTemplate($audioNodeTemplate);
+				}
+			} else {
+				$targetCollection = $mainCollection;
+			}
+
 			$asset = $this->importFile($data['filename']);
 			$nodeTemplate->setProperty('asset', $asset);
 			$nodeTemplate->setProperty('title', $data['title']);
-			$mainCollection->createNodeFromTemplate($nodeTemplate);
+			$targetCollection->createNodeFromTemplate($nodeTemplate);
 			$this->registerNodeProcessing($newsNode, $externalIdentifier);
 		} else {
 			$this->log("No news node with identifier " . $data['__parentIdentifier']);

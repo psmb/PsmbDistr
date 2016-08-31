@@ -17,12 +17,14 @@ class NewsFileDataProvider extends DataProvider {
 		->orderBy('f.sorting');
 		$statement = $query->execute();
 		while ($record = $statement->fetch()) {
-			$result[] = [
-				'__externalIdentifier' => (int)$record['uid'],
-				'__parentIdentifier' => (int)$record['parent'],
-				'filename' => StringValue::create($record['file'])->getValue(),
-				'title' => StringValue::create($record['title'])->getValue()
-			];
+			if ($record['file']) {
+				$result[] = [
+					'__externalIdentifier' => (int)$record['uid'],
+					'__parentIdentifier' => (int)$record['parent'],
+					'filename' => $record['file'],
+					'title' => $record['title'] ? $record['title'] : $record['file']
+				];
+			}
 		}
 		$this->count = count($result);
 		return $result;

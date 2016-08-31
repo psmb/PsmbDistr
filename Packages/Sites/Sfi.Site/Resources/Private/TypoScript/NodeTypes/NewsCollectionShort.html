@@ -1,0 +1,12 @@
+<li{attributes -> f:format.raw()}>
+	<a href="{nodeUri}" title="{title}">
+		<div class="media-minimal__wrap">
+			<div class="media-minimal__body">
+				<div class="media-minimal--tight__date">
+					<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+				</div>
+				<h3 class="media-minimal__title">{title}</h3>
+			</div>
+		</div>
+	</a>
+</li>

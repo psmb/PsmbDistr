@@ -11,12 +11,12 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 		condition = ${true}
 		renderer = T:Value {
 			value = ${Search.query(site).nodeType('Sfi.Site:News')}
-			value.@process.filterByRelation = ${site == documentNode ? value : value.queryFilter('bool', {should: [
-				{term: {sections: documentNode.identifier}},
-				{term: {tags: documentNode.identifier}},
-				{term: {places: documentNode.identifier}},
-				{term: {projects: documentNode.identifier}},
-				{term: {collections: documentNode.identifier}}
+			value.@process.filterByRelation = ${site == node ? value : value.queryFilter('bool', {should: [
+				{term: {sections: node.identifier}},
+				{term: {tags: node.identifier}},
+				{term: {places: node.identifier}},
+				{term: {projects: node.identifier}},
+				{term: {collections: node.identifier}}
 			]})}
 			value.@process.place = ${request.arguments.place ? value.exactMatch('places', request.arguments.place) : value}
 			value.@process.collection = ${request.arguments.collection ? value.exactMatch('collections', request.arguments.collection) : value}
@@ -62,54 +62,85 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Stream.html'
 	type = 'ourNews'
 	@context.query = Sfi.Site:StreamQuery
-	filterBar = T:Array {
-		@context.aggregations = Sfi.Site:StreamAggregations
-		all = T:Tag {
-			tagName = 'a'
-			attributes.class = 'filter-bar__item js-filter-bar__item active'
-			attributes.href = '#'
-			content = 'все материалы'
-			content.@process.count = ${value + ' (' + query.count() + ')'}
-		}
-		media = T:Collection {
-			collection = ${aggregations.media.buckets}
-			itemName = 'bucket'
-			itemKey = 'bucketName'
-			itemRenderer = T:Tag {
-				@if.notEmpty = ${bucket.doc_count > 0}
-				attributes.data-filter-media = ${bucketName}
-				attributes.class = 'filter-bar__item js-filter-bar__item'
-				content = T:Case {
-					isPhoto {
-						condition = ${bucketName == 'isPhoto'}
-						renderer = 'фото'
+	filterBar = T:Case {
+		news {
+			condition = ${q(node).property('_nodeType.name') == 'Sfi.Site:News'}
+			renderer =  T:Collection {
+				collection = ${q(node).property('tags') || [site]}
+				itemName = 'node'
+				itemRenderer = T:Tag {
+					attributes.data-url = NodeUri {
+						node = ${node}
 					}
-					isVideo {
-						condition = ${bucketName == 'isVideo'}
-						renderer = 'видео'
-					}
-					isAudio {
-						condition = ${bucketName == 'isAudio'}
-						renderer = 'аудио'
-					}
-					@process.count = ${value + ' (' + bucket.doc_count + ')'}
+					attributes.class = 'filter-bar__item js-filter-bar__item'
+					# akward way to fallback to all news
+					content = ${q(node).property('tags') ? node.properties.title : 'все материалы'}
 				}
 			}
 		}
-		places = T:Collection {
-			collection = ${aggregations.places.buckets}
-			itemName = 'bucket'
-			itemRenderer = T:Tag {
-				@context.node = ${q(site).find('#' + bucket.key).get(0)}
-				attributes.data-filter-place = ${bucket.key}
-				attributes.data-place-title = ${node.properties.title}
-				attributes.data-place-coordinates = ${node.properties.coordinates}
-				attributes.class = 'filter-bar__item js-filter-bar__item js-place'
-				content = ${node.properties.title}
-				content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+		default {
+			condition = ${true}
+			renderer = T:Array {
+				@context.aggregations = Sfi.Site:StreamAggregations
+				all = T:Tag {
+					attributes.class = 'filter-bar__item js-filter-bar__item'
+					attributes.data-url = NodeUri {
+						node = ${node}
+					}
+					content = 'все материалы'
+					content.@process.count = ${value + ' (' + query.count() + ')'}
+				}
+				media = T:Collection {
+					collection = ${aggregations.media.buckets}
+					itemName = 'bucket'
+					itemKey = 'bucketName'
+					itemRenderer = T:Tag {
+						@if.notEmpty = ${bucket.doc_count > 0}
+						attributes.data-url = NodeUri {
+							node = ${node}
+							additionalParams {
+								media = ${bucketName}
+							}
+						}
+						attributes.class = 'filter-bar__item js-filter-bar__item'
+						content = T:Case {
+							isPhoto {
+								condition = ${bucketName == 'isPhoto'}
+								renderer = 'фото'
+							}
+							isVideo {
+								condition = ${bucketName == 'isVideo'}
+								renderer = 'видео'
+							}
+							isAudio {
+								condition = ${bucketName == 'isAudio'}
+								renderer = 'аудио'
+							}
+							@process.count = ${value + ' (' + bucket.doc_count + ')'}
+						}
+					}
+				}
+				places = T:Collection {
+					collection = ${aggregations.places.buckets}
+					itemName = 'bucket'
+					itemRenderer = T:Tag {
+						@context.node = ${q(site).find('#' + bucket.key).get(0)}
+						attributes.data-url = NodeUri {
+							node = ${node}
+							additionalParams {
+								place = ${bucket.key}
+							}
+						}
+						attributes.data-place-title = ${node.properties.title}
+						attributes.data-place-coordinates = ${node.properties.coordinates}
+						attributes.class = 'filter-bar__item js-filter-bar__item js-place'
+						content = ${node.properties.title}
+						content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+					}
+					# Set from Exhibitions
+					@if.notMain = ${showPlaces ? true : false}
+				}
 			}
-			# Set from Exhibitions
-			@if.notMain = ${showPlaces ? true : false}
 		}
 	}
 }

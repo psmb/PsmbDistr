@@ -11,11 +11,15 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 		itemName = 'bucket'
 		itemRenderer = T:Tag {
 			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item">' + value + '</li>'}
-			tagName = 'a'
-			attributes.data-filter-collection = ${bucket.key}
+			@context.node = ${q(site).find('#' + bucket.key).get(0)}
 			attributes.class = 'js-filter-bar__item'
-			attributes.href = '#'
-			content = ${q(site).find('#' + bucket.key).property('title')}
+			attributes.data-url = NodeUri {
+				node = ${node}
+				additionalParams {
+					collection = ${bucket.key}
+				}
+			}
+			content = ${q(node).property('title')}
 			content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
 		}
 	}

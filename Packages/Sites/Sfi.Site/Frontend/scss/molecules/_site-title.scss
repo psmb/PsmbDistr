@@ -60,7 +60,7 @@ category:
 		line-height: 1.2;
 		color: $navy--light;
 	}
-@media #{$small-only} { 
+@media #{$small-only} {
 	.site-title__title{
 		font-size: rem-calc(18);
 		width: 200px;
@@ -68,16 +68,17 @@ category:
 	}
 }
 
-.site-title-small{
+.site-title-small {
 	overflow: auto;
 	margin: $u/2 0;
 }
-	.site-title-small__logo{
+	.site-title-small__logo {
 		display: block;
 		margin-right: $u;
 		float: left;
 	}
-	.site-title-small__title{
+	.site-title-small__title {
+		max-width: 170px;
 		display: block;
 		padding: $u/2 0;
 		float: left;

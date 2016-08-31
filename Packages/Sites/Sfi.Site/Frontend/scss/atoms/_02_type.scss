@@ -116,7 +116,7 @@ Link styling
 }
 
 
-	
+
 /*doc
 ---
 title: Blockquote
@@ -129,10 +129,10 @@ category:
 We need an override of P in BLOCKQUOTE, when we use this class inside of .rte-text, which does have P styled.
 
 ```html_example
-<blockquote class="blockquote">В основе концепции факультета религиоведения СФИ — внимание к человеку и его 
-личному опыту веры, что позволяет не сводить представление о религии только к уровню идей</blockquote> 
-<blockquote class="blockquote--small">В основе концепции факультета религиоведения СФИ — внимание к человеку и его 
-личному опыту веры, что позволяет не сводить представление о религии только к уровню идей</blockquote> 
+<blockquote class="blockquote">В основе концепции факультета религиоведения СФИ — внимание к человеку и его
+личному опыту веры, что позволяет не сводить представление о религии только к уровню идей</blockquote>
+<blockquote class="blockquote--small">В основе концепции факультета религиоведения СФИ — внимание к человеку и его
+личному опыту веры, что позволяет не сводить представление о религии только к уровню идей</blockquote>
 ```
 ```
 .blockquote{
@@ -143,7 +143,7 @@ We need an override of P in BLOCKQUOTE, when we use this class inside of .rte-te
 		height: 3px;
 		margin-bottom: 18px;
 		background: $primary-color;
-	}	
+	}
 	&,p{
 		font-size: rem-calc(25) !important;
 		font-weight: 300;
@@ -174,7 +174,7 @@ We need an override of P in BLOCKQUOTE, when we use this class inside of .rte-te
 		height: 3px;
 		margin-bottom: 18px;
 		background: $primary-color;
-	}	
+	}
 	&,p{
 		font-size: rem-calc(25) !important;
 		font-weight: 300;
@@ -239,14 +239,14 @@ category:
 Main headings use greek letters, to be completely decoupled from tags.
 
 ```html_example
-<div class="alpha">Heading alpha example</div> 
-<div class="alpha--light">Heading alpha example</div> 
-<div class="beta">Heading beta example</div> 
-<div class="gamma">Heading gamma example</div> 
-<div class="delta">Heading delta example</div> 
-<div class="delta--navy">Heading delta--navy example</div> 
-<div class="epsilon">Heading epsilon example</div> 
-<div class="zeta">Heading zeta example</div> 
+<div class="alpha">Heading alpha example</div>
+<div class="alpha--light">Heading alpha example</div>
+<div class="beta">Heading beta example</div>
+<div class="gamma">Heading gamma example</div>
+<div class="delta">Heading delta example</div>
+<div class="delta--navy">Heading delta--navy example</div>
+<div class="epsilon">Heading epsilon example</div>
+<div class="zeta">Heading zeta example</div>
 ```
 ```
 .alpha,.beta,.gamma,.delta,.epsilon,.zeta{
@@ -344,7 +344,7 @@ category:
 Used mainly in page title headings.
 
 ```html_example
-<h1 class="page-title">page title example</h1> 
+<h1 class="page-title">page title example</h1>
 ```
 ```
 .page-title{
@@ -454,7 +454,7 @@ category:
 Service heading, used for sections in stream
 
 ```html_example
-<h4 class="service">Service heading example</h4> 
+<h4 class="service">Service heading example</h4>
 ```
 ```
 .service{
@@ -492,11 +492,11 @@ category:
 Small service headings
 
 ```html_example
-<h4 class="service-small--gray">Service heading example</h4> 
-<h4 class="service-small--gray-light">Service heading example</h4> 
-<h4 class="service-small--gray-dark">Service heading example</h4> 
-<h4 class="service-small--inv" style="background: black;">Service heading example</h4> 
-<h4 class="service-small--navy-light">Service heading example</h4> 
+<h4 class="service-small--gray">Service heading example</h4>
+<h4 class="service-small--gray-light">Service heading example</h4>
+<h4 class="service-small--gray-dark">Service heading example</h4>
+<h4 class="service-small--inv" style="background: black;">Service heading example</h4>
+<h4 class="service-small--navy-light">Service heading example</h4>
 ```
 ```
 	.service-small{
@@ -568,9 +568,9 @@ category:
 large service headings
 
 ```html_example
-<h4 class="service-large">Service heading example</h4> 
-<h4 class="service-large--inv" style="background:black;">Service heading example</h4> 
-<h4 class="service-large--gray-light" style="background:black;">Service heading example</h4> 
+<h4 class="service-large">Service heading example</h4>
+<h4 class="service-large--inv" style="background:black;">Service heading example</h4>
+<h4 class="service-large--gray-light" style="background:black;">Service heading example</h4>
 ```
 ```
 	.service-large{
@@ -613,9 +613,9 @@ category:
 caps service headings
 
 ```html_example
-<h4 class="service-caps">Service heading example</h4> 
-<h4 class="service-caps--navy-light" style="background:black;">Service heading example</h4> 
-<h4 class="service-caps--gray-light" style="background:black;">Service heading example</h4> 
+<h4 class="service-caps">Service heading example</h4>
+<h4 class="service-caps--navy-light" style="background:black;">Service heading example</h4>
+<h4 class="service-caps--gray-light" style="background:black;">Service heading example</h4>
 ```
 ```
 	.service-caps{
@@ -712,10 +712,10 @@ category:
 Lead text. Normally precedes .rte-text.
 
 ```html_example
-<p class="lead">.lead В течение двух дней работали 15 секций, в том числе: 
-«Конструирование истории и память о прошлом», «Конструирование социальной 
-памяти: мифы и идеологии», «Знание о религии и религиозное знание», «Новые 
-образовательные технологии для освоения новых профессий: ответ на вызовы 
+<p class="lead">.lead В течение двух дней работали 15 секций, в том числе:
+«Конструирование истории и память о прошлом», «Конструирование социальной
+памяти: мифы и идеологии», «Знание о религии и религиозное знание», «Новые
+образовательные технологии для освоения новых профессий: ответ на вызовы
 современности»</p>
 ```
 ```
@@ -800,32 +800,29 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 		font-style: italic;
 	}
 
-
-
-	small{}
-	aside{
-		background: $gray-bg;
-		&,p{
-			font-size: rem-calc(13) !important;
-			margin: $u 0;
-		}
-		padding: $u 2*$u;
-	}
-	section{
-		background: $gray-bg;
-		&,p,li{
-			font-size: rem-calc(13) !important;
-			margin: $u 0;
-		}
-		padding: $u 2*$u;
-	}
-
-	//legacy styles from psmb v1.0		
+	//legacy styles from psmb v1.0
 	.interview{
 		font-weight:bold;
 	}
-
 }
+
+.Aside{
+	background: $gray-bg;
+	&,p{
+		font-size: rem-calc(13) !important;
+		margin: $u 0;
+	}
+	padding: $u 2*$u;
+}
+.Section{
+	background: $gray-bg;
+	&,p,li{
+		font-size: rem-calc(13) !important;
+		margin: $u 0;
+	}
+	padding: $u 2*$u;
+}
+
 //This is for hologram styleguide
 .hologram-content{
 	> h1{@extend .alpha;}
@@ -837,5 +834,3 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 	> p{@extend .paragraph;}
 	> a{@extend .link;}
 }
-
-

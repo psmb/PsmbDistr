@@ -8,6 +8,11 @@ prototype(Sfi.Site:News) {
 		nodePath = 'main'
 	}
 	newsList = Sfi.Site:NewsRelatedList
+	disqus = Sfi.Site:Disqus
+	stream = Sfi.Site:Stream
+	collectionArticles = Sfi.Site:CollectionArticles
+
+	audioList = Sfi.Site:AudioPlayer
 }
 
 # Get thumb from news node

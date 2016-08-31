@@ -72,7 +72,8 @@ prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 	}
 }
 prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
-	collection = ${q(site).children('collections').children('[_hiddenInIndex != true]').get()}
+	@process.tmpl = ${value + '<li class="sitemap__item"><a href="http://karta.psmb.ru">Карта памяти</a></li><li class="sitemap__item"><a href="http://c.psmb.ru">Православный календарь</a></li>'}
+	collection = ${q(site).children('blogs').add(q(site).children('tags'))}
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'

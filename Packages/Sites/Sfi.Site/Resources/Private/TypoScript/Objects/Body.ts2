@@ -14,5 +14,7 @@ prototype(Sfi.Site:Body) < prototype(T:Template) {
 	# }
 	createNodeButton = Psmb.CreateNodeButton:CreateNodeButton {
 		type = 'Sfi.Site:News'
+		referenceNode = ${q(site).children('a').get(0)}
+		position = 'into'
 	}
 }

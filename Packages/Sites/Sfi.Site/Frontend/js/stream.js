@@ -10,15 +10,13 @@
 			}
 
 			var requestState = {
-				currentPage: 1,
-				media: '',
-				place: '',
-				collection: ''
+				rootUrl: '',
+				currentPage: 1
 			};
 
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
-			var filterBars = document.getElementsByClassName('js-filter-bar');
+			var filterBarItems = document.getElementsByClassName('js-filter-bar__item');
 
 
 			var iso = new Isotope( '.js-stream__content', {
@@ -32,46 +30,40 @@
 			});
 
 
-			if (loadMore && content && filterBars) {
+			if (loadMore && content && filterBarItems) {
 				loadMore.addEventListener('click', function (evt) {
 					evt.preventDefault();
 					load();
 				});
-				Array.prototype.forEach.call(filterBars, function (filterBar) {
-					var filterBarItems = document.getElementsByClassName('js-filter-bar__item');
-					filterBar.addEventListener('click', function (evt) {
-						evt.preventDefault();
+				Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
+					filterBarItem.addEventListener('click', function (evt) {
 						if (evt.target && evt.target.classList.contains('js-filter-bar__item')) {
-							Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
-								filterBarItem.classList.remove('active');
-							});
-							evt.target.classList.add('active');
-
-							content.innerHTML = '';
-							requestState = {
-								media: evt.target.getAttribute('data-filter-media'),
-								place: evt.target.getAttribute('data-filter-place'),
-								collection: evt.target.getAttribute('data-filter-collection'),
-								currentPage: 1
-							};
-							load();
+							activate(evt.target);
 						}
-					});
+					}, true);
 				});
+				if (typeof filterBarItems[0] !== 'undefined') {
+					activate(filterBarItems[0]);
+				}
+			}
+
+			function activate(item) {
+				Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
+					filterBarItem.classList.remove('active');
+				});
+				item.classList.add('active');
+
+				content.innerHTML = '';
+				requestState = {
+					rootUrl: item.getAttribute('data-url'),
+					currentPage: 1
+				};
+
 				load();
 			}
 
 			function load() {
-				var url = '?ajax=true&currentPage=' + requestState.currentPage;
-				if (requestState.media) {
-					url += '&media=' + requestState.media;
-				}
-				if (requestState.place) {
-					url += '&place=' + requestState.place;
-				}
-				if (requestState.collection) {
-					url += '&collection=' + requestState.collection;
-				}
+				var url = requestState.rootUrl + (requestState.rootUrl.indexOf('?') !== -1 ? '&' : '?') + 'ajax=true&currentPage=' + requestState.currentPage;
 				var request = new XMLHttpRequest();
 				request.open('GET', url, true);
 				loadMore.innerHTML = '<img id="spinner" src="/_Resources/Static/Packages/Sfi.Site/Images/spinner.gif">';
