@@ -131,6 +131,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 								place = ${bucket.key}
 							}
 						}
+						attributes.data-filter-place = ${node.identifier}
 						attributes.data-place-title = ${node.properties.title}
 						attributes.data-place-coordinates = ${node.properties.coordinates}
 						attributes.class = 'filter-bar__item js-filter-bar__item js-place'

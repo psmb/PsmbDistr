@@ -40,8 +40,6 @@
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:ImageMixin': true
   childNodes:
-    faces:
-      type: 'TYPO3.Neos:ContentCollection'
     main:
       type: 'TYPO3.Neos:ContentCollection'
   ui:
