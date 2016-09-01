@@ -28,8 +28,7 @@ prototype(Sfi.Site:PresentationPage) {
 	}
 
 	ourHistoryUri = NodeUri {
-		# TODO: Find correct article
-		node = ${q(site).find('#c8dfeed8-10ce-4422-ba81-394e846d620a').get(0)}
+		node = ${q(site).children('a').children('[uriPathSegment="svyashchennik-georgiy-kochetkov-nashe-dvizhenie-vozniklo-estestvenno"]').get(0)}
 	}
 
 	ourTeachers = T:Collection {
