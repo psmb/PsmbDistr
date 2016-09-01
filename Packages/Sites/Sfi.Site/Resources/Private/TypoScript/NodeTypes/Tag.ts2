@@ -13,7 +13,7 @@ prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag) {
 		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || node == q(site).children('tags').get(0)}
 		tagsHeader = T:Collection {
 			@process.tmpl = ${'<div class="stripe"><div class="fixed-width"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
-			collection = ${q(site).children('tags').children().get()}
+			collection = ${q(site).children('tags').children('[instanceof TYPO3.Neos:Document]').get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Tag {
 				tagName = 'dd'
@@ -26,7 +26,7 @@ prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag) {
 			}
 		}
 		tagsContent = T:Collection {
-			@process.tmpl = ${'<div class="fixed-width"><div class="tabs-content">' + value + '</div></div>'}
+			@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="tabs-content columns">' + value + '</div></div></div>'}
 			collection = ${q(site).children('tags').children().get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Collection {
