@@ -5,7 +5,7 @@
     'Sfi.Site:ImageMixin': true
     'Sfi.Site:TagMixin': true
   ui:
-    label: 'Категория'
+    label: 'Тэг'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
