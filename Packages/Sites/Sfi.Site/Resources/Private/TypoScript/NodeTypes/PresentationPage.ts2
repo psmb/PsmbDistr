@@ -35,7 +35,7 @@ prototype(Sfi.Site:PresentationPage) {
 		@process.tmpl = ${'<ul class="teachers [ large-block-grid-5 medium-block-grid-5 small-block-grid-2 ]">' + value + '</ul>'}
 		collection = ${node.properties.teachers}
 		itemRenderer = T:Tag {
-			@process.tmpl = ${'<li class="paragraph primary-color">' + value + '</li>'}
+			@process.tmpl = ${'<li>' + value + '</li>'}
 			tagName = 'a'
 			attributes.href = NodeUri {
 				node = ${node}
@@ -48,8 +48,6 @@ prototype(Sfi.Site:PresentationPage) {
 					height = 242
 					allowCropping = ${true}
 				}
-
-
 				caption = ${'<span class="teachers__caption">' + node.properties.title + '</span>'}
 			}
 		}
