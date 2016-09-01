@@ -1,25 +1,11 @@
 {
 	"changes": [
 		{
-			"name": "TASK: improve performance of `getRelativeNodePathByUriPathSegmentProperties`",
-			"type": "github",
-			"repository": "neos/neos-development-collection",
-			"pull_request": "672",
-			"path": "Packages/Neos"
-		},
-		{
 			"name": "TASK: improve performance of `setUniqueUriPathSegment`",
 			"type": "github",
 			"repository": "neos/neos-development-collection",
 			"pull_request": "673",
 			"path": "Packages/Neos"
-		},
-		{
-			"name": "TASK: Adjust script parts to 2.x and finish deletion",
-			"type": "github",
-			"repository": "dfeyer/Flowpack.ElasticSearch.ContentRepositoryAdaptor",
-			"pull_request": "2",
-			"path": "Packages/Application/Flowpack.ElasticSearch.ContentRepositoryAdaptor"
 		}
 	]
 }

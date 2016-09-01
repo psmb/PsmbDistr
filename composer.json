@@ -5,6 +5,12 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
+    "repositories": [
+        {
+            "url": "https://github.com/dimaip/Flowpack.ElasticSearch.ContentRepositoryAdaptor",
+            "type": "vcs"
+        }
+    ],
     "require": {
         "neos/neos-development-collection": "@dev",
         "neos/flow-development-collection": "@dev",
@@ -28,7 +34,7 @@
         "psmb/nodetypes": "@dev",
         "psmb/createnodebutton": "@dev",
         "typo3/typo3cr-search": "@dev",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "dev-support-es20",
         "flowpack/searchplugin": "@dev",
         "sfi/grid": "^0.1.1",
         "psmb/mediaquery": "@dev"
