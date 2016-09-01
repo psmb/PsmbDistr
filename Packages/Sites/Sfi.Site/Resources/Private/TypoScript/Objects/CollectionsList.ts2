@@ -20,7 +20,7 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 				}
 			}
 			content = ${q(node).property('title')}
-			content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+			# content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
 		}
 	}
 	@cache {

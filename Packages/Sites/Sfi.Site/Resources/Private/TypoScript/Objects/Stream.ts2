@@ -88,7 +88,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 						node = ${node}
 					}
 					content = 'все материалы'
-					content.@process.count = ${value + ' (' + query.count() + ')'}
+					# content.@process.count = ${value + ' (' + query.count() + ')'}
 				}
 				media = T:Collection {
 					collection = ${aggregations.media.buckets}
@@ -116,7 +116,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 								condition = ${bucketName == 'isAudio'}
 								renderer = 'аудио'
 							}
-							@process.count = ${value + ' (' + bucket.doc_count + ')'}
+							# @process.count = ${value + ' (' + bucket.doc_count + ')'}
 						}
 					}
 				}
@@ -136,7 +136,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 						attributes.data-place-coordinates = ${node.properties.coordinates}
 						attributes.class = 'filter-bar__item js-filter-bar__item js-place'
 						content = ${node.properties.title}
-						content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
+						# content.@process.count = ${value + ' (' + bucket.doc_count + ')'}
 					}
 					# Set from Exhibitions
 					@if.notMain = ${showPlaces ? true : false}
