@@ -15,9 +15,7 @@
         "neos/neos-development-collection": "@dev",
         "neos/flow-development-collection": "@dev",
         "typo3/party": "@dev",
-        "typo3/neos-seo": "@dev",
         "typo3/imagine": "@dev",
-        "typo3/twitter-bootstrap": "@dev",
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
 
