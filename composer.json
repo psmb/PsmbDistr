@@ -33,7 +33,6 @@
         "psmb/createnodebutton": "@dev",
         "typo3/typo3cr-search": "@dev",
         "flowpack/elasticsearch-contentrepositoryadaptor": "dev-support-es20",
-        "flowpack/searchplugin": "@dev",
         "sfi/grid": "^0.1.1",
         "psmb/mediaquery": "@dev"
     },
