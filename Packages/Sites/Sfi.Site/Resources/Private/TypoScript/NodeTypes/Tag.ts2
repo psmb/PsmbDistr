@@ -10,7 +10,7 @@ prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag) {
 	newsList.@if.notRoot = ${node.name != 'tags'}
 	tagsMenu = T:Array {
 		# TODO: refactor
-		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0)}
+		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || node == q(site).children('tags').get(0)}
 		tagsHeader = T:Collection {
 			@process.tmpl = ${'<div class="stripe"><div class="fixed-width"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
 			collection = ${q(site).children('tags').children().get()}
