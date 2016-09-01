@@ -30,7 +30,8 @@
         "typo3/typo3cr-search": "@dev",
         "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
         "flowpack/searchplugin": "@dev",
-        "sfi/grid": "^0.1.1"
+        "sfi/grid": "^0.1.1",
+        "psmb/mediaquery": "@dev"
     },
     "extra": {
   		"neos": {
