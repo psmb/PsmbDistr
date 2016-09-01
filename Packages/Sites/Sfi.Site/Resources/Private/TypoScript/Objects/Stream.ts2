@@ -18,9 +18,15 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 				{term: {projects: node.identifier}},
 				{term: {collections: node.identifier}}
 			]})}
-			value.@process.place = ${request.arguments.place ? value.exactMatch('places', request.arguments.place) : value}
-			value.@process.collection = ${request.arguments.collection ? value.exactMatch('collections', request.arguments.collection) : value}
 			value.@process.filterByType = T:Case {
+				place {
+					condition = ${request.arguments.place}
+					renderer = ${value.exactMatch('places', request.arguments.place)}
+				}
+				collection {
+					condition = ${request.arguments.collection}
+					renderer = ${value.exactMatch('collections', request.arguments.collection)}
+				}
 				photo {
 					condition = ${request.arguments.media == 'isPhoto'}
 					renderer = ${value.exactMatch('isPhoto', true)}
@@ -44,7 +50,7 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 
 prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 	@context.request = 'ourNews'
-	config = T:RawArray {
+	mediaConfig = T:RawArray {
 		filters = T:RawArray {
 			filters = T:RawArray {
 				isPhoto = ${{term: {isPhoto: true}}}
@@ -53,8 +59,20 @@ prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 			}
 		}
 	}
-	value = ${query.aggregation('media', this.config).fieldBasedAggregation('collections', 'collections')}
-	value.@process.addPlaces = ${showPlaces ? value.fieldBasedAggregation('places', 'places') : value}
+	collectionsConfig = T:RawArray {
+		terms = T:RawArray {
+			field = 'collections'
+			size = 100
+		}
+	}
+	placesConfig = T:RawArray {
+		terms = T:RawArray {
+			field = 'places'
+			size = 100
+		}
+	}
+	value = ${query.aggregation('media', this.mediaConfig).aggregation('collections', this.collectionsConfig)}
+	value.@process.addPlaces = ${showPlaces ? value.aggregation('places', this.placesConfig) : value}
 	value.@process.execute = ${value.execute().aggregations}
 }
 

@@ -1,7 +1,7 @@
 prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
 	title = ${'<div class="row"><div class="fixed-width"><div class="columns"><h1 class="page-title">' + node.properties.title + '</h1></div></div></div>'}
 	newsList = Sfi.Site:Stream {
-		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="large-9 columns">' + value + '</div></div></div>'}
+		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
 	}
 }
 
