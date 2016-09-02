@@ -1,0 +1,10 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:if condition="{neos:rendering.inEditMode()}">
+	<f:then>
+		<!-- Don't render share buttons in BE as they conflict with Neos -->
+	</f:then>
+	<f:else>
+		<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+		<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="vkontakte,facebook,lj"></div>
+	</f:else>
+</f:if>

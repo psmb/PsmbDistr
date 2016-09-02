@@ -17,8 +17,7 @@
 				<div class="rte-text"><div class="author">{neos:contentElement.editable(property: 'credit', tag: 'span')}</div></div>
 				{newsList -> f:format.raw()}
 
-				<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
-				<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="button" data-yashareQuickServices="vkontakte,facebook,lj"></div>
+				{share -> f:format.raw()}
 
 				<div class="to-comments">
 					<a href="#disqus_thread">Комментировать</a>

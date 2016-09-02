@@ -1,0 +1,3 @@
+prototype(Sfi.Site:Share) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Share.html'
+}

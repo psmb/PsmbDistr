@@ -11,6 +11,7 @@ prototype(Sfi.Site:News) {
 	disqus = Sfi.Site:Disqus
 	stream = Sfi.Site:Stream
 	collectionArticles = Sfi.Site:CollectionArticles
+	share = Sfi.Site:Share
 
 	audioList = Sfi.Site:AudioPlayer
 
