@@ -1,0 +1,15 @@
+{namespace yandex}{namespace ts=TYPO3\TypoScript\ViewHelpers}<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns="http://backend.userland.com/rss2" xmlns:yandex="http://news.yandex.ru">
+	<channel>
+		<title>Информационная служба Преображенского братства</title>
+		<link>http://psmb.ru</link>
+		<description>Новости информационной службы Преображенского братства</description>
+		<language>ru_RU</language>
+		<generator>Neos CMS</generator>
+		<yandex:logo>http://psmb.ru/mstile-310x310.png</yandex:logo>
+		<yandex:logo type="square">http://psmb.ru/mstile-310x310.png</yandex:logo>
+
+		{childItems -> f:format.raw()}
+
+	</channel>
+</rss>
