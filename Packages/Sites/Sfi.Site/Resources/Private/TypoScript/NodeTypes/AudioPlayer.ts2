@@ -8,6 +8,7 @@ prototype(Sfi.Site:AudioPlayer) {
 			attributes.data-src = ${'asset://' + node.properties.asset.identifier}
 			attributes.data-src.@process.convertUris = TYPO3.Neos:ConvertUris
 			content = ${q(node).property('title')}
+			@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 		}
 	}
 }
