@@ -191,18 +191,18 @@ blah: &alohaRich
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:AbstractTag'
+              - 'Sfi.Site:TagMixin'
     sections:
       type: references
       ui:
-        label: 'Направления служения'
+        label: 'Разделы'
         reloadIfChanged: true
         inspector:
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:AbstractTag'
-            startingPoint: '/sites/site/pages/node-575b9aad625a1/node-575b9aad769f1'
+              - 'Sfi.Site:TagMixin'
+            startingPoint: '/sites/site/sections'
             threshold: 1
     collections:
       type: references
@@ -213,7 +213,7 @@ blah: &alohaRich
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:AbstractTag'
+              - 'Sfi.Site:TagMixin'
             startingPoint: '/sites/site/collections'
     projects:
       type: references
@@ -224,7 +224,7 @@ blah: &alohaRich
           group: newsRelations
           editorOptions:
             nodeTypes:
-              - 'Sfi.Site:AbstractTag'
+              - 'Sfi.Site:TagMixin'
             startingPoint: '/sites/site/projects'
     places:
       type: references
