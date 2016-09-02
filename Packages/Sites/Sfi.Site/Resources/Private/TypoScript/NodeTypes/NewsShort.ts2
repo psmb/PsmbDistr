@@ -23,7 +23,7 @@ prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 		# No idea why this is needed
 		maximumWidth>
 		width = ${node.properties.isImportant ? 576 : 276}
-		height = ${node.properties.isImportant ? 354 : 200}
+		height = ${node.properties.isImportant ? 357 : 200}
 		allowCropping = TRUE
 	}
 }
