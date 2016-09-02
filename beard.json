@@ -1,13 +1,6 @@
 {
 	"changes": [
 		{
-			"name": "TASK: improve performance of `getRelativeNodePathByUriPathSegmentProperties`",
-			"type": "github",
-			"repository": "neos/neos-development-collection",
-			"pull_request": "672",
-			"path": "Packages/Neos"
-		},
-		{
 			"name": "TASK: improve performance of `setUniqueUriPathSegment`",
 			"type": "github",
 			"repository": "neos/neos-development-collection",
