@@ -26,7 +26,6 @@
         "flowpack/behat": "dev-master",
 
         "ttree/contentrepositoryimporter": "^2.0",
-        "flowpack/listable": "^0.4.1",
         "sfi/youtube": "^0.1.5",
         "psmb/term": "@dev",
         "psmb/nodetypes": "@dev",

@@ -3,6 +3,7 @@
     'TYPO3.Neos:Content': true
   ui:
     label: 'Аудио плеер'
+    icon: 'icon-music'
   constraints:
     nodeTypes:
       '*' : true
