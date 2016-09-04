@@ -1,3 +1,11 @@
+'TYPO3.Neos:Document':
+  properties:
+    'uriPathSegment':
+      search:
+        elasticSearchMapping:
+          type: string
+          index: not_analyzed
+
 'TYPO3.Neos:Shortcut':
   superTypes:
     'Sfi.Site:ImageMixin': true
