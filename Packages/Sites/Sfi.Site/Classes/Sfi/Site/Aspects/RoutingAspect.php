@@ -3,6 +3,7 @@ namespace Sfi\Site\Aspects;
 
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\Aop\JoinPointInterface;
+use TYPO3\Flow\Log\SystemLoggerInterface;
 use TYPO3\Neos\Domain\Service\NodeSearchServiceInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TYPO3CR\Domain\Service\NodeTypeManager;
@@ -34,9 +35,9 @@ class RoutingAspect {
 
 	/**
 	 * @Flow\Inject
-	 * @var \Flowpack\ElasticSearch\ContentRepositoryAdaptor\LoggerInterface
+	 * @var SystemLoggerInterface
 	 */
-	protected $logger;
+	protected $systemLogger;
 
 	/**
 	 * Get the ElasticSearch request
@@ -80,6 +81,7 @@ class RoutingAspect {
 			$response = $this->elasticSearchClient->getIndex()->request('GET', '/_search', array(), json_encode($this->getRequest($pathSegment)));
 			$result = $response->getTreatedContent();
 			if (array_key_exists('hits', $result) && is_array($result['hits']) && $result['hits']['total'] > 0) {
+				$this->systemLogger->log('Routing AOP: ES route', LOG_DEBUG);
 				$hit = reset($result['hits']['hits']);
 				return reset($hit['fields']['__path']);
 			} else {
@@ -100,10 +102,13 @@ class RoutingAspect {
 					$nodeName = $node->getName();
 				} else {
 					return false;
+					$this->systemLogger->log('Routing AOP: Search service, no route', LOG_DEBUG);
 				}
+				$this->systemLogger->log('Routing AOP: Search service, resolved', LOG_DEBUG);
 				return 'a/' . $nodeName;
 			}
 		} else {
+			$this->systemLogger->log('Routing AOP: usual link', LOG_DEBUG);
 			return $joinPoint->getAdviceChain()->proceed($joinPoint);
 		}
 	}
