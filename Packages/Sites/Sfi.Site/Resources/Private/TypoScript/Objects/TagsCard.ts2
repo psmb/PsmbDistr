@@ -1,0 +1,23 @@
+prototype(Sfi.Site:TagsCard) < prototype(T:Array) {
+	@process.tmpl = ${'<div class="paddingHorizontal-double paddingTop-half paddingBottom-double marginBottom-double" style="background-color: white">' + value + '</div>'}
+	title = T:Tag {
+		@process.tmpl = ${'<h2 data-magellan-destination="tags" class="block-title-divider marginBottom-double"><span>' + value + '</span></h2>'}
+		@context.node = ${q(site).children('tags').get(0)}
+		tagName = 'a'
+		attributes.href = NodeUri {
+			node = ${node}
+		}
+		content = ${node.properties.title}
+	}
+	list = T:Collection {
+		collection = ${q(site).children('tags').children('[instanceof TYPO3.Neos:Document]').get()}
+		itemRenderer = T:Tag {
+			@process.tmpl = ${'<div class="delta">' + value + '</div>'}
+			tagName = 'a'
+			attributes.href = NodeUri {
+				node = ${node}
+			}
+			content = ${node.properties.title}
+		}
+	}
+}

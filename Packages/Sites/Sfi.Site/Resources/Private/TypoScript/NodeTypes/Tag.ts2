@@ -7,6 +7,7 @@ prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
 
 prototype(Sfi.Site:Tag) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Tag.html'
+	title = ${q(node).parent().get(0) == q(site).children('tags').get(0) ? q(site).children('tags').get(0).properties.title : q(node).property('title')}
 	cover = TYPO3.Neos:ContentCollection {
 		nodePath = 'cover'
 		prototype(Psmb.NodeTypes:Image) {
@@ -18,18 +19,18 @@ prototype(Sfi.Site:Tag) {
 	}
 	stream = Sfi.Site:Stream {
 		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
-		@if.notRoot = ${node.name != 'tags'}
+		@if.notRoot = ${q(node).parent().get(0) != q(site).children('tags').get(0)}
 	}
 	tagsMenu = T:Array {
 		# TODO: refactor
-		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || node == q(site).children('tags').get(0)}
+		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || q(node).parent().get(0) == q(site).children('tags').get(0)}
 		tagsHeader = T:Collection {
 			@process.tmpl = ${'<div class="stripe"><div class="fixed-width"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
 			collection = ${q(site).children('tags').children('[instanceof TYPO3.Neos:Document]').get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Tag {
 				tagName = 'dd'
-				attributes.class = ${node.name == 'people' ? 'active' : ''}
+				attributes.class = ${node == documentNode ? 'active' : ''}
 				content = T:Tag {
 					tagName = 'a'
 					attributes.href = ${'#' + node.name}
@@ -42,7 +43,7 @@ prototype(Sfi.Site:Tag) {
 			collection = ${q(site).children('tags').children().get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Collection {
-				@process.tmpl = ${'<div class="content ' + (node.name == 'people' && 'active') +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
+				@process.tmpl = ${'<div class="content ' + (node == documentNode && 'active') +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
 				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').sort('title', 'ASC').get()}
 				itemRenderer = T:Tag {
 					@process.tmpl = ${'<li class="epsilon">' + value + '</li>'}

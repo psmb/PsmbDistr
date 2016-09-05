@@ -5,6 +5,7 @@ prototype(Sfi.Site:MainPage) {
 	externalNews = Sfi.Site:NewsExternalList
 	stream = Sfi.Site:Stream
 	blogList = Sfi.Site:BlogList
+	tagsCard = Sfi.Site:TagsCard
 
 	projects = T:Collection {
 		@process.tmpl = ${'<div class="row paddingVertical-double"><div class="fixed-width">' + value + '</div></div>'}
