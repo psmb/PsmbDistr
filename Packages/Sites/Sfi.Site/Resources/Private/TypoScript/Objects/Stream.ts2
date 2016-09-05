@@ -48,9 +48,13 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 						{term: {type: 'blog'}}
 					]})}
 				}
+				defaultMain {
+					condition = ${site == node}
+					renderer = ${value.exactMatch('type', 'ourNews')}
+				}
 				default {
 					condition = ${true}
-					renderer = ${value.exactMatch('type', 'ourNews')}
+					renderer = ${value}
 				}
 			}
 		}
