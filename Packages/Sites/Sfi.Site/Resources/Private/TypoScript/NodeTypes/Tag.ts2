@@ -30,7 +30,7 @@ prototype(Sfi.Site:Tag) {
 			iterationName = 'iterator'
 			itemRenderer = T:Tag {
 				tagName = 'dd'
-				attributes.class = ${node == documentNode ? 'active' : ''}
+				attributes.class = ${q(documentNode).parent().get(0) == q(site).children('tags').get(0) ? (node == documentNode && 'active') : (iterator.isFirst && 'active')}
 				content = T:Tag {
 					tagName = 'a'
 					attributes.href = ${'#' + node.name}
@@ -43,7 +43,7 @@ prototype(Sfi.Site:Tag) {
 			collection = ${q(site).children('tags').children().get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Collection {
-				@process.tmpl = ${'<div class="content ' + (node == documentNode && 'active') +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
+				@process.tmpl = ${'<div class="content ' + (q(documentNode).parent().get(0) == q(site).children('tags').get(0) ? (node == documentNode && 'active') : (iterator.isFirst && 'active')) +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
 				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').sort('title', 'ASC').get()}
 				itemRenderer = T:Tag {
 					@process.tmpl = ${'<li class="epsilon">' + value + '</li>'}
