@@ -70,7 +70,7 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:Author'
-            startingPoint: '/sites/site/author'
+            startingPoint: '/sites/site/authors'
     isExternal:
       type: boolean
       ui:
