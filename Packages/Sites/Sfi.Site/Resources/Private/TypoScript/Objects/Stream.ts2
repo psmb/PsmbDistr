@@ -39,6 +39,15 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 					condition = ${request.arguments.media == 'isVideo'}
 					renderer = ${value.exactMatch('isVideo', true)}
 				}
+				noType {
+					condition = ${request.arguments.media == 'noType'}
+					renderer = ${value.queryFilter('bool', {must_not: [
+						{term: {type: 'ourNews'}},
+						{term: {type: 'externalNews'}},
+						{term: {type: 'announcement'}},
+						{term: {type: 'blog'}}
+					]})}
+				}
 				default {
 					condition = ${true}
 					renderer = ${value.exactMatch('type', 'ourNews')}
@@ -107,6 +116,17 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 					}
 					content = 'все материалы'
 					# content.@process.count = ${value + ' (' + query.count() + ')'}
+				}
+				noType = T:Tag {
+					attributes.class = 'filter-bar__item js-filter-bar__item'
+					attributes.data-url = NodeUri {
+						node = ${node}
+						additionalParams {
+							media = 'noType'
+						}
+					}
+					content = 'без типа'
+					@if.onlyInBackend = ${node.context.inBackend}
 				}
 				media = T:Collection {
 					collection = ${aggregations.media.buckets}
