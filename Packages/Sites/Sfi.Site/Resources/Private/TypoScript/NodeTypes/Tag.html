@@ -1,0 +1,23 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+<div class="fixed-width">
+	<div class="row">
+		<div class="columns">
+			<h1 class="page-title">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+			{cover -> f:format.raw()}
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-8 large-offset-2 columns">
+			{main -> f:format.raw()}
+		</div>
+	</div>
+</div>
+<div class="row bg-gray">
+	<div class="fixed-width">
+		<div class="columns">
+			{stream -> f:format.raw()}
+		</div>
+	</div>
+</div>
+{tagsMenu -> f:format.raw()}

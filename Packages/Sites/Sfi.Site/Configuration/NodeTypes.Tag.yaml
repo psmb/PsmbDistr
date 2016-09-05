@@ -7,5 +7,7 @@
   ui:
     label: 'Тэг'
   childNodes:
+    cover:
+      type: 'TYPO3.Neos:ContentCollection'
     main:
       type: 'TYPO3.Neos:ContentCollection'

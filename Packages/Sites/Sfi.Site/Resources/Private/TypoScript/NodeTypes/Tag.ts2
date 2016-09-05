@@ -5,9 +5,21 @@ prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
 	}
 }
 
-prototype(Sfi.Site:Tag)>
-prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractTag) {
-	newsList.@if.notRoot = ${node.name != 'tags'}
+prototype(Sfi.Site:Tag) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Tag.html'
+	cover = TYPO3.Neos:ContentCollection {
+		nodePath = 'cover'
+		prototype(Psmb.NodeTypes:Image) {
+			content.image.maximumHeight = 600
+		}
+	}
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	stream = Sfi.Site:Stream {
+		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
+		@if.notRoot = ${node.name != 'tags'}
+	}
 	tagsMenu = T:Array {
 		# TODO: refactor
 		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || node == q(site).children('tags').get(0)}
