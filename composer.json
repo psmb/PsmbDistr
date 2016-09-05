@@ -33,7 +33,10 @@
         "typo3/typo3cr-search": "@dev",
         "flowpack/elasticsearch-contentrepositoryadaptor": "dev-support-es20",
         "sfi/grid": "@dev",
-        "psmb/mediaquery": "@dev"
+        "psmb/mediaquery": "@dev",
+        "neos/redirecthandler": "^1.0",
+        "neos/redirecthandler-databasestorage": "^1.0",
+        "neos/redirecthandler-neosadapter": "^1.0"
     },
     "extra": {
   		"neos": {
