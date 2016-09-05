@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "neos/neos-development-collection": "@dev",
+        "neos/neos-development-collection": "2.3.x-dev",
         "neos/flow-development-collection": "@dev",
         "typo3/party": "@dev",
         "typo3/imagine": "@dev",
@@ -26,13 +26,13 @@
         "flowpack/behat": "dev-master",
 
         "ttree/contentrepositoryimporter": "^2.0",
-        "sfi/youtube": "^0.1.5",
+        "sfi/youtube": "@dev",
         "psmb/term": "@dev",
         "psmb/nodetypes": "@dev",
         "psmb/createnodebutton": "@dev",
         "typo3/typo3cr-search": "@dev",
         "flowpack/elasticsearch-contentrepositoryadaptor": "dev-support-es20",
-        "sfi/grid": "^0.1.1",
+        "sfi/grid": "@dev",
         "psmb/mediaquery": "@dev"
     },
     "extra": {
