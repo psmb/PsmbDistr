@@ -1,9 +1,27 @@
 prototype(Psmb.NodeTypes:Text) {
-	attributes.class = 'rte-text'
+	attributes.class = 'Text rte-text'
   content.@process.replaceTags = Psmb.Term:ReplaceTerms
 }
 prototype(Psmb.NodeTypes:Headline) {
-	attributes.class = 'rte-text'
+	attributes.class = 'Headline rte-text'
+}
+prototype(Psmb.NodeTypes:Lead) {
+	attributes.class = 'Lead rte-text'
+}
+prototype(Psmb.NodeTypes:Blockquote) {
+	attributes.class = 'Blockquote rte-text'
+}
+prototype(Psmb.NodeTypes:Section) {
+	attributes.class = 'Section rte-text'
+}
+prototype(Psmb.NodeTypes:Aside) {
+	attributes.class = 'Aside rte-text'
+}
+prototype(Psmb.NodeTypes:Small) {
+	attributes.class = 'Small rte-text'
+}
+prototype(Psmb.NodeTypes:Epigraph) {
+	attributes.class = 'Epigraph rte-text'
 }
 prototype(Psmb.NodeTypes:Image) {
 	attributes.class = 'figure'
