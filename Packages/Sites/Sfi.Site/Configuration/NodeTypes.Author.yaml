@@ -12,9 +12,9 @@
     name:
       type: 'string'
       ui:
-        inlineEditable: true
-        aloha:
-          placeholder: 'Имя автора'
+        label: 'Имя автора'
+        inspector:
+          group: 'author'
     photo:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:

@@ -175,8 +175,6 @@ blah: &alohaRich
                 icon: 'icon-fire'
               announcement:
                 label: 'Анонс'
-              blog:
-                label: 'Пишут в блогах'
       search:
         elasticSearchMapping:
           type: string
