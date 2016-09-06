@@ -7,6 +7,9 @@ prototype(Sfi.Site:News) {
 	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
+	gallery = TYPO3.Neos:ContentCollection {
+		nodePath = 'gallery'
+	}
 	newsList = Sfi.Site:NewsRelatedList
 	disqus = Sfi.Site:Disqus
 	stream = Sfi.Site:Stream
