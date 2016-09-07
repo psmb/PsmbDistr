@@ -806,31 +806,24 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 	}
 }
 
-.Aside{
+.Aside {
 	background: $gray-bg;
-	&,p{
+	&,p {
 		font-size: rem-calc(13) !important;
 		margin: $u 0;
 	}
 	padding: $u 2*$u;
 }
-.Section{
+.Section {
 	background: $gray-bg;
-	&,p,li{
+	&,p,li {
 		font-size: rem-calc(13) !important;
 		margin: $u 0;
 	}
 	padding: $u 2*$u;
 }
-
-//This is for hologram styleguide
-.hologram-content{
-	> h1{@extend .alpha;}
-	> h2{@extend .beta;}
-	> h3{@extend .gamma;}
-	> h4{@extend .delta;}
-	> h5{@extend .epsilon;}
-	> h6{@extend .zeta;}
-	> p{@extend .paragraph;}
-	> a{@extend .link;}
+.Small {
+	&,p {
+		font-size: smaller !important;
+	}
 }
