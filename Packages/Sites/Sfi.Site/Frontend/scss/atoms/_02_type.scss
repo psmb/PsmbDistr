@@ -824,6 +824,6 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 }
 .Small {
 	&,p {
-		font-size: smaller !important;
+		font-size: rem-calc(13) !important;
 	}
 }

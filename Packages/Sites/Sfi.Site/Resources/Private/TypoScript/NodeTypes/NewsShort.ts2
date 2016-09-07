@@ -11,8 +11,8 @@ prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 			audio = ${node.properties.isAudio && 'audio'}
 		}
 	}
-	title = ${String.cropAtWord(node.properties.title, 90, '...')}
-	teaser = ${String.cropAtWord(node.properties.teaser, 100, '...')}
+	title = ${String.cropAtWord(String.stripTags(node.properties.title), 90, '...')}
+	teaser = ${String.cropAtWord(String.stripTags(node.properties.teaser), 100, '...')}
 	date = ${node.properties.date}
 	nodeUri = NodeUri {
 		node = ${node}
