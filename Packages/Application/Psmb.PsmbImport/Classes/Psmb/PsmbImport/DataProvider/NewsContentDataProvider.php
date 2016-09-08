@@ -161,7 +161,7 @@ class NewsContentDataProvider extends DataProvider {
 		// i -> em
 		$bodytext = preg_replace('/<i>(.*?)<\/i>/i', '<em>$1</em>', $bodytext);
 		// Wrap empty lines with paragraph tag
-		$bodytext = preg_replace('/^((<em>|<strong>|<a|[^<]).*?)([\r\n]|$)/mui', '<p>$1</p>', $bodytext);
+		$bodytext = preg_replace('/^((<em|<span|<strong|<a|[^<]).*?)([\r\n]|$)/mui', '<p>$1</p>', $bodytext);
 		// Handle link tags
 		$bodytext = preg_replace_callback(
 			'@<link\s+(\S*)[^>]*>([^<]*)</link>@ui',

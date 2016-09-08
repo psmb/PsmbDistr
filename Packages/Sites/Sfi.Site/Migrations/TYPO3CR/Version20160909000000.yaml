@@ -1,0 +1,16 @@
+up:
+  comments: 'Wrap lines beggining with <span with paragraph tags'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Psmb.NodeTypes:Text'
+      transformations:
+        -
+          type: '\Sfi\Site\TYPO3CR\Transformations\FixSpanTransformation'
+          settings:
+            propertyName: 'text'
+down:
+  comments: 'No way back!'
