@@ -8,12 +8,15 @@ TYPO3:
         'Sfi.Site': TRUE
     userInterface:
       navigateComponent:
+        structureTree:
+          loadingDepth: 0
         nodeTree:
           loadingDepth: 1
           presets:
             default:
               baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
-
+    eventLog:
+      enabled: TRUE
   # TYPO3CR:
   #   contentDimensions:
   #     'language':
