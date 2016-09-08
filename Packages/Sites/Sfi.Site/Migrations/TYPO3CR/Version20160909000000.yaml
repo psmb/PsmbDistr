@@ -9,7 +9,7 @@ up:
             nodeType: 'Psmb.NodeTypes:Text'
       transformations:
         -
-          type: '\Sfi\Site\TYPO3CR\Transformations\FixSpanTransformation'
+          type: '\Sfi\Site\TYPO3CR\Transformations\CleanupContentTransformation'
           settings:
             propertyName: 'text'
 down:

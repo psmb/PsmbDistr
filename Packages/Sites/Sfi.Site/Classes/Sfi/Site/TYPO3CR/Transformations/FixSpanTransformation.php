@@ -4,7 +4,7 @@ namespace Sfi\Site\TYPO3CR\Transformations;
 use TYPO3\Flow\Annotations as Flow;
 use TYPO3\TYPO3CR\Migration\Transformations\AbstractTransformation;
 
-class FixSpanTransformation extends AbstractTransformation {
+class CleanupContentTransformation extends AbstractTransformation {
 	/**
 	 * @var string
 	 */
@@ -35,7 +35,9 @@ class FixSpanTransformation extends AbstractTransformation {
 	 */
 	public function execute(\TYPO3\TYPO3CR\Domain\Model\NodeData $node) {
 		$text = $node->getProperty($this->propertyName);
+
 		$text = preg_replace('/^((<small|<span).*?)([\r\n]|$)/mui', '<p>$1</p>', $text);
+		$text = preg_replace('/<span\s+?class="interview".*?>(.+?)<\/span>/mui', '<strong>$1</strong>', $text);
 		$node->setProperty($this->propertyName, $text);
 	}
 }
