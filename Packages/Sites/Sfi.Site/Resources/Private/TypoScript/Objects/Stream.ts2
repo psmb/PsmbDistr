@@ -44,8 +44,7 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 					renderer = ${value.queryFilter('bool', {must_not: [
 						{term: {type: 'ourNews'}},
 						{term: {type: 'externalNews'}},
-						{term: {type: 'announcement'}},
-						{term: {type: 'blog'}}
+						{term: {type: 'announcement'}}
 					]})}
 				}
 				defaultMain {
