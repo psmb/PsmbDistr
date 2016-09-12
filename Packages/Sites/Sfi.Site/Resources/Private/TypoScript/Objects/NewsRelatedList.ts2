@@ -9,6 +9,9 @@ prototype(Sfi.Site:NewsRelatedList) < prototype(T:Array) {
 		itemRenderer = Sfi.Site:NewsShortSmall
 		@cache {
 			mode = 'cached'
+			entryIdentifier {
+				node = ${node}
+			}
 			entryTags {
 				1 = 'NodeType_Sfi.Site:News'
 			}

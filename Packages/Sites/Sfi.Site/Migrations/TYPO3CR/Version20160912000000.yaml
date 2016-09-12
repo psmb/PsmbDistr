@@ -1,0 +1,16 @@
+up:
+  comments: 'Clear relations'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Site:News'
+      transformations:
+        -
+          type: 'RemoveProperty'
+          settings:
+            property: 'relatedNews'
+down:
+  comments: 'No way back!'

@@ -18,8 +18,8 @@ class NewsRelationDataProvider extends DataProvider {
 		while ($record = $statement->fetch()) {
 			$result[] = [
 				'__label' => $record['uid_local'] . ' - ' . $record['uid_foreign'],
-				'newsId' => (int)$record['uid_local'],
-				'targetNewsId' => (int)$record['uid_foreign']
+				'newsId' => (int)$record['uid_foreign'],
+				'targetNewsId' => (int)$record['uid_local']
 			];
 		}
 		$this->count = count($result);
