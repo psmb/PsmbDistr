@@ -31,3 +31,6 @@ prototype(Psmb.NodeTypes:Image) {
 prototype(TYPO3.TypoScript:Collection) {
 	itemName = 'node'
 }
+prototype(TYPO3.TypoScript:GlobalCacheIdentifiers) {
+	site = ${site}
+}
