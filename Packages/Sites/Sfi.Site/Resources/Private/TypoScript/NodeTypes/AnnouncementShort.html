@@ -7,11 +7,10 @@
 						<f:then>
 							<f:if condition="{f:format.date(date:'now', format:'U')} > {f:format.date(date:dateStart, format:'U')}">
 								<f:then>
-									<!-- TODO i18n -->
-									до <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+									{f:translate(package:'Sfi.Site', id:'until')} <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 								</f:then>
 								<f:else>
-									с <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{dateStart}</f:format.date>
+									{f:translate(package:'Sfi.Site', id:'from')} <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{dateStart}</f:format.date>
 								</f:else>
 							</f:if>
 						</f:then>

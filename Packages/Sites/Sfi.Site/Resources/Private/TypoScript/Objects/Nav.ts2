@@ -72,8 +72,7 @@ prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 	}
 }
 prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
-	@process.tmpl = ${value + '<li class="sitemap__item"><a href="http://karta.psmb.ru">Карта памяти</a></li><li class="sitemap__item"><a href="http://c.psmb.ru">Православный календарь</a></li>'}
-	collection = ${q(site).children('blogs').add(q(site).children('tags'))}
+	collection = ${q(site).children('misc-nav').children('[instanceof TYPO3.Neos:Document]').get()}
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'

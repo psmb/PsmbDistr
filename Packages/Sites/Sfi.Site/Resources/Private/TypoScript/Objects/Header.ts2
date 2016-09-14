@@ -1,5 +1,5 @@
 prototype(Sfi.Site:Header) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Header.html'
 	secondaryNav = Sfi.Site:SecondaryNav
-	aboutUsNode = ${q(site).children('[uriPathSegment="o-nas"]').get(0)}
+	aboutUsNode = ${q(site).children('o-nas').get(0)}
 }

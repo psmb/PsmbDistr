@@ -2,7 +2,7 @@ prototype(Sfi.Site:Body) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Body.html'
 	header = Sfi.Site:Header
 	breadcrumbs = Sfi.Site:Breadcrumbs {
-		@if.notAboutUs = ${q(node).property('uriPathSegment') != 'o-nas'}
+		@if.notAboutUs = ${node.name != 'o-nas'}
 	}
 	main = PrimaryContent {
 		renderByType {

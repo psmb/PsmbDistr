@@ -27,12 +27,11 @@ prototype(Sfi.Site:RssItem) < prototype(TYPO3.TypoScript:Template) {
 	@context.main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	# TODO fix
 	bodytext = ${'<yandex:full-text>' + String.Trim(String.htmlSpecialChars(String.stripTags(String.pregReplace(String.pregReplace(main, '/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2'), '/<\w[^>]+?>/', ' ')))) + '</yandex:full-text>'}
 }
 
 root.rss {
 	@position = 'before shortcut'
-	condition = ${q(documentNode).property('uriPathSegment') == 'rss-yandex' && node.context.workspaceName == 'live'}
+	condition = ${documentNode.name == 'rss-yandex' && node.context.workspaceName == 'live'}
 	renderer = Sfi.Site:RssList
 }

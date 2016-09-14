@@ -7,6 +7,7 @@ TYPO3:
       autoInclude:
         'Sfi.Site': TRUE
     userInterface:
+#      loadMinifiedJavascript: false
       navigateComponent:
         structureTree:
           loadingDepth: 0
@@ -17,22 +18,22 @@ TYPO3:
               baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
     eventLog:
       enabled: TRUE
-  # TYPO3CR:
-  #   contentDimensions:
-  #     'language':
-  #       default: 'ru'
-  #       defaultPreset: 'ru'
-  #       label: 'Language'
-  #       icon: 'icon-language'
-  #       presets:
-  #         'ru':
-  #           label: 'Russian'
-  #           values: ['ru']
-  #           uriSegment: ''
-  #         'en':
-  #           label: 'English'
-  #           values: ['en']
-  #           uriSegment: 'en'
+  TYPO3CR:
+    contentDimensions:
+      'language':
+        default: 'ru'
+        defaultPreset: 'ru'
+        label: 'Language'
+        icon: 'icon-language'
+        presets:
+          'ru':
+            label: 'Russian'
+            values: ['ru']
+            uriSegment: ''
+          'en':
+            label: 'English'
+            values: ['en']
+            uriSegment: 'en'
 Flowpack:
   ElasticSearch:
     clients:

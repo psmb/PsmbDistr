@@ -17,11 +17,11 @@
 	border-right-width: 1px;
 }
 
-.sitemap__item{
+.sitemap li, .sitemap__item{
 	@extend .service-small--inv;
 	margin: $u/2 0;
 }
 
-.sitemap__header{
+.sitemap li.sitemap__header{
 	@extend .service-large--inv;
 }

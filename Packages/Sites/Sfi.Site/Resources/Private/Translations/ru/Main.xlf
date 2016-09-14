@@ -8,6 +8,24 @@
 			<trans-unit id="global.shorttitle">
 				<source>Преображенское братство</source>
 			</trans-unit>
+			<trans-unit id="from">
+				<source>с</source>
+			</trans-unit>
+			<trans-unit id="until">
+				<source>до</source>
+			</trans-unit>
+			<trans-unit id="more">
+				<source>еще</source>
+			</trans-unit>
+			<trans-unit id="loadMore">
+				<source>загрузить еще</source>
+			</trans-unit>
+			<trans-unit id="newsList.archiveLink">
+				<source>Архив материалов</source>
+			</trans-unit>
+			<trans-unit id="announcements.archiveLink">
+				<source>Архив анонсов</source>
+			</trans-unit>
 			<trans-unit id="tomain">
 				<source>На главную</source>
 			</trans-unit>
@@ -22,6 +40,9 @@
 			</trans-unit>
 			<trans-unit id="footer.contacts">
 				<source>Контакты</source>
+			</trans-unit>
+			<trans-unit id="footer.copyright">
+				<source>© 2016 Преображенское содружество малых православных братств. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на http://www.psmb.ru Мнение редакции может не совпадать с мнением авторов.</source>
 			</trans-unit>
 		</body>
 	</file>

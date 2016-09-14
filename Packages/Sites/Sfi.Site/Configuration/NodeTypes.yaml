@@ -1,5 +1,18 @@
 'TYPO3.Neos:Document':
   properties:
+    _name:
+      type: string
+      ui:
+        label: 'Node name (не трогать!)'
+        inspector:
+          group: 'document'
+      validation:
+        'TYPO3.Neos/Validation/NotEmptyValidator': []
+        'TYPO3.Neos/Validation/StringLengthValidator':
+          minimum: 1
+          maximum: 255
+        regularExpression:
+          regularExpression: '/^[a-z0-9\-]+$/i'
     'uriPathSegment':
       search:
         elasticSearchMapping:
@@ -25,6 +38,13 @@
     'Sfi.Site:ImageMixin': true
   ui:
     label: 'Главная страница'
+  properties:
+    footerContacts:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Контактные данные'
 
 'Sfi.Site:BlogArchive':
   superTypes:

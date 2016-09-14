@@ -15,9 +15,8 @@ prototype(Sfi.Site:BlogList) < prototype(T:Array) {
 		tagName = 'a'
 		attributes.class = 'action--small primary-color'
 		attributes.href = NodeUri {
-			node = ${q(site).children('[uriPathSegment="blogs"]').get(0)}
+			node = ${q(site).children('blogs').get(0)}
 		}
-		# TODO i18n
-		content = 'Еще'
+		content = ${Translation.translate('more', null, [], null, 'Sfi.Site')}
 	}
 }

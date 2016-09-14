@@ -5,6 +5,9 @@ include: Override.ts2
 include: Redirect.ts2
 
 prototype(Sfi.Site:Root) < prototype(Page) {
+	@context.lang = ${Array.first(node.context.dimensions.language)}
+	@context.altLang = ${Array.first(node.context.dimensions.language) == 'ru' ? 'en' : 'ru'}
+
 	head {
 		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('global.shorttitle', null, [], null, 'Sfi.Site')}
 		miscStuff = ${'
@@ -58,7 +61,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 			}
 		}
 	}
-	# TODO: htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
+	htmlTag.attributes.lang = ${Array.first(node.context.dimensions.language)}
 	bodyTag.attributes.class = 'Page'
 	bodyTag.attributes.id = ${'Page-' + q(node).property('_name')}
 

@@ -3,4 +3,20 @@ prototype(Sfi.Site:Footer) < prototype(T:Template) {
 	sectionsNav = Sfi.Site:FooterSectionsNav
 	ourProjectsNav = Sfi.Site:OurProjectsNav
 	miscNav = Sfi.Site:MiscNav
+	lang = ${lang}
+	footerContacts = T:Tag {
+		content = ${site.properties.footerContacts}
+		@process.editable = ContentElementEditable {
+			property = 'footerContacts'
+		}
+	}
+	@process.editable = ContentElementWrapping {
+		node = ${site}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${'Node_' + site.identifier}
+		}
+	}
 }

@@ -1,10 +1,10 @@
 prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 	announcements {
-		condition = ${node.properties.uriPathSegment == 'anonsy'}
+		condition = ${node.name == 'anonsy'}
 		renderer = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'announcement').sortDesc('date')}
 	}
 	externalNews {
-		condition = ${node.properties.uriPathSegment == 'obzor-smi'}
+		condition = ${node.name == 'obzor-smi'}
 		renderer = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'externalNews').sortDesc('date')}
 	}
 	ourNews {

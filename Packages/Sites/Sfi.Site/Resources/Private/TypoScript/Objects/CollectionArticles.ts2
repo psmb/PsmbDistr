@@ -18,7 +18,7 @@ prototype(Sfi.Site:CollectionArticles) < prototype(T:Array) {
 		attributes.href = NodeUri {
 			node = ${collection}
 		}
-		content = 'еще'
+		content =  ${Translation.translate('more', null, [], null, 'Sfi.Site')}
 	}
 	@cache {
 		mode = 'cached'
