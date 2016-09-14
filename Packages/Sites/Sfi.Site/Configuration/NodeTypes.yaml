@@ -25,6 +25,9 @@
     'Sfi.Site:ImageMixin': true
   ui:
     label: 'Главная страница'
+  childNodes:
+    top:
+      type: 'TYPO3.Neos:ContentCollection'
   properties:
     footerContacts:
       type: string

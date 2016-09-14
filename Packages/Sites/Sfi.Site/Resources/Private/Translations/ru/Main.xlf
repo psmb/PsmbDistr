@@ -23,6 +23,9 @@
 			<trans-unit id="newsList.archiveLink">
 				<source>Архив материалов</source>
 			</trans-unit>
+			<trans-unit id="announcements">
+				<source>Анонсы</source>
+			</trans-unit>
 			<trans-unit id="announcements.archiveLink">
 				<source>Архив анонсов</source>
 			</trans-unit>
@@ -43,6 +46,21 @@
 			</trans-unit>
 			<trans-unit id="footer.copyright">
 				<source>© 2016 Преображенское содружество малых православных братств. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на http://www.psmb.ru Мнение редакции может не совпадать с мнением авторов.</source>
+			</trans-unit>
+			<trans-unit id="blogs">
+				<source>Пишут в блогах</source>
+			</trans-unit>
+			<trans-unit id="obzorSmi">
+				<source>Обзор СМИ</source>
+			</trans-unit>
+			<trans-unit id="new">
+				<source>Новое</source>
+			</trans-unit>
+			<trans-unit id="latestArticles">
+				<source>Последние материалы</source>
+			</trans-unit>
+			<trans-unit id="onThisPage">
+				<source>На этой странице</source>
 			</trans-unit>
 		</body>
 	</file>

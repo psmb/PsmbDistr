@@ -30,13 +30,17 @@
 				<source>Архив материалов</source>
 				<target>News Archive</target>
 			</trans-unit>
+			<trans-unit id="announcements">
+				<source>Анонсы</source>
+				<target>Upcoming</target>
+			</trans-unit>
 			<trans-unit id="announcements.archiveLink">
 				<source>Архив анонсов</source>
-				<target>Announcements Archive</target>
+				<target>Past Events</target>
 			</trans-unit>
 			<trans-unit id="tomain">
 				<source>На главную</source>
-				<target>To main</target>
+				<target>To Main</target>
 			</trans-unit>
 			<trans-unit id="footer.sectionsNav">
 				<source>Разделы сайта</source>
@@ -57,6 +61,26 @@
 			<trans-unit id="footer.copyright">
 				<source>© 2016 Преображенское содружество малых православных братств. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на http://www.psmb.ru Мнение редакции может не совпадать с мнением авторов.</source>
 				<target>© 2016 The Transfiguration Brotherhood.</target>
+			</trans-unit>
+			<trans-unit id="blogs">
+				<source>Пишут в блогах</source>
+				<target>In Blogs</target>
+			</trans-unit>
+			<trans-unit id="obzorSmi">
+				<source>Обзор СМИ</source>
+				<target>Press Review</target>
+			</trans-unit>
+			<trans-unit id="new">
+				<source>Новое</source>
+				<target>New</target>
+			</trans-unit>
+			<trans-unit id="latestArticles">
+				<source>Последние материалы</source>
+				<target>Latest Articles</target>
+			</trans-unit>
+			<trans-unit id="onThisPage">
+				<source>На этой странице</source>
+				<target>On this Page</target>
 			</trans-unit>
 		</body>
 	</file>

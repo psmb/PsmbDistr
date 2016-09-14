@@ -2,7 +2,7 @@ prototype(Sfi.Site:BlogArchive)>
 prototype(Sfi.Site:BlogArchive) < prototype(T:Array) {
 	@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
 
-	title = '<h1 class="page-title paddingTop-double">Пишут в блогах</h1>'
+	title = ${'<h1 class="page-title paddingTop-double">' + Translation.translate('blogs', null, [], null, 'Sfi.Site') + '</h1>'}
 	blogList = T:Collection {
 		@process.tmpl = ${'<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">' + value + '</ul>'}
 		collection = ${Array.reverse(q(site).find('[instanceof Sfi.Site:Blog]').get())}

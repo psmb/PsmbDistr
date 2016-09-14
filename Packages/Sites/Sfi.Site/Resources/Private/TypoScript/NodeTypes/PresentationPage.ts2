@@ -28,7 +28,7 @@ prototype(Sfi.Site:PresentationPage) {
 	}
 
 	ourHistoryUri = NodeUri {
-		node = ${q(site).children('a').children('[uriPathSegment="svyashchennik-georgiy-kochetkov-nashe-dvizhenie-vozniklo-estestvenno"]').get(0)}
+		node = ${q(site).children('a').children('svyashchennik-georgiy-kochetkov-nashe-dvizhenie-vozniklo-estestvenno').get(0)}
 	}
 
 	ourTeachers = T:Collection {
@@ -51,7 +51,5 @@ prototype(Sfi.Site:PresentationPage) {
 				caption = ${'<span class="teachers__caption">' + node.properties.title + '</span>'}
 			}
 		}
-
-
 	}
 }

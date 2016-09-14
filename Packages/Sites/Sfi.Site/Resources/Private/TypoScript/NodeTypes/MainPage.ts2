@@ -1,5 +1,8 @@
 prototype(Sfi.Site:MainPage) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/MainPage.html'
+	top = TYPO3.Neos:ContentCollection {
+		nodePath = 'top'
+	}
 	announcementsList = Sfi.Site:AnnouncementsList
 	collectionsList = Sfi.Site:CollectionsList
 	externalNews = Sfi.Site:NewsExternalList

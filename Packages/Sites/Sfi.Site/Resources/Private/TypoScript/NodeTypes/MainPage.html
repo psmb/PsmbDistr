@@ -1,31 +1,20 @@
-
-
-<div class="Masthead" style="background-image: url(http://festival.psmb.ru/_Resources/Persistent/bfe859279d8253a4e94d1d9c1623455c34dd93ac/GUR_5084-2560x1703.jpg)">
-		<div class="Masthead-overlay textAlign-center paddingTop-triple paddingBottom-double">
-			<div class="fixedWidth">
-				<h1 class="Masthead-headline H0 color-white paddingVertical-single"><span>Имеющие надежду</span></h1>
-				<h2 class="Masthead-subHeadline H1Alt color-white "><span>Материалы фестиваля<br>«Преображенские встречи»</span></h2>
-				<p class="Masthead-location H2 color-white paddingTop-single paddingBottom-double"><span></span></p>
-				<a class="button button--alt Dog" target="_blank" title="Перейти на сайт фестиваля" href="http://festival.psmb.ru">Перейти на сайт фестиваля</a>
-			</div>
-		</div>
-	</div>
+{top -> f:format.raw()}
 
 <div class="row stripe section-color-bg magellan-container" data-magellan-expedition="fixed"  data-options="destination_threshold:65;">
 	<div class="fixed-width">
 		<div class="columns">
 			<dl>
 				<dd class="stripe__item stripe__item--label">
-					<a href="#" title="Наверх">На этой странице</a>
+					<a href="#" title="Наверх">{f:translate(package:'Sfi.Site', id:'onThisPage')}</a>
 				</dd>
 				<dd class="stripe__item stripe__item--link" data-magellan-arrival="announcements">
-					<a href="#announcements">Анонсы</a>
+					<a href="#announcements">{f:translate(package:'Sfi.Site', id:'announcements')}</a>
 				</dd>
 				<dd class="stripe__item stripe__item--link" data-magellan-arrival="news">
-					<a href="#news">Последние материалы</a>
+					<a href="#news">{f:translate(package:'Sfi.Site', id:'latestArticles')}</a>
 				</dd>
 				<dd class="stripe__item stripe__item--link" data-magellan-arrival="smi">
-					<a href="#smi">Обзор СМИ</a>
+					<a href="#smi">{f:translate(package:'Sfi.Site', id:'obzorSmi')}</a>
 				</dd>
 			</dl>
 		</div>
@@ -37,7 +26,7 @@
 		<div class="columns paddingBottom-single">
 			<a name="announcements"></a>
 			<h2 data-magellan-destination="announcements" class="block-title-divider" style="margin-top: 0; margin-bottom: 0;">
-				<span>Анонсы</span>
+				<span>{f:translate(package:'Sfi.Site', id:'announcements')}</span>
 			</h2>
 			{announcementsList -> f:format.raw()}
 		</div>
@@ -49,7 +38,7 @@
 			<a name="news"></a>
 			<div data-magellan-destination="news">
 				<h2 data-magellan-destination="top" class="block-title-divider left" style="margin-top: -5px;">
-					<span>Новое</span>
+					<span>{f:translate(package:'Sfi.Site', id:'new')}</span>
 				</h2>
 				{stream -> f:format.raw()}
 			</div>
@@ -61,7 +50,7 @@
 			<div class="wrap blogs" >
 				<a name="blogs"></a>
 				<h2 data-magellan-destination="blogs" class="block-title-divider">
-					<span>Пишут в блогах</span>
+					<span>{f:translate(package:'Sfi.Site', id:'blogs')}</span>
 				</h2>
 				{blogList -> f:format.raw()}
 			</div>
@@ -74,7 +63,7 @@
 		<div class="columns news_list_foreign">
 			<a name="smi"></a>
 			<h2 data-magellan-destination="smi" class="block-title-divider">
-				<span>Обзор СМИ</span>
+				<span>{f:translate(package:'Sfi.Site', id:'obzorSmi')}</span>
 			</h2>
 			{externalNews -> f:format.raw()}
 		</div>
