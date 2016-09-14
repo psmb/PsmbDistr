@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="" source-language="ru" target-language="en" datatype="plaintext">
+		<body>
+			<trans-unit id="global.fulltitle">
+				<source>Преображенское братство</source>
+				<target>The Transfiguration Brotherhood</target>
+			</trans-unit>
+			<trans-unit id="global.shorttitle">
+				<source>Преображенское братство</source>
+				<target>The Transfiguration Brotherhood</target>
+			</trans-unit>
+			<trans-unit id="from">
+				<source>с</source>
+				<target>from</target>
+			</trans-unit>
+			<trans-unit id="until">
+				<source>до</source>
+				<target>until</target>
+			</trans-unit>
+			<trans-unit id="more">
+				<source>еще</source>
+				<target>more</target>
+			</trans-unit>
+			<trans-unit id="loadMore">
+				<source>загрузить еще</source>
+				<target>load more</target>
+			</trans-unit>
+			<trans-unit id="newsList.archiveLink">
+				<source>Архив материалов</source>
+				<target>News Archive</target>
+			</trans-unit>
+			<trans-unit id="announcements.archiveLink">
+				<source>Архив анонсов</source>
+				<target>Announcements Archive</target>
+			</trans-unit>
+			<trans-unit id="tomain">
+				<source>На главную</source>
+				<target>To main</target>
+			</trans-unit>
+			<trans-unit id="footer.sectionsNav">
+				<source>Разделы сайта</source>
+				<target>Sections</target>
+			</trans-unit>
+			<trans-unit id="footer.ourProjectsNav">
+				<source>Наши проекты</source>
+				<target>Our Projects</target>
+			</trans-unit>
+			<trans-unit id="footer.miscNav">
+				<source>Разное</source>
+				<target>Misc.</target>
+			</trans-unit>
+			<trans-unit id="footer.contacts">
+				<source>Контакты</source>
+				<target>Contacts</target>
+			</trans-unit>
+			<trans-unit id="footer.copyright">
+				<source>© 2016 Преображенское содружество малых православных братств. Использование в любой форме материалов этого сайта допустимо только при наличии активной ссылки на http://www.psmb.ru Мнение редакции может не совпадать с мнением авторов.</source>
+				<target>© 2016 The Transfiguration Brotherhood.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
