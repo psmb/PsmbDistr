@@ -1,10 +1,10 @@
 prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 	announcements {
-		condition = ${node.name == 'anonsy'}
+		condition = ${node.name == 'node-57c7aa010c560'}
 		renderer = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'announcement').sortDesc('date')}
 	}
 	externalNews {
-		condition = ${node.name == 'obzor-smi'}
+		condition = ${node.name == 'node-57cea530c2c46'}
 		renderer = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'externalNews').sortDesc('date')}
 	}
 	ourNews {

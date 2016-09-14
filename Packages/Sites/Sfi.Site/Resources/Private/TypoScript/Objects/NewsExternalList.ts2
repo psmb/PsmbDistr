@@ -9,7 +9,7 @@ prototype(Sfi.Site:NewsExternalList) < prototype(T:Array) {
 		tagName = 'a'
 		attributes.class = 'service'
 		attributes.href = NodeUri {
-			node = ${q(site).children('obzor-smi').get(0)}
+			node = ${q(site).children('node-57cea530c2c46').get(0)}
 		}
 		content = ${Translation.translate('newsList.archiveLink', null, [], null, 'Sfi.Site')}
 	}

@@ -9,7 +9,7 @@ prototype(Sfi.Site:AnnouncementsList) < prototype(T:Array) {
 		tagName = 'a'
 		attributes.class = 'service'
 		attributes.href = NodeUri {
-			node = ${q(site).children('anonsy').get(0)}
+			node = ${q(site).children('node-57c7aa010c560').get(0)}
 		}
 		content = ${Translation.translate('announcements.archiveLink', null, [], null, 'Sfi.Site')}
 	}

@@ -32,6 +32,6 @@ prototype(Sfi.Site:RssItem) < prototype(TYPO3.TypoScript:Template) {
 
 root.rss {
 	@position = 'before shortcut'
-	condition = ${documentNode.name == 'rss-yandex' && node.context.workspaceName == 'live'}
+	condition = ${documentNode.name == 'node-57ceae99a8c41' && node.context.workspaceName == 'live'}
 	renderer = Sfi.Site:RssList
 }
