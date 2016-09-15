@@ -249,3 +249,7 @@ blah: &alohaRich
 
     originalIdentifier:
       type: string
+      ui:
+        label: 'Оригинальный идентификатор (не трогать!)'
+        inspector:
+          group: newsRelations
