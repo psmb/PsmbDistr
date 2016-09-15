@@ -9,7 +9,7 @@ prototype(Psmb.NodeTypes:Lead) {
 	attributes.class = 'Lead rte-text'
 }
 prototype(Psmb.NodeTypes:Blockquote) {
-	attributes.class = 'Blockquote rte-text'
+	attributes.class = 'blockquote rte-text'
 }
 prototype(Psmb.NodeTypes:Section) {
 	attributes.class = 'Section rte-text'
