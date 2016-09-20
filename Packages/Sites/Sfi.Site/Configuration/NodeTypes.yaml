@@ -35,6 +35,24 @@
         inlineEditable: true
         aloha:
           placeholder: 'Контактные данные'
+          'format':
+            'strong': TRUE
+            'em': TRUE
+            'u': FALSE
+            'p': TRUE
+            'h1': FALSE
+            'h2': TRUE
+            'h3': TRUE
+            'pre': FALSE
+            'removeFormat': TRUE
+          'table':
+            'table': FALSE
+          'list':
+            'ol': FALSE
+            'ul': TRUE
+          'link':
+            'a': TRUE
+          'alignment': {  }
 
 'Sfi.Site:BlogArchive':
   superTypes:
