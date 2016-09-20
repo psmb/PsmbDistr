@@ -1,8 +1,9 @@
 prototype(Sfi.Site:TagsCard) < prototype(T:Array) {
+	@context.node = ${q(site).children('tags').get(0)}
+	@if.nodeExists = ${node ? true : false}
 	@process.tmpl = ${'<div class="paddingHorizontal-double paddingTop-half paddingBottom-double marginBottom-double" style="background-color: white">' + value + '</div>'}
 	title = T:Tag {
 		@process.tmpl = ${'<h2 data-magellan-destination="tags" class="block-title-divider marginBottom-double"><span>' + value + '</span></h2>'}
-		@context.node = ${q(site).children('tags').get(0)}
 		tagName = 'a'
 		attributes.href = NodeUri {
 			node = ${node}

@@ -46,14 +46,7 @@
 		<div class="large-3 columns" style="padding-top: 52px;">
 			{tagsCard -> f:format.raw()}
 			{collectionsList -> f:format.raw()}
-
-			<div class="wrap blogs" >
-				<a name="blogs"></a>
-				<h2 data-magellan-destination="blogs" class="block-title-divider">
-					<span>{f:translate(package:'Sfi.Site', id:'blogs')}</span>
-				</h2>
-				{blogList -> f:format.raw()}
-			</div>
+			{blogList -> f:format.raw()}
 		</div>
 	</div>
 </div>

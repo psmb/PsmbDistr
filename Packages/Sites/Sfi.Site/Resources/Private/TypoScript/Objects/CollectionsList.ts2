@@ -1,7 +1,9 @@
 prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
+	@context.collectionsNode = ${q(node).children('collections').get(0)}
+	@if.nodeExists = ${collectionsNode ? true : false}
 	list = T:Collection {
 		@process.tmpl = ${'<div class="interesting-themes js-interesting-themes">
-			<span class="interesting-themes__label">Интересные темы</span>
+			<span class="interesting-themes__label">' + collectionsNode.properties.title + '</span>
 			<section class="filters js-filter-bar"><ul>' + value + '</ul></section>
 		</div>'}
 

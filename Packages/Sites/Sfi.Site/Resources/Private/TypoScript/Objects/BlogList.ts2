@@ -1,4 +1,8 @@
 prototype(Sfi.Site:BlogList) < prototype(T:Array) {
+	@process.tmpl = ${'<div class="wrap blogs"><a name="blogs"></a>' + value + '</div>'}
+	@context.node = ${q(site).children('blogs').get(0)}
+	@if.nodeExists = ${node ? true : false}
+	title = ${'<h2 data-magellan-destination="blogs" class="block-title-divider"><span>' + node.properties.title + '</span></h2>'}
 	list = T:Collection {
 		collection = ${Search.query(site).nodeType('Sfi.Site:Blog').sortDesc('__sortIndex').limit(6).execute()}
 		itemRenderer = Sfi.Site:BlogShort
@@ -14,9 +18,7 @@ prototype(Sfi.Site:BlogList) < prototype(T:Array) {
 		@process.tmpl = ${'<div>' + value + '</div>'}
 		tagName = 'a'
 		attributes.class = 'action--small primary-color'
-		attributes.href = NodeUri {
-			node = ${q(site).children('blogs').get(0)}
-		}
+		attributes.href = NodeUri
 		content = ${Translation.translate('more', null, [], null, 'Sfi.Site')}
 	}
 }
