@@ -1,5 +1,5 @@
 prototype(Sfi.Site:PresentationPage) {
-	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/PresentationPage.html'
+	templatePath = ${'resource://Sfi.Site/Private/TypoScript/NodeTypes/PresentationPage-' + lang + '.html'}
 
 	faces = T:Collection {
 		@process.tmpl = ${'<div id="ri-grid" class="ri-grid ri-grid-size-2"><ul>' + value + '</ul></div>'}
