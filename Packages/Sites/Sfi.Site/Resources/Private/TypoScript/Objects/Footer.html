@@ -9,18 +9,20 @@
 					{sectionsNav -> f:format.raw()}
 				</ul>
 			</div>
-			<div class="large-3 medium-3 columns">
-				<ul class="sitemap section-color-bd--darken">
-					<li class="sitemap__header"><f:translate package="Sfi.Site" id="footer.ourProjectsNav"/></li>
-					{ourProjectsNav -> f:format.raw()}
-				</ul>
-			</div>
-			<div class="large-3 medium-3 columns">
-				<ul class="sitemap section-color-bd--darken">
-					<li class="sitemap__header"><f:translate package="Sfi.Site" id="footer.miscNav"/></li>
-					{miscNav -> f:format.raw()}
-				</ul>
-			</div>
+			<f:if condition="{lang} == 'ru'">
+				<div class="large-3 medium-3 columns">
+					<ul class="sitemap section-color-bd--darken">
+						<li class="sitemap__header"><f:translate package="Sfi.Site" id="footer.ourProjectsNav"/></li>
+						{ourProjectsNav -> f:format.raw()}
+					</ul>
+				</div>
+				<div class="large-3 medium-3 columns">
+					<ul class="sitemap section-color-bd--darken">
+						<li class="sitemap__header"><f:translate package="Sfi.Site" id="footer.miscNav"/></li>
+						{miscNav -> f:format.raw()}
+					</ul>
+				</div>
+			</f:if>
 			<div class="large-3 medium-3 columns end">
 				<ul class="sitemap section-color-bd--darken">
 					<li class="sitemap__header"><f:translate package="Sfi.Site" id="footer.contacts"/></li>
@@ -30,6 +32,11 @@
 					</f:if>
 				</ul>
 			</div>
+			<f:if condition="{lang} == 'en'">
+				<div class="large-3 medium-3 columns end">
+					{mailchimp -> f:format.raw()}
+				</div>
+			</f:if>
 		</div>
 	</div>
 	<div class="footer__copyright section-color-bg--darken">

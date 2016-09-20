@@ -3,6 +3,7 @@ prototype(Sfi.Site:Footer) < prototype(T:Template) {
 	sectionsNav = Sfi.Site:FooterSectionsNav
 	ourProjectsNav = Sfi.Site:OurProjectsNav
 	miscNav = Sfi.Site:MiscNav
+	mailchimp = Sfi.Site:Mailchimp
 	lang = ${lang}
 	footerContacts = T:Tag {
 		content = ${site.properties.footerContacts}

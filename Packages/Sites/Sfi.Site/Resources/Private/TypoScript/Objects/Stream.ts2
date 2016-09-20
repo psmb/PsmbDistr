@@ -104,7 +104,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 					}
 					attributes.class = 'filter-bar__item js-filter-bar__item'
 					# akward way to fallback to all news
-					content = ${q(node).property('tags') ? node.properties.title : 'все материалы'}
+					content = ${q(node).property('tags') ? node.properties.title : Translation.translate('allArticles', null, [], null, 'Sfi.Site')}
 				}
 			}
 		}
@@ -117,7 +117,7 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 					attributes.data-url = NodeUri {
 						node = ${node}
 					}
-					content = 'все материалы'
+					content = ${Translation.translate('allArticles', null, [], null, 'Sfi.Site')}
 					# content.@process.count = ${value + ' (' + query.count() + ')'}
 				}
 				noType = T:Tag {
@@ -147,15 +147,15 @@ prototype(Sfi.Site:Stream) < prototype(T:Template) {
 						content = T:Case {
 							isPhoto {
 								condition = ${bucketName == 'isPhoto'}
-								renderer = 'фото'
+								renderer = ${Translation.translate('photo', null, [], null, 'Sfi.Site')}
 							}
 							isVideo {
 								condition = ${bucketName == 'isVideo'}
-								renderer = 'видео'
+								renderer = ${Translation.translate('video', null, [], null, 'Sfi.Site')}
 							}
 							isAudio {
 								condition = ${bucketName == 'isAudio'}
-								renderer = 'аудио'
+								renderer = ${Translation.translate('audio', null, [], null, 'Sfi.Site')}
 							}
 							# @process.count = ${value + ' (' + bucket.doc_count + ')'}
 						}

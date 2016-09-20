@@ -78,9 +78,25 @@
 				<source>Последние материалы</source>
 				<target>Latest Articles</target>
 			</trans-unit>
+			<trans-unit id="allArticles">
+				<source>Все статьи</source>
+				<target>All articles</target>
+			</trans-unit>
 			<trans-unit id="onThisPage">
 				<source>На этой странице</source>
 				<target>On this Page</target>
+			</trans-unit>
+			<trans-unit id="photo">
+				<source>Фото</source>
+				<target>Photo</target>
+			</trans-unit>
+			<trans-unit id="video">
+				<source>Видео</source>
+				<target>Video</target>
+			</trans-unit>
+			<trans-unit id="audio">
+				<source>Аудио</source>
+				<target>Audio</target>
 			</trans-unit>
 		</body>
 	</file>
