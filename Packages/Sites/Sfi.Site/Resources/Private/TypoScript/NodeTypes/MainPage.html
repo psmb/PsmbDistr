@@ -34,7 +34,7 @@
 </div>
 <div class="row bg-gray">
 	<div class="fixed-width">
-		<div class="large-9 columns">
+		<div class="{f:if(condition: '{lang} == \'ru\'', then: 'large-9')} columns">
 			<a name="news"></a>
 			<div data-magellan-destination="news">
 				<h2 data-magellan-destination="top" class="block-title-divider left" style="margin-top: -5px;">
@@ -43,7 +43,7 @@
 				{stream -> f:format.raw()}
 			</div>
 		</div>
-		<div class="large-3 columns" style="padding-top: 52px;">
+		<div class="{f:if(condition: '{lang} == \'ru\'', then: 'large-3', else: 'hide')} columns" style="padding-top: 52px;">
 			{tagsCard -> f:format.raw()}
 			{collectionsList -> f:format.raw()}
 			{blogList -> f:format.raw()}

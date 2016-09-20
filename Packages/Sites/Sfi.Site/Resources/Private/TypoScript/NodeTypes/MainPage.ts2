@@ -1,5 +1,6 @@
 prototype(Sfi.Site:MainPage) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/MainPage.html'
+	lang = ${lang}
 	top = TYPO3.Neos:ContentCollection {
 		nodePath = 'top'
 	}
