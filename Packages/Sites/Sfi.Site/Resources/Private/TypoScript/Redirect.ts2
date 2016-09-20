@@ -3,9 +3,11 @@ root.redirect {
 	condition = ${q(documentNode).property('uriPathSegment') == 'redirect' && node.context.workspaceName == 'live'}
 	renderer = TYPO3.TypoScript:Http.Message {
 		@context.targetNode = ${q(Search.query(site).nodeType('Sfi.Site:News').exactMatch('originalIdentifier', request.arguments.id).execute()).get(0)}
+		@context.targetNode = ${q(site).find('[instanceof Sfi.Site:News]').filter('[originalIdentifier = "' + request.arguments.id + '"]').get(0)}
 		httpResponseHead {
 			statusCode = 301
 			headers.Location = TYPO3.Neos:NodeUri{
+				@process.tmpl = ${'http://psmb.ru' + value}
 				node = ${targetNode}
 			}
 			@if.nodeIsFound = ${targetNode ? true : false}

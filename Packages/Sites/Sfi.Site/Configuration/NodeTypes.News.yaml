@@ -253,3 +253,8 @@ blah: &alohaRich
         label: 'Оригинальный идентификатор (не трогать!)'
         inspector:
           group: newsRelations
+      search:
+        elasticSearchMapping:
+          type: string
+          index: not_analyzed
+        indexing: ${value}

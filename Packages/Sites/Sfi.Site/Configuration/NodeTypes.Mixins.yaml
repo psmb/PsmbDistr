@@ -26,3 +26,8 @@
   properties:
     originalIdentifier:
       type: string
+      search:
+        elasticSearchMapping:
+          type: string
+          index: not_analyzed
+        indexing: ${value}
