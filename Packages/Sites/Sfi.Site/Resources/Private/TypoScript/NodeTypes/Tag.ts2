@@ -44,14 +44,14 @@ prototype(Sfi.Site:Tag) {
 			iterationName = 'iterator'
 			itemRenderer = T:Collection {
 				@process.tmpl = ${'<div class="content ' + (q(documentNode).parent().get(0) == q(site).children('tags').get(0) ? (node == documentNode && 'active') : (iterator.isFirst && 'active')) +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
-				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').sort('title', 'ASC').get()}
+				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').sort('navTitle', 'ASC').get()}
 				itemRenderer = T:Tag {
 					@process.tmpl = ${'<li class="epsilon">' + value + '</li>'}
 					tagName = 'a'
 					attributes.href = NodeUri {
 						node = ${node}
 					}
-					content = ${node.properties.title}
+					content = ${node.properties.navTitle || node.properties.title}
 				}
 			}
 		}
