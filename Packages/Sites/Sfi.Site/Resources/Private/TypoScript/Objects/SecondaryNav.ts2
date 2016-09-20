@@ -1,5 +1,6 @@
 prototype(Sfi.Site:SecondaryNav) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/SecondaryNav.html'
-	# TODO: add search
-	@if.isRus = ${lang == 'ru' ? true : false}
+	lang = ${lang}
+	languageMenu = Sfi.Site:LanguageMenu
+	search = Sfi.Site:Search
 }

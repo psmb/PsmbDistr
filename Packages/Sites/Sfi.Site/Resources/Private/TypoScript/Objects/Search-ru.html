@@ -1,0 +1,16 @@
+<div class="search-box">
+	<div id="cse" style="z-index:1000;"></div>
+	<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">
+		google.load('search', '1', {language : 'ru'});
+		google.setOnLoadCallback(function() {
+			var customSearchControl = new google.search.CustomSearchControl('018114637120266180637:giwypvp527e');
+			customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+			customSearchControl.draw('cse');
+			$(".gsc-input input").attr('value','поиск').focus(function(){
+				if($(this).val() == 'поиск')
+					$(this).val('');
+				});
+			}, true);
+	</script>
+</div>

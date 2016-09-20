@@ -1,0 +1,10 @@
+prototype(Sfi.Site:LanguageMenu) < prototype(TYPO3.TypoScript:Tag) {
+	tagName = 'a'
+	attributes.style = 'display:block'
+	attributes.href = TYPO3.Neos:NodeUri {
+	node = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).count() > 0 ?
+		q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0) :
+			q(site).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0)}
+	}
+	content = ${altLang == 'en' ? 'In English' : 'In Russian'}
+}

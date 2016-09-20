@@ -1,36 +1,23 @@
 <ul class="secondary-nav right">
-	<li class="secondary-nav__item secondary-nav__item-label">
-		<a href="http://bible.psmb.ru" title="Библия"><img alt="Библия" src="/_Resources/Static/Packages/Sfi.Site/Icons/icon-bible.png">Библия</a>
-	</li>
-	<li class="secondary-nav__item">
-		<div class="calendar-widget">
-			<div class="calendar-widget__link right secondary-nav__item-label"><a href="http://c.psmb.ru" title="Православный календарь">Православный <br>календарь</a></div>
-		</div>
-	</li>
-	<li class="secondary-nav__item">
-		<div class="calendar-widget">
-			<div class="secondary-nav__item-label"><a href="http://karta.psmb.ru" title="Карта памяти">Карта <br>памяти</a></div>
-		</div>
-	</li>
+	<f:if condition="{lang} == 'ru'">
+		<li class="secondary-nav__item secondary-nav__item-label">
+			<a href="http://bible.psmb.ru" title="Библия"><img alt="Библия" src="/_Resources/Static/Packages/Sfi.Site/Icons/icon-bible.png">Библия</a>
+		</li>
+		<li class="secondary-nav__item">
+			<div class="calendar-widget">
+				<div class="calendar-widget__link right secondary-nav__item-label"><a href="http://c.psmb.ru" title="Православный календарь">Православный <br>календарь</a></div>
+			</div>
+		</li>
+		<li class="secondary-nav__item">
+			<div class="calendar-widget">
+				<div class="secondary-nav__item-label"><a href="http://karta.psmb.ru" title="Карта памяти">Карта <br>памяти</a></div>
+			</div>
+		</li>
+	</f:if>
 	<li class="secondary-nav__item" style="margin-bottom: 0;">
-		<div class="search-box">
-			<div id="cse" style="z-index:1000;">Загрузка</div>
-			<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-			<script type="text/javascript">
-				google.load('search', '1', {language : 'ru'});
-				google.setOnLoadCallback(function() {
-					var customSearchControl = new google.search.CustomSearchControl('018114637120266180637:giwypvp527e');
-					customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-					customSearchControl.draw('cse');
-					$(".gsc-input input").attr('value','поиск').focus(function(){
-						if($(this).val() == 'поиск')
-							$(this).val('');
-						});
-					}, true);
-			</script>
-		</div>
+		{search -> f:format.raw()}
 	</li>
 	<li class="secondary-nav__item--alt">
-		<a href="http://en.psmb.ru">In English</a>
+		{languageMenu -> f:format.raw()}
 	</li>
 </ul>
