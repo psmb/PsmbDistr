@@ -17,7 +17,7 @@ prototype(Sfi.Site:PresentationPage) {
 
 	sections = T:Collection {
 		@process.tmpl = ${'<ul class="paddingTop-single">' + value + '</ul>'}
-		collection = ${q(site).children('sections').children().get()}
+		collection = ${q(site).children('sections').children('[_hiddenInIndex != true]').get()}
 		itemRenderer = T:Tag {
 			tagName = 'a'
 			attributes.href = NodeUri {
