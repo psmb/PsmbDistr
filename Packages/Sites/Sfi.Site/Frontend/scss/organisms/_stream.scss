@@ -13,6 +13,7 @@ Stream of .media molecules.
  }
 .stream__item{
 	width: 276px;
+	height: 357px;
 	margin-bottom: 2*$u;
 	float: left;
 }
@@ -28,10 +29,11 @@ Stream of .media molecules.
 	height: auto;
 }
 .stream--archive{
-	padding-top: 2*$u; 
+	padding-top: 2*$u;
 }
 .stream__item.media-important{
 	width: 576px;
+	height: 357px;
 }
 
 
