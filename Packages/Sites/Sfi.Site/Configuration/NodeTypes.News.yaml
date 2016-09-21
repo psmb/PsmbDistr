@@ -89,7 +89,7 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           <<: *alohaPlain
-          placeholder: 'Авторство'
+          placeholder: 'Не использовать'
     dateStart:
       type: DateTime
       ui:
