@@ -26,4 +26,14 @@ prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 		height = ${node.properties.isImportant ? 357 : 200}
 		allowCropping = TRUE
 	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = ${'DescendantOf_' + q(node).children('cover').get(0).identifier}
+		}
+	}
 }
