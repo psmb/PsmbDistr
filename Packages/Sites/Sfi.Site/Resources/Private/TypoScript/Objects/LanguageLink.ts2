@@ -7,5 +7,5 @@ prototype(Sfi.Site:LanguageLink) < prototype(T:Tag) {
 			node = ${altNode.get(0)}
 	}
 	content = ${altLang == 'en' ? 'Read this in English' : 'Читать по-русски'}
-	@if.nodeExists = ${altNode ? true : false}
+	@if.nodeExists = ${altNode.count() > 0 ? true : false}
 }
