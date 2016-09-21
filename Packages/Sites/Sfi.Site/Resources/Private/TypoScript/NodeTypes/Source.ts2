@@ -1,0 +1,10 @@
+prototype(Sfi.Site:Source) < prototype(T:Tag) {
+	attributes.class = 'Author'
+	content = TYPO3.TypoScript:Tag {
+		content = ${q(node).property('text')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'text'
+		}
+	}
+	@process.contentElementWrapping = ContentElementWrapping
+}

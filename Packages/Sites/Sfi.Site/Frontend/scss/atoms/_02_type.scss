@@ -791,10 +791,10 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 	blockquote{@extend .blockquote;}
 	ul{@extend .paragraph--large; @extend .ul;}
 
-
 	.author{
 		@extend .zeta;
 	}
+
 	.epigraf{
 		text-align: right;
 		font-style: italic;
@@ -826,4 +826,8 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 	&,p {
 		font-size: rem-calc(13) !important;
 	}
+}
+
+.Author{
+	@extend .zeta;
 }
