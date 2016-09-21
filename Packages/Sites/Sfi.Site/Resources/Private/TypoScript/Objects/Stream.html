@@ -1,6 +1,7 @@
 {namespace neos=TYPO3\Neos\ViewHelpers}
 
-<div class="stream js-stream" id="more_news" >
+<div{attributes -> f:format.raw()} >
+	{i18n -> f:format.raw()}
 	<section class="filter-bar js-filter-bar">
 		{filterBar -> f:format.raw()}
 	</section>

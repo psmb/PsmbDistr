@@ -71,7 +71,7 @@
 				request.onload = function () {
 					if (this.status >= 200 && this.status < 400) {
 						var resp = JSON.parse(this.response);
-						loadMore.innerHTML = 'загрузить еще';
+						loadMore.innerHTML = Psmb.i18n.loadMore;
 						var preload = document.createElement('div');
 						preload.innerHTML = resp.content;
 						// ensure that images load before adding to isotope layout
@@ -89,7 +89,7 @@
 							requestState.currentPage++;
 							// If nothing left to load
 							if (!resp.loadMore) {
-								loadMore.innerHTML = 'конец!';
+								loadMore.innerHTML = Psmb.i18n.end;
 								loadMore.disabled = true;
 							}
 						});

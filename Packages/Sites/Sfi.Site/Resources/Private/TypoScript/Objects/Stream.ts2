@@ -90,6 +90,16 @@ prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 
 prototype(Sfi.Site:Stream) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Stream.html'
+	attributes = T:Attributes {
+		class = "stream js-stream"
+		id = "more_news"
+	}
+	i18n = T:RawArray {
+		loadMore = ${Translation.translate('loadMore', null, [], null, 'Sfi.Site')}
+		end = ${Translation.translate('end', null, [], null, 'Sfi.Site')}
+		@process.json = ${Json.stringify(value)}
+		@process.wrapWithScriptTag = ${'<script>window.Psmb = window.Psmb || {}; window.Psmb.i18n = window.Psmb.i18n || {}; window.Psmb.i18n = Object.assign(window.Psmb.i18n, ' + value + ');</script>'}
+	}
 	type = 'ourNews'
 	@context.query = Sfi.Site:StreamQuery
 	filterBar = T:Case {

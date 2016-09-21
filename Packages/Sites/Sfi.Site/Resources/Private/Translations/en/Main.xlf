@@ -26,6 +26,10 @@
 				<source>загрузить еще</source>
 				<target>load more</target>
 			</trans-unit>
+			<trans-unit id="end">
+				<source>конец!</source>
+				<target>the end!</target>
+			</trans-unit>
 			<trans-unit id="newsList.archiveLink">
 				<source>Архив материалов</source>
 				<target>News Archive</target>
