@@ -19,17 +19,6 @@
 			var filterBarItems = document.getElementsByClassName('js-filter-bar__item');
 
 
-			var iso = new Isotope( '.js-stream__content', {
-				itemSelector: '.js-stream__item',
-				sortBy: 'original-order',
-				masonry: {
-					columnWidth: 276,
-					gutter: 24,
-					isFitWidth: true
-				}
-			});
-
-
 			if (loadMore && content && filterBarItems) {
 				loadMore.addEventListener('click', function (evt) {
 					evt.preventDefault();
@@ -76,6 +65,15 @@
 						preload.innerHTML = resp.content;
 						// ensure that images load before adding to isotope layout
 						imagesLoaded(preload, function () {
+							var iso = new Isotope( '.js-stream__content', {
+								itemSelector: '.js-stream__item',
+								sortBy: 'original-order',
+								masonry: {
+									columnWidth: 276,
+									gutter: 24,
+									isFitWidth: true
+								}
+							});
 							Array.prototype.forEach.call(preload.children, function (el) {
 								var newNode = el.cloneNode(true);
 								content.appendChild(newNode);
