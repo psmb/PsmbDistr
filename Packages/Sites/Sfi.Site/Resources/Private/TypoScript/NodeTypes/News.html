@@ -13,6 +13,7 @@
 			<div class="lead">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
 			{cover -> f:format.raw()}
 			<div class="large-10 large-offset-2 columns">
+				{languageLink -> f:format.raw()}
 				{main -> f:format.raw()}
 				{gallery -> f:format.raw()}
 				<div class="rte-text"><div class="author">{neos:contentElement.editable(property: 'credit', tag: 'span')}</div></div>

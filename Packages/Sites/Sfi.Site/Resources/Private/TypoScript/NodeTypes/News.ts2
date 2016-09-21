@@ -15,6 +15,7 @@ prototype(Sfi.Site:News) {
 	stream = Sfi.Site:Stream
 	collectionArticles = Sfi.Site:CollectionArticles
 	share = Sfi.Site:Share
+	languageLink = Sfi.Site:LanguageLink
 
 	audioList = Sfi.Site:AudioPlayer
 
