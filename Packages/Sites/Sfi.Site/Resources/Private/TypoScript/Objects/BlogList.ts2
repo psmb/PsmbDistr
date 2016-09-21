@@ -18,7 +18,9 @@ prototype(Sfi.Site:BlogList) < prototype(T:Array) {
 		@process.tmpl = ${'<div>' + value + '</div>'}
 		tagName = 'a'
 		attributes.class = 'action--small primary-color'
-		attributes.href = NodeUri
+		attributes.href = NodeUri {
+			node = ${node}
+		}
 		content = ${Translation.translate('more', null, [], null, 'Sfi.Site')}
 	}
 }
