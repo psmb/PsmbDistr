@@ -1,5 +1,9 @@
 prototype(Sfi.Site:News) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/News.html'
+
+	title = ${String.stripTags(node.properties.title)}
+	teaser = ${String.stripTags(node.properties.teaser)}
+
 	tagList = Sfi.Site:TagList
 	cover = TYPO3.Neos:ContentCollection {
 		nodePath = 'cover'
