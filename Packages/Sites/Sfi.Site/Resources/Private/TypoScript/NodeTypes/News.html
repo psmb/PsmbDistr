@@ -11,6 +11,9 @@
 				{tagList -> f:format.raw()}
 			</div>
 			<div class="lead">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+			<f:if condition="{type} == 'announcement'">
+				<div class="lead">{neos:contentElement.editable(property: 'announcementPlace', tag: 'span')}</div>
+			</f:if>
 			{cover -> f:format.raw()}
 			<div class="large-10 large-offset-2 columns">
 				{languageLink -> f:format.raw()}

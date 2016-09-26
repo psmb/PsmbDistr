@@ -81,7 +81,7 @@ blah: &alohaRich
         inlineEditable: true
         aloha:
           <<: *alohaRich
-          placeholder: 'Город для анонса (не используется)'
+          placeholder: 'Город для анонса'
     credit:
       type: string
       ui:
