@@ -42,16 +42,24 @@ prototype(Sfi.Site:Tag) {
 			@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="tabs-content columns">' + value + '</div></div></div>'}
 			collection = ${q(site).children('tags').children().get()}
 			iterationName = 'iterator'
+			itemName = 'node'
 			itemRenderer = T:Collection {
-				@process.tmpl = ${'<div class="content ' + (q(documentNode).parent().get(0) == q(site).children('tags').get(0) ? (node == documentNode && 'active') : (iterator.isFirst && 'active')) +'" id="' + node.name + '"><ul>' + value + '</ul></div>'}
-				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').sort('navTitle', 'ASC').get()}
-				itemRenderer = T:Tag {
-					@process.tmpl = ${'<li class="epsilon">' + value + '</li>'}
-					tagName = 'a'
-					attributes.href = NodeUri {
-						node = ${node}
+				@process.tmpl = ${'<div class="content ' + (q(documentNode).parent().get(0) == q(site).children('tags').get(0) ? (node == documentNode && 'active') : (iterator.isFirst && 'active')) +'" id="' + node.name + '">' + value + '</div>'}
+				collection = ${q(node).children('[instanceof Sfi.Site:Tag]').groupBy('String.substring(node.properties.navTitle, 0, 1)')}
+				itemKey = 'firstLetter'
+				itemName = 'nodes'
+				itemRenderer = T:Collection {
+					@process.tmpl = ${'<h2 class="block-title--primary">' + firstLetter + '</h2><ul>' + value + '</ul>'}
+					collection = ${q(nodes).sort('navTitle', 'ASC').get()}
+					itemRenderer = T:Tag {
+						@process.tmpl = ${'<li class="epsilon">' + value + '</li>'}
+						tagName = 'a'
+						attributes.href = NodeUri {
+							node = ${node}
+						}
+						content = ${node.properties.navTitle || node.properties.title}
 					}
-					content = ${node.properties.navTitle || node.properties.title}
+
 				}
 			}
 		}

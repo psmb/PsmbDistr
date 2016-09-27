@@ -36,7 +36,8 @@
         "psmb/mediaquery": "@dev",
         "neos/redirecthandler": "^1.0",
         "neos/redirecthandler-databasestorage": "^1.0",
-        "neos/redirecthandler-neosadapter": "^1.0"
+        "neos/redirecthandler-neosadapter": "^1.0",
+        "dimaip/groupby": "@dev"
     },
     "extra": {
   		"neos": {
