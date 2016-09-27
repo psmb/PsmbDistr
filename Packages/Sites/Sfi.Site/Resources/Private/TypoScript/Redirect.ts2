@@ -7,7 +7,7 @@ root.redirect {
 		httpResponseHead {
 			statusCode = 301
 			headers.Location = TYPO3.Neos:NodeUri{
-				@process.tmpl = ${'http://psmb.ru' + value}
+				@process.tmpl = ${'https://psmb.ru' + value}
 				node = ${targetNode}
 			}
 			@if.nodeIsFound = ${targetNode ? true : false}

@@ -35,7 +35,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 		stylesheets.fonts = T:Tag {
 			tagName = 'link'
 			attributes {
-				href = 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700&subset=latin,cyrillic'
+				href = 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700&subset=latin,cyrillic'
 				type = 'text/css'
 				rel = 'stylesheet'
 			}
