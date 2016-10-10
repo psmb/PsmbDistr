@@ -74,6 +74,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 				path = 'resource://Sfi.Site/Public/built/index.js'
 			}
 		}
+		javascripts.analytics = Sfi.Site:Analytics
 	}
 }
 
