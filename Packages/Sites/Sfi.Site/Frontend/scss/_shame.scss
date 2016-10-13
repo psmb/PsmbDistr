@@ -41,7 +41,7 @@ margin-top: 24px;
 }
 
 .Masthead-overlay {
-	background-color: rgba(75, 40, 40, .2);
+	background-color: rgba(0, 0, 0, .4);
 }
 
 .Masthead-summary {
@@ -57,25 +57,6 @@ margin-top: 24px;
 	}
 	font-weight: 600;
 	line-height: 1;
-}
-
-.H1Alt {
-	font-size: rem-calc(24);
-	@media #{$medium-up}{
-		font-size: rem-calc(36);
-	}
-	font-weight: 400;
-	font-style: italic;
-	line-height: 1.2;
-}
-
-.H2 {
-	font-size: rem-calc(22);
-	@media #{$medium-up}{
-		font-size: rem-calc(30);
-	}
-	font-weight: 600;
-	line-height: 1.2;
 }
 
 .Fox {
