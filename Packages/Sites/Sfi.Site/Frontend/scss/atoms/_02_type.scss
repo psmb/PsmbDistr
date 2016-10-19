@@ -782,7 +782,11 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 .rte-text{
 	h1{@extend .alpha;}
 	h2{@extend .beta;}
-	h3{@extend .gamma;}
+	h3{
+		@extend .gamma;
+		// HACK
+		font-size: rem-calc(21);
+	}
 	h4{@extend .delta;}
 	h5{@extend .epsilon;}
 	h6{@extend .zeta;}
