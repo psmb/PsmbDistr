@@ -45,4 +45,12 @@ prototype(Sfi.Site:Blog) {
 	}
 
 	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = 'NodeType_Sfi.Site:Author'
+		}
+	}
 }

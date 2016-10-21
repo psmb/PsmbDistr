@@ -21,4 +21,12 @@ prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
 		allowCropping = TRUE
 		allowUpscaling = TRUE
 	}
+
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = 'NodeType_Sfi.Site:Author'
+		}
+	}
 }
