@@ -1,0 +1,48 @@
+prototype(Sfi.Site:Blog) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Blog.html'
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+
+	blogsByAuthor = Sfi.Site:BlogList {
+		@process.tmpl = ${'<h2 class="beta marginBottom-double">Другие записи автора:</h2>' + value}
+		@context.limit = 12
+		query.@process.filterByAuthor = ${value.exactMatch('author', documentNode.properties.author)}
+		query.@process.filterOutSelf = ${value.queryFilter('bool', {must_not: [
+			{term: {__identifier: documentNode.identifier}}
+		]})}
+		itemRenderer = T:Tag {
+			@process.tmpl = ${'<p class="paragraph">' + value + '</p>'}
+			tagName = 'a'
+			attributes.@ignoreProperties = ${['nodeUri']}
+			attributes.nodeUri = NodeUri {
+				node = ${node}
+			}
+			attributes.class = 'link'
+			attributes.href = ${node.properties.isExternal ? node.properties.url : this.nodeUri}
+			content = ${node.properties.title}
+		}
+	}
+
+	blogs = Sfi.Site:BlogListWithLinks {
+		@context.limit = 12
+		@process.tmpl = ${'<div class="marginBottom-double">' + value + '</div>'}
+		list.@process.tmpl = ${'<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">' + value + '</ul>'}
+		list.itemRenderer.@process.blockgrid = ${'<li>' + value + '</li>'}
+	}
+	disqus = Sfi.Site:Disqus
+	share = Sfi.Site:Share
+
+	authorName = ${node.properties.author.properties.name}
+	thumbUri = ImageUri {
+		asset = ${node.properties.author.properties.photo}
+		# No idea why this is needed
+		maximumWidth>
+		width = 96
+		height = 96
+		allowCropping = TRUE
+		allowUpscaling = TRUE
+	}
+
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+}

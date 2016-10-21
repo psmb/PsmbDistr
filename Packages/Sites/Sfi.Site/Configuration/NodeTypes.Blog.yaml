@@ -35,6 +35,6 @@
     url:
       type: 'string'
       ui:
-        label: 'Ссылка на блоговую запись (если внешняя)'
+        label: 'Ссылка на блоговую запись'
         inspector:
           group: 'blog'

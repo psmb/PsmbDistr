@@ -15,8 +15,8 @@ prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
 		asset = ${node.properties.author.properties.photo}
 		# No idea why this is needed
 		maximumWidth>
-		width = 77
-		height = 77
+		width = 96
+		height = 96
 		allowCropping = TRUE
 		allowUpscaling = TRUE
 	}

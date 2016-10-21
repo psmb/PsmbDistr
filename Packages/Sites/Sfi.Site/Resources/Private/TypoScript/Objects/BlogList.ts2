@@ -1,19 +1,27 @@
-prototype(Sfi.Site:BlogList) < prototype(T:Array) {
-	@process.tmpl = ${'<div class="wrap blogs"><a name="blogs"></a>' + value + '</div>'}
+prototype(Sfi.Site:BlogList) < prototype(T:Collection) {
 	@context.node = ${q(site).children('blogs').get(0)}
-	@if.nodeExists = ${node ? true : false}
-	title = ${'<h2 data-magellan-destination="blogs" class="block-title-divider"><span>' + node.properties.title + '</span></h2>'}
-	list = T:Collection {
-		collection = ${Search.query(site).nodeType('Sfi.Site:Blog').sortDesc('__sortIndex').limit(6).execute()}
-		itemRenderer = Sfi.Site:BlogShort
+	query = ${Search.query(site).nodeType('Sfi.Site:Blog').sortDesc('__sortIndex')}
+	query.@process.filterOutSelf = ${value.queryFilter('bool', {must_not: [
+		{term: {__identifier: documentNode.identifier}}
+	]})}
+	query.@process.limit = ${limit ? value.limit(limit) : value}
+	@if.results = ${this.query.count() > 0 ? true : false}
+	collection = ${this.query.execute()}
+	itemRenderer = Sfi.Site:BlogShort
 
-		@cache {
-			mode = 'cached'
-			entryTags {
-				1 = 'NodeType_Sfi.Site:Blog'
-			}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = 'NodeType_Sfi.Site:Blog'
 		}
 	}
+}
+
+prototype(Sfi.Site:BlogListWithLinks) < prototype(T:Array) {
+	@process.tmpl = ${'<div class="wrap blogs"><a name="blogs"></a>' + value + '</div>'}
+	@context.limit = 6
+	title = ${'<h2 data-magellan-destination="blogs" class="block-title-divider"><span>' + q(site).children('blogs').property('title') + '</span></h2>'}
+	list = Sfi.Site:BlogList
 	link = T:Tag {
 		@process.tmpl = ${'<div>' + value + '</div>'}
 		tagName = 'a'
