@@ -24,6 +24,9 @@ prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
 
 	@cache {
 		mode = 'cached'
+		entryIdentifier {
+			1 = ${node.identifier}
+		}
 		entryTags {
 			1 = ${'Node_' + node.identifier}
 			2 = 'NodeType_Sfi.Site:Author'
