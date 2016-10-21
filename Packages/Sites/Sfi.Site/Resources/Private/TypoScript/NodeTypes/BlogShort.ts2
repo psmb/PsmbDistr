@@ -2,10 +2,11 @@ prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/BlogShort.html'
 
 	title = ${node.properties.title}
-	nodeUri = NodeUri {
-		node = ${node}
-	}
 	attributes = T:Attributes {
+		@ignoreProperties = ${['nodeUri']}
+		nodeUri = NodeUri {
+			node = ${node}
+		}
 		href = ${node.properties.isExternal ? node.properties.url : this.nodeUri}
 		target = ${node.properties.isExternal && '_blank'}
 	}
