@@ -1,0 +1,61 @@
+prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
+	announcements {
+		condition = ${node.name == 'node-57c7aa010c560'}
+		renderer = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'announcement').sortDesc('date')}
+	}
+	externalNews {
+		condition = ${node.name == 'node-57cea530c2c46'}
+		renderer = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'externalNews').sortDesc('date')}
+	}
+	ourNews {
+		condition = ${true}
+		renderer = T:Value {
+			value = ${Search.query(site).nodeType('Sfi.Site:News')}
+			value.@process.filterByRelation = ${site == node ? value : value.queryFilter('bool', {should: [
+				{term: {sections: node.identifier}},
+				{term: {tags: node.identifier}},
+				{term: {places: node.identifier}},
+				{term: {projects: node.identifier}},
+				{term: {collections: node.identifier}}
+			]})}
+			value.@process.filterByType = T:Case {
+				place {
+					condition = ${request.arguments.place}
+					renderer = ${value.exactMatch('places', request.arguments.place)}
+				}
+				collection {
+					condition = ${request.arguments.collection}
+					renderer = ${value.exactMatch('collections', request.arguments.collection)}
+				}
+				photo {
+					condition = ${request.arguments.media == 'isPhoto'}
+					renderer = ${value.exactMatch('isPhoto', true)}
+				}
+				audio {
+					condition = ${request.arguments.media == 'isAudio'}
+					renderer = ${value.exactMatch('isAudio', true)}
+				}
+				video {
+					condition = ${request.arguments.media == 'isVideo'}
+					renderer = ${value.exactMatch('isVideo', true)}
+				}
+				noType {
+					condition = ${request.arguments.media == 'noType'}
+					renderer = ${value.queryFilter('bool', {must_not: [
+						{term: {type: 'ourNews'}},
+						{term: {type: 'externalNews'}},
+						{term: {type: 'announcement'}}
+					]})}
+				}
+				defaultMain {
+					condition = ${site == node}
+					renderer = ${value.exactMatch('type', 'ourNews')}
+				}
+				default {
+					condition = ${true}
+					renderer = ${value}
+				}
+			}
+		}
+	}
+}

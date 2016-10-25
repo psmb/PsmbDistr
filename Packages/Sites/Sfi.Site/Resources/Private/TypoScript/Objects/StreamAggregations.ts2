@@ -1,0 +1,27 @@
+prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
+	@context.request = 'ourNews'
+	mediaConfig = T:RawArray {
+		filters = T:RawArray {
+			filters = T:RawArray {
+				isPhoto = ${{term: {isPhoto: true}}}
+				isAudio = ${{term: {isAudio: true}}}
+				isVideo = ${{term: {isVideo: true}}}
+			}
+		}
+	}
+	collectionsConfig = T:RawArray {
+		terms = T:RawArray {
+			field = 'collections'
+			size = 100
+		}
+	}
+	placesConfig = T:RawArray {
+		terms = T:RawArray {
+			field = 'places'
+			size = 100
+		}
+	}
+	value = ${query.aggregation('media', this.mediaConfig).aggregation('collections', this.collectionsConfig)}
+	value.@process.addPlaces = ${showPlaces ? value.aggregation('places', this.placesConfig) : value}
+	value.@process.execute = ${value.execute().aggregations}
+}

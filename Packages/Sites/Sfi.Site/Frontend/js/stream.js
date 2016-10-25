@@ -1,6 +1,18 @@
 (function () {
 	'use strict';
 
+	var setupIsotope = function () {
+		return new Isotope( '.js-stream__content', {
+			itemSelector: '.js-stream__item',
+			sortBy: 'original-order',
+			masonry: {
+				columnWidth: 276,
+				gutter: 24,
+				isFitWidth: true
+			}
+		});
+	};
+
 	var onPageLoad = function () {
 
 		Stream(document.querySelector('.js-stream'));
@@ -11,7 +23,7 @@
 
 			var requestState = {
 				rootUrl: '',
-				currentPage: 1
+				currentPage: 2
 			};
 
 			var content = node.querySelector('.js-stream__content');
@@ -20,6 +32,7 @@
 
 
 			if (loadMore && content && filterBarItems) {
+				setupIsotope();
 				loadMore.addEventListener('click', function (evt) {
 					evt.preventDefault();
 					load();
@@ -32,7 +45,7 @@
 					}, true);
 				});
 				if (typeof filterBarItems[0] !== 'undefined') {
-					activate(filterBarItems[0]);
+					filterBarItems[0].classList.add('active');
 				}
 			}
 
@@ -65,15 +78,7 @@
 						preload.innerHTML = resp.content;
 						// ensure that images load before adding to isotope layout
 						imagesLoaded(preload, function () {
-							var iso = new Isotope( '.js-stream__content', {
-								itemSelector: '.js-stream__item',
-								sortBy: 'original-order',
-								masonry: {
-									columnWidth: 276,
-									gutter: 24,
-									isFitWidth: true
-								}
-							});
+							var iso = setupIsotope();
 							Array.prototype.forEach.call(preload.children, function (el) {
 								var newNode = el.cloneNode(true);
 								content.appendChild(newNode);

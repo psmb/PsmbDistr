@@ -1,0 +1,29 @@
+prototype(Sfi.Site:StreamContent) < prototype(T:Value) {
+	@context.itemsPerPage = 12
+	@context.currentPage = ${request.arguments.currentPage ? String.toInteger(request.arguments.currentPage) : 1}
+	# Used in NewsShort
+	@context.isStream = ${true}
+	@context.query = Sfi.Site:StreamQuery
+	value = T:Array {
+		loadMore = ${query.count() > currentPage * itemsPerPage ? true : false}
+		content = T:Collection {
+			collection = ${query.sortDesc('date').from((currentPage - 1) * itemsPerPage).limit(itemsPerPage).execute()}
+			itemRenderer = Sfi.Site:NewsShort
+		}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = 'NodeType_Sfi.Site:News'
+		}
+		entryIdentifier {
+			node = ${node}
+			pagination = ${request.arguments.currentPage}
+			ajax = ${request.arguments.ajax}
+			collection = ${request.arguments.collection}
+			place = ${request.arguments.place}
+			media = ${request.arguments.media}
+			type = ${request.arguments.type}
+		}
+	}
+}

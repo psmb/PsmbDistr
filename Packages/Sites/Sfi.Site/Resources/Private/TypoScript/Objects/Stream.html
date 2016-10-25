@@ -5,6 +5,6 @@
 	<section class="filter-bar js-filter-bar">
 		{filterBar -> f:format.raw()}
 	</section>
-	<ul class="stream__content js-stream__content"></ul>
+	<ul class="stream__content js-stream__content">{content -> f:format.raw()}</ul>
 	<a class="stream__loadmore js-stream__loadmore" href="#">{f:translate(package:'Sfi.Site', id:'loadMore')}</a>
 </div>
