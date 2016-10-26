@@ -21,7 +21,10 @@ prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 			size = 100
 		}
 	}
-	value = ${query.aggregation('media', this.mediaConfig).aggregation('collections', this.collectionsConfig)}
+	query = Sfi.Site:StreamQuery {
+		@context.isAggregation = ${true}
+	}
+	value = ${this.query.aggregation('media', this.mediaConfig).aggregation('collections', this.collectionsConfig)}
 	value.@process.addPlaces = ${showPlaces ? value.aggregation('places', this.placesConfig) : value}
 	value.@process.execute = ${value.execute().aggregations}
 }

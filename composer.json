@@ -37,7 +37,8 @@
         "neos/redirecthandler": "^1.0",
         "neos/redirecthandler-databasestorage": "^1.0",
         "neos/redirecthandler-neosadapter": "^1.0",
-        "dimaip/groupby": "@dev"
+        "dimaip/groupby": "@dev",
+        "psmb/mapreduce": "@dev"
     },
     "extra": {
   		"neos": {

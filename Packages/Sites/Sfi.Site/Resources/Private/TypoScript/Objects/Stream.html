@@ -6,5 +6,7 @@
 		{filterBar -> f:format.raw()}
 	</section>
 	<ul class="stream__content js-stream__content">{content -> f:format.raw()}</ul>
-	<a class="stream__loadmore js-stream__loadmore" href="#">{f:translate(package:'Sfi.Site', id:'loadMore')}</a>
+	<f:if condition="{nextLink}">
+		<a class="stream__loadmore js-stream__loadmore" href="{nextLink}">{f:translate(package:'Sfi.Site', id:'loadMore')}</a>
+	</f:if>
 </div>

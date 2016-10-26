@@ -14,9 +14,10 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 		itemRenderer = T:Tag {
 			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item">' + value + '</li>'}
 			@context.node = ${q(site).find('#' + bucket.key).get(0)}
-			attributes.class = 'js-filter-bar__item'
-			attributes.data-url = NodeUri {
-				node = ${node}
+			tagName = 'a'
+			attributes.class = ${(request.arguments.collection == bucket.key && 'active ') + 'js-filter-bar__item'}
+			attributes.href = NodeUri {
+				node = ${site}
 				additionalParams {
 					collection = ${bucket.key}
 				}

@@ -16,7 +16,10 @@ prototype(Sfi.Site:News) {
 	}
 	newsList = Sfi.Site:NewsRelatedList
 	disqus = Sfi.Site:Disqus
-	stream = Sfi.Site:Stream
+	stream = Sfi.Site:Stream {
+		@context.hideBar = ${true}
+		@context.ajaxOnly = ${true}
+	}
 	collectionArticles = Sfi.Site:CollectionArticles
 	share = Sfi.Site:Share
 	languageLink = Sfi.Site:LanguageLink

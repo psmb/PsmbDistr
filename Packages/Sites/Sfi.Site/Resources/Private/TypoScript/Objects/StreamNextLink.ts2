@@ -1,0 +1,12 @@
+prototype(Sfi.Site:StreamNextLink) < prototype(TYPO3.TypoScript:Value) {
+	value = NodeUri {
+		node = ${node}
+		additionalParams {
+			currentPage = ${currentPage + 1}
+			media = ${request.arguments.media}
+			place = ${request.arguments.place}
+			collection = ${request.arguments.collection}
+		}
+		@if.notAll = ${query.count() > currentPage * itemsPerPage}
+	}
+}

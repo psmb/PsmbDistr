@@ -11,14 +11,21 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 		condition = ${true}
 		renderer = T:Value {
 			value = ${Search.query(site).nodeType('Sfi.Site:News')}
-			value.@process.filterByRelation = ${site == node ? value : value.queryFilter('bool', {should: [
+			value.@process.news = ${q(node).is('[instanceof Sfi.Site:News]') && node.properties.tags ? value.queryFilter('bool', {should: [
+				{terms: {tags: q(node.properties.tags).map('value.identifier')}}
+			]}) : value}
+			value.@process.tags = ${q(node).is('[instanceof Sfi.Site:TagMixin]') ? value.queryFilter('bool', {should: [
 				{term: {sections: node.identifier}},
 				{term: {tags: node.identifier}},
 				{term: {places: node.identifier}},
 				{term: {projects: node.identifier}},
 				{term: {collections: node.identifier}}
-			]})}
+			]}) : value}
 			value.@process.filterByType = T:Case {
+				skipAggregation {
+					condition = ${isAggregation}
+					renderer = ${value}
+				}
 				place {
 					condition = ${request.arguments.place}
 					renderer = ${value.exactMatch('places', request.arguments.place)}

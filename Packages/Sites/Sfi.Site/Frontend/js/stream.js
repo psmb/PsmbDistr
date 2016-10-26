@@ -21,31 +21,27 @@
 				return null;
 			}
 
-			var requestState = {
-				rootUrl: '',
-				currentPage: 2
-			};
-
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
+			var autoload = node.querySelector('.js-stream__autoload');
 			var filterBarItems = document.getElementsByClassName('js-filter-bar__item');
-
 
 			if (loadMore && content && filterBarItems) {
 				setupIsotope();
 				loadMore.addEventListener('click', function (evt) {
 					evt.preventDefault();
-					load();
+					load(evt.target.getAttribute('href'));
 				});
 				Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
 					filterBarItem.addEventListener('click', function (evt) {
+						evt.preventDefault();
 						if (evt.target && evt.target.classList.contains('js-filter-bar__item')) {
 							activate(evt.target);
 						}
 					}, true);
 				});
-				if (typeof filterBarItems[0] !== 'undefined') {
-					filterBarItems[0].classList.add('active');
+				if (autoload) {
+					load(autoload.dataset.url);
 				}
 			}
 
@@ -56,16 +52,12 @@
 				item.classList.add('active');
 
 				content.innerHTML = '';
-				requestState = {
-					rootUrl: item.getAttribute('data-url'),
-					currentPage: 1
-				};
 
-				load();
+				load(item.getAttribute('href'));
 			}
 
-			function load() {
-				var url = requestState.rootUrl + (requestState.rootUrl.indexOf('?') !== -1 ? '&' : '?') + 'ajax=true&currentPage=' + requestState.currentPage;
+			function load(baseUrl) {
+				var url = baseUrl + (baseUrl.indexOf('?') !== -1 ? '&' : '?') + 'ajax=true';
 				var request = new XMLHttpRequest();
 				request.open('GET', url, true);
 				loadMore.innerHTML = '<img id="spinner" src="/_Resources/Static/Packages/Sfi.Site/Images/spinner.gif">';
@@ -88,10 +80,11 @@
 							iso.layout();
 							media_fix_height();
 
-							loadMore.disabled = false;
-							requestState.currentPage++;
 							// If nothing left to load
-							if (!resp.loadMore) {
+							if (resp.nextLink) {
+								loadMore.setAttribute('href', resp.nextLink);
+								loadMore.disabled = false;
+							} else {
 								loadMore.innerHTML = Psmb.i18n.end;
 								loadMore.disabled = true;
 							}
