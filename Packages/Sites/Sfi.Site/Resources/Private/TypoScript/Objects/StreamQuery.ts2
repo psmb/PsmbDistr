@@ -11,17 +11,64 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 		condition = ${true}
 		renderer = T:Value {
 			value = ${Search.query(site).nodeType('Sfi.Site:News')}
-			value.@process.news = ${q(node).is('[instanceof Sfi.Site:News]') && node.properties.tags ? value.queryFilter('bool', {should: [
-				{terms: {tags: q(node.properties.tags).map('value.identifier')}}
-			]}) : value}
-			value.@process.tags = ${q(node).is('[instanceof Sfi.Site:TagMixin]') ? value.queryFilter('bool', {should: [
+			value.@process.newsPages = T:Case {
+				notNews {
+					condition = ${q(node).is('[instanceof Sfi.Site:News]') ? false : true}
+					renderer = ${value}
+				}
+				tags {
+					condition = ${node.properties.tags}
+					renderer = ${value.queryFilter('bool', {should: [
+						{terms: {tags: q(node.properties.tags).map('value.identifier')}},
+						{terms: {sections: q(node.properties.sections).map('value.identifier')}},
+						{terms: {places: q(node.properties.places).map('value.identifier')}},
+						{terms: {projects: q(node.properties.projects).map('value.identifier')}},
+						{terms: {collections: q(node.properties.collections).map('value.identifier')}}
+					]})}
+				}
+				tags {
+					condition = ${node.properties.tags}
+					renderer = ${value.queryFilter('bool', {should: [
+						{terms: {tags: q(node.properties.tags).map('value.identifier')}}
+					]})}
+				}
+				sections {
+					condition = ${node.properties.sections}
+					renderer = ${value.queryFilter('bool', {should: [
+						{terms: {sections: q(node.properties.sections).map('value.identifier')}}
+					]})}
+				}
+				places {
+					condition = ${node.properties.places}
+					renderer = ${value.queryFilter('bool', {should: [
+						{terms: {places: q(node.properties.places).map('value.identifier')}}
+					]})}
+				}
+				projects {
+					condition = ${node.properties.projects}
+					renderer = ${value.queryFilter('bool', {should: [
+						{terms: {projects: q(node.properties.projects).map('value.identifier')}}
+					]})}
+				}
+				collections {
+					condition = ${node.properties.collections}
+					renderer = ${value.queryFilter('bool', {should: [
+						{terms: {collections: q(node.properties.collections).map('value.identifier')}}
+					]})}
+				}
+				default {
+					condition = ${true}
+					renderer = ${value.exactMatch('type', 'ourNews')}
+				}
+			}
+			value.@process.tagsPages = ${q(node).is('[instanceof Sfi.Site:TagMixin]') ? value.queryFilter('bool', {should: [
 				{term: {sections: node.identifier}},
 				{term: {tags: node.identifier}},
 				{term: {places: node.identifier}},
 				{term: {projects: node.identifier}},
 				{term: {collections: node.identifier}}
 			]}) : value}
-			value.@process.filterByType = T:Case {
+			value.@process.postFilters = T:Case {
 				skipAggregation {
 					condition = ${isAggregation}
 					renderer = ${value}
