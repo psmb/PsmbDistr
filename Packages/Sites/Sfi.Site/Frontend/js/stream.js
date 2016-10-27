@@ -30,7 +30,9 @@
 				setupIsotope();
 				loadMore.addEventListener('click', function (evt) {
 					evt.preventDefault();
-					load(evt.target.getAttribute('href'));
+					if (!evt.target.classList.contains('isDisabled')) {
+						load(evt.target.getAttribute('href'));
+					}
 				});
 				Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
 					filterBarItem.addEventListener('click', function (evt) {
@@ -83,10 +85,10 @@
 							// If nothing left to load
 							if (resp.nextLink) {
 								loadMore.setAttribute('href', resp.nextLink);
-								loadMore.disabled = false;
+								loadMore.classList.remove('isDisabled');
 							} else {
 								loadMore.innerHTML = Psmb.i18n.end;
-								loadMore.disabled = true;
+								loadMore.classList.add('isDisabled');
 							}
 						});
 					}

@@ -7,6 +7,11 @@
 	</section>
 	<ul class="stream__content js-stream__content">{content -> f:format.raw()}</ul>
 	<f:if condition="{nextLink}">
-		<a class="stream__loadmore js-stream__loadmore" href="{nextLink}">{f:translate(package:'Sfi.Site', id:'loadMore')}</a>
+		<f:then>
+			<a class="stream__loadmore js-stream__loadmore" href="{nextLink}">{f:translate(package:'Sfi.Site', id:'loadMore')}</a>
+		</f:then>
+		<f:else>
+			<a class="stream__loadmore js-stream__loadmore isDisabled" >{f:translate(package:'Sfi.Site', id:'end')}</a>
+		</f:else>
 	</f:if>
 </div>
