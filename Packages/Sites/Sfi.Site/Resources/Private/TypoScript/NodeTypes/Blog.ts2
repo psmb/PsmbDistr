@@ -22,6 +22,15 @@ prototype(Sfi.Site:Blog) {
 			attributes.href = ${node.properties.isExternal ? node.properties.url : this.nodeUri}
 			content = ${node.properties.title}
 		}
+		@cache {
+			mode = 'cached'
+			entryIdentifier {
+				node = ${node}
+			}
+			entryTags {
+				1 = 'NodeType_Sfi.Site:Blog'
+			}
+		}
 	}
 
 	blogs = Sfi.Site:BlogListWithLinks {
