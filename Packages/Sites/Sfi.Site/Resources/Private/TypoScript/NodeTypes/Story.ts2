@@ -72,5 +72,5 @@ prototype(Sfi.Site:StoryItem) < prototype(T:Tag) {
 		node = ${node}
 	}
 	content = ${node.properties.title}
-	content.@process.isBlog = ${q(node).is('[instanceof Sfi.Site:Blog]') ? 'Пишут в блогах: ' + node.properties.author.properties.name + ' &ndash; ' + value : value}
+	content.@process.isBlog = ${q(node).is('[instanceof Sfi.Site:Blog]') ? 'Пишут в блогах: ' + node.properties.author.properties.name + '. ' + value : value}
 }
