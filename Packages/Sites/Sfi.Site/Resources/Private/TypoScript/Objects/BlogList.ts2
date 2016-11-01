@@ -27,7 +27,7 @@ prototype(Sfi.Site:BlogListWithLinks) < prototype(T:Array) {
 		tagName = 'a'
 		attributes.class = 'action--small primary-color'
 		attributes.href = NodeUri {
-			node = ${node}
+			node = ${q(site).children('blogs').get(0)}
 		}
 		content = ${Translation.translate('more', null, [], null, 'Sfi.Site')}
 	}
