@@ -31,3 +31,66 @@
           type: string
           index: not_analyzed
         indexing: ${value}
+
+'Sfi.Site:TaggableMixin':
+  ui:
+    inspector:
+      groups:
+        relations:
+          label: 'Отношения материала'
+  properties:
+    tags:
+      type: references
+      ui:
+        label: 'Тэги (Энциклопедия)'
+        reloadIfChanged: true
+        inspector:
+          group: relations
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:TagMixin'
+    sections:
+      type: references
+      ui:
+        label: 'Разделы'
+        reloadIfChanged: true
+        inspector:
+          group: relations
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:TagMixin'
+            startingPoint: '/sites/site/sections'
+            threshold: 1
+    collections:
+      type: references
+      ui:
+        label: 'Интересные темы'
+        reloadIfChanged: true
+        inspector:
+          group: relations
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:TagMixin'
+            startingPoint: '/sites/site/collections'
+    projects:
+      type: references
+      ui:
+        label: 'Проекты (Конференции/Выставки/...)'
+        reloadIfChanged: true
+        inspector:
+          group: relations
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:TagMixin'
+            startingPoint: '/sites/site/projects'
+    places:
+      type: references
+      ui:
+        label: 'Места'
+        reloadIfChanged: true
+        inspector:
+          group: relations
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:PlaceTag'
+            startingPoint: '/sites/site/places'

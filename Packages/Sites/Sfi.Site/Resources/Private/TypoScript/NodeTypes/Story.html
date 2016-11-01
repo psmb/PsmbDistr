@@ -1,0 +1,20 @@
+<div class="Masthead Story" style="background-position: center 50%; background-image: url({imageUri})">
+	<div style="padding-top: 64px; padding-bottom: 32px" class="Masthead-overlay">
+		<div class="fixed-width">
+			<div class="row">
+				<div class="large-8 large-offset-2 columns textAlign-center">
+					<h1 class="Masthead-headline H0 color-white">{title}</h1>
+					<p class="paragraph--large color-white"><em>{description}</em></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="columns">
+					<ul class="StoryFeed">
+						{feed -> f:format.raw()}
+					</ul>
+					<p class="service-small--inv color-white"><a href="{allLink}">Читать все материалы</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

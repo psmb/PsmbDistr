@@ -45,15 +45,14 @@ blah: &alohaRich
 
 'Sfi.Site:News':
   superTypes:
-    - 'TYPO3.Neos:Document'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:TaggableMixin': true
   ui:
     label: 'Материал'
     inspector:
       groups:
         news:
           label: 'Атрибуты материала'
-        newsRelations:
-          label: 'Отношения материала'
   childNodes:
     cover:
       type: 'TYPO3.Neos:ContentCollection'
@@ -161,7 +160,7 @@ blah: &alohaRich
       ui:
         label: 'Тип новости'
         inspector:
-          group: newsRelations
+          group: relations
           editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             allowEmpty: true
@@ -180,69 +179,13 @@ blah: &alohaRich
           type: string
           index: not_analyzed
         indexing: ${value}
-    tags:
-      type: references
-      ui:
-        label: 'Тэги (Энциклопедия)'
-        reloadIfChanged: true
-        inspector:
-          group: newsRelations
-          editorOptions:
-            nodeTypes:
-              - 'Sfi.Site:TagMixin'
-    sections:
-      type: references
-      ui:
-        label: 'Разделы'
-        reloadIfChanged: true
-        inspector:
-          group: newsRelations
-          editorOptions:
-            nodeTypes:
-              - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/sections'
-            threshold: 1
-    collections:
-      type: references
-      ui:
-        label: 'Интересные темы'
-        reloadIfChanged: true
-        inspector:
-          group: newsRelations
-          editorOptions:
-            nodeTypes:
-              - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/collections'
-    projects:
-      type: references
-      ui:
-        label: 'Проекты (Конференции/Выставки/...)'
-        reloadIfChanged: true
-        inspector:
-          group: newsRelations
-          editorOptions:
-            nodeTypes:
-              - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/projects'
-    places:
-      type: references
-      ui:
-        label: 'Места'
-        reloadIfChanged: true
-        inspector:
-          group: newsRelations
-          editorOptions:
-            nodeTypes:
-              - 'Sfi.Site:PlaceTag'
-            startingPoint: '/sites/site/places'
-
     relatedNews:
       type: references
       ui:
         label: 'Связанные новости'
         reloadIfChanged: true
         inspector:
-          group: newsRelations
+          group: relations
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:News'
@@ -252,7 +195,7 @@ blah: &alohaRich
       ui:
         label: 'Оригинальный идентификатор (не трогать!)'
         inspector:
-          group: newsRelations
+          group: relations
       search:
         elasticSearchMapping:
           type: string

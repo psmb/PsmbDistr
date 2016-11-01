@@ -1,12 +1,14 @@
 'Sfi.Site:Blog':
   superTypes:
-    - 'TYPO3.Neos:Document'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:TaggableMixin': true
   ui:
     label: 'Блог'
     inspector:
       groups:
         blog:
           label: 'Атрибуты блога'
+          position: 1
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'

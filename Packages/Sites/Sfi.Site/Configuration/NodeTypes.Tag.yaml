@@ -6,8 +6,19 @@
     'Sfi.Site:TagMixin': true
   ui:
     label: 'Тэг'
+    inspector:
+      groups:
+        tag:
+          label: 'Тэг'
   childNodes:
     cover:
       type: 'TYPO3.Neos:ContentCollection'
     main:
       type: 'TYPO3.Neos:ContentCollection'
+  properties:
+    description:
+      type: string
+      ui:
+        label: 'Описание'
+        inspector:
+          group: 'document'

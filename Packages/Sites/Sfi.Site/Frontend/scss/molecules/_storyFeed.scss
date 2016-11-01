@@ -1,0 +1,117 @@
+.StoryFeed {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	border-left: 1px dotted white;
+	&:after {
+		content: '»';
+		transform: rotate(90deg);
+		position: absolute;
+		bottom: -11px;
+		left: -3px;
+		color: white;
+	}
+	@media #{$medium-up} {
+		align-items: flex-end;
+		border-left: 0;
+		border-bottom: 1px dotted white;
+		&:after {
+			transform: initial;
+			bottom: -7px;
+			left: initial;
+			right: -1px;
+			color: white;
+		}
+		flex-direction: row;
+	}
+}
+.StoryFeed-item {
+	position: relative;
+	padding-left: 3*$u;
+	margin-bottom: 1.5*$u;
+	width: 100%;
+	@media #{$medium-up} {
+		padding-left: $u;
+		padding-bottom: 0;
+		margin-bottom: 0;
+		text-align: center;
+		width: 19%;
+		&:first-child {
+			width: 24%;
+		}
+	}
+}
+
+
+
+
+
+.StoryItemFirst {
+	position: relative;
+	padding-top: 50%;
+	margin-bottom: 2*$u;
+	margin-left: -1px;
+	text-align: left;
+	border-left: 4px solid white;
+	background-repeat: no-repeat;
+	background-size: cover;
+	@media #{$medium-up} {
+		border-left: 0;
+		border-bottom: 4px solid white;
+		padding-top: 15%;
+		margin-bottom: -1px;
+		margin-left: 0;
+	}
+}
+.StoryItemFirst-overlay {
+	position: absolute;
+	background-color: rgba(0,0,0,.4);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.StoryItemFirst-inner {
+	position: absolute;
+	left: $u;
+	bottom: $u;
+	right: $u;
+}
+
+
+
+
+
+.StoryFeed-line {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	float: left;
+	width: 2*$u;
+	&:after {
+		content: '●';
+		color: white;
+		position: absolute;
+		bottom: -7px;
+		left: -5px;
+	}
+	border-top: 1px dotted white;
+	@media #{$medium-up} {
+		position: relative;
+		float: none;
+		margin-top: $u/2;
+		top: initial;
+		left: initial;
+		width: 50%;
+		height: 3*$u;
+		border-top: 0;
+		border-right: 1px dotted white;
+		display: block;
+		&:after {
+			bottom: -7px;
+			left: initial;
+			right: -5px;
+		}
+	}
+}

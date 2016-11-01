@@ -1,0 +1,62 @@
+prototype(Sfi.Site:Story) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Story.html'
+	@context.node = ${node.properties.collection}
+
+	imageUri = ImageUri {
+		asset = ${node.properties.image}
+	}
+
+	title = ${node.properties.title}
+	description = ${node.properties.description}
+
+	feed = T:Collection {
+		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
+		itemRenderer = T:Case {
+			isFirst {
+				condition = ${iterator.cycle == 1}
+				renderer = Sfi.Site:StoryItemFirst
+			}
+			default {
+				condition = ${true}
+				renderer = Sfi.Site:StoryItem
+			}
+		}
+	}
+	allLink = NodeUri {
+		node = ${node}
+	}
+}
+
+prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
+	tagName = 'a'
+	attributes {
+		@ignoreProperties = ${['imageUri']}
+		imageUri = ImageUri {
+			asset = Sfi.Site:NewsThumb
+			maximumWidth = 640
+			maximumHeight = 420
+			allowCropping = ${true}
+		}
+		class = 'StoryFeed-item StoryItemFirst'
+		style = ${'display: block; background-image: url(' + this.imageUri + ')'}
+		href = NodeUri {
+			node = ${node}
+		}
+	}
+	content = ${'
+		<div class="StoryItemFirst-overlay">
+			<div class="StoryItemFirst-inner">
+				<div class="epsilon color-white"><strong>' + node.properties.title + '</strong></div>
+			</div>
+		</div>
+	'}
+}
+prototype(Sfi.Site:StoryItem) < prototype(T:Tag) {
+	@process.tmpl = ${'<li class="StoryFeed-item">' + value + '<div class="StoryFeed-line"></div></li>'}
+	tagName = 'a'
+	attributes.class = 'epsilon color-white'
+	attributes.href = NodeUri {
+		node = ${node}
+	}
+	content = ${node.properties.title}
+}
