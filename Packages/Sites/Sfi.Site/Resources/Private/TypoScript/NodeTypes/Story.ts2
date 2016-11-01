@@ -10,10 +10,10 @@ prototype(Sfi.Site:Story) {
 	description = ${node.properties.description}
 
 	feed = T:Collection {
-		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
+		collection = ${Search.query(site).nodeType('Sfi.Site:Blog').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
 		itemRenderer = T:Case {
 			isFirst {
-				condition = ${iterator.cycle == 1}
+				condition = ${iterator.cycle == 1 && q(node).is('[instanceof Sfi.Site:News]')}
 				renderer = Sfi.Site:StoryItemFirst
 			}
 			default {
@@ -43,10 +43,11 @@ prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
 			node = ${node}
 		}
 	}
+	title = ${node.properties.title}
 	content = ${'
 		<div class="StoryItemFirst-overlay">
 			<div class="StoryItemFirst-inner">
-				<div class="epsilon color-white"><strong>' + node.properties.title + '</strong></div>
+				<div class="epsilon color-white"><strong>' + this.title + '</strong></div>
 			</div>
 		</div>
 	'}
@@ -59,4 +60,5 @@ prototype(Sfi.Site:StoryItem) < prototype(T:Tag) {
 		node = ${node}
 	}
 	content = ${node.properties.title}
+	content.@process.isBlog = ${q(node).is('[instanceof Sfi.Site:Blog]') ? 'Пишут в блогах: ' + node.properties.author.properties.name + ' &ndash; ' + value : value}
 }
