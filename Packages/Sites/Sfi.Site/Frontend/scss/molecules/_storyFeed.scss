@@ -37,9 +37,6 @@
 		margin-bottom: 0;
 		text-align: center;
 		width: 19%;
-		&:first-child {
-			width: 24%;
-		}
 	}
 }
 
@@ -52,15 +49,18 @@
 
 
 .StoryItemFirst {
+	width: 100%;
 	position: relative;
 	margin-bottom: 2*$u;
-	margin-left: -1px;
 	padding-left: 0;
+	margin-left: -1px;
 	text-align: left;
-	border-left: 4px solid white;
+	border: 1px solid white;
+	border-left-width: 4px;
 	@media #{$medium-up} {
-		border-left: 0;
-		border-bottom: 4px solid white;
+		width: 24%;
+		border-left-width: 1px;
+		border-bottom-width: 4px;
 		margin-bottom: -1px;
 		margin-left: 0;
 	}

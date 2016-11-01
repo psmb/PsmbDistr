@@ -13,8 +13,8 @@ prototype(Sfi.Site:Story) {
 		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
 		iterationName = 'iterator'
 		itemRenderer = T:Case {
-			isFirst {
-				condition = ${(iterator.cycle == 1 && q(node).is('[instanceof Sfi.Site:News]')) ? true : false}
+			isImportant {
+				condition = ${node.properties.isImportant}
 				renderer = Sfi.Site:StoryItemFirst
 			}
 			default {
