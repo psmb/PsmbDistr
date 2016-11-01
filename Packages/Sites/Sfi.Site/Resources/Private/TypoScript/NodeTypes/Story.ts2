@@ -11,6 +11,7 @@ prototype(Sfi.Site:Story) {
 
 	feed = T:Collection {
 		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
+		iterationName = 'iterator'
 		itemRenderer = T:Case {
 			isFirst {
 				condition = ${(iterator.cycle == 1 && q(node).is('[instanceof Sfi.Site:News]')) ? true : false}
