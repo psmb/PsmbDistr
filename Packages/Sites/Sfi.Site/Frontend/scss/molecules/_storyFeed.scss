@@ -39,7 +39,6 @@
 		width: 19%;
 		&:first-child {
 			width: 24%;
-			padding-left: 0;
 		}
 	}
 }
@@ -54,19 +53,24 @@
 
 .StoryItemFirst {
 	position: relative;
-	padding-top: 50%;
 	margin-bottom: 2*$u;
 	margin-left: -1px;
+	padding-left: 0;
 	text-align: left;
 	border-left: 4px solid white;
-	background-repeat: no-repeat;
-	background-size: cover;
 	@media #{$medium-up} {
 		border-left: 0;
 		border-bottom: 4px solid white;
-		padding-top: 66%;
 		margin-bottom: -1px;
 		margin-left: 0;
+	}
+}
+.StoryItemFirst-bg {
+	padding-top: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	@media #{$medium-up} {
+		padding-top: 66%;
 	}
 }
 .StoryItemFirst-overlay {

@@ -39,7 +39,7 @@ prototype(Sfi.Site:Story) {
 }
 
 prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
-	@process.tmpl = ${'<li class="StoryFeed-item">' + value + '</li>'}
+	@process.tmpl = ${'<li class="StoryFeed-item StoryItemFirst">' + value + '</li>'}
 	tagName = 'a'
 	attributes {
 		@ignoreProperties = ${['imageUri']}
@@ -49,7 +49,7 @@ prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
 			maximumHeight = 420
 			allowCropping = ${true}
 		}
-		class = 'StoryItemFirst'
+		class = 'StoryItemFirst-bg'
 		style = ${'display: block; background-image: url(' + this.imageUri + ')'}
 		href = NodeUri {
 			node = ${node}
