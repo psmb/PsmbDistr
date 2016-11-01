@@ -13,7 +13,7 @@ prototype(Sfi.Site:Story) {
 		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
 		itemRenderer = T:Case {
 			isFirst {
-				condition = ${iterator.cycle == 1 && q(node).is('[instanceof Sfi.Site:News]')}
+				condition = ${iterator.cycle == 1 && q(node).is('[instanceof Sfi.Site:News]') ? true : false}
 				renderer = Sfi.Site:StoryItemFirst
 			}
 			default {
@@ -28,7 +28,6 @@ prototype(Sfi.Site:Story) {
 			}
 			entryTags {
 				1 = ${'Node_' + node.identifier}
-				2 = 'NodeType_Sfi.Site_TaggableMixin'
 			}
 		}
 	}
