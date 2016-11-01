@@ -39,12 +39,17 @@
 		width: 19%;
 		&:first-child {
 			width: 24%;
+			padding-left: 0;
 		}
 	}
 }
 
 
-
+.StoryFeed-readAll {
+	@media #{$medium-up} {
+		text-align: right;
+	}
+}
 
 
 .StoryItemFirst {
