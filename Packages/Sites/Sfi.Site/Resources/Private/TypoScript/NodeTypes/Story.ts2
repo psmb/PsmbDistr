@@ -1,6 +1,6 @@
-prototype(Sfi.Site:Story) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.Site:Story) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Story.html'
-	@context.node = ${node.properties.collection}
+	@context.node = ${node.properties.collection ? node.properties.collection : node}
 
 	imageUri = ImageUri {
 		asset = ${node.properties.image}

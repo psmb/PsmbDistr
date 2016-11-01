@@ -1,9 +1,22 @@
-'Sfi.Site:Source':
+'Sfi.Site:Story':
   superTypes:
     'TYPO3.Neos:Content': true
   ui:
     label: 'История'
     position: 'last'
+    group: 'plugins'
+    inspector:
+      groups:
+        story:
+          label: 'История'
   properties:
     collection:
       type: 'reference'
+      ui:
+        reloadIfChanged: true
+        inspector:
+          group: story
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:TagMixin'
+            startingPoint: '/sites/site/collections'
