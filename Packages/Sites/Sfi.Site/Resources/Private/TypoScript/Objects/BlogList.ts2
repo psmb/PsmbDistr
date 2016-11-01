@@ -11,6 +11,9 @@ prototype(Sfi.Site:BlogList) < prototype(T:Collection) {
 
 	@cache {
 		mode = 'cached'
+		entryIdentifier {
+			node = ${documentNode}
+		}
 		entryTags {
 			1 = 'NodeType_Sfi.Site:Blog'
 		}

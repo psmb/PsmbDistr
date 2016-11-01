@@ -18,6 +18,13 @@ prototype(Sfi.Site:Tag) {
 	main = TYPO3.Neos:ContentCollection {
 		nodePath = 'main'
 	}
+	blogList = Sfi.Site:BlogListWithLinks {
+		prototype(Sfi.Site:BlogList) {
+			query.@process.byThisSection = ${value.exactMatch('collections', documentNode.identifier)}
+		}
+	}
+	# TODO: meh...
+	showBlogList = ${String.length(this.blogList) > 500}
 	stream = Sfi.Site:Stream {
 		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
 		@if.notRoot = ${q(node).parent().get(0) != q(site).children('tags').get(0)}
