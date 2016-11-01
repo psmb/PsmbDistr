@@ -10,7 +10,7 @@ prototype(Sfi.Site:Story) {
 	description = ${node.properties.description}
 
 	feed = T:Collection {
-		collection = ${Search.query(site).nodeType('Sfi.Site:Blog').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
+		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
 		itemRenderer = T:Case {
 			isFirst {
 				condition = ${iterator.cycle == 1 && q(node).is('[instanceof Sfi.Site:News]')}
@@ -19,6 +19,16 @@ prototype(Sfi.Site:Story) {
 			default {
 				condition = ${true}
 				renderer = Sfi.Site:StoryItem
+			}
+		}
+		@cache {
+			mode = 'cached'
+			entryIdentifier {
+				node = ${node}
+			}
+			entryTags {
+				1 = ${'Node_' + node.identifier}
+				2 = 'NodeType_Sfi.Site_TaggableMixin'
 			}
 		}
 	}
