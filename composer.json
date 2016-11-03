@@ -38,7 +38,8 @@
         "neos/redirecthandler-databasestorage": "^1.0",
         "neos/redirecthandler-neosadapter": "^1.0",
         "dimaip/groupby": "@dev",
-        "psmb/mapreduce": "@dev"
+        "psmb/mapreduce": "@dev",
+        "typo3/neos-googleanalytics": "^1.0"
     },
     "extra": {
   		"neos": {
