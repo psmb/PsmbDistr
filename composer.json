@@ -11,6 +11,12 @@
             "type": "vcs"
         }
     ],
+    "repositories": [
+        {
+            "url": "https://github.com/dimaip/neos-googleanalytics",
+            "type": "vcs"
+        }
+    ],
     "require": {
         "neos/neos-development-collection": "2.3.x-dev",
         "neos/flow-development-collection": "3.3.x-dev",
@@ -39,7 +45,7 @@
         "neos/redirecthandler-neosadapter": "^1.0",
         "dimaip/groupby": "@dev",
         "psmb/mapreduce": "@dev",
-        "typo3/neos-googleanalytics": "^1.0"
+        "typo3/neos-googleanalytics": "dev-dimaip-sort"
     },
     "extra": {
   		"neos": {
