@@ -2,8 +2,8 @@ TYPO3:
   Flow:
     i18n:
       defaultLocale: 'ru'
-  #  http:
-  #    baseUri: 'https://psmb.ru/'
+    http:
+      baseUri: 'https://psmb.ru/'
   Neos:
     typoScript:
       autoInclude:
@@ -20,6 +20,13 @@ TYPO3:
               baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
     eventLog:
       enabled: TRUE
+    GoogleAnalytics:
+      stats:
+        uniquePageviewsBySource:
+          metrics: 'ga:uniquePageviews'
+          dimensions: 'ga:source'
+          sort: '-ga:uniquePageviews'
+          max-results: 25
   TYPO3CR:
     contentDimensions:
       'language':
