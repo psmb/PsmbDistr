@@ -9,9 +9,7 @@
         {
             "url": "https://github.com/dfeyer/Flowpack.ElasticSearch.ContentRepositoryAdaptor",
             "type": "vcs"
-        }
-    ],
-    "repositories": [
+        },
         {
             "url": "https://github.com/dimaip/neos-googleanalytics",
             "type": "vcs"
