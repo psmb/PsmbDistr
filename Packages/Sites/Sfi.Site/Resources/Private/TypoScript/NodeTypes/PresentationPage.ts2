@@ -32,7 +32,7 @@ prototype(Sfi.Site:PresentationPage) {
 	}
 
 	principlesUri = NodeUri {
-		node = ${q(site).find('#b42b0597-081d-4b31-a23c-4e9ce5baa5d9').get(0)}
+		node = ${q(site).find('#10c8b043-7348-4e94-866d-a49c0a6e2281').get(0)}
 	}
 
 	ourTeachers = T:Collection {
