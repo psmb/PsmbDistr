@@ -31,6 +31,10 @@ prototype(Sfi.Site:PresentationPage) {
 		node = ${q(site).children('a').children('svyashchennik-georgiy-kochetkov-nashe-dvizhenie-vozniklo-estestvenno').get(0)}
 	}
 
+	principlesUri = NodeUri {
+		node = ${q(site).find('#b42b0597-081d-4b31-a23c-4e9ce5baa5d9').get(0)}
+	}
+
 	ourTeachers = T:Collection {
 		@process.tmpl = ${'<ul class="teachers [ large-block-grid-5 medium-block-grid-5 small-block-grid-2 ]">' + value + '</ul>'}
 		collection = ${node.properties.teachers}
