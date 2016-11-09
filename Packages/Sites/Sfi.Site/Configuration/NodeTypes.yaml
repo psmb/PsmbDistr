@@ -17,6 +17,9 @@
     'Sfi.Site:ImageMixin': true
   ui:
     label: 'Обычная страница'
+  childNodes:
+    top:
+      main: 'TYPO3.Neos:ContentCollection'
 
 'Sfi.Site:MainPage':
   superTypes:

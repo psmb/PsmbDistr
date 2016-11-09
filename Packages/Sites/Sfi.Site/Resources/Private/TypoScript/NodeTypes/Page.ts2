@@ -1,3 +1,7 @@
 prototype(Sfi.Site:Page)>
 prototype(Sfi.Site:Page) < prototype(T:Array) {
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
