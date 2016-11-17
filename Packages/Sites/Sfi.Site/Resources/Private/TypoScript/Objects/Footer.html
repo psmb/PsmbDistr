@@ -28,9 +28,6 @@
 					<li class="sitemap__header"><f:translate package="Sfi.Site" id="footer.contacts"/></li>
 					{footerContacts -> f:format.raw()}
 				</ul>
-				<div class="link color-white Paragraph paddingTop-single">
-					<a href="mailto:editor@psmb.ru"><f:translate package="Sfi.Site" id="typos"/></a>
-				</div>
 			</div>
 			<f:if condition="{lang} == 'en'">
 				<div class="large-3 medium-3 columns end">
@@ -51,7 +48,12 @@
 					</neos:link.node>
 				</h1>
 			</div>
-			<div class="large-9 medium-8 columns">{f:translate(package:'Sfi.Site', id:'footer.copyright')}</div>
+			<div class="large-9 medium-8 columns">
+				{f:translate(package:'Sfi.Site', id:'footer.copyright')}
+				<div class="link color-white Paragraph paddingTop-single">
+					<a href="mailto:editor@psmb.ru"><f:translate package="Sfi.Site" id="typos"/></a>
+				</div>
+			</div>
 		</div>
 	</div>
 </footer>
