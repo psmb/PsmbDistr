@@ -61,13 +61,18 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 					renderer = ${value.exactMatch('type', 'ourNews')}
 				}
 			}
-			value.@process.tagsPages = ${q(node).is('[instanceof Sfi.Site:TagMixin]') ? value.queryFilter('bool', {should: [
-				{term: {sections: node.identifier}},
-				{term: {tags: node.identifier}},
-				{term: {places: node.identifier}},
-				{term: {projects: node.identifier}},
-				{term: {collections: node.identifier}}
-			]}) : value}
+			value.@process.tagsPages = ${q(node).is('[instanceof Sfi.Site:TagMixin]') ? value.queryFilter('bool',{should: [
+					{term: {sections: node.identifier}},
+					{term: {tags: node.identifier}},
+					{term: {places: node.identifier}},
+					{term: {projects: node.identifier}},
+					{term: {collections: node.identifier}}
+				],
+				must_not: [
+					{term: {type: 'externalNews'}},
+					{term: {type: 'announcement'}}
+				]
+			}) : value}
 			value.@process.postFilters = T:Case {
 				skipAggregation {
 					condition = ${isAggregation}
