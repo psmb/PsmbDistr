@@ -25,7 +25,7 @@ prototype(Sfi.Site:Blog) {
 		@cache {
 			mode = 'cached'
 			entryIdentifier {
-				node = ${node}
+				node = ${documentNode}
 			}
 			entryTags {
 				1 = 'NodeType_Sfi.Site:Blog'

@@ -2,8 +2,8 @@ TYPO3:
   Flow:
     i18n:
       defaultLocale: 'ru'
-    http:
-      baseUri: 'https://psmb.ru/'
+#    http:
+#      baseUri: 'https://psmb.ru/'
   Neos:
     typoScript:
       autoInclude:
@@ -43,12 +43,19 @@ TYPO3:
             label: 'English'
             values: ['en']
             uriSegment: 'en'
+  SwiftMailer:
+    transport:
+      type: 'TYPO3\SwiftMailer\Transport\MailTransport'
+
 Flowpack:
   ElasticSearch:
     clients:
       default:
         - host: es
           port: 9200
+
+
+
 Sfi:
   YouTube:
     className: 'YouTube flex-video widescreen'
