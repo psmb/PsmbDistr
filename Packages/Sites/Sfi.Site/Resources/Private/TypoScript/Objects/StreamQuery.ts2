@@ -11,9 +11,10 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 		condition = ${true}
 		renderer = T:Value {
 			value = ${Search.query(site).nodeType('Sfi.Site:News')}
-			value.@process.filterOutExternalAndAnnouncements = ${value.queryFilter('bool', {must_not: [
+			value.@process.filterOutExternalAndAnnouncementsAndSelf = ${value.queryFilter('bool', {must_not: [
 					{term: {type: 'externalNews'}},
-					{term: {type: 'announcement'}}
+					{term: {type: 'announcement'}},
+					{term: {__identifier: documentNode.identifier}}
 				]})}
 			value.@process.newsPages = T:Case {
 				notNews {
