@@ -20,39 +20,22 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 					condition = ${q(node).is('[instanceof Sfi.Site:News]') ? false : true}
 					renderer = ${value}
 				}
-				tags {
-					condition = ${node.properties.tags}
-					renderer = ${value.queryFilter('bool', {should: [
-						{terms: {tags: q(node.properties.tags).map('value.identifier')}},
-						{terms: {sections: q(node.properties.sections).map('value.identifier')}},
-						{terms: {places: q(node.properties.places).map('value.identifier')}},
-						{terms: {projects: q(node.properties.projects).map('value.identifier')}},
-						{terms: {collections: q(node.properties.collections).map('value.identifier')}}
-					]})}
+				terms {
+					condition = ${node.properties.tags || node.properties.places || node.properties.projects || node.properties.collections}
+					renderer = ${value.queryFilter('bool',{should: [
+							{terms: {tags: node.properties.tags ? q(node.properties.tags).map('value.identifier') : []}},
+							{terms: {places: node.properties.places ? q(node.properties.places).map('value.identifier') : []}},
+							{terms: {projects: node.properties.projects ? q(node.properties.projects).map('value.identifier') : []}},
+							{terms: {collections: node.properties.collections ? q(node.properties.collections).map('value.identifier') : []}}
+						]
+					})}
 				}
 				sections {
 					condition = ${node.properties.sections}
-					renderer = ${value.queryFilter('bool', {should: [
-						{terms: {sections: q(node.properties.sections).map('value.identifier')}}
-					]})}
-				}
-				places {
-					condition = ${node.properties.places}
-					renderer = ${value.queryFilter('bool', {should: [
-						{terms: {places: q(node.properties.places).map('value.identifier')}}
-					]})}
-				}
-				projects {
-					condition = ${node.properties.projects}
-					renderer = ${value.queryFilter('bool', {should: [
-						{terms: {projects: q(node.properties.projects).map('value.identifier')}}
-					]})}
-				}
-				collections {
-					condition = ${node.properties.collections}
-					renderer = ${value.queryFilter('bool', {should: [
-						{terms: {collections: q(node.properties.collections).map('value.identifier')}}
-					]})}
+					renderer = ${value.queryFilter('bool',{should: [
+							{terms: {sections: q(node.properties.sections).map('value.identifier')}}
+						]
+					})}
 				}
 				default {
 					condition = ${true}
