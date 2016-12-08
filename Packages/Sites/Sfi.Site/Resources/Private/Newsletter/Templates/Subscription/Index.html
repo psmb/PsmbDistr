@@ -1,0 +1,38 @@
+<div class="bg-gray paddingTop-single">
+    <div class="fixed-width">
+        <div class="row">
+            <div class="columns">
+                <h2 class="beta"><f:translate id="newsletter.indexTitle" package="Sfi.Site"/></h2>
+            </div>
+        </div>
+        <f:form
+                method="post"
+                action="register"
+                controller="Subscription"
+                package="Psmb.Newsletter"
+                objectName="subscriber"
+        >
+            <div class="row marginVertical-single">
+                <f:for each="{subscriptions}" as="subscription">
+                    <div class="medium-4 columns">
+                        <label>
+                            <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" checked="true" multiple="true" property="subscriptions" value="{subscription.identifier}" />
+                            <div class="margin-none" style="margin-left: 40px !important">
+                                <div class="gamma marginTop-none"><f:translate id="newsletter.subscription.{subscription.identifier}.label" package="Sfi.Site"/></div>
+                                <div class="service-large--gray-light"><f:translate id="newsletter.subscription.{subscription.identifier}.description" package="Sfi.Site"/></div>
+                            </div>
+                        </label>
+                    </div>
+                </f:for>
+                <div class="medium-4 columns"></div>
+            </div>
+            <div class="row">
+                <div class="medium-4 columns"><f:form.textfield class="input" property="name" placeholder="{f:translate(id:'newsletter.namePlaceholder', package:'Sfi.Site')}" /></div>
+                <div class="medium-4 columns"><f:form.textfield class="input" property="email" placeholder="{f:translate(id:'newsletter.emailPlaceholder', package:'Sfi.Site')}" /></div>
+                <div class="medium-4 columns"><f:form.submit class="button button--alt" style="padding: 11px" value="{f:translate(id:'newsletter.subscribeButton', package:'Sfi.Site')}"/></div>
+            </div>
+        </f:form>
+        <f:flashMessages />
+    </div>
+</div>
+

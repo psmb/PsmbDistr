@@ -2,8 +2,8 @@ TYPO3:
   Flow:
     i18n:
       defaultLocale: 'ru'
-#    http:
-#      baseUri: 'https://psmb.ru/'
+    http:
+      baseUri: 'https://psmb.ru/'
   Neos:
     typoScript:
       autoInclude:
@@ -43,9 +43,6 @@ TYPO3:
             label: 'English'
             values: ['en']
             uriSegment: 'en'
-  SwiftMailer:
-    transport:
-      type: 'TYPO3\SwiftMailer\Transport\MailTransport'
 
 Flowpack:
   ElasticSearch:
@@ -54,8 +51,25 @@ Flowpack:
         - host: es
           port: 9200
 
-
-
 Sfi:
   YouTube:
     className: 'YouTube flex-video widescreen'
+
+Psmb:
+  Newsletter:
+    globalSettings:
+      senderAddress: 'no-reply@psmb.ru'
+      senderName: 'PSMB.ru'
+    subscriptions:
+      -
+        identifier: 'instant'
+        renderer: 'Sfi.Site:InstantMail'
+        label: 'Full articles'
+        description: 'Receive full articles to your inbox as they are published'
+        interval: P1H
+      -
+        identifier: 'digest'
+        renderer: 'Sfi.Site:DigestMail'
+        label: 'Weekly digest'
+        description: 'Weekly Digest of the most interesting articles on our website'
+        interval: P1W

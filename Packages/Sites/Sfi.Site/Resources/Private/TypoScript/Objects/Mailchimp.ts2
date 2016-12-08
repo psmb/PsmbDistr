@@ -1,3 +1,0 @@
-prototype(Sfi.Site:Mailchimp) < prototype(T:Template) {
-	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Mailchimp-en.html'
-}

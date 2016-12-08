@@ -1,0 +1,9 @@
+-
+  requestFilter: 'isPackage("Psmb.Newsletter")'
+  options:
+    templateRootPaths:
+      - 'resource://Sfi.Site/Private/Newsletter/Templates/'
+      - 'resource://Psmb.Newsletter/Private/Templates'
+    partialRootPaths:
+      - 'resource://Sfi.Site/Private/Newsletter/Partials/'
+      - 'resource://Psmb.Newsletter/Private/Partials/'

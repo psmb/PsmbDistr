@@ -1,0 +1,5 @@
+.flashmessages-warning {
+  @extend .lead;
+  padding: 0 $u 3*$u $u;
+  color: $scarlet;
+}

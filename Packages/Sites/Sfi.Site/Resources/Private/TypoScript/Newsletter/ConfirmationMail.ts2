@@ -1,0 +1,11 @@
+
+prototype(Psmb.Newsletter:ConfirmationMailRenderer) {
+    subject = ${Translation.translate('newsletter.confirmationSubject', null, [], null, 'Sfi.Site')}
+    body = TYPO3.TypoScript:Template {
+        templatePath = 'resource://Sfi.Site/Private/TypoScript/Newsletter/ConfirmationMail.html'
+        activationLink = ${activationLink}
+        @process.cssToInline = Psmb.Newsletter:CssToInline {
+            cssPath = 'resource://Sfi.Site/Public/built/index.css'
+        }
+	}
+}

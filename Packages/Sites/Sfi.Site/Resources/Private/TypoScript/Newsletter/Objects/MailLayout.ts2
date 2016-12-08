@@ -1,0 +1,7 @@
+prototype(Sfi.Site:MailLayout) < prototype(TYPO3.TypoScript:Template) {
+    templatePath = 'resource://Sfi.Site/Private/TypoScript/Newsletter/Objects/MailLayout.html'
+    value = ${value}
+
+    unsubscribeLink = Psmb.Newsletter:UnsubscribeLink
+    editSubscriptionLink = Psmb.Newsletter:EditSubscriptionLink
+}

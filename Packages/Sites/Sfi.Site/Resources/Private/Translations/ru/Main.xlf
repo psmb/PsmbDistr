@@ -77,6 +77,72 @@
 			<trans-unit id="typos">
 				<source>Заметили опечатку? Пишите нам на editor@psmb.ru</source>
 			</trans-unit>
+			<trans-unit id="newsletter.editTitle">
+				<source>Обновить параметры подписки для адреса </source>
+			</trans-unit>
+			<trans-unit id="newsletter.indexTitle">
+				<source>Подпишитесь на нашу почтовую рассылку</source>
+			</trans-unit>
+			<trans-unit id="newsletter.subscription.instant.label">
+				<source>Полные статьи</source>
+			</trans-unit>
+			<trans-unit id="newsletter.subscription.instant.description">
+				<source>Получайте полные версии новых материалов сразу после публикации</source>
+			</trans-unit>
+			<trans-unit id="newsletter.subscription.digest.label">
+				<source>Еженедельный дайджест</source>
+			</trans-unit>
+			<trans-unit id="newsletter.subscription.digest.description">
+				<source>Раз в неделю вам придет письмо с лучшими публикациями за это время</source>
+			</trans-unit>
+			<trans-unit id="newsletter.namePlaceholder">
+				<source>Ваше имя</source>
+			</trans-unit>
+			<trans-unit id="newsletter.emailPlaceholder">
+				<source>Ваш e-mail</source>
+			</trans-unit>
+			<trans-unit id="newsletter.subscribeButton">
+				<source>Подписаться!</source>
+			</trans-unit>
+			<trans-unit id="newsletter.updateButton">
+				<source>Сохранить</source>
+			</trans-unit>
+			<trans-unit id="newsletter.feedbackTitle">
+				<source>Почтовая рассылка</source>
+			</trans-unit>
+			<trans-unit id="newsletter.editTitle">
+				<source>Изменения параметров рассылки для адреса</source>
+			</trans-unit>
+			<trans-unit id="newsletter.confirmationText">
+				<source>Перейдите по ссылке чтобы подтвердить вашу подписку на новые материалы сайта Преображенского братства:</source>
+			</trans-unit>
+			<trans-unit id="newsletter.confirmationButton">
+				<source>Подтвердить подписку</source>
+			</trans-unit>
+			<trans-unit id="newsletter.confirmationSubject">
+				<source>Подтверждение подписки psmb.ru</source>
+			</trans-unit>
+			<trans-unit id="newsletter.readAllLink">
+				<source>Читать весь материал на сайте</source>
+			</trans-unit>
+			<trans-unit id="newsletter.unsubscribeLink">
+				<source>Отписаться</source>
+			</trans-unit>
+			<trans-unit id="newsletter.or">
+				<source>или</source>
+			</trans-unit>
+			<trans-unit id="newsletter.editLink">
+				<source>изменить параметры подписки</source>
+			</trans-unit>
+			<trans-unit id="newsletter.digestSubject">
+				<source>Дайджест новых материалов PSMB.ru за последнюю неделю</source>
+			</trans-unit>
+			<trans-unit id="newsletter.digestHeadline">
+				<source>Новые материалы на сайте Преображенского братства</source>
+			</trans-unit>
+			<trans-unit id="newsletter.digestReadMore">
+				<source>Почитать что-нибудь еще</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

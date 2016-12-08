@@ -9,7 +9,10 @@ prototype(Sfi.Site:Body) < prototype(T:Template) {
 			condition = TRUE
 			type = ${q(node).property('_nodeType.name')}
 		}
+		@if.notSubscription = ${request.pluginArguments['newsletter']['@package'] != 'Psmb.Newsletter'}
 	}
+	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
+
 	footer = Sfi.Site:Footer
 	# mobileNav = Sfi.Site:SectionsNav {
 	#	@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}

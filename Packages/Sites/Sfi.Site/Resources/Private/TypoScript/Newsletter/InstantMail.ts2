@@ -1,0 +1,32 @@
+prototype(Sfi.Site:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
+	@context.node = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').sortDesc('date').execute()[0]}
+	# .greaterThan('date', Date.format(Date.subtract(Date.now(), 'P70D'), "Y-m-d\TH:i:sP"))
+	@if.notEmpty = ${node.identifier && true}
+	subject = ${String.stripTags(node.properties.title)}
+	body = TYPO3.TypoScript:Value {
+		value = TYPO3.TypoScript:Template {
+			templatePath = 'resource://Sfi.Site/Private/TypoScript/Newsletter/InstantMail.html'
+			link = NodeUri {
+				absolute = ${true}
+				node = ${node}
+			}
+			title = ${String.stripTags(node.properties.title)}
+			teaser = ${String.stripTags(node.properties.teaser)}
+			cover = TYPO3.Neos:ContentCollection {
+				nodePath = 'cover'
+				prototype(Psmb.NodeTypes:ImageUri) {
+					@context.width = 400
+				}
+			}
+			content = ContentCase {
+				@context.node = ${q(node).children('main').children('[instanceof Psmb.NodeTypes:Text]').get(0)}
+			}
+
+			@process.layout = Sfi.Site:MailLayout
+			@process.styles = Psmb.Newsletter:CssToInline {
+				cssPath = 'resource://Sfi.Site/Public/built/index.css'
+			}
+		}
+	}
+
+}

@@ -13,7 +13,8 @@
         "typo3/typo3cr-search": "*",
         "flowpack/elasticsearch-contentrepositoryadaptor": "*",
         "flowpack/searchplugin": "*",
-        "sfi/grid": "*"
+        "sfi/grid": "*",
+        "psmb/newsletter": "*"
     },
     "autoload": {
         "psr-0": {
