@@ -39,7 +39,7 @@
         "neos/redirecthandler-neosadapter": "^1.0",
         "dimaip/groupby": "@dev",
         "psmb/mapreduce": "@dev",
-        "typo3/neos-googleanalytics": "dev-dimaip-sort:@dev",
+        "typo3/neos-googleanalytics": "dev-dimaip-sort",
         "typo3/swiftmailer": "^5.4"
     },
     "extra": {
