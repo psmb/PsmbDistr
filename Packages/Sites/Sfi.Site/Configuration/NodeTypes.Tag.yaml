@@ -5,11 +5,11 @@
     'Sfi.Site:ImageMixin': true
     'Sfi.Site:TagMixin': true
   ui:
-    label: 'Тэг'
+    label: 'Тег'
     inspector:
       groups:
         tag:
-          label: 'Тэг'
+          label: 'Тег'
   childNodes:
     cover:
       type: 'TYPO3.Neos:ContentCollection'
