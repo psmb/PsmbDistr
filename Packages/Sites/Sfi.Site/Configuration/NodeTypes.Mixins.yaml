@@ -42,7 +42,7 @@
     tags:
       type: references
       ui:
-        label: 'Тэги (Энциклопедия)'
+        label: 'Теги (Энциклопедия)'
         reloadIfChanged: true
         inspector:
           group: relations
