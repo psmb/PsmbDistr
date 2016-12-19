@@ -1,7 +1,7 @@
 prototype(Sfi.Site:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
-	@context.node = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').sortDesc('date').execute()[0]}
-	# .greaterThan('date', Date.format(Date.subtract(Date.now(), 'P70D'), "Y-m-d\TH:i:sP"))
-	@if.notEmpty = ${node.identifier && true}
+	@context.node = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').greaterThan('date', Date.format(Date.subtract(Date.now(), subscription.interval), "Y-m-d\TH:i:sP")).sortDesc('date').execute()[0]}
+	# TODO: better ideas how to check if node is found?
+	@if.notEmpty = ${String.length(node.identifier) > 0}
 	subject = ${String.stripTags(node.properties.title)}
 	body = TYPO3.TypoScript:Value {
 		value = Sfi.Site:NewsContent {
