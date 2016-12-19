@@ -1,20 +1,7 @@
 prototype(Sfi.Site:News) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/News.html'
 
-	title = ${String.stripTags(node.properties.title)}
-	teaser = ${String.stripTags(node.properties.teaser)}
-
-	tagList = Sfi.Site:TagList
-	cover = TYPO3.Neos:ContentCollection {
-		nodePath = 'cover'
-	}
-	main = TYPO3.Neos:ContentCollection {
-		nodePath = 'main'
-	}
-	gallery = TYPO3.Neos:ContentCollection {
-		nodePath = 'gallery'
-	}
-	newsList = Sfi.Site:NewsRelatedList
+	newsContent = Sfi.Site:NewsContent
 	disqus = Sfi.Site:Disqus
 	stream = Sfi.Site:Stream {
 		@context.hideBar = ${true}
@@ -22,11 +9,6 @@ prototype(Sfi.Site:News) {
 	}
 	collectionArticles = Sfi.Site:CollectionArticles
 	share = Sfi.Site:Share
-	languageLink = Sfi.Site:LanguageLink
-
-	audioList = Sfi.Site:AudioPlayer
-
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
 }
 
 # Get thumb from news node

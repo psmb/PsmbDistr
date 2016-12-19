@@ -1,0 +1,24 @@
+prototype(Sfi.Site:NewsContent) < prototype(TYPO3.TypoScript:Template) {
+	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/NewsContent.html'
+
+	title = ${String.stripTags(node.properties.title)}
+	teaser = ${String.stripTags(node.properties.teaser)}
+	announcementPlace = ${node.properties.announcementPlace}
+	credit = ${node.properties.credit}
+
+	tagList = Sfi.Site:TagList
+	newsList = Sfi.Site:NewsRelatedList
+	languageLink = Sfi.Site:LanguageLink
+
+	cover = TYPO3.Neos:ContentCollection {
+		nodePath = 'cover'
+	}
+	main = TYPO3.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	gallery = TYPO3.Neos:ContentCollection {
+		nodePath = 'gallery'
+	}
+
+	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+}

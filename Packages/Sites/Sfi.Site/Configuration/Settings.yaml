@@ -67,9 +67,15 @@ Psmb:
         label: 'Full articles'
         description: 'Receive full articles to your inbox as they are published'
         interval: P1H
+        senderName: 'Преображенское братство'
+        dimensions:
+          language: ['ru']
       -
         identifier: 'digest'
         renderer: 'Sfi.Site:DigestMail'
         label: 'Weekly digest'
         description: 'Weekly Digest of the most interesting articles on our website'
         interval: P1W
+        senderName: 'Преображенское братство'
+        dimensions:
+          language: ['ru']

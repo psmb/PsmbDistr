@@ -1,0 +1,27 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+
+<h1 class="alpha">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+<div class="news-detail__tagline">
+	<f:if condition="{type} != 'announcement'">
+		<span class="news-detail__date"><f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date></span>
+	</f:if>
+	{tagList -> f:format.raw()}
+</div>
+
+<f:if condition="{type} == 'announcement'">
+	<f:then>
+		<div class="lead">{neos:contentElement.editable(property: 'announcementPlace', tag: 'span')}</div>
+	</f:then>
+	<f:else>
+		<div class="lead">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+	</f:else>
+</f:if>
+
+{cover -> f:format.raw()}
+<div class="large-10 large-offset-2 columns">
+	{languageLink -> f:format.raw()}
+	{main -> f:format.raw()}
+	{gallery -> f:format.raw()}
+	<div class="rte-text"><div class="author">{neos:contentElement.editable(property: 'credit', tag: 'span')}</div></div>
+	{newsList -> f:format.raw()}
+</div>

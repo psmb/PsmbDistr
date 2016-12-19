@@ -1,45 +1,63 @@
 prototype(Sfi.Site:DigestMail) < prototype(Psmb.Newsletter:MailRenderer) {
-    @context.nodes = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').sortDesc('date').execute()}
-    # .greaterThan('date', Date.format(Date.subtract(Date.now(), 'P70D'), "Y-m-d\TH:i:sP"))
-    @if.notEmpty = ${q(nodes).count() > 0}
-    subject = ${Translation.translate('newsletter.digestSubject', null, [], null, 'Sfi.Site')}
-    body = TYPO3.TypoScript:Array {
+	@context.nodes = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').sortDesc('date').execute()}
+	# .greaterThan('date', Date.format(Date.subtract(Date.now(), 'P70D'), "Y-m-d\TH:i:sP"))
+	@if.notEmpty = ${q(nodes).count() > 0}
+	subject = ${Translation.translate('newsletter.digestSubject', null, [], null, 'Sfi.Site')}
+	body = TYPO3.TypoScript:Value {
+		@process.cssToInline = Psmb.Newsletter:CssToInline {
+			cssPath = 'resource://Sfi.Site/Public/built/index.css'
+		}
+		value = TYPO3.TypoScript:Array {
 
-        headline = ${'<div class="alpha--light">' + Translation.translate('newsletter.digestHeadline', null, [], null, 'Sfi.Site') + '</div>'}
+			headline = ${'<div class="alpha--light marginVertical-double">' + Translation.translate('newsletter.digestHeadline', null, [], null, 'Sfi.Site') + '</div>'}
 
-        articles = TYPO3.TypoScript:Collection {
-            collection = ${nodes}
-            itemName = 'node'
-            itemRenderer = Sfi.Site:DigestArticle
-        }
+			articles = TYPO3.TypoScript:Collection {
+				@process.tmpl = ${'<ul class="stream__content js-stream__content">' + value + '</ul>'}
+				collection = ${nodes}
+				itemName = 'node'
+				itemRenderer = Sfi.Site:NewsShort {
+					thumbUri.width = 600
+					thumbUri.height = 400
+					sectionName = 'normal'
+					prototype(ImageUri) {
+						width = 600
+						height = 400
+					}
+					prototype(NodeUri) {
+						absolute = ${true}
+					}
+				}
+			}
 
-        moreButton = TYPO3.TypoScript:Tag {
-            @process.tmpl = ${'<div class="paddingTop-double">' + value + '</div>'}
-            tagName = 'a'
-            attributes.class = 'button'
-            attributes.href = NodeUri {
-                node = ${site}
-                absolute = ${true}
-            }
-            content = ${Translation.translate('newsletter.digestReadMore', null, [], null, 'Sfi.Site')}
-        }
+			moreButton = TYPO3.TypoScript:Tag {
+				@process.tmpl = ${'<div class="paddingTop-double">' + value + '</div>'}
+				tagName = 'a'
+				attributes.class = 'button'
+				attributes.href = NodeUri {
+					node = ${site}
+					absolute = ${true}
+				}
+				content = ${Translation.translate('newsletter.digestReadMore', null, [], null, 'Sfi.Site')}
+			}
 
-        @process.layout = Sfi.Site:MailLayout
-        @process.cssToInline = Psmb.Newsletter:CssToInline {
-            cssPath = 'resource://Sfi.Site/Public/built/index.css'
-        }
-    }
+			@process.layout = Sfi.Site:MailLayout
+
+			@cache {
+				mode = 'cached'
+			}
+		}
+	}
 }
 
 prototype(Sfi.Site:DigestArticle) < prototype(TYPO3.TypoScript:Tag) {
-    tagName = 'a'
-    attributes.href = NodeUri {
-        node = ${node}
-        absolute = ${true}
-    }
-    content = TYPO3.TypoScript:Array {
-        @process.tmpl = ${'<div class="marginVertical-double">' + value + '</div>'}
-        title = ${'<h2 class="gamma link">' + String.stripTags(node.properties.title) + '</h2>'}
-        teaser = ${'<p class="zeta">' + String.stripTags(node.properties.teaser) + '</p>'}
-    }
+	tagName = 'a'
+	attributes.href = NodeUri {
+		node = ${node}
+		absolute = ${true}
+	}
+	content = TYPO3.TypoScript:Array {
+		@process.tmpl = ${'<div class="marginVertical-double">' + value + '</div>'}
+		title = ${'<h2 class="gamma link">' + String.stripTags(node.properties.title) + '</h2>'}
+		teaser = ${'<p class="zeta">' + String.stripTags(node.properties.teaser) + '</p>'}
+	}
 }
