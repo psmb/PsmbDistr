@@ -14,15 +14,33 @@
         >
             <div class="row marginVertical-single">
                 <f:for each="{subscriptions}" as="subscription">
-                    <div class="medium-4 columns">
-                        <label>
-                            <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" checked="true" multiple="true" property="subscriptions" value="{subscription.identifier}" />
-                            <div class="margin-none" style="margin-left: 40px !important">
-                                <div class="gamma marginTop-none">{subscription.label}</div>
-                                <div class="service-large--gray-light">{subscription.description}</div>
-                            </div>
-                        </label>
-                    </div>
+                    <f:if condition="{subscription.dimensions.language.0} == {currentLocale.language}">
+                        <div class="medium-4 columns">
+                            <label>
+                                <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" checked="true" multiple="true" property="subscriptions" value="{subscription.identifier}" />
+                                <div class="margin-none" style="margin-left: 40px !important">
+                                    <div class="gamma marginTop-none">{subscription.label}</div>
+                                    <div class="service-large--gray-light">{subscription.description}</div>
+                                </div>
+                            </label>
+                        </div>
+                    </f:if>
+                </f:for>
+                <div class="medium-4 columns"></div>
+            </div>
+            <div class="row marginVertical-single">
+                <f:for each="{subscriptions}" as="subscription">
+                    <f:if condition="{subscription.dimensions.language.0} != {currentLocale.language}">
+                        <div class="medium-4 columns">
+                            <label>
+                                <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" multiple="true" property="subscriptions" value="{subscription.identifier}" />
+                                <div class="margin-none" style="margin-left: 40px !important">
+                                    <div class="gamma marginTop-none">{subscription.label}</div>
+                                    <div class="service-large--gray-light">{subscription.description}</div>
+                                </div>
+                            </label>
+                        </div>
+                    </f:if>
                 </f:for>
                 <div class="medium-4 columns"></div>
             </div>
