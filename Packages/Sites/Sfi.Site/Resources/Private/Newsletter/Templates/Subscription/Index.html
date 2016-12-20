@@ -18,8 +18,8 @@
                         <label>
                             <f:form.checkbox class="left" style="margin-top: 3px; transform: scale(1.7)" checked="true" multiple="true" property="subscriptions" value="{subscription.identifier}" />
                             <div class="margin-none" style="margin-left: 40px !important">
-                                <div class="gamma marginTop-none"><f:translate id="newsletter.subscription.{subscription.identifier}.label" package="Sfi.Site"/></div>
-                                <div class="service-large--gray-light"><f:translate id="newsletter.subscription.{subscription.identifier}.description" package="Sfi.Site"/></div>
+                                <div class="gamma marginTop-none">{subscription.label}</div>
+                                <div class="service-large--gray-light">{subscription.description}</div>
                             </div>
                         </label>
                     </div>

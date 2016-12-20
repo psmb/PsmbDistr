@@ -62,20 +62,38 @@ Psmb:
       senderName: 'PSMB.ru'
     subscriptions:
       -
-        identifier: 'instant'
+        identifier: 'instant_ru'
         renderer: 'Sfi.Site:InstantMail'
-        label: 'Full articles'
-        description: 'Receive full articles to your inbox as they are published'
+        label: 'Мгновенное уведомление'
+        description: 'Полные версии материалов как только они опубликованы'
         interval: PT1H
         senderName: 'Преображенское братство'
         dimensions:
           language: ['ru']
       -
-        identifier: 'digest'
+        identifier: 'digest_ru'
         renderer: 'Sfi.Site:DigestMail'
-        label: 'Weekly digest'
-        description: 'Weekly Digest of the most interesting articles on our website'
+        label: 'Еженедельный дайджест'
+        description: 'Письмо с лучшими публикациями за неделю'
         interval: P1W
         senderName: 'Преображенское братство'
         dimensions:
           language: ['ru']
+      -
+        identifier: 'instant_en'
+        renderer: 'Sfi.Site:InstantMail'
+        label: 'Instant Notification'
+        description: 'Recevie full versions of articles as they are published'
+        interval: PT1H
+        senderName: 'Transfiguration Brotherhood'
+        dimensions:
+          language: ['en']
+      -
+        identifier: 'digest_en'
+        renderer: 'Sfi.Site:DigestMail'
+        label: 'Monthly Digest'
+        description: 'Receive newsletter by Sofia Androsenko to your inbox'
+        interval: P1W
+        senderName: 'Transfiguration Brotherhood'
+        dimensions:
+          language: ['en']
