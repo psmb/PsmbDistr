@@ -15,10 +15,12 @@ prototype(Sfi.Site:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
 				absolute = ${true}
 			}
 			@process.layout = Sfi.Site:MailLayout
-			@process.styles = Psmb.Newsletter:CssToInline {
-				cssPath = 'resource://Sfi.Site/Public/built/index.css'
+			@cache {
+				mode = 'cached'
 			}
 		}
+		@process.styles = Psmb.Newsletter:CssToInline {
+			cssPath = 'resource://Sfi.Site/Public/built/index.css'
+		}
 	}
-
 }

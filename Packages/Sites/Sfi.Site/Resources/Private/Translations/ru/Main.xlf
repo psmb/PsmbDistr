@@ -135,7 +135,7 @@
 				<source>изменить параметры подписки</source>
 			</trans-unit>
 			<trans-unit id="newsletter.digestSubject">
-				<source>3 декабря. Еженедельный дайджест Преображенского братства</source>
+				<source>Еженедельный дайджест Преображенского братства</source>
 			</trans-unit>
 			<trans-unit id="newsletter.digestHeadline">
 				<source>Новые материалы на нашем сайте</source>
