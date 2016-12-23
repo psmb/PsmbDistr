@@ -106,65 +106,70 @@
 				<source>Заметили опечатку? Пишите нам на editor@psmb.ru</source>
 				<target>Noticed a typo? Please write to us at editor@psmb.ru!</target>
 			</trans-unit>
+
 			<trans-unit id="newsletter.editTitle">
-				<source>Обновить параметры подписки для адреса </source>
-				<target>Update subscription options for </target>
+				<source>Обновить параметры подписки для адреса</source>
+				<target>Revise subscription parameters for the address</target>
 			</trans-unit>
 			<trans-unit id="newsletter.indexTitle">
 				<source>Подпишитесь на нашу почтовую рассылку</source>
-				<target>Sign up for our Newsletter</target>
+				<target>Subscribe to our mailing list</target>
 			</trans-unit>
 			<trans-unit id="newsletter.subscription.instant.label">
-				<source>Полные статьи</source>
-				<target>Full Articles</target>
+				<source>Мгновенное уведомление</source>
+				<target>Flash Alert</target>
 			</trans-unit>
 			<trans-unit id="newsletter.subscription.instant.description">
-				<source>Получайте полные версии новых материалов сразу после публикации</source>
-				<target>Receive full articles striaght to your mailbox</target>
+				<source>Полные версии материалов как только они опубликованы</source>
+				<target>Full version of materials upon publication</target>
 			</trans-unit>
 			<trans-unit id="newsletter.subscription.digest.label">
 				<source>Еженедельный дайджест</source>
 				<target>Weekly Digest</target>
 			</trans-unit>
 			<trans-unit id="newsletter.subscription.digest.description">
-				<source>Раз в неделю вам придет письмо с лучшими публикациями за это время</source>
-				<target>Once a week we will send you a digest with the best articles from that period</target>
+				<source>Письмо с лучшими публикациями за неделю</source>
+				<target>Letter with this week’s top publications</target>
 			</trans-unit>
 			<trans-unit id="newsletter.namePlaceholder">
-				<source>Ваше имя</source>
-				<target>Your name</target>
+				<source>Имя</source>
+				<target>Name</target>
 			</trans-unit>
 			<trans-unit id="newsletter.emailPlaceholder">
-				<source>Ваш e-mail</source>
-				<target>Your e-mail</target>
+				<source>E-mail</source>
+				<target>E-mail</target>
 			</trans-unit>
 			<trans-unit id="newsletter.subscribeButton">
-				<source>Подписаться!</source>
-				<target>Subscribe!</target>
+				<source>Подписаться</source>
+				<target>Subscribe</target>
 			</trans-unit>
 			<trans-unit id="newsletter.updateButton">
-				<source>Сохранить</source>
-				<target>Save</target>
+				<source>Сохранить изменения</source>
+				<target>Save Changes</target>
 			</trans-unit>
 			<trans-unit id="newsletter.feedbackTitle">
 				<source>Почтовая рассылка</source>
-				<target>Newsletter</target>
+				<target>Mailing List</target>
+			</trans-unit>
+			<trans-unit id="newsletter.editTitle">
+				<source>Изменение параметров рассылки для</source>
+				<target>Change mailing list parameters for</target>
 			</trans-unit>
 			<trans-unit id="newsletter.confirmationText">
-				<source>Перейдите по ссылке чтобы подтвердить вашу подписку на новые материалы сайта Преображенского братства:</source>
-				<target>Follow the link to confirm your subscription to the latest articles of the website of the Transfiguration Brotherhood</target>
+				<source>Перейдите по ссылке чтобы подтвердить подписку на материалы сайта Преображенского братства:</source>
+				<target>Follow the link to confirm your subscription to receive materials from the Transfiguration Brotherhood’s site:</target>
 			</trans-unit>
 			<trans-unit id="newsletter.confirmationButton">
 				<source>Подтвердить подписку</source>
 				<target>Confirm your subscription</target>
 			</trans-unit>
 			<trans-unit id="newsletter.confirmationSubject">
-				<source>Подтверждение подписки psmb.ru</source>
-				<target>PSMB.ru newsletter confirmation</target>
+				<source>Подтвердите подписку на материалы psmb.ru</source>
+				<target>Confirm your subscription to receive psmb.ru materials</target>
 			</trans-unit>
 			<trans-unit id="newsletter.readAllLink">
-				<source>Читать весь материал на сайте</source>
-				<target>Read the full article on the website</target>
+				<source>Читать материал на сайте</source>
+				<target>Read materials on the site</target>
 			</trans-unit>
 			<trans-unit id="newsletter.unsubscribeLink">
 				<source>Отписаться</source>
@@ -176,19 +181,19 @@
 			</trans-unit>
 			<trans-unit id="newsletter.editLink">
 				<source>изменить параметры подписки</source>
-				<target>change your subscription parameters</target>
+				<target>change the parameters of your subscription</target>
 			</trans-unit>
 			<trans-unit id="newsletter.digestSubject">
-				<source>Дайджест новых материалов PSMB.ru за последнюю неделю</source>
-				<target>PSMB.ru weekly digest</target>
+				<source>Еженедельный дайджест Преображенского братства</source>
+				<target>Weekly Digest of the Transfiguration Brotherhood</target>
 			</trans-unit>
 			<trans-unit id="newsletter.digestHeadline">
-				<source>Новые материалы на сайте Преображенского братства</source>
-				<target>New articles on the website of the Transfiguration Brotherhood</target>
+				<source>Новые материалы на нашем сайте</source>
+				<target>New materials on our site</target>
 			</trans-unit>
 			<trans-unit id="newsletter.digestReadMore">
-				<source>Почитать что-нибудь еще</source>
-				<target>Read something else</target>
+				<source>Перейти на сайт</source>
+				<target>Go to the website</target>
 			</trans-unit>
 		</body>
 	</file>
