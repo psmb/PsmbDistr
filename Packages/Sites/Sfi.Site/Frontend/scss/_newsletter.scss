@@ -1,4 +1,13 @@
 .newsletter {
+	.stream__item {
+		height: auto !important;
+	}
+	.stream__item .media__wrap {
+		height: auto !important;
+	}
+	.media__teaser {
+		overflow: visible;
+	}
 	.rte-text p {
 		font-size: rem-calc(16) !important;
 	}
