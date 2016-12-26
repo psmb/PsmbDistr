@@ -74,9 +74,6 @@
 			<trans-unit id="audio">
 				<source>Аудио</source>
 			</trans-unit>
-			<trans-unit id="typos">
-				<source>Заметили опечатку? Пишите нам на editor@psmb.ru</source>
-			</trans-unit>
 
 			<trans-unit id="newsletter.editTitle">
 				<source>Обновить параметры подписки для адреса</source>

@@ -102,10 +102,6 @@
 				<source>Аудио</source>
 				<target>Audio</target>
 			</trans-unit>
-			<trans-unit id="typos">
-				<source>Заметили опечатку? Пишите нам на editor@psmb.ru</source>
-				<target>Noticed a typo? Please write to us at editor@psmb.ru!</target>
-			</trans-unit>
 
 			<trans-unit id="newsletter.editTitle">
 				<source>Обновить параметры подписки для адреса</source>
