@@ -7,6 +7,10 @@
     },
     "repositories": [
         {
+            "url": "https://github.com/dimaip/Flowpack.ElasticSearch.ContentRepositoryAdaptor",
+            "type": "vcs"
+        },
+        {
             "url": "https://github.com/dimaip/neos-googleanalytics",
             "type": "vcs"
         }
@@ -31,7 +35,7 @@
         "psmb/nodetypes": "@dev",
         "psmb/createnodebutton": "@dev",
         "typo3/typo3cr-search": "@dev",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "dev-support-es20",
         "sfi/grid": "@dev",
         "psmb/mediaquery": "@dev",
         "neos/redirecthandler": "^1.0",
