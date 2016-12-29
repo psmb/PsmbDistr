@@ -3,6 +3,7 @@ prototype(Sfi.Site:NewsContent) < prototype(TYPO3.TypoScript:Template) {
 
 	title = ${String.stripTags(node.properties.title)}
 	teaser = ${String.stripTags(node.properties.teaser)}
+	type = ${node.properties.type}
 	announcementPlace = ${node.properties.announcementPlace}
 	credit = ${node.properties.credit}
 	date = ${node.properties.date}

@@ -53,7 +53,7 @@ prototype(Sfi.Site:Blog) {
 		allowUpscaling = TRUE
 	}
 
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = ContentElementWrapping
 
 	@cache {
 		mode = 'cached'
