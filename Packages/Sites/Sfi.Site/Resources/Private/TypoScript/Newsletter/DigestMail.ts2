@@ -42,6 +42,9 @@ prototype(Sfi.Site:DigestMail) < prototype(Psmb.Newsletter:MailRenderer) {
 			@process.layout = Sfi.Site:MailLayout
 
 			@cache {
+				entryIdentifier {
+					site = ${site}
+				}
 				mode = 'cached'
 			}
 		}

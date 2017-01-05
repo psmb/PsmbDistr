@@ -16,6 +16,9 @@ prototype(Sfi.Site:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
 			}
 			@process.layout = Sfi.Site:MailLayout
 			@cache {
+				entryIdentifier {
+					node = ${node}
+				}
 				mode = 'cached'
 			}
 		}
