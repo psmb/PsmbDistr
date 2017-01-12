@@ -727,7 +727,7 @@ Lead text. Normally precedes .rte-text.
 }
 ```
  */
-.lead,.lead p{
+.lead,.lead p, .Lead, .Lead p{
 	@extend %vertical-margins;
 	font-size: rem-calc(22);
 	letter-spacing: 1px;
@@ -799,11 +799,9 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 		@extend .zeta;
 	}
 
-	.epigraf{
-		text-align: right;
-		font-style: italic;
+	.epigraph {
+		@extend .Epigraph;
 	}
-
 	//legacy styles from psmb v1.0
 	.interview{
 		font-weight:bold;
@@ -834,4 +832,9 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 
 .Author{
 	@extend .zeta;
+}
+
+.Epigraph, .Epigraph p {
+	text-align: right;
+	font-style: italic;
 }
