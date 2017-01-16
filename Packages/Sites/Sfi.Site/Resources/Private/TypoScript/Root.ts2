@@ -46,8 +46,8 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 			attributes {
 				href = T:ResourceUri {
 					path = 'resource://Sfi.Site/Public/built/index.css'
+					@process.burst = ${value + '?3'}
 				}
-				href.@process.burst = ${value + '?3'}
 				type = 'text/css'
 				rel = 'stylesheet'
 			}
@@ -74,6 +74,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 			tagName = 'script'
 			attributes.src = T:ResourceUri {
 				path = 'resource://Sfi.Site/Public/built/index.js'
+				@process.burst = ${value + '?3'}
 			}
 		}
 		javascripts.analytics = Sfi.Site:Analytics
