@@ -9,10 +9,6 @@
         {
             "url": "https://github.com/dimaip/Flowpack.ElasticSearch.ContentRepositoryAdaptor",
             "type": "vcs"
-        },
-        {
-            "url": "https://github.com/dimaip/neos-googleanalytics",
-            "type": "vcs"
         }
     ],
     "require": {
@@ -43,7 +39,7 @@
         "neos/redirecthandler-neosadapter": "^1.0",
         "dimaip/groupby": "@dev",
         "psmb/mapreduce": "@dev",
-        "typo3/neos-googleanalytics": "dev-dimaip-sort",
+        "typo3/neos-googleanalytics": "^1.0",
         "psmb/newsletter": "@dev"
     },
     "extra": {
