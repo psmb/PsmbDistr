@@ -118,6 +118,14 @@ blah: &alohaRich
           include_in_all: false
           format: 'date_time_no_millis'
         indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
+    firstPublicationDateTime:
+      type: DateTime
+      search:
+        elasticSearchMapping:
+          type: date
+          include_in_all: false
+          format: 'date_time_no_millis'
+        indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
     isImportant:
       type: boolean
       ui:
@@ -128,6 +136,13 @@ blah: &alohaRich
       type: boolean
       ui:
         label: 'Яндекс новости'
+        inspector:
+          group: news
+          group: news
+    excludeFromNewsletter:
+      type: boolean
+      ui:
+        label: 'Не рассылать по почте'
         inspector:
           group: news
     isPhoto:

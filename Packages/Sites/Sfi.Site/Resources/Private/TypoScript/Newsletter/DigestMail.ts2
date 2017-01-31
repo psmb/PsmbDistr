@@ -1,5 +1,5 @@
 prototype(Sfi.Site:DigestMail) < prototype(Psmb.Newsletter:MailRenderer) {
-	@context.nodes = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').greaterThan('date', Date.format(Date.subtract(Date.now(), subscription.interval), "Y-m-d\TH:i:sP")).sortDesc('date').execute()}
+	@context.nodes = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').queryFilter('bool', {must_not: [{term: {excludeFromNewsletter: true}}]}).greaterThan('firstPublicationDateTime', Date.format(Date.subtract(Date.now(), subscription.interval), "Y-m-d\TH:i:sP")).sortDesc('date').execute()}
 	@if.notEmpty = ${q(nodes).count() > 0}
 	subject = ${Date.format(Date.now(), 'd.m. ') + Translation.translate('newsletter.digestSubject', null, [], null, 'Sfi.Site')}
 	body = TYPO3.TypoScript:Value {
