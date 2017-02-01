@@ -2,7 +2,7 @@
 namespace Sfi\Site\TypoScript;
 
 use Neos\Flow\Annotations as Flow;
-use TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject;
+use Neos\Fusion\TypoScriptObjects\AbstractTypoScriptObject;
 
 class PaginationArrayImplementation extends AbstractTypoScriptObject
 {
