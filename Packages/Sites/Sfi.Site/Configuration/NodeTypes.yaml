@@ -1,31 +1,29 @@
+
 'TYPO3.Neos:Document':
   properties:
-    'uriPathSegment':
+    uriPathSegment:
       search:
         elasticSearchMapping:
           type: string
           index: not_analyzed
-
 'TYPO3.Neos:Shortcut':
   superTypes:
-    'Sfi.Site:ImageMixin': true
-
+    'Sfi.Site:ImageMixin': '1'
 'Sfi.Site:Page':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:NavTitleMixin': true
-    'Sfi.Site:ImageMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:NavTitleMixin': '1'
+    'Sfi.Site:ImageMixin': '1'
   ui:
     label: 'Обычная страница'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
-
 'Sfi.Site:MainPage':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:NavTitleMixin': true
-    'Sfi.Site:ImageMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:NavTitleMixin': '1'
+    'Sfi.Site:ImageMixin': '1'
   ui:
     label: 'Главная страница'
   childNodes:
@@ -38,46 +36,43 @@
         inlineEditable: true
         aloha:
           placeholder: 'Контактные данные'
-          'format':
-            'strong': TRUE
-            'em': TRUE
-            'u': FALSE
-            'p': TRUE
-            'h1': FALSE
-            'h2': TRUE
-            'h3': TRUE
-            'pre': FALSE
-            'removeFormat': TRUE
-          'table':
-            'table': FALSE
-          'list':
-            'ol': FALSE
-            'ul': TRUE
-          'link':
-            'a': TRUE
-          'alignment': {  }
-
+          format:
+            strong: true
+            em: true
+            u: false
+            p: true
+            h1: false
+            h2: true
+            h3: true
+            pre: false
+            removeFormat: true
+          table:
+            table: false
+          list:
+            ol: false
+            ul: true
+          link:
+            a: true
+          alignment: {  }
 'Sfi.Site:BlogArchive':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:NavTitleMixin': true
-    'Sfi.Site:ImageMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:NavTitleMixin': '1'
+    'Sfi.Site:ImageMixin': '1'
   ui:
     label: 'Архив блогов'
-
 'Sfi.Site:Archive':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:NavTitleMixin': true
-    'Sfi.Site:ImageMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:NavTitleMixin': '1'
+    'Sfi.Site:ImageMixin': '1'
   ui:
-    label: 'Архив'
-
+    label: Архив
 'Sfi.Site:PresentationPage':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:NavTitleMixin': true
-    'Sfi.Site:ImageMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:NavTitleMixin': '1'
+    'Sfi.Site:ImageMixin': '1'
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'
@@ -85,7 +80,7 @@
     label: 'О нас'
   properties:
     teachers:
-      type: 'references'
+      type: references
       ui:
         label: 'Наши учителя'
         reloadIfChanged: true
@@ -94,4 +89,4 @@
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/tags/people'
+            startingPoint: /sites/site/tags/people

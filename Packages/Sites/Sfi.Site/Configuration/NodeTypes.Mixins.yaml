@@ -1,3 +1,4 @@
+
 'Sfi.Site:NavTitleMixin':
   abstract: true
   properties:
@@ -7,7 +8,6 @@
         label: 'Короткое название (для меню)'
         inspector:
           group: document
-
 'Sfi.Site:ImageMixin':
   abstract: true
   properties:
@@ -15,14 +15,13 @@
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото снаружи'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
           group: document
-
 'Sfi.Site:TagMixin':
   abstract: true
   superTypes:
-    'Psmb.Term:TermMixin': true
+    'Psmb.Term:TermMixin': '1'
   properties:
     originalIdentifier:
       type: string
@@ -30,8 +29,7 @@
         elasticSearchMapping:
           type: string
           index: not_analyzed
-        indexing: ${value}
-
+        indexing: '${value}'
 'Sfi.Site:TaggableMixin':
   ui:
     inspector:
@@ -52,14 +50,14 @@
     sections:
       type: references
       ui:
-        label: 'Разделы'
+        label: Разделы
         reloadIfChanged: true
         inspector:
           group: relations
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/sections'
+            startingPoint: /sites/site/sections
             threshold: 1
     collections:
       type: references
@@ -71,7 +69,7 @@
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/collections'
+            startingPoint: /sites/site/collections
     projects:
       type: references
       ui:
@@ -82,15 +80,15 @@
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:TagMixin'
-            startingPoint: '/sites/site/projects'
+            startingPoint: /sites/site/projects
     places:
       type: references
       ui:
-        label: 'Места'
+        label: Места
         reloadIfChanged: true
         inspector:
           group: relations
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:PlaceTag'
-            startingPoint: '/sites/site/places'
+            startingPoint: /sites/site/places

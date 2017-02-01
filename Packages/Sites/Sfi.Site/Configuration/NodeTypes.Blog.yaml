@@ -1,9 +1,10 @@
+
 'Sfi.Site:Blog':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:TaggableMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:TaggableMixin': '1'
   ui:
-    label: 'Блог'
+    label: Блог
     inspector:
       groups:
         blog:
@@ -17,26 +18,26 @@
       ui:
         label: 'Заголовок блоговой записи'
         inspector:
-          group: 'blog'
+          group: blog
     author:
-      type: 'reference'
+      type: reference
       ui:
-        label: 'Автор'
+        label: Автор
         inspector:
-          group: 'blog'
+          group: blog
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:Author'
-            startingPoint: '/sites/site/authors'
+            startingPoint: /sites/site/authors
     isExternal:
       type: boolean
       ui:
         label: 'Внешняя блоговая запись?'
         inspector:
-          group: 'blog'
+          group: blog
     url:
-      type: 'string'
+      type: string
       ui:
         label: 'Ссылка на блоговую запись'
         inspector:
-          group: 'blog'
+          group: blog

@@ -1,10 +1,11 @@
+
 'Sfi.Site:Source':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'TYPO3.Neos:Content': '1'
   ui:
-    label: 'Автор'
-    icon: 'icon-file-text-alt'
-    position: 'last'
+    label: Автор
+    icon: icon-file-text-alt
+    position: last
   properties:
     text:
       type: string
@@ -12,24 +13,24 @@
         inlineEditable: true
         aloha:
           placeholder: '<p>Автор</p>'
-          'format':
-            'strong': TRUE
-            'em': TRUE
-            'sub': TRUE
-            'sup': TRUE
-            'del': FALSE
-            'p': TRUE
-            'h1': FALSE
-            'h2': FALSE
-            'h3': FALSE
-            'pre': FALSE
-            'removeFormat': TRUE
-          'table':
-            'table': FALSE
-          'link':
-            'a': TRUE
-          'alignment': {  }
-          'formatlesspaste':
-            'button': true # Show toggle button for formatless pasting.
-            'formatlessPasteOption': true # Whether the formatless pasting should be enable by default.
-            'autoparagraph': true
+          format:
+            strong: true
+            em: true
+            sub: true
+            sup: true
+            del: false
+            p: true
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: true
+          table:
+            table: false
+          link:
+            a: true
+          alignment: {  }
+          formatlesspaste:
+            button: true
+            formatlessPasteOption: true
+            autoparagraph: true

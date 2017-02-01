@@ -1,6 +1,5 @@
 
-# Define Aloha presets to reuse throughout the document
-blah: &alohaPlain
+blah:
   placeholder: 'Enter title here'
   format:
     b: false
@@ -19,36 +18,12 @@ blah: &alohaPlain
   link:
     a: false
   alignment: {  }
-
-blah: &alohaRich
-  placeholder: 'Enter title here'
-  format:
-    b: true
-    i: true
-    u: false
-    sub: true
-    sup: true
-    p: false
-    h1: false
-    h2: false
-    h3: false
-    pre: false
-    removeFormat: false
-  table: {  }
-  list: {  }
-  link:
-    a: true
-  alignment: {  }
-
-
-
-
 'Sfi.Site:News':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:TaggableMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:TaggableMixin': '1'
   ui:
-    label: 'Материал'
+    label: Материал
     inspector:
       groups:
         news:
@@ -65,30 +40,94 @@ blah: &alohaRich
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Заголовок материала'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     teaser:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
-          placeholder: 'Тизер'
+          placeholder: Тизер
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     announcementPlace:
       type: string
       ui:
         inlineEditable: true
         aloha:
-          <<: *alohaRich
           placeholder: 'Город для анонса'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     credit:
       type: string
       ui:
-        label: 'Авторство'
+        label: Авторство
         inlineEditable: true
         aloha:
-          <<: *alohaPlain
           placeholder: 'Не использовать'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
     dateStart:
       type: DateTime
       ui:
@@ -99,24 +138,24 @@ blah: &alohaRich
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        'TYPO3.Neos/Validation/DateTimeValidator': []
+        TYPO3.Neos/Validation/DateTimeValidator: {  }
     date:
       type: DateTime
-      defaultValue: 'now'
+      defaultValue: now
       ui:
-        label: 'Дата'
+        label: Дата
         reloadIfChanged: true
         inspector:
           group: news
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        'TYPO3.Neos/Validation/DateTimeValidator': []
+        TYPO3.Neos/Validation/DateTimeValidator: {  }
       search:
         elasticSearchMapping:
           type: date
           include_in_all: false
-          format: 'date_time_no_millis'
+          format: date_time_no_millis
         indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
     firstPublicationDateTime:
       type: DateTime
@@ -124,7 +163,7 @@ blah: &alohaRich
         elasticSearchMapping:
           type: date
           include_in_all: false
-          format: 'date_time_no_millis'
+          format: date_time_no_millis
         indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
     isImportant:
       type: boolean
@@ -138,7 +177,6 @@ blah: &alohaRich
         label: 'Яндекс новости'
         inspector:
           group: news
-          group: news
     excludeFromNewsletter:
       type: boolean
       ui:
@@ -148,52 +186,52 @@ blah: &alohaRich
     isPhoto:
       type: boolean
       ui:
-        label: 'Фото'
+        label: Фото
         inspector:
           group: news
     isVideo:
       type: boolean
       ui:
-        label: 'Видео'
+        label: Видео
         inspector:
           group: news
     isAudio:
       type: boolean
       ui:
-        label: 'Аудио'
+        label: Аудио
         inspector:
           group: news
     image:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото снаружи (если не задано, используется фото из обложки (cover))'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'news'
+          group: news
     type:
       type: string
       ui:
         label: 'Тип новости'
         inspector:
           group: relations
-          editor: 'TYPO3.Neos/Inspector/Editors/SelectBoxEditor'
+          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             allowEmpty: true
             placeholder: 'Выберите тип новости'
             values:
               ourNews:
                 label: 'Наша новость (в потоке)'
-                icon: 'icon-legal'
+                icon: icon-legal
               externalNews:
                 label: 'Обзор СМИ'
-                icon: 'icon-fire'
+                icon: icon-fire
               announcement:
-                label: 'Анонс'
+                label: Анонс
       search:
         elasticSearchMapping:
           type: string
           index: not_analyzed
-        indexing: ${value}
+        indexing: '${value}'
     relatedNews:
       type: references
       ui:
@@ -204,7 +242,6 @@ blah: &alohaRich
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:News'
-
     originalIdentifier:
       type: string
       ui:
@@ -215,4 +252,4 @@ blah: &alohaRich
         elasticSearchMapping:
           type: string
           index: not_analyzed
-        indexing: ${value}
+        indexing: '${value}'

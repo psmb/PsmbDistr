@@ -1,11 +1,12 @@
+
 'Sfi.Site:Project':
   superTypes:
-    'TYPO3.Neos:Document': true
-    'Sfi.Site:NavTitleMixin': true
-    'Sfi.Site:ImageMixin': true
-    'Sfi.Site:TagMixin': true
+    'TYPO3.Neos:Document': '1'
+    'Sfi.Site:NavTitleMixin': '1'
+    'Sfi.Site:ImageMixin': '1'
+    'Sfi.Site:TagMixin': '1'
   ui:
-    label: 'Проект'
+    label: Проект
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'

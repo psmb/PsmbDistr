@@ -1,9 +1,10 @@
+
 'Sfi.Site:AudioPlayer':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'TYPO3.Neos:Content': '1'
   ui:
     label: 'Аудио плеер'
-    icon: 'icon-music'
+    icon: icon-music
   constraints:
     nodeTypes:
-      '*' : true
+      '*': true
