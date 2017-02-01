@@ -50,7 +50,7 @@ root.stream {
 	}
 }
 
-prototype(TYPO3.TypoScript:GlobalCacheIdentifiers) {
+prototype(Neos.Fusion:GlobalCacheIdentifiers) {
 	pagination = ${request.arguments.currentPage}
 	ajax = ${request.arguments.ajax}
 	collection = ${request.arguments.collection}

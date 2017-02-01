@@ -28,9 +28,9 @@ prototype(Psmb.NodeTypes:Image) {
 	content.caption.attributes.class = 'figure__caption'
 }
 
-prototype(TYPO3.TypoScript:Collection) {
+prototype(Neos.Fusion:Collection) {
 	itemName = 'node'
 }
-prototype(TYPO3.TypoScript:GlobalCacheIdentifiers) {
+prototype(Neos.Fusion:GlobalCacheIdentifiers) {
 	site = ${site}
 }

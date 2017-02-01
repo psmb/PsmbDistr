@@ -1,4 +1,4 @@
-prototype(Sfi.Site:LanguageMenu) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Site:LanguageMenu) < prototype(Neos.Fusion:Tag) {
 	tagName = 'a'
 	attributes.style = 'display:block'
 	attributes.href = TYPO3.Neos:NodeUri {

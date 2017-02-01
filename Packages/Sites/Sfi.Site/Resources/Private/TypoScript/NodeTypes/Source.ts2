@@ -1,6 +1,6 @@
 prototype(Sfi.Site:Source) < prototype(T:Tag) {
 	attributes.class = 'Author'
-	content = TYPO3.TypoScript:Tag {
+	content = Neos.Fusion:Tag {
 		content = ${q(node).property('text')}
 		@process.contentElementEditable = ContentElementEditable {
 			property = 'text'

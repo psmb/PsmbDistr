@@ -2,15 +2,15 @@ prototype(Sfi.Site:DigestMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	@context.nodes = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').queryFilter('bool', {must_not: [{term: {excludeFromNewsletter: true}}]}).greaterThan('firstPublicationDateTime', Date.format(Date.subtract(Date.now(), subscription.interval), "Y-m-d\TH:i:sP")).sortDesc('date').execute()}
 	@if.notEmpty = ${q(nodes).count() > 0}
 	subject = ${Date.format(Date.now(), 'd.m. ') + Translation.translate('newsletter.digestSubject', null, [], null, 'Sfi.Site')}
-	body = TYPO3.TypoScript:Value {
+	body = Neos.Fusion:Value {
 		@process.cssToInline = Psmb.Newsletter:CssToInline {
 			cssPath = 'resource://Sfi.Site/Public/built/index.css'
 		}
-		value = TYPO3.TypoScript:Array {
+		value = Neos.Fusion:Array {
 
 			headline = ${'<div class="alpha--light marginVertical-double">' + Translation.translate('newsletter.digestHeadline', null, [], null, 'Sfi.Site') + '</div>'}
 
-			articles = TYPO3.TypoScript:Collection {
+			articles = Neos.Fusion:Collection {
 				@process.tmpl = ${'<ul class="stream__content js-stream__content">' + value + '</ul>'}
 				collection = ${nodes}
 				itemName = 'node'
@@ -28,7 +28,7 @@ prototype(Sfi.Site:DigestMail) < prototype(Psmb.Newsletter:MailRenderer) {
 				}
 			}
 
-			moreButton = TYPO3.TypoScript:Tag {
+			moreButton = Neos.Fusion:Tag {
 				@process.tmpl = ${'<div class="paddingTop-double">' + value + '</div>'}
 				tagName = 'a'
 				attributes.class = 'button'
@@ -51,13 +51,13 @@ prototype(Sfi.Site:DigestMail) < prototype(Psmb.Newsletter:MailRenderer) {
 	}
 }
 
-prototype(Sfi.Site:DigestArticle) < prototype(TYPO3.TypoScript:Tag) {
+prototype(Sfi.Site:DigestArticle) < prototype(Neos.Fusion:Tag) {
 	tagName = 'a'
 	attributes.href = NodeUri {
 		node = ${node}
 		absolute = ${true}
 	}
-	content = TYPO3.TypoScript:Array {
+	content = Neos.Fusion:Array {
 		@process.tmpl = ${'<div class="marginVertical-double">' + value + '</div>'}
 		title = ${'<h2 class="gamma link">' + String.stripTags(node.properties.title) + '</h2>'}
 		teaser = ${'<p class="zeta">' + String.stripTags(node.properties.teaser) + '</p>'}

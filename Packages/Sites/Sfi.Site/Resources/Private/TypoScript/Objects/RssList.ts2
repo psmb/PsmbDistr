@@ -1,8 +1,8 @@
-prototype(Sfi.Site:RssList) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.Site:RssList) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/RssList.html'
 	@context.collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('isYandex', true).sortDesc('date').greaterThan('date', Date.format(Date.subtract(Date.now(), 'P7D'), "Y-m-d\TH:i:sP")).execute()}
 
-	childItems = TYPO3.TypoScript:Collection {
+	childItems = Neos.Fusion:Collection {
 		collection = ${collection}
 		itemRenderer = Sfi.Site:RssItem
 		itemName = 'node'
@@ -17,7 +17,7 @@ prototype(Sfi.Site:RssList) < prototype(TYPO3.TypoScript:Template) {
 	}
 }
 
-prototype(Sfi.Site:RssItem) < prototype(TYPO3.TypoScript:Template) {
+prototype(Sfi.Site:RssItem) < prototype(Neos.Fusion:Template) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/RssItem.html'
 	node = ${node}
 	title = ${String.stripTags(q(node).property('title'))}
