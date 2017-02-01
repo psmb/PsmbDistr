@@ -21,7 +21,7 @@
 'Sfi.Site:TagMixin':
   abstract: true
   superTypes:
-    'Psmb.Term:TermMixin': '1'
+    'Psmb.Term:TermMixin': true
   properties:
     originalIdentifier:
       type: string

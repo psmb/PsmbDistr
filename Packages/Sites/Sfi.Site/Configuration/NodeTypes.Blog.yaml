@@ -1,8 +1,8 @@
 
 'Sfi.Site:Blog':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.Site:TaggableMixin': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:TaggableMixin': true
   ui:
     label: Блог
     inspector:

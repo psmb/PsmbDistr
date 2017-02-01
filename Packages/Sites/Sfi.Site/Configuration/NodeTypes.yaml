@@ -8,12 +8,12 @@
           index: not_analyzed
 'TYPO3.Neos:Shortcut':
   superTypes:
-    'Sfi.Site:ImageMixin': '1'
+    'Sfi.Site:ImageMixin': true
 'Sfi.Site:Page':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.Site:NavTitleMixin': '1'
-    'Sfi.Site:ImageMixin': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
   ui:
     label: 'Обычная страница'
   childNodes:
@@ -21,9 +21,9 @@
       type: 'TYPO3.Neos:ContentCollection'
 'Sfi.Site:MainPage':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.Site:NavTitleMixin': '1'
-    'Sfi.Site:ImageMixin': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
   ui:
     label: 'Главная страница'
   childNodes:
@@ -56,23 +56,23 @@
           alignment: {  }
 'Sfi.Site:BlogArchive':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.Site:NavTitleMixin': '1'
-    'Sfi.Site:ImageMixin': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
   ui:
     label: 'Архив блогов'
 'Sfi.Site:Archive':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.Site:NavTitleMixin': '1'
-    'Sfi.Site:ImageMixin': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
   ui:
     label: Архив
 'Sfi.Site:PresentationPage':
   superTypes:
-    'TYPO3.Neos:Document': '1'
-    'Sfi.Site:NavTitleMixin': '1'
-    'Sfi.Site:ImageMixin': '1'
+    'TYPO3.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
   childNodes:
     main:
       type: 'TYPO3.Neos:ContentCollection'

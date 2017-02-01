@@ -1,24 +1,25 @@
+
 'Sfi.Site:Author':
-  label: "${String.cropAtWord(q(node).property('name'), 100, '...')}"
+  label: '${String.cropAtWord(q(node).property(''name''), 100, ''...'')}'
   superTypes:
-    - 'TYPO3.Neos:Document'
+    'TYPO3.Neos:Document': true
   ui:
-    label: 'Автор'
+    label: Автор
     inspector:
       groups:
         author:
           label: 'Атрибуты автора'
   properties:
     name:
-      type: 'string'
+      type: string
       ui:
         label: 'Имя автора'
         inspector:
-          group: 'author'
+          group: author
     photo:
       type: TYPO3\Media\Domain\Model\ImageInterface
       ui:
         label: 'Фото автора'
-        reloadIfChanged: TRUE
+        reloadIfChanged: true
         inspector:
-          group: 'author'
+          group: author
