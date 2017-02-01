@@ -1,7 +1,7 @@
 
 'Sfi.Site:Source':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: Автор
     icon: icon-file-text-alt

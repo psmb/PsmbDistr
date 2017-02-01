@@ -1,7 +1,7 @@
 
 'Sfi.Site:Tag':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:ImageMixin': true
     'Sfi.Site:TagMixin': true
@@ -13,9 +13,9 @@
           label: Тег
   childNodes:
     cover:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     description:
       type: string

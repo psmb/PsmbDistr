@@ -4,7 +4,7 @@ namespace Sfi\Site\Aspects;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Aop\JoinPointInterface;
 use Neos\Flow\Log\SystemLoggerInterface;
-use TYPO3\Neos\Domain\Service\NodeSearchServiceInterface;
+use Neos\Neos\Domain\Service\NodeSearchServiceInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TYPO3CR\Domain\Service\NodeTypeManager;
 
@@ -67,7 +67,7 @@ class RoutingAspect {
 	 * TODO: remove when https://github.com/neos/neos-development-collection/pull/672 is firstUriPartExploded
 	 *
 	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
-	 * @Flow\Around("method(TYPO3\Neos\Routing\FrontendNodeRoutePartHandler->getRelativeNodePathByUriPathSegmentProperties())")
+	 * @Flow\Around("method(Neos\Neos\Routing\FrontendNodeRoutePartHandler->getRelativeNodePathByUriPathSegmentProperties())")
 	 * @return void
 	 */
 	public function speedupRouting(JoinPointInterface $joinPoint) {
@@ -88,7 +88,7 @@ class RoutingAspect {
 				// Fallback to the search service, if not results from ES. Needed, because the newly created node may not yet be in the index
 				/** @var NodeInterface $siteNode */
 				$siteNode = $joinPoint->getMethodArgument('siteNode');
-				$documentNodeType = $this->nodeTypeManager->getNodeType('TYPO3.Neos:Document');
+				$documentNodeType = $this->nodeTypeManager->getNodeType('Neos.Neos:Document');
 				$context = $siteNode->getContext();
 
 				$baseNode = $siteNode->getNode('a');

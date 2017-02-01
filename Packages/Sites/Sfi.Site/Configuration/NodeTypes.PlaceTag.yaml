@@ -1,7 +1,7 @@
 
 'Sfi.Site:PlaceTag':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:ImageMixin': true
     'Sfi.Site:TagMixin': true

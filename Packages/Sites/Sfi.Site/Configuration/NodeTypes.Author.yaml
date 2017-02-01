@@ -2,7 +2,7 @@
 'Sfi.Site:Author':
   label: '${String.cropAtWord(q(node).property(''name''), 100, ''...'')}'
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
   ui:
     label: Автор
     inspector:

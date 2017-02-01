@@ -20,7 +20,7 @@ blah:
   alignment: {  }
 'Sfi.Site:News':
   superTypes:
-    'TYPO3.Neos:Document': true
+    'Neos.Neos:Document': true
     'Sfi.Site:TaggableMixin': true
   ui:
     label: Материал
@@ -30,11 +30,11 @@ blah:
           label: 'Атрибуты материала'
   childNodes:
     cover:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     main:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
     gallery:
-      type: 'TYPO3.Neos:ContentCollection'
+      type: 'Neos.Neos:ContentCollection'
   properties:
     title:
       ui:
@@ -138,7 +138,7 @@ blah:
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        TYPO3.Neos/Validation/DateTimeValidator: {  }
+        Neos.Neos/Validation/DateTimeValidator: {  }
     date:
       type: DateTime
       defaultValue: now
@@ -150,7 +150,7 @@ blah:
           editorOptions:
             format: 'd-m-Y H:i'
       validation:
-        TYPO3.Neos/Validation/DateTimeValidator: {  }
+        Neos.Neos/Validation/DateTimeValidator: {  }
       search:
         elasticSearchMapping:
           type: date
@@ -214,7 +214,7 @@ blah:
         label: 'Тип новости'
         inspector:
           group: relations
-          editor: TYPO3.Neos/Inspector/Editors/SelectBoxEditor
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
           editorOptions:
             allowEmpty: true
             placeholder: 'Выберите тип новости'

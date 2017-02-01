@@ -1,7 +1,7 @@
 
 'Sfi.Site:Story':
   superTypes:
-    'TYPO3.Neos:Content': true
+    'Neos.Neos:Content': true
   ui:
     label: История
     position: last

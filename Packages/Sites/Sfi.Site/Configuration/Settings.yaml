@@ -1,27 +1,5 @@
 
 TYPO3:
-  Neos:
-    typoScript:
-      autoInclude:
-        Sfi.Site: true
-    userInterface:
-      navigateComponent:
-        structureTree:
-          loadingDepth: 0
-        nodeTree:
-          loadingDepth: 1
-          presets:
-            default:
-              baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
-    eventLog:
-      enabled: true
-    GoogleAnalytics:
-      stats:
-        uniquePageviewsBySource:
-          metrics: 'ga:uniquePageviews'
-          dimensions: 'ga:source'
-          sort: '-ga:uniquePageviews'
-          max-results: 25
   TYPO3CR:
     contentDimensions:
       language:
@@ -102,3 +80,25 @@ Neos:
       defaultLocale: ru
     http:
       baseUri: 'https://psmb.ru/'
+  Neos:
+    typoScript:
+      autoInclude:
+        Sfi.Site: true
+    userInterface:
+      navigateComponent:
+        structureTree:
+          loadingDepth: 0
+        nodeTree:
+          loadingDepth: 1
+          presets:
+            default:
+              baseNodeType: 'Neos.Neos:Document,!Sfi.Site:News'
+    eventLog:
+      enabled: true
+    GoogleAnalytics:
+      stats:
+        uniquePageviewsBySource:
+          metrics: 'ga:uniquePageviews'
+          dimensions: 'ga:source'
+          sort: '-ga:uniquePageviews'
+          max-results: 25
