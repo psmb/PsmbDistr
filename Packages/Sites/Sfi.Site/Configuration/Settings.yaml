@@ -62,9 +62,6 @@ Neos:
     http:
       baseUri: 'https://psmb.ru/'
   Neos:
-    typoScript:
-      autoInclude:
-        Sfi.Site: true
     userInterface:
       navigateComponent:
         structureTree:
@@ -83,6 +80,9 @@ Neos:
           dimensions: 'ga:source'
           sort: '-ga:uniquePageviews'
           max-results: 25
+    fusion:
+      autoInclude:
+        Sfi.Site: true
   ContentRepository:
     contentDimensions:
       language:
