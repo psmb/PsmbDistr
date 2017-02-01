@@ -20,10 +20,10 @@
 # Neos subroutes
 
 -
-  name: 'TYPO3Neos'
-  uriPattern: '<TYPO3NeosSubroutes>'
+  name: 'NeosNeos'
+  uriPattern: '<NeosNeosSubroutes>'
   subRoutes:
-    'TYPO3NeosSubroutes':
-      package: 'TYPO3.Neos'
+    'NeosNeosSubroutes':
+      package: 'Neos.Neos'
       variables:
         'defaultUriSuffix': '.html'

@@ -1,6 +1,6 @@
 {
     "name": "typo3/psmbdistr",
-    "description" : "Psmb.ru Distribution",
+    "description": "Psmb.ru Distribution",
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
@@ -12,45 +12,40 @@
         }
     ],
     "require": {
-        "neos/neos-development-collection": "2.3.x-dev",
-        "neos/flow-development-collection": "3.3.x-dev",
-        "typo3/party": "@dev",
-        "typo3/imagine": "@dev",
-        "typo3/form": "@dev",
-        "typo3/setup": "@dev",
-
-        "typo3/buildessentials": "dev-master",
-        "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~4.8 || ~5.4.0",
-        "symfony/css-selector": "~2.0",
-        "flowpack/behat": "dev-master",
-
-        "ttree/contentrepositoryimporter": "^2.0",
-        "sfi/youtube": "^1.0",
-        "psmb/term": "^1.0",
-        "psmb/nodetypes": "^1.0",
-        "psmb/createnodebutton": "^1.0",
-        "typo3/typo3cr-search": "@dev",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "dev-support-es20",
-        "sfi/grid": "^1.0",
+        "neos/neos-development-collection": "3.0.x-dev",
+        "neos/flow-development-collection": "4.0.x-dev",
+        "neos/party": "~4.0.0",
+        "neos/imagine": "~3.0.0",
+        "neos/form": "~3.0.0",
+        "neos/setup": "~4.0.0",
+        "sfi/youtube": "@dev",
+        "psmb/term": "@dev",
+        "psmb/nodetypes": "@dev",
+        "psmb/createnodebutton": "@dev",
+        "neos/content-repository-search": "~2.0.0",
+        "flowpack/elasticsearch": "@dev",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
+        "sfi/grid": "@dev",
         "psmb/mediaquery": "@dev",
-        "neos/redirecthandler": "^1.0",
-        "neos/redirecthandler-databasestorage": "^1.0",
-        "neos/redirecthandler-neosadapter": "^1.0",
+        "neos/redirecthandler": "@dev",
+        "neos/redirecthandler-databasestorage": "@dev",
+        "neos/redirecthandler-neosadapter": "@dev",
         "dimaip/groupby": "@dev",
         "psmb/mapreduce": "@dev",
-        "typo3/neos-googleanalytics": "^1.0",
-        "psmb/newsletter": "@dev"
+        "neos/googleanalytics": "~2.0.0"
     },
     "extra": {
-  		"neos": {
-  			"default-disabled-packages": ["flowpack/neos-frontendlogin", "typo3/neos-nodetypes"]
-  		}
-  	},
+        "neos": {
+            "default-disabled-packages": [
+                "flowpack/neos-frontendlogin",
+                "typo3/neos-nodetypes"
+            ]
+        }
+    },
     "scripts": {
-        "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-        "post-package-update":"TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install":"TYPO3\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+        "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
     }
 }

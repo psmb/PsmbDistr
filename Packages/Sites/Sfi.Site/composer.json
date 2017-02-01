@@ -3,22 +3,21 @@
     "type": "typo3-flow-site",
     "description": "Website package. See distribution for more info.",
     "require": {
-        "typo3/neos": "*",
-        "ttree/contentrepositoryimporter": "*",
-        "flowpack/listable": "*",
+        "neos/neos": "*",
         "sfi/youtube": "*",
         "psmb/term": "*",
         "psmb/nodetypes": "*",
         "psmb/createnodebutton": "*",
-        "typo3/typo3cr-search": "*",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "*",
-        "flowpack/searchplugin": "*",
-        "sfi/grid": "*",
-        "psmb/newsletter": "*"
+        "sfi/grid": "*"
     },
     "autoload": {
         "psr-0": {
             "Sfi\\Site": "Classes"
         }
+    },
+    "extra": {
+        "applied-flow-migrations": [
+            "TYPO3.FLOW3-201201261636"
+        ]
     }
 }
