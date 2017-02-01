@@ -24,7 +24,7 @@ prototype(Sfi.Site:RssItem) < prototype(Neos.Fusion:Template) {
 	author = ${String.stripTags(q(node).property('author'))}
 	date = ${q(node).property('date')}
 	teaser = ${String.stripTags(q(node).property('teaser'))}
-	@context.main = TYPO3.Neos:ContentCollection {
+	@context.main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 	bodytext = ${'<yandex:full-text>' + String.Trim(String.htmlSpecialChars(String.stripTags(String.pregReplace(String.pregReplace(main, '/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2'), '/<\w[^>]+?>/', ' ')))) + '</yandex:full-text>'}

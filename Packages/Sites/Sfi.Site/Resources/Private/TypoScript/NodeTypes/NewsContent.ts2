@@ -12,15 +12,15 @@ prototype(Sfi.Site:NewsContent) < prototype(Neos.Fusion:Template) {
 	newsList = Sfi.Site:NewsRelatedList
 	languageLink = Sfi.Site:LanguageLink
 
-	cover = TYPO3.Neos:ContentCollection {
+	cover = Neos.Neos:ContentCollection {
 		nodePath = 'cover'
 	}
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	gallery = TYPO3.Neos:ContentCollection {
+	gallery = Neos.Neos:ContentCollection {
 		nodePath = 'gallery'
 	}
 
-	@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

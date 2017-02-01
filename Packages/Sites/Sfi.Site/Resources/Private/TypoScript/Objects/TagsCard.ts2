@@ -11,7 +11,7 @@ prototype(Sfi.Site:TagsCard) < prototype(T:Array) {
 		content = ${node.properties.title}
 	}
 	list = T:Collection {
-		collection = ${q(site).children('tags').children('[instanceof TYPO3.Neos:Document]').get()}
+		collection = ${q(site).children('tags').children('[instanceof Neos.Neos:Document]').get()}
 		itemRenderer = T:Tag {
 			@process.tmpl = ${'<div class="delta">' + value + '</div>'}
 			tagName = 'a'

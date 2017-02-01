@@ -11,7 +11,7 @@ prototype(Sfi.Site:PresentationPage) {
 			width = 150
 			height = 150
 			allowCropping = ${true}
-			@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+			@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 		}
 	}
 

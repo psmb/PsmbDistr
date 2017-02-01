@@ -3,7 +3,7 @@ prototype(Sfi.Site:LanguageLink) < prototype(T:Tag) {
 	tagName = 'a'
 	attributes.class = 'action'
 	@context.altNode = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}})}
-	attributes.href = TYPO3.Neos:NodeUri {
+	attributes.href = Neos.Neos:NodeUri {
 			node = ${altNode.get(0)}
 	}
 	content = ${altLang == 'en' ? 'Read this in English' : 'Читать по-русски'}

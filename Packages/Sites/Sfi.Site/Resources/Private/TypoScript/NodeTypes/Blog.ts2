@@ -1,6 +1,6 @@
 prototype(Sfi.Site:Blog) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Blog.html'
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 

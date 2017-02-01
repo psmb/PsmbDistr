@@ -72,7 +72,7 @@ prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 	}
 }
 prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
-	collection = ${q(site).children('node-57d921944c03e').children('[instanceof TYPO3.Neos:Document]').get()}
+	collection = ${q(site).children('node-57d921944c03e').children('[instanceof Neos.Neos:Document]').get()}
 	itemRenderer = T:Tag {
 		tagName = 'li'
 		attributes.class = 'sitemap__item'

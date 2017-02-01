@@ -9,13 +9,13 @@ prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
 prototype(Sfi.Site:Tag) {
 	templatePath = 'resource://Sfi.Site/Private/TypoScript/NodeTypes/Tag.html'
 	title = ${q(node).parent().get(0) == q(site).children('tags').get(0) ? q(site).children('tags').get(0).properties.title : q(node).property('title')}
-	cover = TYPO3.Neos:ContentCollection {
+	cover = Neos.Neos:ContentCollection {
 		nodePath = 'cover'
 		prototype(Psmb.NodeTypes:Image) {
 			content.image.maximumHeight = 600
 		}
 	}
-	main = TYPO3.Neos:ContentCollection {
+	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
 	blogList = Sfi.Site:BlogListWithLinks {
@@ -34,7 +34,7 @@ prototype(Sfi.Site:Tag) {
 		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || q(node).parent().get(0) == q(site).children('tags').get(0)}
 		tagsHeader = T:Collection {
 			@process.tmpl = ${'<div class="stripe"><div class="fixed-width"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
-			collection = ${q(site).children('tags').children('[instanceof TYPO3.Neos:Document]').get()}
+			collection = ${q(site).children('tags').children('[instanceof Neos.Neos:Document]').get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Tag {
 				tagName = 'dd'

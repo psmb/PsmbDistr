@@ -1,7 +1,7 @@
 prototype(Sfi.Site:LanguageMenu) < prototype(Neos.Fusion:Tag) {
 	tagName = 'a'
 	attributes.style = 'display:block'
-	attributes.href = TYPO3.Neos:NodeUri {
+	attributes.href = Neos.Neos:NodeUri {
 	node = ${q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).count() > 0 ?
 		q(documentNode).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0) :
 			q(site).context({targetDimensions: {language: altLang}, dimensions: {language: [altLang]}}).get(0)}

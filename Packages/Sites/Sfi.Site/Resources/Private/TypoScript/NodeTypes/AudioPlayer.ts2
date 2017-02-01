@@ -6,9 +6,9 @@ prototype(Sfi.Site:AudioPlayer) {
 			@process.tmpl = ${'<li class="audio-player__playlist-item">' + value + '</li>'}
 			tagName = 'a'
 			attributes.data-src = ${'asset://' + node.properties.asset.identifier}
-			attributes.data-src.@process.convertUris = TYPO3.Neos:ConvertUris
+			attributes.data-src.@process.convertUris = Neos.Neos:ConvertUris
 			content = ${q(node).property('title')}
-			@process.contentElementWrapping = TYPO3.Neos:ContentElementWrapping
+			@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 		}
 	}
 }

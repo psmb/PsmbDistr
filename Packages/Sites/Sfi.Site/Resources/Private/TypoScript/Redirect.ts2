@@ -6,7 +6,7 @@ root.redirect {
 		@context.targetNode = ${q(site).find('[instanceof Sfi.Site:News]').filter('[originalIdentifier = "' + request.arguments.id + '"]').get(0)}
 		httpResponseHead {
 			statusCode = 301
-			headers.Location = TYPO3.Neos:NodeUri{
+			headers.Location = Neos.Neos:NodeUri{
 				@process.tmpl = ${'https://psmb.ru' + value}
 				node = ${targetNode}
 			}
