@@ -8,7 +8,9 @@
         "psmb/term": "*",
         "psmb/nodetypes": "*",
         "psmb/createnodebutton": "*",
-        "sfi/grid": "*"
+        "psmb/newsletter": "*",
+        "sfi/grid": "*",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "*"
     },
     "autoload": {
         "psr-0": {

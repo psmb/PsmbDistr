@@ -1,16 +1,10 @@
 {
-    "name": "typo3/psmbdistr",
+    "name": "psmb/psmbdistr",
     "description": "Psmb.ru Distribution",
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
-    "repositories": [
-        {
-            "url": "https://github.com/dimaip/Flowpack.ElasticSearch.ContentRepositoryAdaptor",
-            "type": "vcs"
-        }
-    ],
     "require": {
         "neos/neos-development-collection": "3.0.x-dev",
         "neos/flow-development-collection": "4.0.x-dev",
@@ -18,21 +12,25 @@
         "neos/imagine": "~3.0.0",
         "neos/form": "~3.0.0",
         "neos/setup": "~4.0.0",
-        "sfi/youtube": "@dev",
-        "psmb/term": "@dev",
-        "psmb/nodetypes": "@dev",
-        "psmb/createnodebutton": "@dev",
-        "neos/content-repository-search": "~2.0.0",
+
+        "neos/content-repository-search": "@dev",
         "flowpack/elasticsearch": "@dev",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
-        "sfi/grid": "@dev",
-        "psmb/mediaquery": "@dev",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "dev-master",
+        "neos/googleanalytics": "~2.0.0",
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
         "neos/redirecthandler-neosadapter": "@dev",
-        "dimaip/groupby": "@dev",
-        "psmb/mapreduce": "@dev",
-        "neos/googleanalytics": "~2.0.0"
+
+        "sfi/youtube": "@dev",
+        "sfi/grid": "@dev",
+        "psmb/term": "~2.0",
+        "psmb/nodetypes": "~3.0",
+        "psmb/createnodebutton": "~2.0",
+        "flowpack/jobqueue-common": "@dev",
+        "psmb/newsletter": "~2.0",
+        "psmb/mediaquery": "~2.0",
+        "psmb/mapreduce": "~2.0",
+        "dimaip/groupby": "~2.0"
     },
     "extra": {
         "neos": {
