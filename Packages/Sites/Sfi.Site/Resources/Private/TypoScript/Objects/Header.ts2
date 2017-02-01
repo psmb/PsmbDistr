@@ -1,6 +1,0 @@
-prototype(Sfi.Site:Header) < prototype(T:Template) {
-	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Header.html'
-	lang = ${lang}
-	secondaryNav = Sfi.Site:SecondaryNav
-	aboutUsNode = ${q(site).children('node-57c7a3d00e8bd').get(0)}
-}

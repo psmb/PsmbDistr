@@ -1,0 +1,7 @@
+prototype(Sfi.Site:Exhibition) < prototype(Sfi.Site:Project) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Project.html'
+
+	map = '<script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script><div class="paddingTop-double bg-gray" id="map" style="height:450px"></div>'
+
+	stream.@context.showPlaces = ${true}
+}

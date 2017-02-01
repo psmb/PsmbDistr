@@ -1,0 +1,23 @@
+prototype(Sfi.Site:Footer) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/Objects/Footer.html'
+	sectionsNav = Sfi.Site:FooterSectionsNav
+	ourProjectsNav = Sfi.Site:OurProjectsNav
+	miscNav = Sfi.Site:MiscNav
+	mailchimp = Sfi.Site:Mailchimp
+	lang = ${lang}
+	footerContacts = T:Tag {
+		content = ${site.properties.footerContacts}
+		@process.editable = ContentElementEditable {
+			property = 'footerContacts'
+		}
+	}
+	@process.editable = ContentElementWrapping {
+		node = ${site}
+	}
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${'Node_' + site.identifier}
+		}
+	}
+}

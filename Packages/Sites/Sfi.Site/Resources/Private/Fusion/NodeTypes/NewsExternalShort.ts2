@@ -1,0 +1,8 @@
+prototype(Sfi.Site:NewsExternalShort) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/NewsExternalShort.html'
+	title = ${node.properties.title}
+	date = ${node.properties.date}
+	nodeUri = NodeUri {
+		node = ${node}
+	}
+}

@@ -1,3 +1,0 @@
-prototype(Sfi.Site:Disqus) < prototype(T:Template) {
-	templatePath = 'resource://Sfi.Site/Private/TypoScript/Objects/Disqus.html'
-}

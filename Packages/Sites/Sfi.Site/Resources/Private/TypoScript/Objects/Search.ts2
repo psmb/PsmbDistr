@@ -1,3 +1,0 @@
-prototype(Sfi.Site:Search) < prototype(T:Template) {
-	templatePath = ${'resource://Sfi.Site/Private/TypoScript/Objects/Search-' + lang + '.html'}
-}

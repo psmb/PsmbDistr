@@ -1,0 +1,35 @@
+prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/BlogShort.html'
+
+	title = ${node.properties.title}
+	attributes = T:Attributes {
+		@ignoreProperties = ${['nodeUri']}
+		nodeUri = NodeUri {
+			node = ${node}
+		}
+		href = ${node.properties.isExternal ? node.properties.url : this.nodeUri}
+		target = ${node.properties.isExternal && '_blank'}
+	}
+
+	authorName = ${node.properties.author.properties.name}
+	thumbUri = ImageUri {
+		asset = ${node.properties.author.properties.photo}
+		# No idea why this is needed
+		maximumWidth>
+		width = 96
+		height = 96
+		allowCropping = TRUE
+		allowUpscaling = TRUE
+	}
+
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			1 = ${node.identifier}
+		}
+		entryTags {
+			1 = ${'Node_' + node.identifier}
+			2 = 'NodeType_Sfi.Site:Author'
+		}
+	}
+}

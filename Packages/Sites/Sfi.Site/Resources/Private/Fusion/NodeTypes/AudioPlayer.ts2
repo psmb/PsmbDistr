@@ -1,0 +1,14 @@
+prototype(Sfi.Site:AudioPlayer) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/AudioPlayer.html'
+	assets = T:Collection {
+		collection = ${q(node).children('[instanceof Psmb.NodeTypes:Asset]').get()}
+		itemRenderer = Neos.Fusion:Tag {
+			@process.tmpl = ${'<li class="audio-player__playlist-item">' + value + '</li>'}
+			tagName = 'a'
+			attributes.data-src = ${'asset://' + node.properties.asset.identifier}
+			attributes.data-src.@process.convertUris = Neos.Neos:ConvertUris
+			content = ${q(node).property('title')}
+			@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
+		}
+	}
+}
