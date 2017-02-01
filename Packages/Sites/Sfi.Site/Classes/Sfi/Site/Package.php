@@ -5,7 +5,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Package\Package as BasePackage;
 use Neos\Flow\Core\Bootstrap;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
-use TYPO3\TYPO3CR\Domain\Model\Workspace;
+use Neos\ContentRepository\Domain\Model\Workspace;
 
 /**
  * Psmb.Newsletter

@@ -2,7 +2,7 @@
 namespace Sfi\Site\TYPO3CR\Transformations;
 
 use Neos\Flow\Annotations as Flow;
-use TYPO3\TYPO3CR\Migration\Transformations\AbstractTransformation;
+use Neos\ContentRepository\Migration\Transformations\AbstractTransformation;
 
 class CleanupContentTransformation extends AbstractTransformation {
 	/**
@@ -21,19 +21,19 @@ class CleanupContentTransformation extends AbstractTransformation {
 	/**
 	 * Text exists
 	 *
-	 * @param \TYPO3\TYPO3CR\Domain\Model\NodeData $node
+	 * @param \Neos\ContentRepository\Domain\Model\NodeData $node
 	 * @return boolean
 	 */
-	public function isTransformable(\TYPO3\TYPO3CR\Domain\Model\NodeData $node) {
+	public function isTransformable(\Neos\ContentRepository\Domain\Model\NodeData $node) {
 		return $node->hasProperty($this->propertyName);
 	}
 	/**
 	 * Wrap <span or <small tags
 	 *
-	 * @param \TYPO3\TYPO3CR\Domain\Model\NodeData $node
+	 * @param \Neos\ContentRepository\Domain\Model\NodeData $node
 	 * @return void
 	 */
-	public function execute(\TYPO3\TYPO3CR\Domain\Model\NodeData $node) {
+	public function execute(\Neos\ContentRepository\Domain\Model\NodeData $node) {
 		$text = $node->getProperty($this->propertyName);
 
 		$text = preg_replace('/^((<small|<span).*?)([\r\n]|$)/mui', '<p>$1</p>', $text);

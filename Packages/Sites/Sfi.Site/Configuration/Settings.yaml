@@ -1,23 +1,4 @@
 
-TYPO3:
-  TYPO3CR:
-    contentDimensions:
-      language:
-        default: ru
-        defaultPreset: ru
-        label: Language
-        icon: icon-language
-        presets:
-          ru:
-            label: Russian
-            values:
-              - ru
-            uriSegment: ''
-          en:
-            label: English
-            values:
-              - en
-            uriSegment: en
 Flowpack:
   ElasticSearch:
     clients:
@@ -102,3 +83,21 @@ Neos:
           dimensions: 'ga:source'
           sort: '-ga:uniquePageviews'
           max-results: 25
+  ContentRepository:
+    contentDimensions:
+      language:
+        default: ru
+        defaultPreset: ru
+        label: Language
+        icon: icon-language
+        presets:
+          ru:
+            label: Russian
+            values:
+              - ru
+            uriSegment: ''
+          en:
+            label: English
+            values:
+              - en
+            uriSegment: en
