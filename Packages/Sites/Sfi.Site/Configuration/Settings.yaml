@@ -1,15 +1,10 @@
+
 TYPO3:
-  Flow:
-    i18n:
-      defaultLocale: 'ru'
-    http:
-      baseUri: 'https://psmb.ru/'
   Neos:
     typoScript:
       autoInclude:
-        'Sfi.Site': TRUE
+        Sfi.Site: true
     userInterface:
-#      loadMinifiedJavascript: false
       navigateComponent:
         structureTree:
           loadingDepth: 0
@@ -19,7 +14,7 @@ TYPO3:
             default:
               baseNodeType: 'TYPO3.Neos:Document,!Sfi.Site:News'
     eventLog:
-      enabled: TRUE
+      enabled: true
     GoogleAnalytics:
       stats:
         uniquePageviewsBySource:
@@ -29,71 +24,81 @@ TYPO3:
           max-results: 25
   TYPO3CR:
     contentDimensions:
-      'language':
-        default: 'ru'
-        defaultPreset: 'ru'
-        label: 'Language'
-        icon: 'icon-language'
+      language:
+        default: ru
+        defaultPreset: ru
+        label: Language
+        icon: icon-language
         presets:
-          'ru':
-            label: 'Russian'
-            values: ['ru']
+          ru:
+            label: Russian
+            values:
+              - ru
             uriSegment: ''
-          'en':
-            label: 'English'
-            values: ['en']
-            uriSegment: 'en'
-
+          en:
+            label: English
+            values:
+              - en
+            uriSegment: en
 Flowpack:
   ElasticSearch:
     clients:
       default:
-        - host: es
+        -
+          host: es
           port: 9200
-
 Sfi:
   YouTube:
     className: 'YouTube flex-video widescreen'
-
 Psmb:
   Newsletter:
     globalSettings:
-      senderAddress: 'no-reply@psmb.ru'
-      senderName: 'PSMB.ru'
+      senderAddress: no-reply@psmb.ru
+      senderName: PSMB.ru
     subscriptions:
       -
-        identifier: 'instant_ru'
+        identifier: instant_ru
         renderer: 'Sfi.Site:InstantMail'
         label: 'Мгновенное уведомление'
         description: 'Полные версии материалов как только они опубликованы'
         interval: PT1H
         senderName: 'Преображенское братство'
         dimensions:
-          language: ['ru']
+          language:
+            - ru
       -
-        identifier: 'digest_ru'
+        identifier: digest_ru
         renderer: 'Sfi.Site:DigestMail'
         label: 'Еженедельный дайджест'
         description: 'Письмо с лучшими публикациями за неделю'
         interval: P1W
         senderName: 'Преображенское братство'
         dimensions:
-          language: ['ru']
+          language:
+            - ru
       -
-        identifier: 'instant_en'
+        identifier: instant_en
         renderer: 'Sfi.Site:InstantMail'
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
         interval: PT1H
         senderName: 'Transfiguration Brotherhood'
         dimensions:
-          language: ['en']
+          language:
+            - en
       -
-        identifier: 'digest_en'
+        identifier: digest_en
         renderer: 'Sfi.Site:DigestMail'
         label: 'Monthly Digest'
         description: 'Receive newsletter by Sofia Androsenko to your inbox'
         interval: P1W
         senderName: 'Transfiguration Brotherhood'
         dimensions:
-          language: ['en']
+          language:
+            - en
+Neos:
+  Flow:
+    i18n:
+      defaultLocale: ru
+    http:
+      baseUri: 'https://psmb.ru/'

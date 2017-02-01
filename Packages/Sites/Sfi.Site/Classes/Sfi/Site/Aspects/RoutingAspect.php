@@ -1,9 +1,9 @@
 <?php
 namespace Sfi\Site\Aspects;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Aop\JoinPointInterface;
-use TYPO3\Flow\Log\SystemLoggerInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Aop\JoinPointInterface;
+use Neos\Flow\Log\SystemLoggerInterface;
 use TYPO3\Neos\Domain\Service\NodeSearchServiceInterface;
 use TYPO3\TYPO3CR\Domain\Model\NodeInterface;
 use TYPO3\TYPO3CR\Domain\Service\NodeTypeManager;
@@ -66,7 +66,7 @@ class RoutingAspect {
 	 * Hardcoded performace optimization for /a/*.html links
 	 * TODO: remove when https://github.com/neos/neos-development-collection/pull/672 is firstUriPartExploded
 	 *
-	 * @param \TYPO3\Flow\Aop\JoinPointInterface $joinPoint
+	 * @param \Neos\Flow\Aop\JoinPointInterface $joinPoint
 	 * @Flow\Around("method(TYPO3\Neos\Routing\FrontendNodeRoutePartHandler->getRelativeNodePathByUriPathSegmentProperties())")
 	 * @return void
 	 */

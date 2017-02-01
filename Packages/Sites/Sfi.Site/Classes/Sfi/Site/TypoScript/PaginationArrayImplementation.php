@@ -1,7 +1,7 @@
 <?php
 namespace Sfi\Site\TypoScript;
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use TYPO3\TypoScript\TypoScriptObjects\AbstractTypoScriptObject;
 
 class PaginationArrayImplementation extends AbstractTypoScriptObject

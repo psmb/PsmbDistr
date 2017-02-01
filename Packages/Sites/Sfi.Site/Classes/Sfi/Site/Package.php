@@ -1,10 +1,10 @@
 <?php
 namespace Sfi\Site;
 
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Flow\Package\Package as BasePackage;
-use TYPO3\Flow\Core\Bootstrap;
-use TYPO3\Flow\Persistence\PersistenceManagerInterface;
+use Neos\Flow\Annotations as Flow;
+use Neos\Flow\Package\Package as BasePackage;
+use Neos\Flow\Core\Bootstrap;
+use Neos\Flow\Persistence\PersistenceManagerInterface;
 use TYPO3\TYPO3CR\Domain\Model\Workspace;
 
 /**

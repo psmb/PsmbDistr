@@ -1,7 +1,7 @@
 <?php
 namespace Sfi\Site\TYPO3CR\Transformations;
 
-use TYPO3\Flow\Annotations as Flow;
+use Neos\Flow\Annotations as Flow;
 use TYPO3\TYPO3CR\Migration\Transformations\AbstractTransformation;
 
 class CleanupContentTransformation extends AbstractTransformation {
