@@ -2,9 +2,9 @@
 namespace Sfi\Site\TypoScript;
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Fusion\TypoScriptObjects\AbstractTypoScriptObject;
+use Neos\Fusion\FusionObjects\AbstractFusionObject;
 
-class PaginationArrayImplementation extends AbstractTypoScriptObject
+class PaginationArrayImplementation extends AbstractFusionObject
 {
 	/**
 	 * @return Array
