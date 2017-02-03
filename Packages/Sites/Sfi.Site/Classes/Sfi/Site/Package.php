@@ -1,12 +1,10 @@
 <?php
 namespace Sfi\Site;
-
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Package\Package as BasePackage;
 use Neos\Flow\Core\Bootstrap;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\ContentRepository\Domain\Model\Workspace;
-
 /**
  * Psmb.Newsletter
  */
@@ -21,10 +19,8 @@ class Package extends BasePackage
     {
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
         $dispatcher->connect(Workspace::class, 'beforeNodePublishing', function ($node, $targetWorkspace) use ($bootstrap) {
-            if ($targetWorkspace->getName() === 'live' &&
-                $node->hasProperty('firstPublicationDateTime') &&
-                !$node->getProperty('firstPublicationDateTime')
-            ) {
+            $bootstrap->getObjectManager()->get(PersistenceManagerInterface::class)->persistAll();
+            if ($targetWorkspace->getName() === 'live' && $node->getProperty('firstPublicationDateTime') == new \DateTime('1990-01-01')) {
                 $node->setProperty('firstPublicationDateTime', new \DateTime());
                 $bootstrap->getObjectManager()->get(PersistenceManagerInterface::class)->persistAll();
             }

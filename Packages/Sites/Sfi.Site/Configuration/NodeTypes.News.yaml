@@ -159,6 +159,7 @@ blah:
         indexing: '${(value ? Date.format(value, "Y-m-d\TH:i:sP") : null)}'
     firstPublicationDateTime:
       type: DateTime
+      defaultValue: '1990-01-01'
       search:
         elasticSearchMapping:
           type: date
