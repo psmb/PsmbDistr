@@ -34,3 +34,5 @@ prototype(Neos.Fusion:Collection) {
 prototype(Neos.Fusion:GlobalCacheIdentifiers) {
 	site = ${site}
 }
+
+prototype(Neos.Neos:Page).googleAnalyticsTrackingCode >
