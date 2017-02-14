@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "typo-reporter": "^0.2.0",
     "zurb-foundation-5": "^5.4.7"
   },
   "devDependencies": {

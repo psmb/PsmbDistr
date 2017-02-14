@@ -14,6 +14,7 @@ var inputAssets = [
 ];
 var inputJs = [
 	'./node_modules/imagesloaded/imagesloaded.pkgd.min.js',
+	'./node_modules/typo-reporter/lib/TypoReporter.min.js',
 	'./vendor_js/**/*.js',
 	'./js/**/*.js'
 ];
