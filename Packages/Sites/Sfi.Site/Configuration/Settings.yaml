@@ -57,6 +57,8 @@ Psmb:
             - en
 Neos:
   Flow:
+    session:
+      inactivityTimeout: 604800
     i18n:
       defaultLocale: ru
     http:
