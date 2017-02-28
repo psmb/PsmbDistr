@@ -36,7 +36,7 @@
         "neos": {
             "default-disabled-packages": [
                 "flowpack/neos-frontendlogin",
-                "neos/neos-nodetypes"
+                "neos/nodetypes"
             ]
         }
     },

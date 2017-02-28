@@ -1,5 +1,5 @@
 prototype(Sfi.Site:InstantMail) < prototype(Psmb.Newsletter:MailRenderer) {
-	@context.node = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').exactMatch('excludeFromNewsletter', false).greaterThan('firstPublicationDateTime', Date.format(Date.subtract(Date.now(), subscription.interval), "Y-m-d\TH:i:sP")).sortDesc('date').execute()[0]}
+	@context.node = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').queryFilter('bool', {must_not: [{term: {excludeFromNewsletter: true}}]}).greaterThan('firstPublicationDateTime', Date.format(Date.subtract(Date.now(), subscription.interval), "Y-m-d\TH:i:sP")).sortDesc('date').execute()[0]}
 	# TODO: better ideas how to check if node is found?
 	@if.notEmpty = ${String.length(node.identifier) > 0}
 	subject = ${String.stripTags(node.properties.title)}
