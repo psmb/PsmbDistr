@@ -13,9 +13,7 @@
         "neos/form": "~4.0.0",
         "neos/setup": "~4.0.0",
 
-        "neos/content-repository-search": "@dev",
-        "flowpack/elasticsearch": "~2.0.0",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "~2.0.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
         "neos/googleanalytics": "~2.0.0",
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
@@ -23,7 +21,7 @@
 
         "sfi/youtube": "@dev",
         "sfi/grid": "@dev",
-        "psmb/term": "~3.0",
+        "psmb/term": "~2.0",
         "psmb/nodetypes": "~3.0",
         "psmb/createnodebutton": "~2.0",
         "flowpack/jobqueue-common": "@dev",
