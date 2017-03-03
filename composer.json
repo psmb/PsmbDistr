@@ -14,8 +14,8 @@
         "neos/setup": "~4.0.0",
 
         "neos/content-repository-search": "@dev",
-        "flowpack/elasticsearch": "@dev",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "dev-master",
+        "flowpack/elasticsearch": "~2.0.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "~2.0.0",
         "neos/googleanalytics": "~2.0.0",
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
