@@ -1,6 +1,8 @@
-
 Flowpack:
   ElasticSearch:
+    ContentRepositoryAdaptor:
+      driver:
+        version: 2.x
     clients:
       default:
         -
