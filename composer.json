@@ -23,7 +23,7 @@
 
         "sfi/youtube": "@dev",
         "sfi/grid": "@dev",
-        "psmb/term": "~2.0",
+        "psmb/term": "~3.0",
         "psmb/nodetypes": "~3.0",
         "psmb/createnodebutton": "~2.0",
         "flowpack/jobqueue-common": "@dev",
