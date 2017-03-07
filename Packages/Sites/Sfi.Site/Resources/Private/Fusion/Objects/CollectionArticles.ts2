@@ -27,6 +27,7 @@ prototype(Sfi.Site:CollectionArticles) < prototype(T:Array) {
 		}
 		entryTags {
 			1 = 'NodeType_Sfi.Site:Tag'
+			2 = 'NodeType_Sfi.Site:News'
 		}
 	}
 }
