@@ -1,5 +1,5 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-<f:if condition="{neos:rendering.inEditMode()}">
+<f:if condition="{neos:rendering.inBackend()}">
 	<f:then>
 		<!-- Don't render share buttons in BE as they conflict with Neos -->
 	</f:then>
