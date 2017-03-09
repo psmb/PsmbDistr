@@ -12,8 +12,8 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 		collection = ${this.aggregations.collections.buckets}
 		itemName = 'bucket'
 		itemRenderer = T:Tag {
-			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item">' + value + '</li>'}
 			@context.node = ${q(site).find('#' + bucket.key).get(0)}
+			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item ' + (node.properties.pinned && 'js-interesting-themes__item--pinned') + '">' + value + '</li>'}
 			tagName = 'a'
 			attributes.class = ${(request.arguments.collection == bucket.key && 'active ') + 'js-filter-bar__item'}
 			attributes.href = NodeUri {

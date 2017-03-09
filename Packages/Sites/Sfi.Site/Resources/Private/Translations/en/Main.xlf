@@ -102,6 +102,10 @@
 				<source>Аудио</source>
 				<target>Audio</target>
 			</trans-unit>
+			<trans-unit id="relatedNews">
+				<source>Ссылки по теме</source>
+				<target>Related news</target>
+			</trans-unit>
 
 			<trans-unit id="newsletter.editTitle">
 				<source>Обновить параметры подписки для адреса</source>

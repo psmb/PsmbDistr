@@ -23,6 +23,9 @@ prototype(Psmb.NodeTypes:Small) {
 prototype(Psmb.NodeTypes:Epigraph) {
 	attributes.class = 'Epigraph rte-text'
 }
+prototype(Psmb.NodeTypes:Button) {
+	attributes.class = 'button button--alt'
+}
 prototype(Psmb.NodeTypes:Image) {
 	attributes.class = 'figure'
 	content.caption.attributes.class = 'figure__caption'

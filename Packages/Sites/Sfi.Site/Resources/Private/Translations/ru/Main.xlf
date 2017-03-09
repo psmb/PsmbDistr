@@ -74,6 +74,9 @@
 			<trans-unit id="audio">
 				<source>Аудио</source>
 			</trans-unit>
+			<trans-unit id="relatedNews">
+				<source>Ссылки по теме</source>
+			</trans-unit>
 
 			<trans-unit id="newsletter.editTitle">
 				<source>Обновить параметры подписки для адреса</source>

@@ -23,3 +23,9 @@
         label: Описание
         inspector:
           group: document
+    pinned:
+      type: boolean
+      ui:
+        label: Закрепленная интересная тема
+        inspector:
+          group: document

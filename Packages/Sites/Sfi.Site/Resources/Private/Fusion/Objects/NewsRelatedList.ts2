@@ -2,7 +2,7 @@ prototype(Sfi.Site:NewsRelatedList) < prototype(T:Array) {
 	@context.relatedNews = ${q(node).property('relatedNews')}
 	@if.isNotEmpty = ${Type.isArray(relatedNews) && !Array.isEmpty(relatedNews)}
 	@process.tmlp = ${'<div class="row-spacing-top--large">' + value + '</div>'}
-	title = '<div class="block-title--strong">Ссылки по теме</div>'
+	title = ${'<div class="block-title--strong">' + Translation.translate('relatedNews', null, [], null, 'Sfi.Site') + '</div>'}
 	list = T:Collection {
 		@process.tmlp = ${'<ul class="medium-block-grid-2">' + value + '</ul>'}
 		collection = ${relatedNews}
