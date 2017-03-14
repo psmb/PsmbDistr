@@ -209,6 +209,19 @@ blah:
         reloadIfChanged: true
         inspector:
           group: news
+          editorOptions:
+            crop:
+              aspectRatio:
+                options:
+                  thumbImportant:
+                    width: 576
+                    height: 357
+                    label: 'На главную -- важная'
+                  thumb:
+                    width: 276
+                    height: 200
+                    label: 'На главную -- неважная'
+
     type:
       type: string
       ui:

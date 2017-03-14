@@ -1,0 +1,17 @@
+'Psmb.NodeTypes:Image':
+  properties:
+    image:
+      ui:
+        inspector:
+          editorOptions:
+            crop:
+              aspectRatio:
+                options:
+                  thumbImportant:
+                    width: 576
+                    height: 357
+                    label: 'На главную -- важная'
+                  thumb:
+                    width: 276
+                    height: 200
+                    label: 'На главную -- неважная'
