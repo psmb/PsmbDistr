@@ -1,5 +1,5 @@
 prototype(Sfi.Site:Story) {
-	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Story.html'
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Story-anp.html'
 	@context.node = ${node.properties.collection ? node.properties.collection : node}
 
 	imageUri = ImageUri {
@@ -14,7 +14,7 @@ prototype(Sfi.Site:Story) {
 		iterationName = 'iterator'
 		itemRenderer = T:Case {
 			isImportant {
-				condition = ${node.properties.isImportant}
+				condition = ${node.properties.isImportant || node.properties.type == 'announcement'}
 				renderer = Sfi.Site:StoryItemFirst
 			}
 			default {
@@ -56,8 +56,14 @@ prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
 		}
 	}
 	title = ${node.properties.title}
+	hasTime = ${Date.format(node.properties.date, 'H:i') != '00:00'}
+	date = ${Date.format(node.properties.date, 'd.m') + (this.hasTime && (' / ' + Date.format(node.properties.date, 'H:i')))}
 	content = ${'
 		<div class="StoryItemFirst-overlay">
+			<div class="margin-single">
+				<div class="beta marginBottom-none color-white"><strong>' + this.date + '</strong></div>
+				<div class="gamma marginTop-none color-white"><strong>' + node.properties.announcementPlace + '</strong></div>
+			</div>
 			<div class="StoryItemFirst-inner">
 				<div class="epsilon color-white"><strong>' + this.title + '</strong></div>
 			</div>
@@ -67,7 +73,7 @@ prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
 prototype(Sfi.Site:StoryItem) < prototype(T:Tag) {
 	@process.tmpl = ${'<li class="StoryFeed-item">' + value + '<div class="StoryFeed-line"></div></li>'}
 	tagName = 'a'
-	attributes.class = 'epsilon color-white'
+	attributes.class = 'epsilon'
 	attributes.href = NodeUri {
 		node = ${node}
 	}

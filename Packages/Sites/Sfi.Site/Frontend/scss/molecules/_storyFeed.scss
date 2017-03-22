@@ -1,3 +1,21 @@
+.StoryFeed--white {
+	border-color: #eb443c !important;
+	.StoryItemFirst {
+		border-color: #eb443c;
+		border-left-width: 0 !important;
+		border-right-width: 0 !important;
+		border-top-width: 0 !important;
+	}
+	.StoryFeed-line {
+		border-color: #eb443c;
+		&:after {
+			color: #eb443c;
+		}
+	}
+	&:after {
+		color: #eb443c !important;
+	}
+}
 .StoryFeed {
 	position: relative;
 	display: flex;
