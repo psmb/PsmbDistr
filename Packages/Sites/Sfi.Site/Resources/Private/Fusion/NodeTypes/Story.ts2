@@ -14,7 +14,7 @@ prototype(Sfi.Site:Story) {
 		iterationName = 'iterator'
 		itemRenderer = T:Case {
 			isImportant {
-				condition = ${node.properties.isImportant || node.properties.type == 'announcement'}
+				condition = ${node.properties.type == 'announcement'}
 				renderer = Sfi.Site:StoryItemFirst
 			}
 			default {
