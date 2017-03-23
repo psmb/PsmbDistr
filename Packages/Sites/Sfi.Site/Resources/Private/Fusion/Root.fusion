@@ -44,9 +44,8 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 		stylesheets.index = T:Tag {
 			tagName = 'link'
 			attributes {
-				href = T:ResourceUri {
+				href = OpsDev.CacheBreaker:ResourceUri {
 					path = 'resource://Sfi.Site/Public/built/index.css'
-					@process.burst = ${value + '?4'}
 				}
 				type = 'text/css'
 				rel = 'stylesheet'
@@ -72,9 +71,8 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 		# Don't be surprised, this is appended in @process in Page prototype
 		javascripts.index = T:Tag {
 			tagName = 'script'
-			attributes.src = T:ResourceUri {
+			attributes.src = OpsDev.CacheBreaker:ResourceUri {
 				path = 'resource://Sfi.Site/Public/built/index.js'
-				@process.burst = ${value + '?3'}
 			}
 		}
 		javascripts.analytics = Sfi.Site:Analytics
