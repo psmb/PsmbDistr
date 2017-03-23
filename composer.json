@@ -29,7 +29,7 @@
         "psmb/mediaquery": "~2.0",
         "psmb/mapreduce": "~2.0",
         "dimaip/groupby": "~2.0",
-        "opsdev/cache-breaker": "^2.0"
+        "opsdev/cache-breaker": "^3.0"
     },
     "extra": {
         "neos": {

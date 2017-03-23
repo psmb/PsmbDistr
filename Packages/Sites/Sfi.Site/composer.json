@@ -10,8 +10,7 @@
         "psmb/createnodebutton": "*",
         "psmb/newsletter": "*",
         "sfi/grid": "*",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "*",
-        "opsdev/cachebreaker": "*"
+        "flowpack/elasticsearch-contentrepositoryadaptor": "*"
     },
     "autoload": {
         "psr-0": {
