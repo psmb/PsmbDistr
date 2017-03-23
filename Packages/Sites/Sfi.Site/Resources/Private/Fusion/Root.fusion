@@ -46,7 +46,7 @@ prototype(Sfi.Site:Root) < prototype(Page) {
 			attributes {
 				href = T:ResourceUri {
 					path = 'resource://Sfi.Site/Public/built/index.css'
-					@process.burst = ${value + '?3'}
+					@process.burst = ${value + '?4'}
 				}
 				type = 'text/css'
 				rel = 'stylesheet'
