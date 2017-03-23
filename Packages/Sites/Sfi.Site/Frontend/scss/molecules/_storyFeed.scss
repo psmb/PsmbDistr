@@ -88,6 +88,18 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	@media #{$medium-up} {
+		padding-top: 200%;
+	}
+	@media (min-width: 750px) {
+		padding-top: 150%;
+	}
+	@media (min-width: 800px) {
+		padding-top: 112%;
+	}
+	@media #{$large-up} {
+		padding-top: 80%;
+	}
+	@media (min-width: 1200px) {
 		padding-top: 66%;
 	}
 }

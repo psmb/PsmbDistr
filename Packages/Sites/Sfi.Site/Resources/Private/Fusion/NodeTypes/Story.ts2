@@ -55,7 +55,7 @@ prototype(Sfi.Site:StoryItemFirst) < prototype(T:Tag) {
 			node = ${node}
 		}
 	}
-	title = ${node.properties.title}
+	title = ${String.cropAtWord(String.stripTags(node.properties.title), 70, '…')}
 	hasTime = ${Date.format(node.properties.date, 'H:i') != '00:00'}
 	date = ${Date.format(node.properties.date, 'd.m') + (this.hasTime && (' / ' + Date.format(node.properties.date, 'H:i')))}
 	content = ${'
@@ -77,6 +77,6 @@ prototype(Sfi.Site:StoryItem) < prototype(T:Tag) {
 	attributes.href = NodeUri {
 		node = ${node}
 	}
-	content = ${node.properties.title}
+	content = ${String.cropAtWord(String.stripTags(node.properties.title), 90, '…')}
 	content.@process.isBlog = ${q(node).is('[instanceof Sfi.Site:Blog]') ? 'Пишут в блогах: ' + node.properties.author.properties.name + '. ' + value : value}
 }
