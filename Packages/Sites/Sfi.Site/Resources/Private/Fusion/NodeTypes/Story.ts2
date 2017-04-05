@@ -10,7 +10,9 @@ prototype(Sfi.Site:Story) {
 	description = ${node.properties.description}
 
 	feed = T:Collection {
-		collection = ${Search.query(site).nodeType('Sfi.Site:TaggableMixin').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute()}
+		announcements = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'announcement').exactMatch('collections', node.identifier).greaterThan('date', Date.format(Date.Now(), "Y-m-d\TH:i:sP")).sortAsc('date').limit(5).execute().toArray()}
+		news = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute().toArray()}
+		collection = ${Array.concat(this.announcements, this.news)}
 		iterationName = 'iterator'
 		itemRenderer = T:Case {
 			isImportant {
