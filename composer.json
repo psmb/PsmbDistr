@@ -6,8 +6,8 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos-development-collection": "3.0.x-dev",
-        "neos/flow-development-collection": "4.0.x-dev",
+        "neos/neos-development-collection": "^3.0",
+        "neos/flow-development-collection": "^4.0",
         "neos/party": "~4.0.0",
         "neos/imagine": "~3.0.0",
         "neos/form": "~4.0.0",
