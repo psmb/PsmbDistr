@@ -1,4 +1,4 @@
-'Neos.Neos.GoogleAnalytics:StatsTabMixin':
+'Neos.GoogleAnalytics:StatsTabMixin':
   ui:
     inspector:
       views:
