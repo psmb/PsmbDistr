@@ -77,13 +77,13 @@ Neos:
               baseNodeType: 'Neos.Neos:Document,!Sfi.Site:News'
     eventLog:
       enabled: true
-    GoogleAnalytics:
-      stats:
-        uniquePageviewsBySource:
-          metrics: 'ga:uniquePageviews'
-          dimensions: 'ga:source'
-          sort: '-ga:uniquePageviews'
-          max-results: 25
+  GoogleAnalytics:
+    stats:
+      uniquePageviewsBySource:
+        metrics: 'ga:uniquePageviews'
+        dimensions: 'ga:source'
+        sort: '-ga:uniquePageviews'
+        max-results: 25
     fusion:
       autoInclude:
         Sfi.Site: true
