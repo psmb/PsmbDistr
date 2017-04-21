@@ -1,12 +1,7 @@
-{top -> f:format.raw()}
-
 <div class="row stripe section-color-bg magellan-container" data-magellan-expedition="fixed"  data-options="destination_threshold:65;">
 	<div class="fixed-width">
 		<div class="columns">
-			<dl>
-				<dd class="stripe__item stripe__item--label">
-					<a href="#" title="Наверх">{f:translate(package:'Sfi.Site', id:'onThisPage')}</a>
-				</dd>
+			<dl style="display: flex; justify-content: center">
 				<dd class="stripe__item stripe__item--link" data-magellan-arrival="announcements">
 					<a href="#announcements">{f:translate(package:'Sfi.Site', id:'announcements')}</a>
 				</dd>
@@ -20,6 +15,8 @@
 		</div>
 	</div>
 </div>
+
+{top -> f:format.raw()}
 
 <div class="row">
 	<div class="fixed-width">

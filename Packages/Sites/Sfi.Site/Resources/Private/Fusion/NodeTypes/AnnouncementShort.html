@@ -1,31 +1,31 @@
-<li class="media-announcement">
-	<a href="{nodeUri}" title="{title}">
-		<div class="media-announcement__wrap">
-			<div>
-				<span class="media-announcement__date">
-					<f:if condition="{dateStart}">
-						<f:then>
-							<f:if condition="{f:format.date(date:'now', format:'U')} > {f:format.date(date:dateStart, format:'U')}">
-								<f:then>
-									{f:translate(package:'Sfi.Site', id:'until')} <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
-								</f:then>
-								<f:else>
-									{f:translate(package:'Sfi.Site', id:'from')} <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{dateStart}</f:format.date>
-								</f:else>
-							</f:if>
-						</f:then>
-						<f:else>
-							<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
-						</f:else>
-					</f:if>
-				/</span>
-				<f:if condition="{announcementPlace}">
-					<span class="media-announcement__town">{announcementPlace}</span>
-				</f:if>
+<li class="AnnouncementShort js_slide">
+	<a href="{nodeUri}" class="AnnouncementShort-bg" style="display: block; background-image: url({imageUri})">
+		<div class="AnnouncementShort-overlay">
+			<div class="margin-single">
+				<div class="beta marginBottom-none color-white">
+					<strong>
+						<f:if condition="{dateStart}">
+							<f:then>
+								<f:if condition="{f:format.date(date:'now', format:'U')} > {f:format.date(date:dateStart, format:'U')}">
+									<f:then>
+										{f:translate(package:'Sfi.Site', id:'until')} <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+									</f:then>
+									<f:else>
+										{f:translate(package:'Sfi.Site', id:'from')} <f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{dateStart}</f:format.date>
+									</f:else>
+								</f:if>
+							</f:then>
+							<f:else>
+								<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+							</f:else>
+						</f:if>
+					</strong>
+				</div>
+				<div class="gamma marginTop-none color-white"><strong>{announcementPlace}</strong></div>
 			</div>
-			<h3 class="media-announcement__title">
-				{title}
-			</h3>
+			<div class="AnnouncementShort-inner">
+				<div class="epsilon color-white"><strong>{title}</strong></div>
+			</div>
 		</div>
 	</a>
 </li>

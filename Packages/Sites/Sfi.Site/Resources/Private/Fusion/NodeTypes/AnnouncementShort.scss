@@ -1,0 +1,57 @@
+.AnnouncementShort {
+	position: relative;
+	margin-bottom: 2*$u;
+	padding: 0 !important;
+	text-align: left;
+
+	width: 50%;
+	@media #{$medium-up} {
+		width: 25%;
+	}
+	@media (min-width: 1200px) {
+		width: 20%;
+	}
+}
+
+.AnnouncementShort-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
+	padding-top: 230%;
+	@media (min-width: 360px) {
+		padding-top: 175%;
+	}
+	@media (min-width: 420px) {
+		padding-top: 130%;
+	}
+	@media (min-width: 480px) {
+		padding-top: 100%;
+	}
+	@media (min-width: 640px) {
+		padding-top: 185%;
+	}
+	@media (min-width: 720px) {
+		padding-top: 165%;
+	}
+	@media (min-width: 850px) {
+		padding-top: 120%;
+	}
+	@media (min-width: 1024px) {
+		padding-top: 100%;
+	}
+}
+.AnnouncementShort-overlay {
+	position: absolute;
+	background-color: rgba(0,0,0,.4);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+.AnnouncementShort-inner {
+	position: absolute;
+	left: $u;
+	bottom: $u;
+	right: $u;
+}

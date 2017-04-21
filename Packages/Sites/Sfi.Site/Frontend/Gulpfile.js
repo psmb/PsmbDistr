@@ -21,7 +21,12 @@ var inputJs = [
 var inputVendorCss = [
 	'./vendor_css/**/*.css'
 ];
-var inputSass = ['./scss/**/*.scss'];
+var inputSass = [
+	'./scss/**/*.scss'
+];
+
+var inputSassAndStuffWatcher = inputSass.slice(0);
+inputSassAndStuffWatcher.push('./../Resources/Private/Fusion/**/*.scss');
 
 var allTasks = ['sass', 'js', 'vendorCss', 'assets'];
 var output = './built';
@@ -31,7 +36,7 @@ gulp.task('serve', allTasks, function () {
 		proxy: 'dev.psmb.loc'
 	});
 
-	gulp.watch(inputSass, ['sass'])
+	gulp.watch(inputSassAndStuffWatcher, ['sass'])
 		.on('change', function (event) {
 			console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 		});

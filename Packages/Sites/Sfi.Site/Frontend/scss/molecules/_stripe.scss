@@ -1,44 +1,41 @@
-.stripe{
-	@include clearfix;
+.stripe {
 	padding: 0;
 	background: $navy--light;
 	margin-bottom: 2*$u;
 }
 
-.stripe__item{
+.stripe__item {
 	@extend .service-small--inv;
-	float: left;
-	
+
 	margin: $u/2 0;
 	margin-right: 2*$u;
 
 	border-bottom: 2px solid transparent;
 }
 
-.stripe__item--link.active,.stripe__item--link:hover{
+.stripe__item--link.active,.stripe__item--link:hover {
 	border-bottom: 2px solid white;
-	display: inline-block;
 }
 
-.stripe__item--label{
+.stripe__item--label {
 	text-transform: uppercase;
 }
 
 
 
-.theme-stripe .stripe__item > a{
+.theme-stripe .stripe__item > a {
 	display: none;
 }
-.theme-stripe .stripe__item .stripe__item > a{
+.theme-stripe .stripe__item .stripe__item > a {
 	display: block;
 }
 
 
-.stripe .filters{
+.stripe .filters {
 	width: 30000px;
 }
 
-.stripe__item .stripe__item{
+.stripe__item .stripe__item {
 	margin-top: 0;
 	margin-bottom: 0;
 }
