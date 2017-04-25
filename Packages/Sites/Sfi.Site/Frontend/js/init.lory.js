@@ -1,48 +1,53 @@
 'use strict';
 
 (function () {
-  // State
-  var index = void 0;
-  var slidesToScroll = void 0;
 
-  function createSettings() {
-    var clientWidth = window.innerWidth;
-    index = 0;
-    slidesToScroll = 2;
-    if (clientWidth > 640) {
-      slidesToScroll = 4;
-    }
-    if (clientWidth > 1200) {
-      slidesToScroll = 5;
-    }
-    return {
-      slidesToScroll: slidesToScroll,
-      enableMouseEvents: true
-    };
-  }
-
-  function updateControls(el) {
-    el.querySelector('.next').classList.remove('disabled');
-    el.querySelector('.prev').classList.remove('disabled');
-
-    var totalItems = el.querySelectorAll('li').length;
-
-    if (totalItems - slidesToScroll <= slidesToScroll * index) {
-      el.querySelector('.next').classList.add('disabled');
-    }
-    if (index === 0) {
-      el.querySelector('.prev').classList.add('disabled');
-    }
-  }
-
-  var sliders = document.querySelectorAll('.js_slider');
-  [].slice.call(sliders).forEach(function (el) {
+  function Carousel (el) {
+    // State
+    var index;
+    var slidesToScroll;
     var instance = lory(el, createSettings());
-    updateControls(el);
+
+    function createSettings() {
+      index = 0;
+      if (el.dataset.carouselPreset === 'announcements') {
+        var clientWidth = window.innerWidth;
+        slidesToScroll = 2;
+        if (clientWidth > 640) {
+          slidesToScroll = 4;
+        }
+        if (clientWidth > 1200) {
+          slidesToScroll = 5;
+        }
+      } else {
+        slidesToScroll = 1;
+      }
+      return {
+        slidesToScroll: slidesToScroll,
+        enableMouseEvents: true
+      };
+    }
+
+    function updateControls() {
+      const next = el.querySelector('.next');
+      const prev = el.querySelector('.prev');
+      next.classList.remove('disabled');
+      prev.classList.remove('disabled');
+
+      var totalItems = el.querySelectorAll('li').length;
+      if (totalItems - slidesToScroll <= slidesToScroll * index) {
+        next.classList.add('disabled');
+      }
+      if (index === 0) {
+        prev.classList.add('disabled');
+      }
+    }
+
+    updateControls();
 
     el.addEventListener('on.lory.resize', function () {
       instance.setup(createSettings());
-      updateControls(el);
+      updateControls();
     });
 
     el.addEventListener('before.lory.slide', function (event) {
@@ -54,7 +59,11 @@
     });
 
     el.addEventListener('after.lory.slide', function () {
-      updateControls(el);
+      updateControls();
     });
+  }
+
+  [].slice.call(document.querySelectorAll('[data-carousel]')).forEach(function (el) {
+    Carousel(el);
   });
 })();

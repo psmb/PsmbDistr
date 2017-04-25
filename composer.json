@@ -28,6 +28,7 @@
         "psmb/newsletter": "~2.2",
         "psmb/mediaquery": "~2.0",
         "psmb/mapreduce": "~2.0",
+        "psmb/carousel": "@dev",
         "dimaip/groupby": "~2.0",
         "opsdev/cache-breaker": "^3.0",
         "neos/neos-ui": "dev-master",
