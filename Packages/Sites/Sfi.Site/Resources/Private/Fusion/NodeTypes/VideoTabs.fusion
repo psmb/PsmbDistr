@@ -1,0 +1,38 @@
+prototype(Sfi.Site:VideoTabs)>
+prototype(Sfi.Site:VideoTabs) < prototype(Neos.Fusion:Array) {
+    @process.tmpl = ${'<div class="js-VideoTabs VideoTabs">' + value + '</div>'}
+    content = ContentCollectionRenderer {
+        @process.tmpl = ${'<div class="VideoTabs-wrapper">' + value + '</div>'}
+        prototype(Sfi.Site:VideoTabs.Tab) {
+            @process.anchor = Neos.Fusion:Array {
+                1 = Neos.Fusion:Tag {
+                    tagName = 'a'
+                    attributes {
+                        class = Neos.Fusion:RawArray {
+                            class = 'js-VideoTabs-navItem VideoTabs-accordionItem epsilon margin-none'
+                            isActive = ${iterator.isFirst && 'isActive'}
+                        }
+                        href = ${'#' + node.name}
+                    }
+                    content = ${node.properties.title}
+                }
+                2 = ${value}
+            }
+        }
+    }
+    nav = Neos.Fusion:Collection {
+        @process.tmpl = ${'<div class="VideoTabs-nav">' + value + '</div>'}
+        collection = ${q(node).children().get()}
+        itemName = 'tab'
+        itemRenderer = Neos.Fusion:Tag {
+            tagName = 'a'
+            attributes.class = Neos.Fusion:RawArray {
+                class = 'VideoTabs-navItem js-VideoTabs-navItem epsilon margin-none'
+                active = ${iterator.isFirst && 'isActive'}
+            }
+            attributes.href = ${'#' + tab.name}
+            content = ${tab.properties.title}
+        }
+    }
+    @process.contentElementWrapping = ContentElementWrapping
+}

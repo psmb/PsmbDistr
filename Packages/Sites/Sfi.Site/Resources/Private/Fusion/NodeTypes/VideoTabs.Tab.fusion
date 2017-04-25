@@ -1,0 +1,32 @@
+prototype(Sfi.Site:VideoTabs.Tab)>
+prototype(Sfi.Site:VideoTabs.Tab) < prototype(Neos.Fusion:Array) {
+    @process.tmpl = Neos.Fusion:Tag {
+        attributes {
+            id = ${node.name}
+            class = Neos.Fusion:RawArray {
+                class = 'js-VideoTabs-tab VideoTabs-tab'
+                isActive = ${iterator.isFirst && 'isActive'}
+            }
+        }
+        content = ${value}
+    }
+    content = ContentCollectionRenderer
+    additionalContent = Neos.Fusion:Array {
+        @process.tmpl = ${'<div class="VideoTabs-tabContent">' + value + '</div>'}
+        title = Neos.Fusion:Tag {
+            attributes.class = 'gamma marginBottom-half marginTop-none hide-for-small-only'
+            content = ${node.properties.title}
+            @process.contentElementEditable = ContentElementEditable {
+                property = 'title'
+            }
+        }
+        subTitle = Neos.Fusion:Tag {
+            attributes.class = 'epsilon marginTop-half marginBottom-none'
+            content = ${node.properties.subTitle}
+            @process.contentElementEditable = ContentElementEditable {
+                property = 'subTitle'
+            }
+        }
+    }
+    @process.contentElementWrapping = ContentElementWrapping
+}

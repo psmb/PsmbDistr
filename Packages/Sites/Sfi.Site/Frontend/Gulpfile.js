@@ -16,7 +16,8 @@ var inputJs = [
 	'./node_modules/imagesloaded/imagesloaded.pkgd.min.js',
 	'./node_modules/typo-reporter/lib/TypoReporter.min.js',
 	'./vendor_js/**/*.js',
-	'./js/**/*.js'
+	'./js/**/*.js',
+	'./../Resources/Private/Fusion/**/*.js'
 ];
 var inputVendorCss = [
 	'./vendor_css/**/*.css'

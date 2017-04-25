@@ -1,0 +1,13 @@
+.VideoTabs-tab {
+  background-color: $primary-color;
+  color: white;
+}
+
+.VideoTabs-tabContent {
+  padding: $u;
+  overflow: auto;
+
+  a {
+    color: $scarlet !important;
+  }
+}

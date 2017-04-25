@@ -1,0 +1,17 @@
+'Sfi.Site:VideoTabs':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Видео вкладки'
+    group: structure
+    icon: 'icon-caret-square-o-right'
+    inlineEditable: true
+    inspector:
+      groups:
+        carousel:
+          label: Карусель
+  constraints:
+    nodeTypes:
+      '*': false
+      'Sfi.Site:VideoTabs.Tab': true

@@ -1,0 +1,49 @@
+.VideoTabs {
+  display: flex;
+}
+
+.VideoTabs .YouTube {
+  margin-bottom: 0;
+}
+
+.VideoTabs-tab {
+  display: none;
+  &.isActive {
+    display: block;
+  }
+}
+
+.VideoTabs-wrapper {
+  flex-grow: 1;
+}
+.VideoTabs-navItem, .VideoTabs-accordionItem {
+  display: block;
+  padding: $u;
+  background-color: $gray-bg;
+  border-bottom: 1px solid white;
+  &.isActive {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.VideoTabs-accordionItem.isActive {
+  border-bottom: 0;
+  font-weight: bold;
+}
+
+.VideoTabs-accordionItem {
+  @media #{$medium-up} {
+    display: none;
+  }
+}
+.VideoTabs-nav {
+  flex: 0 0 160px;
+  display: none;
+  @media #{$medium-up} {
+    display: block;
+  }
+  @media all and (min-width: 800px) {
+    flex: 0 0 240px;
+  }
+}

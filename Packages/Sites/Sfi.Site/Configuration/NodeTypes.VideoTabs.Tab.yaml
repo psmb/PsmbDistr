@@ -1,0 +1,24 @@
+'Sfi.Site:VideoTabs.Tab':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Видео вкладка'
+    group: structure
+    inlineEditable: true
+    icon: 'icon-play'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Заголовок видео'
+    subTitle:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Подзаголовок видео'
+          link:
+            a: TRUE
