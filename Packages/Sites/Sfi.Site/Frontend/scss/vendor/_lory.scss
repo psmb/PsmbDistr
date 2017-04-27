@@ -18,6 +18,12 @@
     position: relative;
     display: inline-block;
     white-space: normal;
+    width: 100%;
+  }
+
+  li > * {
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .prev, .next {
