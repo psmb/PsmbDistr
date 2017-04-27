@@ -35,4 +35,14 @@ prototype(Sfi.Site:VideoTabs) < prototype(Neos.Fusion:Array) {
         }
     }
     @process.contentElementWrapping = ContentElementWrapping
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            node = ${node}
+        }
+        entryTags {
+            1 = ${'Node_' + node.identifier}
+            2 = ${'DescendantOf_' + node.identifier}
+        }
+    }
 }
