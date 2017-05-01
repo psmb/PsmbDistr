@@ -24,9 +24,9 @@
 			var content = node.querySelector('.js-stream__content');
 			var loadMore = node.querySelector('.js-stream__loadmore');
 			var autoload = node.querySelector('.js-stream__autoload');
-			var filterBarItems = document.getElementsByClassName('js-filter-bar__item');
+			var filterBar = node.querySelector('.js-filter-bar');
 
-			if (loadMore && content && filterBarItems) {
+			if (loadMore && content && filterBar) {
 				setupIsotope();
 				loadMore.addEventListener('click', function (evt) {
 					evt.preventDefault();
@@ -34,13 +34,12 @@
 						load(evt.target.getAttribute('href'));
 					}
 				});
-				Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
-					filterBarItem.addEventListener('click', function (evt) {
+				// It has to be body, because filters can be anywhere
+				document.body.addEventListener('click', function(evt) {
+					if (evt.target && evt.target.classList.contains('js-filter-bar__item')) {
 						evt.preventDefault();
-						if (evt.target && evt.target.classList.contains('js-filter-bar__item')) {
-							activate(evt.target);
-						}
-					}, true);
+						activate(evt.target);
+					}
 				});
 				if (autoload) {
 					load(autoload.dataset.url);
@@ -48,9 +47,11 @@
 			}
 
 			function activate(item) {
-				Array.prototype.forEach.call(filterBarItems, function (filterBarItem) {
-					filterBarItem.classList.remove('active');
-				});
+				// It has to be `document`, because filters can be anywhere
+				var activeItem = document.querySelector('.js-filter-bar__item.active');
+				if (activeItem) {
+					activeItem.classList.remove('active');
+				}
 				item.classList.add('active');
 
 				content.innerHTML = '';
@@ -80,7 +81,7 @@
 							});
 							// Relayout isotope
 							iso.layout();
-							media_fix_height();
+							mediaFixHeight();
 
 							// If nothing left to load
 							if (resp.nextLink) {
@@ -106,7 +107,7 @@
 }());
 
 // TODO: Why is it needed?
-function media_fix_height(){
+function mediaFixHeight(){
 	jQuery(".js-stream__item .media__wrap").each(function(){
 		var height = jQuery(this).css('height');
 		jQuery(this).css('height', height);

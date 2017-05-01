@@ -7,10 +7,18 @@
 			var customSearchControl = new google.search.CustomSearchControl('018114637120266180637:giwypvp527e');
 			customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
 			customSearchControl.draw('cse');
-			$(".gsc-input input").attr('value','поиск').focus(function(){
-				if($(this).val() == 'поиск')
-					$(this).val('');
-				});
-			}, true);
+			var input = document.querySelector('.gsc-input input');
+			input.value = 'поиск';
+			input.addEventListener('focus', function(evt) {
+				if (evt.target.value === 'поиск') {
+					evt.target.value = '';
+				}
+			});
+			input.addEventListener('blur', function(evt) {
+				if (evt.target.value === '') {
+					evt.target.value = 'поиск';
+				}
+			});
+		});
 	</script>
 </div>
