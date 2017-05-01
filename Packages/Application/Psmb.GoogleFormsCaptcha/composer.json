@@ -1,0 +1,18 @@
+{
+    "description": "TODO: move out to a separate repo and publish",
+    "type": "neos-package",
+    "name": "psmb/googleformscaptcha",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Psmb\\GoogleFormsCaptcha\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Psmb.GoogleFormsCaptcha"
+        }
+    }
+}

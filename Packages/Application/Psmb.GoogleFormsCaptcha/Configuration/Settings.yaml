@@ -1,0 +1,10 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Psmb.GoogleFormsCaptcha': true
+Psmb:
+  GoogleFormsCaptcha:
+    secret: 'input-secret-here'
+    forms:
+      formName: 'formGoogleId'

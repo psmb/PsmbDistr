@@ -1,0 +1,9 @@
+-
+  name: 'Psmb.GoogleFormsCaptcha'
+  uriPattern: 'form-captcha'
+  defaults:
+    '@package':    'Psmb.GoogleFormsCaptcha'
+    '@controller': 'Proxy'
+    '@action':     'submit'
+    '@format':     'html'
+  appendExceedingArguments: TRUE

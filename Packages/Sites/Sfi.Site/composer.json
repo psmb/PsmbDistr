@@ -9,6 +9,7 @@
         "psmb/nodetypes": "*",
         "psmb/createnodebutton": "*",
         "psmb/newsletter": "*",
+        "psmb/googleformscaptcha"
         "sfi/grid": "*",
         "flowpack/elasticsearch-contentrepositoryadaptor": "*"
     },

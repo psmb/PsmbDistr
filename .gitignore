@@ -2,7 +2,7 @@
 /Configuration/
 /Data/
 /Packages/Application/*
-!/Packages/Application/Psmb.PsmbImport/
+!/Packages/Application/Psmb.GoogleFormsCaptcha/
 /Packages/Framework/
 /Packages/Neos/
 /Packages/Plugins/

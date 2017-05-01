@@ -12,6 +12,9 @@ Sfi:
   YouTube:
     className: 'YouTube flex-video widescreen'
 Psmb:
+  GoogleFormsCaptcha:
+    forms:
+      contactUs: '1MAsEybLT5iHkaYgn-Y2kLjZTilZG2ayPGZLR_8oV7NA'
   Newsletter:
     globalSettings:
       senderAddress: no-reply@psmb.ru
