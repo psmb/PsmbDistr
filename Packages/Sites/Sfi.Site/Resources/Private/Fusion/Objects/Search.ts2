@@ -1,3 +1,5 @@
 prototype(Sfi.Site:Search) < prototype(T:Template) {
-	templatePath = ${'resource://Sfi.Site/Private/Fusion/Objects/Search-' + lang + '.html'}
+	templatePath = ${'resource://Sfi.Site/Private/Fusion/Objects/Search.html'}
+	searchStr = ${lang == 'ru' ? 'поиск' : 'search'}
+	lang = ${lang}
 }

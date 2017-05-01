@@ -2,21 +2,23 @@
 	<div id="cse" style="z-index:1000;"></div>
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
 	<script type="text/javascript">
-		google.load('search', '1', {language : 'en'});
+		var lang = '{lang}';
+		google.load('search', '1', {language : lang});
 		google.setOnLoadCallback(function() {
+			var searchStr = '{searchStr}';
 			var customSearchControl = new google.search.CustomSearchControl('018114637120266180637:giwypvp527e');
 			customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
 			customSearchControl.draw('cse');
 			var input = document.querySelector('.gsc-input input');
-			input.value = 'search';
+			input.value = searchStr;
 			input.addEventListener('focus', function(evt) {
-				if (evt.target.value === 'search') {
+				if (evt.target.value === searchStr) {
 					evt.target.value = '';
 				}
 			});
 			input.addEventListener('blur', function(evt) {
 				if (evt.target.value === '') {
-					evt.target.value = 'search';
+					evt.target.value = searchStr;
 				}
 			});
 		});
