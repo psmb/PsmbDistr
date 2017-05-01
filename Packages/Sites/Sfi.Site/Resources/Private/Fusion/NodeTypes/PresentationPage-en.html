@@ -1,3 +1,5 @@
+<!-- SHAME -->
+
 <div class="row">
 	{faces -> f:format.raw()}
 </div>
@@ -104,21 +106,28 @@
 <div class="row row-spacing--large " >
 	<div class="fixed-width">
 		<div class="large-7 large-offset-3 columns">
-		<form action="https://docs.google.com/forms/d/1MAsEybLT5iHkaYgn-Y2kLjZTilZG2ayPGZLR_8oV7NA/formResponse?embedded=true" method="POST" id="ss-form" target="_self" onsubmit="">
+		<form action="/form-captcha/?preset=contactUs" method="POST" id="ss-form" target="_self" onsubmit="">
 			<h2 class="alpha--light center row-spacing">Get in touch</h2>
 			<div class="row">
 				<div class="large-6 columns">
-					<input type="text" name="entry.819872813"  class="input ss-q-short" id="entry_819872813" dir="auto" aria-label="Your Name" value="Your Name" aria-required="true" required="" title="">
+					<input type="text" name="entry.819872813"  class="input ss-q-short" id="entry_819872813" dir="auto" aria-label="Your Name" placeholder="Your Name" aria-required="true" required="" title="">
 				</div>
 				<div class="large-6 columns">
-					<input type="email" name="entry.2039053959" class="input ss-q-short" id="entry_2039053959" dir="auto" aria-label="Valid E-mail" value="Your E-mail" aria-required="true" required="" title="Must be a valid email address">
+					<input type="email" name="entry.2039053959" class="input ss-q-short" id="entry_2039053959" dir="auto" aria-label="Valid E-mail" placeholder="Your E-mail" aria-required="true" required="" title="Must be a valid email address">
 				</div>
 			</div>
 			<input type="hidden" name="fbzx" value="-2003348169282718638">
 			<div class="row">
 				<div class="columns">
-					<textarea name="entry.461513502" rows="8" cols="0" class="textarea ss-q-long" id="entry_461513502" dir="auto" aria-label="Share your ideas, questions and wishes with us" aria-required="true" required="">Share your ideas, questions and wishes with us</textarea>
-					<input style="color: white" class="input button" name="submit" type="submit" value="Send!">
+					<textarea name="entry.461513502" rows="8" cols="0" class="textarea ss-q-long" id="entry_461513502" dir="auto" aria-label="Share your ideas, questions and wishes with us" aria-required="true" required="" placeholder="Share your ideas, questions and wishes with us"></textarea>
+					<script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
+					<script>
+						function captchaCallback() {
+							document.querySelector('input.protectedInput').disabled = false;
+						}
+					</script>
+					<input type="hidden" name="fbzx" value="-2003348169282718638">
+					<input style="color: white" class="input button protectedInput" name="submit" type="submit" value="Send!" disabled="true">
 				</div>
 			</div>
 		</form>

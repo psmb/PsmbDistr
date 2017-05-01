@@ -1,3 +1,5 @@
+<!-- SHAME -->
+
 <div class="row">
 	{faces -> f:format.raw()}
 </div>
@@ -113,21 +115,28 @@
 <div class="row row-spacing--large " >
 	<div class="fixed-width">
 		<div class="large-7 large-offset-3 columns">
-		<form action="https://docs.google.com/forms/d/1MAsEybLT5iHkaYgn-Y2kLjZTilZG2ayPGZLR_8oV7NA/formResponse?embedded=true" method="POST" id="ss-form" target="_self" onsubmit="">
+		<form action="/form-captcha/?preset=contactUs" method="POST" id="ss-form" target="_self" onsubmit="">
 			<h2 class="alpha--light center row-spacing">Пишите нам</h2>
 			<div class="row">
 				<div class="large-6 columns">
-					<input type="text" name="entry.819872813"  class="input ss-q-short" id="entry_819872813" dir="auto" aria-label="Ваше имя  " value="Ваше имя" aria-required="true" required="" title="">
+					<input type="text" name="entry.819872813"  class="input ss-q-short" id="entry_819872813" dir="auto" aria-label="Ваше имя" placeholder="Ваше имя" aria-required="true" required="" title="">
 				</div>
 				<div class="large-6 columns">
-					<input type="email" name="entry.2039053959" class="input ss-q-short" id="entry_2039053959" dir="auto" aria-label="Действительный e-mail" value="Ваш e-mail" aria-required="true" required="" title="Must be a valid email address">
+					<input type="email" name="entry.2039053959" class="input ss-q-short" id="entry_2039053959" dir="auto" aria-label="Действительный e-mail" placeholder="Ваш e-mail" aria-required="true" required="" title="Must be a valid email address">
 				</div>
 			</div>
+			<script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
+			<script>
+				function captchaCallback() {
+					document.querySelector('input.protectedInput').disabled = false;
+				}
+			</script>
 			<input type="hidden" name="fbzx" value="-2003348169282718638">
 			<div class="row">
 				<div class="columns">
-					<textarea name="entry.461513502" rows="8" cols="0" class="textarea ss-q-long" id="entry_461513502" dir="auto" aria-label="Напишите ваши идеи, вопросы, пожелания  " aria-required="true" required="">Напишите ваши идеи, вопросы, пожелания</textarea>
-					<input style="color: white" class="input button" name="submit" type="submit" value="Отправить!">
+					<textarea name="entry.461513502" rows="8" cols="0" class="textarea ss-q-long" id="entry_461513502" dir="auto" aria-label="Напишите ваши идеи, вопросы, пожелания" aria-required="true" required="" placeholder="Напишите ваши идеи, вопросы, пожелания"></textarea>
+					<div class="g-recaptcha marginBottom-double" data-sitekey="6Ldwax8UAAAAAKQdI0QdIq9pKvE_fn7ENjBvzUB-" data-callback="captchaCallback"></div>
+					<input style="color: white" class="input button protectedInput" name="submit" type="submit" value="Отправить!" disabled="true">
 				</div>
 			</div>
 		</form>
