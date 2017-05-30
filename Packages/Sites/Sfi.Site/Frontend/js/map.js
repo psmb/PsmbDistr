@@ -21,7 +21,7 @@
 				var clickEvent = new MouseEvent('click', {
 					'view': window,
 					'bubbles': true,
-					'cancelable': false
+					'cancelable': true
 				});
 				eventTarget.dispatchEvent(clickEvent);
 			});
