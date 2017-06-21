@@ -121,3 +121,47 @@ TODO: refactor color;
 .color-grayLight {
 	color: $gray--light;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@mixin colormix($pageclass, $color){
+	#{$pageclass}{
+		.section-color{
+			color: $color;
+			border-color: $color;
+		}
+		.section-color-bg{
+			background: $color;
+		}
+		.section-color-bd{
+			border-color: $color;
+		}
+		.section-color-bg--darken{
+			background: darken($color,20%);
+		}
+		.section-color-bd--darken{
+			border-color: darken($color,20%);
+		}
+		blockquote{
+			:before{background: $color;}
+		}
+	}
+}
+
+
+//main
+@include colormix("body",$navy--light);
