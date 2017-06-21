@@ -1,0 +1,111 @@
+'Sfi.Site:Festival':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:TagMixin': true
+  ui:
+    label: Фестиваль
+    group: festival
+  childNodes:
+    cover:
+      type: 'Neos.Neos:ContentCollection'
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    headline:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Заголовок сайта'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
+          formatlesspaste:
+            button: false
+            formatlessPasteOption: true
+            autoparagraph: true
+    subHeadline:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Подзаголовок сайта'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
+          formatlesspaste:
+            button: false
+            formatlessPasteOption: true
+            autoparagraph: true
+    location:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Место и дата'
+          format:
+            b: false
+            i: false
+            u: false
+            sub: false
+            sup: false
+            p: false
+            h1: false
+            h2: false
+            h3: false
+            pre: false
+            removeFormat: false
+          table: {  }
+          list: {  }
+          link:
+            a: false
+          alignment: {  }
+          formatlesspaste:
+            button: false
+            formatlessPasteOption: true
+            autoparagraph: true
+    summary:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Сводка по вестивалю по дням'
+    coverImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото обложки'
+        inspector:
+          group: general
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Sfi.Site:FestivalVenue': true

@@ -1,0 +1,7 @@
+prototype(Sfi.Site:NavSection) < prototype(Neos.Fusion:Tag) {
+	attributes.class = 'NavSection'
+	attributes.id = ${node.properties.navTitle}
+	content = ContentCollectionRenderer {
+		@process.contentElementWrapping = ContentElementWrapping
+	}
+}

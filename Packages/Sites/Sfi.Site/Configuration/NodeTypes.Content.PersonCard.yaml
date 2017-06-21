@@ -1,0 +1,36 @@
+'Sfi.Site:PersonCard':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Человек в кружочке'
+    group: festival
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Имя
+    info:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Информация
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фотка
+        reloadIfChanged: true
+        inspector:
+          group: general
+          editorOptions:
+            features:
+              resize: true
+            crop:
+              aspectRatio:
+                enableOriginal: false
+                allowCustom: false
+                locked:
+                  width: 140
+                  height: 140

@@ -1,0 +1,35 @@
+'Sfi.Site:MainPage':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
+  ui:
+    label: 'Главная страница'
+  childNodes:
+    top:
+      type: 'Neos.Neos:ContentCollection'
+  properties:
+    footerContacts:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Контактные данные'
+          format:
+            strong: true
+            em: true
+            u: false
+            p: true
+            h1: false
+            h2: true
+            h3: true
+            pre: false
+            removeFormat: true
+          table:
+            table: false
+          list:
+            ol: false
+            ul: true
+          link:
+            a: true
+          alignment: {  }

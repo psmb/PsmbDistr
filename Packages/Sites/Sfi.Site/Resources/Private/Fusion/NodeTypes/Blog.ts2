@@ -1,4 +1,7 @@
-prototype(Sfi.Site:Blog) {
+prototype(Sfi.Site:Blog.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:Blog
+}
+prototype(Sfi.Site:Blog) < prototype(Sfi.Site:AbstractPage) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Blog.html'
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'

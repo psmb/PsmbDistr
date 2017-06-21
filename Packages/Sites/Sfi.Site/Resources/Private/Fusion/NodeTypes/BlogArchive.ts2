@@ -1,6 +1,8 @@
-prototype(Sfi.Site:BlogArchive)>
-prototype(Sfi.Site:BlogArchive) < prototype(T:Array) {
-	@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
+prototype(Sfi.Site:BlogArchive.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:BlogArchive
+}
+prototype(Sfi.Site:BlogArchive) < prototype(Sfi.Site:AbstractPage) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/BlogArchive.html'
 
 	title = ${'<h1 class="page-title paddingTop-double">' + node.properties.title + '</h1>'}
 

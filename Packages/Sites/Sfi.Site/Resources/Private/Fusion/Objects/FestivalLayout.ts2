@@ -1,0 +1,22 @@
+prototype(Sfi.Site:FestivalLayout) < prototype(T:Template) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/Objects/FestivalLayout.html'
+	mainMenu = Sfi.Site:NavSectionMenu {
+		@context.documentNode = ${festivalNode}
+	}
+
+	lang = ${Array.first(node.context.dimensions.language)}
+	headline = ${q(festivalNode).property('headline')}
+	subHeadline = ${q(festivalNode).property('subHeadline')}
+	location = ${q(festivalNode).property('location')}
+	summary = ${q(festivalNode).property('summary')}
+	coverImageUri = ImageUri {
+		asset = ${q(festivalNode).property('coverImage')}
+	}
+	linkToFestival = NodeUri {
+		node = ${festivalNode}
+	}
+
+	isMain = ${festivalNode == documentNode ? true : false}
+
+	value = ${value}
+}

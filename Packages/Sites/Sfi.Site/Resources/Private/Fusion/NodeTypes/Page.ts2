@@ -1,7 +1,9 @@
-prototype(Sfi.Site:Page)>
-prototype(Sfi.Site:Page) < prototype(T:Array) {
+prototype(Sfi.Site:Page.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:Page
+}
+prototype(Sfi.Site:Page) < prototype(Sfi.Site:AbstractPage) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Page.html'
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
-	@process.contentElementWrapping = Neos.Neos:ContentElementWrapping
 }

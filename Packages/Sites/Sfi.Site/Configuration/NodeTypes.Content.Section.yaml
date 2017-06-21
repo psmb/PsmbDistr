@@ -1,0 +1,16 @@
+'Sfi.Site:Section':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+    'Sfi.Site:NavSection': true
+  ui:
+    label: 'Секция с заголовком'
+    inlineEditable: true
+  constraints:
+    nodeTypes:
+      '*': true
+  properties:
+    title:
+      ui:
+        aloha:
+          placeholder: 'Заголовок'

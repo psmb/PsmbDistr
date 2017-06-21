@@ -1,12 +1,7 @@
-prototype(Sfi.Site:AbstractTag) < prototype(T:Array) {
-	title = ${'<div class="row"><div class="fixed-width"><div class="columns"><h1 class="page-title">' + node.properties.title + '</h1></div></div></div>'}
-	newsList = Sfi.Site:Stream {
-		@context.hideBar = ${true}
-		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
-	}
+prototype(Sfi.Site:Tag.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:Tag
 }
-
-prototype(Sfi.Site:Tag) {
+prototype(Sfi.Site:Tag) < prototype(Sfi.Site:AbstractPage) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Tag.html'
 	title = ${q(node).parent().get(0) == q(site).children('tags').get(0) ? q(site).children('tags').get(0).properties.title : q(node).property('title')}
 	cover = Neos.Neos:ContentCollection {
@@ -26,14 +21,14 @@ prototype(Sfi.Site:Tag) {
 	# TODO: meh...
 	showBlogList = ${String.length(this.blogList) > 500}
 	stream = Sfi.Site:Stream {
-		@process.tmpl = ${'<div class="row bg-gray"><div class="fixed-width"><div class="columns">' + value + '</div></div></div>'}
+		@process.tmpl = ${'<div class="row backgroundColor-gray"><div class="fixedWidth"><div class="columns">' + value + '</div></div></div>'}
 		@if.notRoot = ${q(node).parent().get(0) != q(site).children('tags').get(0)}
 	}
 	tagsMenu = T:Array {
 		# TODO: refactor
 		@if.isDescendantOfTags = ${q(node).parents().get(1) == q(site).children('tags').get(0) || q(node).parent().get(0) == q(site).children('tags').get(0)}
 		tagsHeader = T:Collection {
-			@process.tmpl = ${'<div class="stripe"><div class="fixed-width"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
+			@process.tmpl = ${'<div class="stripe"><div class="fixedWidth"><dl class="tabs" data-tab>' + value + '</dl></div></div>'}
 			collection = ${q(site).children('tags').children('[instanceof Neos.Neos:Document]').get()}
 			iterationName = 'iterator'
 			itemRenderer = T:Tag {
@@ -47,7 +42,7 @@ prototype(Sfi.Site:Tag) {
 			}
 		}
 		tagsContent = T:Collection {
-			@process.tmpl = ${'<div class="row"><div class="fixed-width"><div class="tabs-content columns">' + value + '</div></div></div>'}
+			@process.tmpl = ${'<div class="row"><div class="fixedWidth"><div class="tabs-content columns">' + value + '</div></div></div>'}
 			collection = ${q(site).children('tags').children().get()}
 			iterationName = 'iterator'
 			itemName = 'node'
@@ -82,6 +77,3 @@ prototype(Sfi.Site:Tag) {
 		}
 	}
 }
-
-prototype(Sfi.Site:PlaceTag)>
-prototype(Sfi.Site:PlaceTag) < prototype(Sfi.Site:AbstractTag)

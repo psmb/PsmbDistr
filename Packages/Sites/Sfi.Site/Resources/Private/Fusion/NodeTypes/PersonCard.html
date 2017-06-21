@@ -1,0 +1,15 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div class="PersonCard marginVertical-double paddingRight-double">
+	<div class="row">
+		<f:if condition="{imageUri}">
+			<div class="small-4 columns">
+				<img style="width: 100%" class="PersonCard-image circle" src="{imageUri}" alt={title} />
+			</div>
+		</f:if>
+		<div class="small-8 columns paddingLeft-single">
+			<h3 class="gamma margin-none lineHeight-normal">{neos:contentElement.editable(property: 'title', tag: 'span')}</h3>
+			<div class="service-small--gray-light margin-none lineHeight-normal">{neos:contentElement.editable(property: 'info', tag: 'span')}</div>
+		</div>
+	</div>
+</div>

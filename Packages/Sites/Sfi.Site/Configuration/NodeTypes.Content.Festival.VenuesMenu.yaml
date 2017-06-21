@@ -1,0 +1,6 @@
+'Sfi.Site:Festival.VenuesMenu':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Фестиваль - Меню площадок'
+    group: 'festival'

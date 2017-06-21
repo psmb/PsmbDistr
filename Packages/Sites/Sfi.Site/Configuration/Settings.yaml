@@ -23,6 +23,7 @@ Psmb:
       -
         identifier: instant_ru
         renderer: 'Sfi.Site:InstantMail'
+        sendFromUiNodeType: 'Sfi.Site:News'
         label: 'Мгновенное уведомление'
         description: 'Полные версии материалов как только они опубликованы'
         interval: PT1H
@@ -43,6 +44,7 @@ Psmb:
       -
         identifier: instant_en
         renderer: 'Sfi.Site:InstantMail'
+        sendFromUiNodeType: 'Sfi.Site:News'
         label: 'Instant Notification'
         description: 'Recevie full versions of articles as they are published'
         interval: PT1H
@@ -78,6 +80,11 @@ Neos:
           presets:
             default:
               baseNodeType: 'Neos.Neos:Document,!Sfi.Site:News'
+    nodeTypes:
+      groups:
+        festival:
+          position: 110
+          label: 'Фестиваль'
     eventLog:
       enabled: true
   GoogleAnalytics:

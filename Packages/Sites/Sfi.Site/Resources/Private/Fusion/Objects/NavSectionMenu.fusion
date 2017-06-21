@@ -1,0 +1,23 @@
+prototype(Sfi.Site:NavSectionMenu) < prototype(Neos.Fusion:Collection) {
+	@process.tmpl = ${'<div class="NavSectionMenu">' + value + '</div>'}
+	collection = ${q(documentNode).children('main').find('[instanceof Sfi.Site:NavSection]').get()}
+	itemRenderer = Neos.Fusion:Tag {
+		#tagName = 'a'
+		attributes.class = 'NavSectionMenu-item'
+		attributes.title = ${node.properties.title}
+		attributes.href = NodeUri {
+			node = ${documentNode}
+			@process.addAnchor = ${value + '#' + node.properties.navTitle}
+		}
+		content = ${node.properties.title}
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = ${'NodeType_Sfi.Site:NavSection'}
+		}
+	}
+}

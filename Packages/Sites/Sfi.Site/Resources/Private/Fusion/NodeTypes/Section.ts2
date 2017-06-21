@@ -1,0 +1,10 @@
+prototype(Sfi.Site:Section) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Section.html'
+	id = ${node.properties.navTitle}
+	title = ${'<span>' + node.properties.title + '</span>'}
+	title.@process.contentElementEditable = ContentElementEditable {
+		property = 'title'
+	}
+	content = ContentCollectionRenderer
+	@process.contentElementWrapping = ContentElementWrapping
+}

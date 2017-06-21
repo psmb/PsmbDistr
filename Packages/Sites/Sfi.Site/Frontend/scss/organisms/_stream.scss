@@ -8,14 +8,20 @@ Stream of .media molecules.
 
  */
 
- .stream{
- 	position: relative;
- }
+.stream{
+	position: relative;
+}
+.stream__content {
+	position: relative;
+	overflow: auto;
+}
 .stream__item{
 	width: 276px;
 	height: 357px;
 	margin-bottom: 2*$u;
+	margin-right: 2*$u;
 	float: left;
+	position: relative;
 }
 .stream__item .media__wrap{
 	height: 357px;

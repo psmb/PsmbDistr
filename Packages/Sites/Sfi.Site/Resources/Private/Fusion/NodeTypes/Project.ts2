@@ -1,4 +1,7 @@
-prototype(Sfi.Site:Project) < prototype(T:Template) {
+prototype(Sfi.Site:Project.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:Project
+}
+prototype(Sfi.Site:Project) < prototype(Sfi.Site:AbstractPage) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Project.html'
 
 	projectType = ${q(node).parent().property('title')}

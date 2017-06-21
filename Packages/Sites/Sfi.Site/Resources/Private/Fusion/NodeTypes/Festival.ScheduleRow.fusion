@@ -1,0 +1,6 @@
+prototype(Sfi.Site:Festival.ScheduleRow) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Festival.ScheduleRow.html'
+	main = ContentCollectionRenderer {
+		#@process.contentElementWrapping = ContentElementWrapping
+	}
+}

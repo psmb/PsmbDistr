@@ -1,0 +1,67 @@
+'Sfi.Site:Festival.ArticleLink':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Фестиваль - Внешний материал'
+    group: 'festival'
+  properties:
+    title:
+      type: string
+      ui:
+        label: Заголовок
+        inspector:
+          group: general
+    teaser:
+      type: string
+      ui:
+        label: 'Тизер'
+        inspector:
+          group: general
+    source:
+      type: string
+      ui:
+        label: 'Источник материала'
+        inspector:
+          group: general
+    link:
+      type: string
+      ui:
+        label: Ссылка
+        inspector:
+          group: general
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    showDate:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: 'Показывать дату?'
+        reloadIfChanged: true
+        inspector:
+          group: general
+    date:
+      type: DateTime
+      defaultValue: now
+      ui:
+        label: Дата
+        reloadIfChanged: true
+        inspector:
+          group: general
+          editorOptions:
+            format: 'd-m-Y H:i'
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фотка
+        reloadIfChanged: true
+        inspector:
+          group: general
+          editorOptions:
+            features:
+              resize: true
+            crop:
+              aspectRatio:
+                enableOriginal: false
+                allowCustom: false
+                locked:
+                  width: 600
+                  height: 400

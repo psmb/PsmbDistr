@@ -1,4 +1,7 @@
-prototype(Sfi.Site:MainPage) {
+prototype(Sfi.Site:MainPage.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:MainPage
+}
+prototype(Sfi.Site:MainPage) < prototype(Sfi.Site:AbstractPage) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/MainPage.html'
 	lang = ${lang}
 	top = Neos.Neos:ContentCollection {
@@ -12,7 +15,7 @@ prototype(Sfi.Site:MainPage) {
 	blogList = Sfi.Site:BlogListWithLinks
 
 	projects = T:Collection {
-		@process.tmpl = ${'<div class="row paddingVertical-double"><div class="fixed-width">' + value + '</div></div>'}
+		@process.tmpl = ${'<div class="row paddingVertical-double"><div class="fixedWidth">' + value + '</div></div>'}
 		collection = ${q(site).children('projects').children('[instanceof Neos.Neos:Document]').get()}
 		itemRenderer = T:Tag {
 			@process.tmpl = ${'<div class="small-12 medium-4 columns">' + value + '</div>'}

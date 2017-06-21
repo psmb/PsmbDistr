@@ -1,4 +1,3 @@
-
 blah:
   placeholder: 'Enter title here'
   format:
@@ -18,10 +17,12 @@ blah:
   link:
     a: false
   alignment: {  }
+
 'Sfi.Site:News':
   superTypes:
     'Neos.Neos:Document': true
     'Sfi.Site:TaggableMixin': true
+    'Psmb.Newsletter:NewsletterMixin': true
   ui:
     label: Материал
     inspector:

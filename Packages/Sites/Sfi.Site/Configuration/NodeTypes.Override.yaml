@@ -1,3 +1,27 @@
+'Neos.Neos:Shortcut':
+  superTypes:
+    'Sfi.Site:ImageMixin': true
+
+'Neos.Neos:Content':
+  ui:
+    inspector:
+      groups:
+        general:
+          title: Общие
+
+'Neos.Neos:Document':
+  ui:
+    inspector:
+      groups:
+        general:
+          title: Общие
+  properties:
+    uriPathSegment:
+      search:
+        elasticSearchMapping:
+          type: string
+          index: not_analyzed
+
 'Psmb.NodeTypes:Image':
   properties:
     image:

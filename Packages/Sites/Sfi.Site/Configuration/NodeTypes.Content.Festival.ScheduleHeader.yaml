@@ -1,0 +1,13 @@
+'Sfi.Site:Festival.ScheduleHeader':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Фестиваль - Заголовок расписания'
+    group: 'festival'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Название

@@ -1,12 +1,10 @@
-
-'Sfi.Site:Exhibition':
+'Sfi.Site:Page':
   superTypes:
     'Neos.Neos:Document': true
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:ImageMixin': true
-    'Sfi.Site:TagMixin': true
   ui:
-    label: Выставка
+    label: 'Обычная страница'
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

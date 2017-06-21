@@ -144,6 +144,28 @@
 			<trans-unit id="newsletter.digestReadMore">
 				<source>Перейти на сайт</source>
 			</trans-unit>
+
+			<trans-unit id="festival.global.psmb">
+				<source>Преображенское братство</source>
+			</trans-unit>
+			<trans-unit id="festival.global.copyright">
+				<source>© 2016 Преображенское содружество малых православных братств</source>
+			</trans-unit>
+			<trans-unit id="festival.global.shorttitle">
+				<source>Фестиваль «Преображенские встречи»</source>
+			</trans-unit>
+			<trans-unit id="festival.global.tomain">
+				<source>На главную</source>
+			</trans-unit>
+			<trans-unit id="festival.global.topsmb">
+				<source>На сайт Преображенского братства</source>
+			</trans-unit>
+			<trans-unit id="festival.articles.title">
+				<source>Материалы по теме</source>
+			</trans-unit>
+			<trans-unit id="festival.venueArticles.title">
+				<source>Материалы о площадке</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

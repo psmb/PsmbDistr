@@ -1,0 +1,23 @@
+prototype(Sfi.Site:Festival.VenuesMenu)>
+prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
+	@process.tmpl = ${'<ul class="VenuesMenu">' + value + '</ul>'}
+	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
+	itemRenderer = Neos.Fusion:Tag {
+		@process.tmpl = ${'<li class="VenusMenu-item Link marginBottom-single gamma color-warning ' + (node == documentNode && 'isActive') + '">' + value + '</li>'}
+		tagName = 'a'
+		attributes.href = NodeUri {
+			node = ${node}
+		}
+		content = ${node.properties.title}
+	}
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node.identifier}
+		}
+		entryTags {
+			1 = ${'Sfi.Site:FestivalVenue'}
+		}
+	}
+	@process.contentElementWrapping = ContentElementWrapping
+}

@@ -12,10 +12,8 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 		renderer = T:Value {
 			value = ${Search.query(site).nodeType('Sfi.Site:News')}
 			value.@process.filterOutExternalAndAnnouncementsAndSelf = ${value.queryFilter('bool', {must_not: [
-					{term: {type: 'externalNews'}},
-					{term: {type: 'announcement'}},
-					{term: {__identifier: documentNode.identifier}}
-				]})}
+				{term: {__identifier: documentNode.identifier}}
+			]})}
 			value.@process.newsPages = T:Case {
 				notNews {
 					condition = ${q(node).is('[instanceof Sfi.Site:News]') ? false : true}
@@ -33,8 +31,12 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 				}
 				sections {
 					condition = ${node.properties.sections}
-					renderer = ${value.queryFilter('bool',{should: [
+					renderer = ${value.queryFilter('bool',
+					{should: [
 							{terms: {sections: q(node.properties.sections).map('value.identifier')}}
+						], must_not: [
+							{term: {type: 'externalNews'}},
+							{term: {type: 'announcement'}}
 						]
 					})}
 				}

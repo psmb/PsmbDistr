@@ -1,0 +1,10 @@
+prototype(Sfi.Site:PlaceTag.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:PlaceTag
+}
+prototype(Sfi.Site:PlaceTag) < prototype(Sfi.Site:AbstractPage) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/PlaceTag.html'
+	title = ${node.properties.title}
+	newsList = Sfi.Site:Stream {
+		@context.hideBar = ${true}
+	}
+}

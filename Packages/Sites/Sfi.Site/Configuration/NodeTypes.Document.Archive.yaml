@@ -1,0 +1,7 @@
+'Sfi.Site:Archive':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
+  ui:
+    label: Архив

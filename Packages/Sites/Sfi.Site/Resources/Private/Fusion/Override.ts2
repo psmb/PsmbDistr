@@ -21,7 +21,7 @@ prototype(Psmb.NodeTypes:Small) {
 	attributes.class = 'Small rte-text'
 }
 prototype(Psmb.NodeTypes:Epigraph) {
-	attributes.class = 'Epigraph rte-text'
+  attributes.class = 'Epigraph rte-text small-12 medium-8 medium-offset-4'
 }
 prototype(Psmb.NodeTypes:Button) {
 	attributes.class = 'button button--alt'

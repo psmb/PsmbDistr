@@ -1,0 +1,55 @@
+prototype(Sfi.Site:FestivalVenue.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:FestivalVenue
+}
+prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
+	@process.layout = Sfi.Site:FestivalLayout
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/FestivalVenue.html'
+	main = ContentCollection {
+		nodePath = 'main'
+	}
+	venueArticles = Neos.Fusion:Collection {
+		@context.isStream = ${true}
+		@process.tmpl = ${'<div class="stream js-stream"><ul class="stream__content js-stream__content">' + value + '</ul></div>'}
+		@process.tmpl2 = ${'<h3 class="beta marginBottom-triple"> ' + Translation.translate('festival.venueArticles.title', null, [], null, 'Sfi.Site') + '</h3>' + value}
+
+		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('tags', documentNode).execute()}
+		itemName = 'node'
+		itemRenderer = Sfi.Site:NewsShort
+		@cache {
+			entryIdentifier {
+				node = ${documentNode}
+			}
+			entryTags {
+				1 = 'NodeType_Sfi.Site:News'
+			}
+		}
+	}
+	articles = Neos.Fusion:Collection {
+		@context.isStream = ${true}
+		@process.tmpl = ${'<div class="stream js-stream"><ul class="stream__content js-stream__content">' + value + '</ul></div>'}
+		@process.tmpl2 = ${'<h3 class="marginTop-triple Lead textAlign-center marginBottom-triple color-gray"> ' + Translation.translate('festival.articles.title', null, [], null, 'Sfi.Site') + '</h3>' + value}
+		articles = ${q(node).children('articles').children()}
+		collection = ${this.articles.get()}
+		itemRenderer = Sfi.Site:NewsShort {
+			@process.contentElementWrapping = ContentElementWrapping
+			nodeUri = ${node.properties.link}
+			nodeUri.@process.convertUris = ConvertUris {
+				forceConversion = true
+			}
+		}
+		@if.notEmpty = ${documentNode.context.inBackend || this.articles.count() > 0 ? true : false}
+		@cache {
+			mode = 'cached'
+			entryIdentifier {
+				node = ${node}
+			}
+			entryTags {
+				1 = ${'DescendantOf_' + node.identifier}
+			}
+		}
+	}
+
+	# articles = Sfi.Site:ArticleLinkList
+	venuesMenu = Sfi.Site:Festival.VenuesMenu
+	@context.festivalNode = ${q(documentNode).closest('[instanceof Sfi.Site:Festival]').get(0)}
+}

@@ -1,0 +1,29 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div class="backgroundColor-gray">
+	<div class="fixedWidth">
+		<div class="row">
+			<div class="small-12 large-8 columns">
+				<div class="backgroundColor-white shadow padding-double">
+					<!-- TODO: i18n -->
+					<p class="marginBottom-half">Фестивальная площадка <span class="color-primaryAlt">«{title}»</span></p>
+					<h1 class="alpha marginBottom-single">{neos:contentElement.editable(property: 'fullTitle', tag: 'span')}</h1>
+					<div style="overflow: hidden">
+						{main -> f:format.raw()}
+					</div>
+					{venueArticles -> f:format.raw()}
+				</div>
+				{articles -> f:format.raw()}
+			</div>
+			<div class="small-12 large-4 columns">
+				<div>
+					<div class="NavSectionMenu-wrap backgroundColor-white shadow padding-double js-stickInParent">
+						<!-- TODO: i18n -->
+						<p class="Squirrel marginBottom-sesquialteral">Другие площадки фестиваля:</p>
+						{venuesMenu -> f:format.raw()}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

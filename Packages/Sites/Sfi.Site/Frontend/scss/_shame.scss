@@ -8,7 +8,7 @@ margin-top: 24px;
 }
 
 .page-344 .page-content {
-	@extend .fixed-width;
+	@extend .fixedWidth;
 	padding: 0 $u;
 	& > .csc-default {
 		width: 33%;
@@ -76,4 +76,8 @@ margin-top: 24px;
 
 .neos #neos-inspector table.neos-tableview-table td {
 	padding-right: 8px;
+}
+
+.Container {
+	overflow: auto;
 }

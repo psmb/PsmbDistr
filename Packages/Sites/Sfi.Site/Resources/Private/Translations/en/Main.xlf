@@ -195,6 +195,35 @@
 				<source>Перейти на сайт</source>
 				<target>Go to the website</target>
 			</trans-unit>
+
+			<trans-unit id="festival.global.psmb">
+				<source>Преображенское братство</source>
+				<target>Transfiguration Brotherhood</target>
+			</trans-unit>
+			<trans-unit id="festival.global.copyright">
+				<source>© 2016 Преображенское содружество малых православных братств</source>
+				<target>© 2016 Transfiguration Brotherhood</target>
+			</trans-unit>
+			<trans-unit id="festival.global.shorttitle">
+				<source>Фестиваль «Преображенские встречи»</source>
+				<target>Transfiguration Meetings</target>
+			</trans-unit>
+			<trans-unit id="festival.global.tomain">
+				<source>На главную</source>
+				<target>Go to front page</target>
+			</trans-unit>
+			<trans-unit id="festival.global.topsmb">
+				<source>На сайт Преображенского братства</source>
+				<target>Go to the Transfiguration Brotherhood website</target>
+			</trans-unit>
+			<trans-unit id="festival.articlelink.title">
+				<source>Материалы по теме</source>
+				<target>Additional reading</target>
+			</trans-unit>
+			<trans-unit id="festival.articles.title">
+				<source>Материалы по теме</source>
+				<target>Additional reading</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

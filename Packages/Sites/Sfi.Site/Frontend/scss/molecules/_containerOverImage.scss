@@ -16,7 +16,7 @@
 		background-color: rgba(0, 0, 0, 0.5);
 	}
 	.ContainerOverImage-inner {
-		@extend .fixed-width;
+		@extend .fixedWidth;
 		padding: 2*$u;
 		position: relative;
 	}

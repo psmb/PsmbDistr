@@ -1,0 +1,9 @@
+prototype(Sfi.Site:PersonCard) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/PersonCard.html'
+	imageUri = ImageUri {
+		asset = ${q(node).property('image')}
+		maximumWidth = 140
+		maximumHeight = 140
+		allowCropping = TRUE
+	}
+}

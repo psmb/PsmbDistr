@@ -1,0 +1,31 @@
+'Sfi.Site:NavSection':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Секция для меню'
+    inlineEditable: true
+  constraints:
+    nodeTypes:
+      '*': true
+  properties:
+    title:
+      type: string
+      ui:
+        label: Название
+        reloadPageIfChanged: true
+        inspector:
+          group: general
+    navTitle:
+      type: string
+      ui:
+        label: 'Название для навигации (на английском)'
+        reloadPageIfChanged: true
+        inspector:
+          group: general
+      validation:
+        Neos.Neos/Validation/StringLengthValidator:
+          minimum: 1
+          maximum: 255
+        regularExpression:
+          regularExpression: '/^[a-z0-9\-]+$/i'

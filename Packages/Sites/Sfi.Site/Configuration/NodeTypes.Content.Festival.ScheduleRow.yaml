@@ -1,0 +1,24 @@
+'Sfi.Site:Festival.ScheduleRow':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Фестиваль - Строка расписания'
+    group: 'festival'
+  constraints:
+    nodeTypes:
+      '*': true
+  properties:
+    time:
+      type: string
+      defaultValue: '0:00–1:00'
+      ui:
+        inlineEditable: true
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Название
+          link:
+            a: true

@@ -1,0 +1,22 @@
+'Sfi.Site:PresentationPage':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Sfi.Site:NavTitleMixin': true
+    'Sfi.Site:ImageMixin': true
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+  ui:
+    label: 'О нас'
+  properties:
+    teachers:
+      type: references
+      ui:
+        label: 'Наши учителя'
+        reloadIfChanged: true
+        inspector:
+          group: document
+          editorOptions:
+            nodeTypes:
+              - 'Sfi.Site:TagMixin'
+            startingPoint: /sites/site/tags/people

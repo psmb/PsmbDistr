@@ -73,57 +73,51 @@ $yellow: #edad00;
 $orange: #e87f23;
 
 
-@mixin colormix($pageclass, $color){
-	#{$pageclass}{
-		.section-color{
-			color: $color;
-			border-color: $color;
-		}
-		.section-color-bg{
-			background: $color;
-		}
-		.section-color-bd{
-			border-color: $color;
-		}
-		.section-color-bg--darken{
-			background: darken($color,20%);
-		}
-		.section-color-bd--darken{
-			border-color: darken($color,20%);
-		}
-		blockquote{
-			:before{background: $color;}
-		}
-	}
+/*doc
+---
+title: Gray background
+name: backgroundColor-gray
+parent: 00_helpers
+category:
+- atoms
+- backgroundColor-gray
+---
+TODO: refactor color;
+
+```html_example
+<p class="backgroundColor-gray">This block has gray background</p>
+```
+ */
+.backgroundColor-gray, .backgroundColor-gray {
+	background: $gray-bg;
+}
+.bg-navy--light {
+	background: $navy--light;
+}
+.bg-navy--dark {
+	background: $navy--dark;
+}
+.bg-white, .backgroundColor-white {
+	background: white;
 }
 
+.white, .color-white {
+	color: white !important;
+}
+.navy--light {
+	color: $navy--light !important;
+}
+.primary-color {
+	color: $primary-color !important;
+}
+.color-warning {
+	color: $scarlet !important;
+}
 
-//main
-@include colormix("body",$navy--light);
-//OBJ
-@include colormix(".page-58",$grass);
-//Mission
-@include colormix(".page-59",$emerald);
-//Society
-@include colormix(".page-343",$violet);
-//Prayer
-@include colormix(".page-66",$scarlet);
-//Martyrs
-@include colormix(".page-65",$pink);
-//Churching
-@include colormix(".page-92",$orange);
-//Charity
-@include colormix(".page-62",$marine);
-//SFI
-@include colormix(".page-60",$yellow);
+.color-gray {
+	color: $gray;
+}
 
-//Ascetics
-// .page-63{
-// 	.section-color{
-// 		color: ;
-// 		border-color: ;
-// 	}
-// 	blockquote{
-// 		:before{background: ;}
-// 	}
-// }
+.color-grayLight {
+	color: $gray--light;
+}

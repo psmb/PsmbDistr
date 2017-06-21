@@ -1,0 +1,11 @@
+prototype(Sfi.Site:Festival.ScheduleHeader) < prototype(Neos.Fusion:Tag) {
+	@process.tmpl = ${'<div class="marginTop-triple marginHorizontal-none marginBottom-single border-bottom">' + value + '</div>'}
+	attributes.class = 'beta color-warning'
+	content = Neos.Fusion:Tag {
+		content = ${q(node).property('title')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'title'
+		}
+	}
+	@process.contentElementWrapping = ContentElementWrapping
+}

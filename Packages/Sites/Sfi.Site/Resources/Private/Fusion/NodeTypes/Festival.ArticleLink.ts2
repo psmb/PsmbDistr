@@ -1,0 +1,1 @@
+prototype(Sfi.Site:Festival.ArticleLink) < prototype(Sfi.Site:NewsShort)
