@@ -7,7 +7,7 @@
     label: Фестиваль
     group: festival
   childNodes:
-    cover:
+    gallery:
       type: 'Neos.Neos:ContentCollection'
     main:
       type: 'Neos.Neos:ContentCollection'

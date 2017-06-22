@@ -145,6 +145,9 @@
 				<source>Перейти на сайт</source>
 			</trans-unit>
 
+			<trans-unit id="festival.global.commontitle">
+				<source><![CDATA[Фестиваль «Преображенские встречи»<br>Проходит в Москве с 2015 года<br>по инициативе <a href="/" title="Сайт братства">Преображенского братства</a>]]></source>
+			</trans-unit>
 			<trans-unit id="festival.global.psmb">
 				<source>Преображенское братство</source>
 			</trans-unit>

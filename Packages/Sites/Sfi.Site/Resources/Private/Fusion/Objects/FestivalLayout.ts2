@@ -1,6 +1,9 @@
 prototype(Sfi.Site:FestivalLayout) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/Objects/FestivalLayout.html'
-	mainMenu = Sfi.Site:NavSectionMenu {
+
+	festivalsMenu = Sfi.Site:FestivalsMenu
+
+	navSectionMenu = Sfi.Site:NavSectionMenu {
 		@context.documentNode = ${festivalNode}
 	}
 
@@ -19,4 +22,7 @@ prototype(Sfi.Site:FestivalLayout) < prototype(T:Template) {
 	isMain = ${festivalNode == documentNode ? true : false}
 
 	value = ${value}
+	@process.contentElementWrapping = ContentElementWrapping {
+		@context.node = ${festivalNode}
+	}
 }

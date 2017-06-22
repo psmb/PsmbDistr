@@ -1,38 +1,24 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-<header class="Header fixedWidth">
-	<div class="paddingVertical-single">
-		<a target="_blank" href="http://psmb.ru" title="{f:translate(package:'Sfi.Site', id:'festival.global.topsmb')}">
-			<img style="height: 100px" src="/_Resources/Static/Packages/Sfi.Site/Images/PsmbFish-{lang}.svg" alt="{f:translate(package:'Sfi.Site', id:'festival.global.psmb')}">
-		</a>
-	</div>
-	<nav class="show-for-medium-up">{mainMenu -> f:format.raw()}</nav>
-</header>
-<div class="Masthead" style="background-image: url({coverImageUri})">
-	<div class="Masthead-overlay textAlign-center paddingTop-triple paddingBottom-double">
-		<div class="fixedWidth">
-			<h1 class="Masthead-headline H0 color-white paddingVertical-single">{neos:contentElement.editable(property: 'headline', tag: 'span')}</h1>
-			<h2 class="Masthead-subHeadline H1Alt color-white ">{neos:contentElement.editable(property: 'subHeadline', tag: 'span')}</h2>
-			<p class="Masthead-location H2 color-white paddingTop-single paddingBottom-double">{neos:contentElement.editable(property: 'location', tag: 'span')}</p>
-			<f:if condition="{isMain}">
-				<f:then>
-					<div class="Masthead-summary Fox color-white paddingVertical-single">{neos:contentElement.editable(property: 'summary')}</div>
-				</f:then>
-				<f:else>
-					<a class="ButtonTransparent Dog" title="{f:translate(package:'Sfi.Site', id:'festival.global.tomain')}" href="{linkToFestival}">На главную</a>
-					<div style="height: 112px;"></div>
-				</f:else>
-			</f:if>
+
+<header class="bg-navy--dark" style="border-bottom: 1px solid white">
+	<div class="fixedWidth paddingHorizontal-single" style="overflow: initial; display: flex; justify-content: space-between">
+		<div class="delta color-white">
+			{f:translate(package:'Sfi.Site', id:'festival.global.commontitle') -> f:format.raw()}
 		</div>
+		{festivalsMenu -> f:format.raw()}
+	</div>
+</header>
+<div class="bg-navy--light color-white">
+	<div class="fixedWidth">
+		{navSectionMenu -> f:format.raw()}
 	</div>
 </div>
-<f:if condition="{isMain}">
-	<nav class="show-for-small-only fixedWidth">{mainMenu -> f:format.raw()}</nav>
-</f:if>
+
+
 
 {value -> f:format.raw()}
 
 <div class="fixedWidth">
-	{mainMenu -> f:format.raw()}
 </div>
 <footer class="Footer backgroundColor-primaryAlt paddingVertical-double">
 	<div class="fixedWidth">

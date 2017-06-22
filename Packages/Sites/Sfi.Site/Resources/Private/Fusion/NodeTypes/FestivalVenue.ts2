@@ -15,6 +15,8 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('tags', documentNode).execute()}
 		itemName = 'node'
 		itemRenderer = Sfi.Site:NewsShort
+
+		@if.notEmpty = ${documentNode.context.inBackend || q(this.collection).count() > 0 ? true : false}
 		@cache {
 			entryIdentifier {
 				node = ${documentNode}

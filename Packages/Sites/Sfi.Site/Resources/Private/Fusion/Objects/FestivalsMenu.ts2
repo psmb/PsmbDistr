@@ -1,0 +1,28 @@
+prototype(Sfi.Site:FestivalsMenu) < prototype(Neos.Fusion:Collection) {
+	@process.tmpl = ${'<div class="FestivalsMenu">' + value + '</div>'}
+	collection = ${Array.reverse(q(site).find('[instanceof Sfi.Site:Festival]').get())}
+	itemRenderer = Neos.Fusion:Tag {
+		tagName = 'a'
+		attributes.class = Neos.Fusion:RawArray {
+			class = 'FestivalsMenu-item'
+			active = ${documentNode == node ? 'isActive' : ''}
+		}
+		attributes.href = NodeUri {
+			node = ${node}
+		}
+		content = Neos.Fusion:Array {
+			1 = ${'<div class="FestivalsMenu-navTitle">' + node.properties.navTitle + '</div>'}
+			2 = ${'<div class="FestivalsMenu-title">' + node.properties.title + '</div>'}
+		}
+	}
+	itemName = 'node'
+	@cache {
+		mode = 'cached'
+		entryIdentifier {
+			node = ${node}
+		}
+		entryTags {
+			1 = 'NodeType_Sfi.Site:Festival'
+		}
+	}
+}
