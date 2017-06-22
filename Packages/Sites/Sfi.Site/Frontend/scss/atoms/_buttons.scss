@@ -1,6 +1,6 @@
 .light-button {
 	@extend .block-title--strong;
-	padding: 5px 10px;
+	padding: $u;
 	margin: 0;
 	color: $primary-color;
 	border: 2px solid $primary-color;
