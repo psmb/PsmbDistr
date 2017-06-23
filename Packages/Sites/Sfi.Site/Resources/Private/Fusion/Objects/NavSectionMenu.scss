@@ -1,5 +1,7 @@
 .NavSectionMenu {
 	margin: $u;
+}
+.NavSectionMenu--top {
 	@media #{$medium-up} {
 		text-align: right;
 	}
