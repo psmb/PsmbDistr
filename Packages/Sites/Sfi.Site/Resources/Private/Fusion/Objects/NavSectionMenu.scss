@@ -1,0 +1,17 @@
+.NavSectionMenu {
+	margin: $u;
+	@media #{$medium-up} {
+		text-align: right;
+	}
+}
+.NavSectionMenu-item {
+	display: block;
+	@media (min-width: 480px) {
+		width: calc(50% - 12px);
+		display: inline-block;
+		margin: 6px !important;
+	}
+	@media #{$medium-up} {
+		width: initial;
+	}
+}

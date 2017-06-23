@@ -1,5 +1,5 @@
 prototype(Sfi.Site:NavSectionMenu) < prototype(Neos.Fusion:Collection) {
-	@process.tmpl = ${'<div class="NavSectionMenu textAlign-right">' + value + '</div>'}
+	@process.tmpl = ${'<div class="NavSectionMenu">' + value + '</div>'}
 	collection = ${q(documentNode).children('main').find('[instanceof Sfi.Site:NavSection]').get()}
 	itemRenderer = Neos.Fusion:Tag {
 		tagName = 'a'

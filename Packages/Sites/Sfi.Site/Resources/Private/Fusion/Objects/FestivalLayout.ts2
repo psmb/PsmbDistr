@@ -29,4 +29,6 @@ prototype(Sfi.Site:FestivalLayout) < prototype(T:Template) {
 	@process.contentElementWrapping = ContentElementWrapping {
 		@context.node = ${festivalNode}
 	}
+
+	year = ${Date.format(Date.now(), 'Y')}
 }

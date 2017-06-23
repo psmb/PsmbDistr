@@ -1,8 +1,8 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 
 <header class="bg-navy--dark" style="border-bottom: 1px solid white">
-	<div class="fixedWidth paddingHorizontal-single" style="overflow: initial; display: flex; justify-content: space-between">
-		<div class="delta color-white">
+	<div class="FestivalLayout-header fixedWidth paddingHorizontal-single">
+		<div class="FestivalLayout-title delta margin-none paddingVertical-single paddingRight-single color-white">
 			{f:translate(package:'Sfi.Site', id:'festival.global.commontitle') -> f:format.raw()}
 		</div>
 		{festivalsMenu -> f:format.raw()}
@@ -18,10 +18,11 @@
 
 {value -> f:format.raw()}
 
-<div class="fixedWidth">
-</div>
-<footer class="Footer backgroundColor-primaryAlt paddingVertical-double">
+<footer class="bg-navy--dark paddingVertical-double color-white">
 	<div class="fixedWidth">
-		<p class="Squirrel color-white">{f:translate(package:'Sfi.Site', id:'festival.global.copyright')}</p>
+		{navSectionMenu -> f:format.raw()}
+		<p class="marginTop-half paragraph--small marginLeft-half">
+			© {year} {f:translate(package:'Sfi.Site', id:'festival.global.copyright')}
+		</p>
 	</div>
 </footer>

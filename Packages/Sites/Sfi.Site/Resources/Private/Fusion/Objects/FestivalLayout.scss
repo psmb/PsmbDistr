@@ -1,0 +1,10 @@
+.FestivalLayout-title a {
+	text-decoration: underline;
+}
+.FestivalLayout-header {
+	overflow: initial;
+	@media #{$medium-up} {
+		display: flex;
+		justify-content: space-between;
+	}
+}

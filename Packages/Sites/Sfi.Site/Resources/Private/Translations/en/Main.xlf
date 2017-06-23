@@ -201,8 +201,8 @@
 				<target>Transfiguration Brotherhood</target>
 			</trans-unit>
 			<trans-unit id="festival.global.copyright">
-				<source>© 2016 Преображенское содружество малых православных братств</source>
-				<target>© 2016 Transfiguration Brotherhood</target>
+				<source>Преображенское содружество малых православных братств</source>
+				<target>Transfiguration Brotherhood</target>
 			</trans-unit>
 			<trans-unit id="festival.global.shorttitle">
 				<source>Фестиваль «Преображенские встречи»</source>
