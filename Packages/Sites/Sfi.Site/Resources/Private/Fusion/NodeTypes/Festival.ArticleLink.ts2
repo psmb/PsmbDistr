@@ -1,1 +1,3 @@
-prototype(Sfi.Site:Festival.ArticleLink) < prototype(Sfi.Site:NewsShort)
+prototype(Sfi.Site:Festival.ArticleLink) < prototype(Sfi.Site:NewsShort) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/NewsShort.html'
+}
