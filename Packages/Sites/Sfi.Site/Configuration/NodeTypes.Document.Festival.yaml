@@ -7,8 +7,6 @@
     label: Фестиваль
     group: festival
   childNodes:
-    header:
-      type: 'Neos.Neos:ContentCollection'
     main:
       type: 'Neos.Neos:ContentCollection'
   properties:
