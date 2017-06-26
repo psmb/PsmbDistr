@@ -1,0 +1,6 @@
+prototype(Sfi.Site:FestivalVenue.Header) < prototype(Neos.Fusion:Template) {
+	templatePath = ${'resource://Sfi.Site/Private/Fusion/NodeTypes/FestivalVenue.Header' + q(festivalNode).property('uriPathSegment') + '.html'}
+	homeUri = NodeUri {
+		node = ${festivalNode}
+	}
+}

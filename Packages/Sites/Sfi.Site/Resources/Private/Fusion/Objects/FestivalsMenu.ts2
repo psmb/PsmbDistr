@@ -5,7 +5,7 @@ prototype(Sfi.Site:FestivalsMenu) < prototype(Neos.Fusion:Collection) {
 		tagName = 'a'
 		attributes.class = Neos.Fusion:RawArray {
 			class = 'FestivalsMenu-item'
-			active = ${documentNode == node ? 'isActive' : ''}
+			active = ${node == documentNode || q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0 ? 'isActive' : ''}
 		}
 		attributes.href = NodeUri {
 			node = ${node}

@@ -7,10 +7,6 @@ prototype(Sfi.Site:FestivalLayout) < prototype(T:Template) {
 		@context.documentNode = ${festivalNode}
 	}
 
-	header = ContentCollection {
-		@context.node = ${q(festivalNode).children('header').get(0)}
-	}
-
 	lang = ${Array.first(node.context.dimensions.language)}
 	headline = ${q(festivalNode).property('headline')}
 	subHeadline = ${q(festivalNode).property('subHeadline')}

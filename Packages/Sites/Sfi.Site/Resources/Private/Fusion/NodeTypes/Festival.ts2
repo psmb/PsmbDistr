@@ -5,6 +5,7 @@ prototype(Sfi.Site:Festival) < prototype(Sfi.Site:AbstractPage) {
 	@context.festivalNode = ${q(documentNode).closest('[instanceof Sfi.Site:Festival]').get(0)}
 	@process.layout = Sfi.Site:FestivalLayout
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Festival.html'
+	header = Sfi.Site:Festival.Header
 	main = ContentCollection {
 		nodePath = 'main'
 	}

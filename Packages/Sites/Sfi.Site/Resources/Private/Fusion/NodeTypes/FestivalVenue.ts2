@@ -2,8 +2,10 @@ prototype(Sfi.Site:FestivalVenue.Document) < prototype(Sfi.Site:AbstractPage.Doc
 	body = Sfi.Site:FestivalVenue
 }
 prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
+	@context.festivalNode = ${q(documentNode).closest('[instanceof Sfi.Site:Festival]').get(0)}
 	@process.layout = Sfi.Site:FestivalLayout
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/FestivalVenue.html'
+	header = Sfi.Site:FestivalVenue.Header
 	main = ContentCollection {
 		nodePath = 'main'
 	}
@@ -53,5 +55,4 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 
 	# articles = Sfi.Site:ArticleLinkList
 	venuesMenu = Sfi.Site:Festival.VenuesMenu
-	@context.festivalNode = ${q(documentNode).closest('[instanceof Sfi.Site:Festival]').get(0)}
 }
