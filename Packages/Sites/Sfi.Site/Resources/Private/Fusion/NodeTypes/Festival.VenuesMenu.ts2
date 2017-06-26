@@ -4,7 +4,7 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
 	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
 	itemRenderer = Neos.Fusion:Tag {
 		@process.tmpl = ${'<li class="VenusMenu-item Link marginBottom-single gamma color-warning ' + (node == documentNode && 'isActive') + '">' + value + '</li>'}
-		tagName = ${festivalNode.properties.uriPathSegment == '2017' ? 'div' : 'a'}
+		tagName = 'a'
 		attributes.href = NodeUri {
 			node = ${node}
 		}
