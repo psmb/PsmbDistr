@@ -197,7 +197,7 @@
 			</trans-unit>
 
 			<trans-unit id="festival.global.commontitle">
-				<target><![CDATA[“Transfiguration Meetings” festival takes place in Moscow since 2015<br>by initiative of the <a href="/" title="The website of the brotherhood">Transfiguration Brotherhood</a>]]></target>
+				<target><![CDATA[“Transfiguration Meetings” festival<br>takes place in Moscow since 2015<br>by initiative of the <a href="/" title="The website of the brotherhood">Transfiguration Brotherhood</a>]]></target>
 			</trans-unit>
 			<trans-unit id="festival.global.psmb">
 				<source>Преображенское братство</source>
