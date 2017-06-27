@@ -85,10 +85,10 @@ font-style:normal;
 				</div>
 				<div>
 					<div class="primary-color Freeset">
-						<p class="Festival17-title">фестиваль<br>Преображенские<br>встречи</p>
-						<p class="Festival17-subTitle">Время новой<br>соборности</p>
-						<p class="Festival17-date">19-20 августа 2017, Москва</p>
-						<p class="Festival17-place">Фестиваль проходит в КВЦ Сокольники</p>
+						<div class="Festival17-title">{headline -> f:format.raw()}</div>
+						<div class="Festival17-subTitle">{subHeadline -> f:format.raw()}</div>
+						<div class="Festival17-date">{summary -> f:format.raw()}</div>
+						<div class="Festival17-place">{location -> f:format.raw()}</div>
 					</div>
 				</div>
 			</div>

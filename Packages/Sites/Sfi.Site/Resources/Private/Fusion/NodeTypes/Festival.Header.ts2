@@ -1,3 +1,31 @@
 prototype(Sfi.Site:Festival.Header) < prototype(Neos.Fusion:Template) {
 	templatePath = ${'resource://Sfi.Site/Private/Fusion/NodeTypes/Festival.Header' + q(festivalNode).property('uriPathSegment') + '.html'}
+
+	headline = Neos.Fusion:Tag {
+		content = ${q(festivalNode).property('headline')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'headline'
+		}
+	}
+	subHeadline = Neos.Fusion:Tag {
+		content = ${q(festivalNode).property('subHeadline')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'subHeadline'
+		}
+	}
+	summary = Neos.Fusion:Tag {
+		content = ${q(festivalNode).property('summary')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'summary'
+		}
+	}
+	location = Neos.Fusion:Tag {
+		content = ${q(festivalNode).property('location')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'location'
+		}
+	}
+	@process.contentElementWrapping = ContentElementWrapping {
+		@context.node = ${festivalNode}
+	}
 }

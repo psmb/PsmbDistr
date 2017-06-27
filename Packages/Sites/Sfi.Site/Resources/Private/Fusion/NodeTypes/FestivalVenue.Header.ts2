@@ -3,4 +3,20 @@ prototype(Sfi.Site:FestivalVenue.Header) < prototype(Neos.Fusion:Template) {
 	homeUri = NodeUri {
 		node = ${festivalNode}
 	}
+	headline = Neos.Fusion:Tag {
+		content = ${q(festivalNode).property('headline')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'headline'
+		}
+	}
+	subHeadline = Neos.Fusion:Tag {
+		content = ${q(festivalNode).property('subHeadline')}
+		@process.contentElementEditable = ContentElementEditable {
+			property = 'subHeadline'
+		}
+	}
+	toMain = ${Translation.translate('festival.global.tomain', null, [], null, 'Sfi.Site')}
+	@process.contentElementWrapping = ContentElementWrapping {
+		@context.node = ${festivalNode}
+	}
 }

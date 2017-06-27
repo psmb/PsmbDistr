@@ -59,9 +59,9 @@ font-style:normal;
 <div class="fixedWidth">
 	<div class="primary-color Freeset marginVertical-triple paddingHorizontal-single">
 		<a href="{homeUri}">
-			<p class="Festival17-title">Православный фестиваль «Преображенские встречи»</p>
-			<p class="Festival17-subTitle">Время новой соборности</p>
+			<div class="Festival17-title">{headline -> f:format.raw()}</div>
+			<div class="Festival17-subTitle">{subHeadline -> f:format.raw()}</div>
 		</a>
-		<a class="light-button" href="{homeUri}">↩ На главную</a>
+		<a class="light-button" href="{homeUri}">↩ {toMain}</a>
 	</div>
 </div>

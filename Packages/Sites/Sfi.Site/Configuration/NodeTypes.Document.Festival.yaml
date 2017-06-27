@@ -69,7 +69,7 @@
       ui:
         inlineEditable: true
         aloha:
-          placeholder: 'Место и дата'
+          placeholder: 'Место'
           format:
             b: false
             i: false
@@ -96,7 +96,7 @@
       ui:
         inlineEditable: true
         aloha:
-          placeholder: 'Сводка по вестивалю по дням'
+          placeholder: 'Сводка по вестивалю'
     coverImage:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:
