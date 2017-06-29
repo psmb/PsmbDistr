@@ -25,6 +25,9 @@ prototype(Sfi.Site:Festival.Header) < prototype(Neos.Fusion:Template) {
 			property = 'location'
 		}
 	}
+	coverImageUri = ImageUri {
+		asset = ${q(festivalNode).property('coverImage')}
+	}
 	@process.contentElementWrapping = ContentElementWrapping {
 		@context.node = ${festivalNode}
 	}

@@ -15,6 +15,9 @@ prototype(Sfi.Site:FestivalVenue.Header) < prototype(Neos.Fusion:Template) {
 			property = 'subHeadline'
 		}
 	}
+	coverImageUri = ImageUri {
+		asset = ${q(festivalNode).property('coverImage')}
+	}
 	toMain = ${Translation.translate('festival.global.tomain', null, [], null, 'Sfi.Site')}
 	@process.contentElementWrapping = ContentElementWrapping {
 		@context.node = ${festivalNode}
