@@ -1,7 +1,7 @@
 prototype(Sfi.Site:AnnouncementShort) < prototype(T:Template) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/AnnouncementShort.html'
 	title = ${String.cropAtWord(String.stripTags(node.properties.title), 110, '…')}
-	announcementPlace = ${node.properties.announcementPlace}
+	announcementPlace = ${String.stripTags(node.properties.announcementPlace)}
 	date = ${node.properties.date}
 	dateStart = ${node.properties.dateStart}
 	nodeUri = NodeUri {
