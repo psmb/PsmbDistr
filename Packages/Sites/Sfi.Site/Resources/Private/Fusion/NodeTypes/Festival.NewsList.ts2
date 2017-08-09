@@ -1,0 +1,26 @@
+prototype(Sfi.Site:Festival.NewsList) < prototype(Neos.Fusion:Collection) {
+    @context.isStream = ${true}
+    @process.tmpl = ${'<div class="stream js-stream"><ul class="stream__content js-stream__content">' + value + '</ul></div>'}
+    @process.tmpl2 = ${'<h3 class="marginTop-triple Lead textAlign-center marginBottom-triple color-gray"> ' + Translation.translate('festival.articles.title', null, [], null, 'Sfi.Site') + '</h3>' + value}
+    @process.wrapper = ${'<div class="fixedWidth">' + value + '</div>'}
+    # Get all articles marked either with this node or with child venues
+    @context.tagIds = ${q(documentNode).children('[instanceof Sfi.Site:FestivalVenue]').add(documentNode).map('value.identifier')}
+    articles = ${Search.query(site).nodeType('Sfi.Site:News').queryFilter('bool',{should: [
+            {terms: {tags: tagIds}}
+        ]
+    })}
+    collection = ${this.articles.execute()}
+    itemName = 'node'
+    itemRenderer = Sfi.Site:NewsShort
+    @if.notEmpty = ${documentNode.context.inBackend || this.articles.count() > 0 ? true : false}
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            node = ${node}
+        }
+        entryTags {
+            1 = 'NodeType_Sfi.Site:News'
+        }
+    }
+    @process.contentElementWrapping = ContentElementWrapping
+}

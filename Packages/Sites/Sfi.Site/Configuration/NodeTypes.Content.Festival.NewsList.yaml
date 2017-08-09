@@ -1,0 +1,7 @@
+'Sfi.Site:Festival.NewsList':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Фестиваль - блок с новостями
+    position: last
+    group: festival
