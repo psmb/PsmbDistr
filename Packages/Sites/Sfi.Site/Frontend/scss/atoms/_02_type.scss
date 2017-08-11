@@ -226,6 +226,15 @@ category:
 }
 
 
+.ol{
+	list-style-type: decimal;
+	margin-left: 2*$u;
+	> li{
+		margin-bottom: $u;
+	}
+}
+
+
 
 /*doc
 ---
@@ -794,6 +803,7 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 	a{@extend .link;}
 	blockquote{@extend .blockquote;}
 	ul{@extend .paragraph--large; @extend .ul;}
+	ol{@extend .paragraph--large; @extend .ol;}
 
 	.author{
 		@extend .zeta;
