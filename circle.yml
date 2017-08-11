@@ -18,7 +18,6 @@ deployment:
   prod:
     branch: master
     commands:
-      - cd ~/ansible-deploy
-      - touch 'i'
-      - ansible-playbook ~/ansible-deploy/deploy-alpine.yml --extra-vars "REPOSITORY_URL=https://github.com/psmb/PsmbDistr DOMAIN=psmb.ru HOST=server.psmb.ru PORT=1128 PROTOCOL=https PUBLISH_PERSISTENT=false" -i 'i':
+      - touch ~/ansible-deploy/i
+      - cd ~/ansible-deploy && ansible-playbook ~/ansible-deploy/deploy-alpine.yml --extra-vars "REPOSITORY_URL=https://github.com/psmb/PsmbDistr DOMAIN=psmb.ru HOST=server.psmb.ru PORT=1128 PROTOCOL=https PUBLISH_PERSISTENT=false" -i 'i':
           timeout: 1800
