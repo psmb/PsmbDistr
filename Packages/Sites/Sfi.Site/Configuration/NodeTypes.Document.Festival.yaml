@@ -3,9 +3,16 @@
     'Neos.Neos:Document': true
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:TagMixin': true
+    'Neos.Seo:OpenGraphMixin': true
   ui:
     label: Фестиваль
     group: festival
+    inspector:
+      tabs:
+        seo:
+          label: 'Neos.Seo:NodeTypes.Document:tabs.seo'
+          position: 30
+          icon: 'icon-bullseye'
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

@@ -1,4 +1,8 @@
 prototype(Sfi.Site:Festival.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	htmlTag.attributes.lang = Neos.Seo:LangAttribute
+	head {
+		openGraphMetaTags = Neos.Seo:OpenGraphMetaTags
+	}
 	body = Sfi.Site:Festival
 }
 prototype(Sfi.Site:Festival) < prototype(Sfi.Site:AbstractPage) {
