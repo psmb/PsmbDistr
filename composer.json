@@ -5,6 +5,12 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
+    "repositories": [
+        {
+            "url": "https://github.com/dimaip/neos-seo",
+            "type": "git"
+        }
+    ],
     "require": {
         "neos/neos-development-collection": "^3.1@dev",
         "neos/flow-development-collection": "@dev",
@@ -14,6 +20,8 @@
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
         "neos/redirecthandler-neosadapter": "@dev",
+        "neos/neos-ui": "dev-master",
+        "neos/neos-ui-compiled": "dev-master",
 
         "sfi/youtube": "@dev",
         "sfi/grid": "@dev",
@@ -27,8 +35,8 @@
         "psmb/carousel": "@dev",
         "dimaip/groupby": "~2.0",
         "opsdev/cache-breaker": "^3.0",
-        "neos/neos-ui": "dev-master",
-        "neos/neos-ui-compiled": "dev-master"
+        "neos/seo": "dev-master@dev",
+        "yeebase/graylog": "@dev"
     },
     "extra": {
         "neos": {
