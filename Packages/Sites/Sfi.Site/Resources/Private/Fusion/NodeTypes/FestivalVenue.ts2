@@ -20,6 +20,7 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 
 		@if.notEmpty = ${documentNode.context.inBackend || q(this.collection).count() > 0 ? true : false}
 		@cache {
+			mode = 'cached'
 			entryIdentifier {
 				node = ${documentNode}
 			}
