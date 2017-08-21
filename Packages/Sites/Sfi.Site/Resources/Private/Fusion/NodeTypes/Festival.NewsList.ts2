@@ -8,7 +8,7 @@ prototype(Sfi.Site:Festival.NewsList) < prototype(Neos.Fusion:Collection) {
     articles = ${Search.query(site).nodeType('Sfi.Site:News').queryFilter('bool',{should: [
             {terms: {tags: tagIds}}
         ]
-    })}
+    }).sortDesc('date')}
     collection = ${this.articles.execute()}
     itemName = 'node'
     itemRenderer = Sfi.Site:NewsShort
