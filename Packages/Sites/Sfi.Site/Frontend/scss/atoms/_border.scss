@@ -3,3 +3,10 @@ $border: 1px solid $gray-line;
 .border-bottom {
 	border-bottom: $border;
 }
+
+.border-red {
+	border: 3px solid #eb443c;
+}
+.border-blue {
+	border: 3px solid $primary-color;
+}

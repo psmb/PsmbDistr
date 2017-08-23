@@ -30,42 +30,13 @@
 		left: -3px;
 		color: white;
 	}
-	@media #{$medium-up} {
-		align-items: flex-end;
-		border-left: 0;
-		border-bottom: 1px dotted white;
-		&:after {
-			transform: initial;
-			bottom: -7px;
-			left: initial;
-			right: -1px;
-			color: white;
-		}
-		flex-direction: row;
-	}
 }
 .StoryFeed-item {
 	position: relative;
 	padding-left: 3*$u;
 	margin-bottom: 1.5*$u;
 	width: 100%;
-	@media #{$medium-up} {
-		padding-left: $u;
-		padding-bottom: 0;
-		margin-bottom: 0;
-		text-align: center;
-		width: 19%;
-	}
 }
-
-
-.StoryFeed-readAll {
-	@media #{$medium-up} {
-		text-align: right;
-	}
-}
-
-
 
 
 
@@ -83,21 +54,4 @@
 		left: -5px;
 	}
 	border-top: 1px dotted white;
-	@media #{$medium-up} {
-		position: relative;
-		float: none;
-		margin-top: $u/2;
-		top: initial;
-		left: initial;
-		width: 50%;
-		height: 3*$u;
-		border-top: 0;
-		border-right: 1px dotted white;
-		display: block;
-		&:after {
-			bottom: -7px;
-			left: initial;
-			right: -5px;
-		}
-	}
 }

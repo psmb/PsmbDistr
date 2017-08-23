@@ -1,20 +1,20 @@
 prototype(Sfi.Site:Story) {
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/Story-anp.html'
-	@context.node = ${node.properties.collection ? node.properties.collection : node}
+	@context.collectionNode = ${node.properties.collection ? node.properties.collection : node}
 
 	imageUri = ImageUri {
-		asset = ${node.properties.image}
+		asset = ${collectionNode.properties.image}
 	}
 
-	title = ${node.properties.title}
-	description = ${node.properties.description}
+	title = ${collectionNode.properties.title}
+	description = ${collectionNode.properties.description}
 
 	feed = T:Collection {
-		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').exactMatch('collections', node.identifier).sortDesc('date').limit(5).execute().toArray()}
+		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').exactMatch('collections', collectionNode.identifier).sortDesc('date').limit(5).execute().toArray()}
 		iterationName = 'iterator'
 		itemRenderer = T:Case {
 			isImportant {
-				condition = ${node.properties.type == 'announcement'}
+				condition = ${collectionNode.properties.type == 'announcement'}
 				renderer = Sfi.Site:StoryItemFirst
 			}
 			default {
@@ -34,7 +34,7 @@ prototype(Sfi.Site:Story) {
 		}
 	}
 	allLink = NodeUri {
-		node = ${node}
+		node = ${collectionNode}
 	}
 }
 

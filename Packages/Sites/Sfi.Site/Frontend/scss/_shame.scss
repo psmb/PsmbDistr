@@ -81,3 +81,22 @@ margin-top: 24px;
 .Container {
 	overflow: hidden;
 }
+
+
+.EqualHeight-row {
+	display: flex;
+	flex-direction: column;
+	padding: 12px;
+	@media (min-width: 800px) {
+		padding: 0;
+		flex-direction: row;
+	}
+}
+.EqualHeight-column {
+	padding: 0 !important;
+	margin-bottom: 24px;
+	@media (min-width: 800px) {
+		margin: 15px;
+		width: 50%;
+	}
+}
