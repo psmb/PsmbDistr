@@ -1,14 +1,11 @@
-.read-more{
-	position: relative;
-	overflow: hidden;
-	transition: all 0.6s;
+.Cat-content {
+	display: none;
 }
-.read-more__switch{
+.Cat.is-active .Cat-content {
 	display: block;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+}
+.Cat-switch{
+	display: block;
 	height: 3*$u;
 	background-color: white;
 	background: white center 90% no-repeat url('/_Resources/Static/Packages/Sfi.Site/Icons/icon-arrow-down.png');
@@ -21,10 +18,7 @@
 	}
 }
 
-.read-more.is-expanded{
-	max-height: initial !important;
-}
-.is-expanded .read-more__switch{
+.Cat.is-active .Cat-switch{
 	position: static;
 	background-image: url('/_Resources/Static/Packages/Sfi.Site/Icons/icon-arrow-up.png');
 }

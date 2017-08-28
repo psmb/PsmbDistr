@@ -1,0 +1,10 @@
+'Sfi.Site:Cat':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Убрать под кат'
+    inlineEditable: true
+  constraints:
+    nodeTypes:
+      '*': true

@@ -1,0 +1,8 @@
+prototype(Sfi.Site:Cat) < prototype(Neos.Fusion:Tag) {
+	attributes.class = 'Cat js-Cat'
+	content = ContentCollectionRenderer {
+		@process.contentElementWrapping = ContentElementWrapping
+		@process.content = ${'<div class="Cat-content">' + value + '</div>'}
+		@process.switch = ${value + '<div class="Cat-switch js-Cat-switch"></div>'}
+	}
+}
