@@ -3,6 +3,7 @@
 	margin-bottom: 2*$u;
 	padding: 0 !important;
 	text-align: left;
+	border-right: $u/2 solid white;
 
 	width: 50% !important;
 	@media #{$medium-up} {
@@ -12,7 +13,6 @@
 		width: 20% !important;
 	}
 }
-
 .AnnouncementShort-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
