@@ -10,7 +10,7 @@ prototype(Sfi.Site:Story) {
 	description = ${collectionNode.properties.description}
 
 	feed = T:Collection {
-		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').exactMatch('collections', collectionNode.identifier).sortDesc('date').limit(5).execute().toArray()}
+		collection = ${Search.query(site).nodeType('Sfi.Site:News').exactMatch('type', 'ourNews').exactMatch('collections', collectionNode.identifier).sortDesc('date').limit(7).execute().toArray()}
 		iterationName = 'iterator'
 		itemRenderer = T:Case {
 			isImportant {
