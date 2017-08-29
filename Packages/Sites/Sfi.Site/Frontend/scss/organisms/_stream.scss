@@ -13,7 +13,7 @@ Stream of .media molecules.
 }
 .stream__content {
 	position: relative;
-	overflow: auto;
+	overflow: hidden;
 }
 .stream__item{
 	width: 276px;
