@@ -27,7 +27,7 @@
         "sfi/grid": "@dev",
         "psmb/term": "^3.0",
         "psmb/nodetypes": "~3.1",
-        "psmb/createnodebutton": "~2.0",
+        "psmb/createnodebutton": "@dev",
         "flowpack/jobqueue-common": "@dev",
         "psmb/newsletter": "~2.2",
         "psmb/mediaquery": "~2.0",
