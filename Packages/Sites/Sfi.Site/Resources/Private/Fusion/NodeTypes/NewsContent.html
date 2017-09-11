@@ -10,10 +10,10 @@
 
 <f:if condition="{type} == 'announcement'">
 	<f:then>
-		<div class="lead">{neos:contentElement.editable(property: 'announcementPlace', tag: 'span')}</div>
+		<div class="lead">{neos:contentElement.editable(property: 'announcementPlace')}</div>
 	</f:then>
 	<f:else>
-		<div class="lead">{neos:contentElement.editable(property: 'teaser', tag: 'span')}</div>
+		<div class="lead">{neos:contentElement.editable(property: 'teaser')}</div>
 	</f:else>
 </f:if>
 
@@ -22,6 +22,6 @@
 	{languageLink -> f:format.raw()}
 	{main -> f:format.raw()}
 	{gallery -> f:format.raw()}
-	<div class="rte-text"><div class="author">{neos:contentElement.editable(property: 'credit', tag: 'span')}</div></div>
+	<div class="rte-text"><div class="author">{neos:contentElement.editable(property: 'credit')}</div></div>
 	{newsList -> f:format.raw()}
 </div>
