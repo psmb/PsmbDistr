@@ -10,8 +10,8 @@
 						<span class="media__date">
 							<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 						</span>
-						<h3 class="media__title">{title}</h3>
-						<div class="media__teaser">{teaser}</div>
+						<h3 class="media__title">{title -> f:format.raw()}</h3>
+						<div class="media__teaser">{teaser -> f:format.raw()}</div>
 					</div>
 					<span class="media__category">{categoryTitle}</span>
 				</div>
@@ -29,9 +29,9 @@
 					<div class="media-important__date">
 						<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 					</div>
-					<h3 class="media-important__title">{title}</h3>
+					<h3 class="media-important__title">{title -> f:format.raw()}</h3>
 					<div class="media-important__hiding">
-						<div class="media-important__teaser">{teaser}</div>
+						<div class="media-important__teaser">{teaser -> f:format.raw()}</div>
 					</div>
 				</div>
 				<img width="576" height="357" class="media__image" src={thumbUri} alt={title} />
