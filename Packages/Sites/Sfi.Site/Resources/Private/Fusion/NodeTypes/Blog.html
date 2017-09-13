@@ -12,7 +12,7 @@
 				{authorName}
 			</span>
 		</div>
-		<h1 class="alpha textAlign-center">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+		<h1 class="alpha textAlign-center">{neos:contentElement.editable(property: 'title')}</h1>
 		{main -> f:format.raw()}
 
 		<f:if condition="{node.properties.url}">

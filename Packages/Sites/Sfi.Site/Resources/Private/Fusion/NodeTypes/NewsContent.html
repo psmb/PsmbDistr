@@ -1,6 +1,6 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 
-<h1 class="alpha">{neos:contentElement.editable(property: 'title', tag: 'span')}</h1>
+<h1 class="alpha">{neos:contentElement.editable(property: 'title')}</h1>
 <div class="news-detail__tagline">
 	<f:if condition="{type} != 'announcement'">
 		<span class="news-detail__date"><f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date></span>
