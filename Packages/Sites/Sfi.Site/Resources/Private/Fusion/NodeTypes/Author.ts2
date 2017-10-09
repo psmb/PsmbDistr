@@ -1,0 +1,6 @@
+prototype(Sfi.Site:Author.Document) < prototype(Sfi.Site:Author.Document) {
+	body = Sfi.Site:Author
+}
+prototype(Sfi.Site:Author) < prototype(Neos.Fusion:Value) {
+	value = 'Отредактируйте информацию об авторе справа'
+}
