@@ -1,6 +1,6 @@
 
 'Sfi.Site:Author':
-  label: '${String.cropAtWord(q(node).property("name"), 100, "...")}'
+  label: '${String.cropAtWord(q(node).property("name") || "", 100, "...")}'
   superTypes:
     'Neos.Neos:Document': true
   ui:
