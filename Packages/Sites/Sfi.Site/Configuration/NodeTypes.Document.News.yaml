@@ -36,6 +36,18 @@ blah:
       type: 'Neos.Neos:ContentCollection'
     gallery:
       type: 'Neos.Neos:ContentCollection'
+  template:
+    childNodes:
+      cover:
+        name: 'cover'
+        childNodes:
+          firstTextNode:
+            type: 'Psmb.NodeTypes:Image'
+      main:
+        name: 'main'
+        childNodes:
+          firstTextNode:
+            type: 'Psmb.NodeTypes:Text'
   properties:
     title:
       ui:
