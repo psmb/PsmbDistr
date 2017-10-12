@@ -41,7 +41,7 @@ blah:
       cover:
         name: 'cover'
         childNodes:
-          firstTextNode:
+          firstImageNode:
             type: 'Psmb.NodeTypes:Image'
       main:
         name: 'main'
