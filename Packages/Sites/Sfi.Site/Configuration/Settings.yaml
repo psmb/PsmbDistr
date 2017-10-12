@@ -74,6 +74,15 @@ Neos:
       exceptionHandler:
         className: 'Yeebase\Graylog\Error\GraylogExceptionHandler'
   Neos:
+    Ui:
+      frontendConfiguration:
+        'Psmb.CreateNodeButton':
+          enabled: true
+          position: 'into'
+          type: 'Sfi.Site:News'
+          referenceNodePath: '/sites/site/a'
+          placeholder: 'Заголовок материала...'
+
     userInterface:
       navigateComponent:
         structureTree:
