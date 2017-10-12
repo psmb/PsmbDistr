@@ -13,6 +13,14 @@
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
+  options:
+    template:
+      childNodes:
+        main:
+          name: 'main'
+          childNodes:
+            firstTextNode:
+              type: 'Psmb.NodeTypes:Text'
   properties:
     title:
       ui:

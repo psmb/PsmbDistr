@@ -16,6 +16,19 @@
       type: 'Neos.Neos:ContentCollection'
     main:
       type: 'Neos.Neos:ContentCollection'
+  options:
+    template:
+      childNodes:
+        cover:
+          name: 'cover'
+          childNodes:
+            firstImageNode:
+              type: 'Psmb.NodeTypes:Image'
+        main:
+          name: 'main'
+          childNodes:
+            firstTextNode:
+              type: 'Psmb.NodeTypes:Text'
   properties:
     description:
       type: string
