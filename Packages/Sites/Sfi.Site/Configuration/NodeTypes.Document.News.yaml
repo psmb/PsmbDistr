@@ -49,6 +49,8 @@ blah:
           childNodes:
             firstTextNode:
               type: 'Psmb.NodeTypes:Text'
+            source:
+              type: 'Sfi.Site:Source'
   properties:
     title:
       ui:
