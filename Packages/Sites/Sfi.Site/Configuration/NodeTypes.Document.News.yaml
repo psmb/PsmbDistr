@@ -242,6 +242,7 @@ blah:
       type: string
       ui:
         label: 'Тип новости'
+        reloadIfChanged: true
         inspector:
           group: relations
           editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
