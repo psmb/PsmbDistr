@@ -1,0 +1,15 @@
+prototype(Sfi.Site:Opengraph) < prototype(Neos.Fusion:Template) {
+	templatePath = 'resource://Sfi.Site/Private/Fusion/Objects/Opengraph.html'
+	title = ${String.stripTags(q(node).property('title'))}
+	description = ${String.stripTags(q(node).property('teaser'))}
+	url = NodeUri {
+		node = ${node}
+		absolute = TRUE
+	}
+	image = Neos.Neos:ImageUri {
+		asset = Sfi.Site:NewsThumb
+		maximumWidth = 1200
+		maximumHeight = 630
+		allowCropping = TRUE
+	}
+}

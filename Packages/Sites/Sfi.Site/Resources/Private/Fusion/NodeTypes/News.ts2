@@ -1,4 +1,5 @@
 prototype(Sfi.Site:News.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	head.og = Sfi.Site:Opengraph
 	body = Sfi.Site:News
 }
 prototype(Sfi.Site:News) < prototype(Sfi.Site:AbstractPage) {
