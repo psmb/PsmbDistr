@@ -6,6 +6,14 @@
 			"repository": "neos/neos-development-collection",
 			"pull_request": "673",
 			"path": "Packages/Neos"
+		},
+		{
+			"name": "BUGFIX: remove nodes from index on discard",
+			"type": "github",
+			"repository": "neos/typo3cr-search",
+			"commit": "c78c1f458a176cd1ae73b0852f6063a19466bb20",
+			"ref": "dimaip-fix-discard",
+			"path": "Packages/Application/Neos.ContentRepository.Search"
 		}
 	]
 }
