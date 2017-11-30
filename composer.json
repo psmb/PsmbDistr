@@ -12,7 +12,7 @@
         }
     ],
     "require": {
-        "neos/neos-development-collection": "^3.2@dev",
+        "neos/neos-development-collection": "~3.2@dev",
         "neos/flow-development-collection": "@dev",
 
         "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
@@ -23,7 +23,7 @@
         "neos/neos-ui": "dev-master",
         "neos/neos-ui-compiled": "dev-master",
 
-	"flowpack/nodetemplates": "dev-master@dev",
+        "flowpack/nodetemplates": "dev-master@dev",
         "sfi/youtube": "@dev",
         "sfi/grid": "@dev",
         "psmb/term": "^3.0",
