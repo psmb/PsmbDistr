@@ -788,24 +788,27 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 }
 ```
  */
-.rte-text{
-	h1{@extend .alpha;}
-	h2{@extend .beta;}
-	h3{
+.Text.rte-text > div {
+	@extend .paragraph--large
+}
+.rte-text {
+	h1 {@extend .alpha;}
+	h2 {@extend .beta;}
+	h3 {
 		@extend .gamma;
 		// HACK
 		font-size: rem-calc(21);
 	}
-	h4{@extend .delta;}
-	h5{@extend .epsilon;}
-	h6{@extend .zeta;}
-	p{@extend .paragraph--large;}
-	a{@extend .link;}
-	blockquote{@extend .blockquote;}
-	ul{@extend .paragraph--large; @extend .ul;}
-	ol{@extend .paragraph--large; @extend .ol;}
+	h4 {@extend .delta;}
+	h5 {@extend .epsilon;}
+	h6 {@extend .zeta;}
+	p {@extend .paragraph--large;}
+	a {@extend .link;}
+	blockquote {@extend .blockquote;}
+	ul {@extend .paragraph--large; @extend .ul;}
+	ol {@extend .paragraph--large; @extend .ol;}
 
-	.author{
+	.author {
 		@extend .zeta;
 	}
 
@@ -813,8 +816,8 @@ Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
 		@extend .Epigraph;
 	}
 	//legacy styles from psmb v1.0
-	.interview{
-		font-weight:bold;
+	.interview {
+		font-weight: bold;
 	}
 }
 
