@@ -13,7 +13,27 @@ category:
 .search-box{
 	width: 185px;
 	overflow: hidden;
-} 
+}
+
+.gsc-results-wrapper-visible {
+	border: 1px solid white;
+}
+
+.gsc-search-box {
+	padding: 0 !important;
+}
+
+.gsc-control-cse {
+	padding: 0 !important;
+}
+
+.cse .gsc-cursor-box, .gsc-cursor-box {
+	border-top: 0 !important;
+}
+
+.gs-web-image-box {
+	margin-right: 12px !important;
+}
 
 .gsc-branding,.gcsc-branding,.gsc-resultsHeader,.gs-watermark{
 	display: none;
@@ -41,7 +61,7 @@ category:
 div.gsc-clear-button{
 	display: block !important;
 	position: relative !important; 
-	left: -25px;
+	left: -30px;
 	padding-left: 3px !important;
 	padding-right: 0 !important;
 }
@@ -57,6 +77,10 @@ div.gsc-clear-button{
 
 .gsc-results{
 	width: 100% !important;
+}
+
+.gsc-result{
+	padding: 12px !important;
 }
 
 .search-box input,.gsc-table-result{
@@ -76,10 +100,6 @@ body .search-box #cse .gs-title{
 	b{
 		color: $primary-color !important;
 	}
-}
-
-.gs-result .gs-visibleUrl{
-	color: $primary-color !important;
 }
 
 .gsc-cursor-page{
