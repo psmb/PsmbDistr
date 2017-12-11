@@ -9,6 +9,10 @@
         {
             "url": "https://github.com/dimaip/neos-seo",
             "type": "git"
+        },
+        {
+            "url": "https://github.com/dimaip/OptimizedRedisCacheBackend",
+            "type": "git"
         }
     ],
     "require": {
@@ -38,7 +42,7 @@
         "opsdev/cache-breaker": "^3.0",
         "neos/seo": "dev-master@dev",
         "yeebase/graylog": "@dev",
-        "sandstorm/optimizedrediscachebackend": "^0.0.1"
+        "sandstorm/optimizedrediscachebackend": "dev-patch-1@dev"
     },
     "extra": {
         "neos": {

@@ -37,6 +37,9 @@
             nodeTypes:
               - 'Sfi.Site:Author'
             startingPoint: /sites/site/authors
+            createNew:
+              path: '/sites/site/authors'
+              type: 'Sfi.Site:Author'
     isExternal:
       type: boolean
       ui:
