@@ -37,7 +37,8 @@
         "dimaip/groupby": "^2.0",
         "opsdev/cache-breaker": "^3.0",
         "neos/seo": "dev-master@dev",
-        "yeebase/graylog": "@dev"
+        "yeebase/graylog": "@dev",
+        "sandstorm/optimizedrediscachebackend": "^0.0.1"
     },
     "extra": {
         "neos": {
