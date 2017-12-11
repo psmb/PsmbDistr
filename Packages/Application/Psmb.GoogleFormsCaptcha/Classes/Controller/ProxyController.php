@@ -32,7 +32,7 @@ class ProxyController extends ActionController
             throw new \Exception('Invalid preset supplied');
         }
         if (!$_POST['g-recaptcha-response']) {
-            throw new Exception('Captcha response not supplied');
+            throw new \Exception('Captcha response not supplied');
         }
 
         $formKey = $this->forms[$preset];
@@ -44,7 +44,7 @@ class ProxyController extends ActionController
         $captchaResponse = $browser->request('https://www.google.com/recaptcha/api/siteverify', 'POST', $arguments);
         $responseArray = json_decode($captchaResponse->getContent(), true);
         if (!$responseArray['success']) {
-            throw new Exception('Validation did not pass, try again');
+            throw new \Exception('Validation did not pass, try again');
         }
 
         // Proxy to Google Forms
