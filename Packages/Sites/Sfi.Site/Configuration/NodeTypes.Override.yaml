@@ -39,3 +39,62 @@
                     width: 276
                     height: 200
                     label: 'На главную -- неважная'
+
+'Neos.Neos:Node':
+  ui:
+    inspector:
+      tabs:
+        createNode:
+          label: 'Создание элементов'
+          position: 100
+          icon: plus-circle
+      groups:
+        createNode:
+          label: 'Создание элементов'
+          tab: createNode
+      views:
+        createBlog:
+          label: 'Создать блог'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.Site:Blog'
+            referenceNodePath: '/sites/site/blogs'
+            enabled: true
+        createPerson:
+          label: 'Создать персону'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.Site:Tag'
+            referenceNodePath: '/sites/site/tags/people'
+            enabled: true
+        createMovement:
+          label: 'Создать движение'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.Site:Tag'
+            referenceNodePath: '/sites/site/tags/movements'
+            enabled: true
+        createCollection:
+          label: 'Создать интересную тему'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.Site:Tag'
+            referenceNodePath: '/sites/site/collections'
+            enabled: true
+        createPlace:
+          label: 'Создать место'
+          group: createNode
+          view: 'Psmb.CreateNodeButton/Views/CreateNodeView'
+          viewOptions:
+            position: 'into'
+            type: 'Sfi.Site:PlaceTag'
+            referenceNodePath: '/sites/site/places'
+            enabled: true
