@@ -1,6 +1,5 @@
 
 'Sfi.Site:Author':
-  label: '${String.cropAtWord(q(node).property("name") || "", 100, "...")}'
   superTypes:
     'Neos.Neos:Document': true
   ui:
@@ -10,7 +9,7 @@
         author:
           label: 'Атрибуты автора'
   properties:
-    name:
+    title:
       type: string
       ui:
         label: 'Имя автора'
