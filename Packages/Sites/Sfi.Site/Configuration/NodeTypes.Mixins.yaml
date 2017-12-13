@@ -47,6 +47,9 @@
           editorOptions:
             nodeTypes:
               - 'Sfi.Site:TagMixin'
+            createNew:
+              path: /sites/site/tags/people
+              type: 'Sfi.Site:Tag'
     sections:
       type: references
       ui:
@@ -70,6 +73,9 @@
             nodeTypes:
               - 'Sfi.Site:TagMixin'
             startingPoint: /sites/site/collections
+            createNew:
+              path: /sites/site/collections
+              type: 'Sfi.Site:Tag'
     projects:
       type: references
       ui:
@@ -92,3 +98,6 @@
             nodeTypes:
               - 'Sfi.Site:PlaceTag'
             startingPoint: /sites/site/places
+            createNew:
+              path: /sites/site/places
+              type: 'Sfi.Site:PlaceTag'
