@@ -78,5 +78,5 @@ prototype(Sfi.Site:StoryItem) < prototype(T:Tag) {
 		node = ${node}
 	}
 	content = ${String.cropAtWord(String.stripTags(node.properties.title), 90, '…')}
-	content.@process.isBlog = ${q(node).is('[instanceof Sfi.Site:Blog]') ? 'Пишут в блогах: ' + node.properties.author.properties.name + '. ' + value : value}
+	content.@process.isBlog = ${q(node).is('[instanceof Sfi.Site:Blog]') ? 'Пишут в блогах: ' + node.properties.author.properties.title + '. ' + value : value}
 }

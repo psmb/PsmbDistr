@@ -11,7 +11,7 @@ prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
 		target = ${node.properties.isExternal && '_blank'}
 	}
 
-	authorName = ${node.properties.author.properties.name}
+	authorName = ${node.properties.author.properties.title}
 	thumbUri = ImageUri {
 		asset = ${node.properties.author.properties.photo}
 		# No idea why this is needed

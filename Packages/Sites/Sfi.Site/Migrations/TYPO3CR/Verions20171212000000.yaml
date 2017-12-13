@@ -1,0 +1,17 @@
+up:
+  comments: 'Rename author name'
+  migration:
+    -
+      filters:
+        -
+          type: 'NodeType'
+          settings:
+            nodeType: 'Sfi.Site:Author'
+      transformations:
+        -
+          type: 'RenameProperty'
+          settings:
+            from: 'name'
+            to: 'title'
+down:
+  comments: 'No way back!'
