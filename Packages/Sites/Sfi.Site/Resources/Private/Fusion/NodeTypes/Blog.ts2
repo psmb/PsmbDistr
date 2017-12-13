@@ -10,7 +10,7 @@ prototype(Sfi.Site:Blog) < prototype(Sfi.Site:AbstractPage) {
 	blogsByAuthor = Sfi.Site:BlogList {
 		@process.tmpl = ${'<h2 class="beta marginBottom-double">Другие записи автора:</h2>' + value}
 		@context.limit = 12
-		query.@process.filterByAuthor = ${value.exactMatch('author', documentNode.properties.author)}
+		query.@process.filterByAuthor = ${value.exactMatch('author', documentNode.properties.author || documentNode)}
 		query.@process.filterOutSelf = ${value.queryFilter('bool', {must_not: [
 			{term: {__identifier: documentNode.identifier}}
 		]})}
