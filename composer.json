@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "neos/neos-development-collection": "~3.2@dev",
+        "neos/neos-development-collection": "~3.3@dev",
         "neos/flow-development-collection": "@dev",
 
         "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
