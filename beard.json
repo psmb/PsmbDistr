@@ -14,6 +14,14 @@
 			"commit": "c78c1f458a176cd1ae73b0852f6063a19466bb20",
 			"ref": "dimaip-fix-discard",
 			"path": "Packages/Application/Neos.ContentRepository.Search"
-		}
+		},
+		{
+            "name": "PATCH: fix redirects",
+            "type": "github",
+            "repository": "neos/flow-development-collection",
+            "commit": "807cb33143a911a6c2ed870e0658e79a31527bc3",
+            "ref": "dimaip/fix-redirects",
+            "path": "Packages/Framework"
+        }
 	]
 }
