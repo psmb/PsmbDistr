@@ -34,7 +34,7 @@
         "psmb/nodetypes": "^3.2",
         "psmb/createnodebutton": "@dev",
         "flowpack/jobqueue-common": "@dev",
-        "psmb/newsletter": "^2.2",
+        "psmb/newsletter": "^2.3",
         "psmb/mediaquery": "^2.0",
         "psmb/mapreduce": "^2.0",
         "psmb/carousel": "@dev",
