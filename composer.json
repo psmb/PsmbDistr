@@ -42,7 +42,8 @@
         "opsdev/cache-breaker": "^3.0",
         "neos/seo": "dev-master@dev",
         "yeebase/graylog": "@dev",
-        "sandstorm/optimizedrediscachebackend": "dev-patch-1@dev"
+        "sandstorm/optimizedrediscachebackend": "dev-patch-1@dev",
+        "flownative/aws-s3": "2.*"
     },
     "extra": {
         "neos": {
