@@ -11,7 +11,8 @@
         "psmb/newsletter": "*",
         "psmb/googleformscaptcha": "*",
         "sfi/grid": "*",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "*"
+        "flowpack/elasticsearch-contentrepositoryadaptor": "*",
+        "flownative/aws-s3": "*"
     },
     "autoload": {
         "psr-0": {
