@@ -1,0 +1,45 @@
+redis:
+  image: redis:3.2
+
+db:
+  image: mariadb:10.3
+  restart: always
+  volumes:
+    - /var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: pass
+    MYSQL_DATABASE: db
+    MYSQL_USER: admin
+    MYSQL_PASSWORD: pass
+
+es:
+  image: elasticsearch:2.3
+  volumes:
+    - ./elasticsearch:/usr/share/elasticsearch/config
+
+web:
+  image: dimaip/docker-neos-alpine:latest
+  hostname: 'psmbru'
+  ports:
+    - 80
+    - '1128:22'
+  links:
+    - db
+    - redis
+    - es
+  volumes:
+    - /data
+    - ./Persistent:/data/shared/Data/Persistent
+    - ./Settings.yaml:/data/shared/Configuration/Settings.yaml
+    - /etc/localtime:/etc/localtime:ro
+  environment:
+    - IMPORT_GITHUB_PUB_KEYS=dimaip
+    - REPOSITORY_URL=https://github.com/psmb/PsmbDistr
+    - VIRTUAL_HOST=psmb.ru,dev.psmb.ru,www.psmb.ru,next.psmb.ru,en.psmb.ru,festival.psmb.ru,dev.festival.psmb.ru
+    - LETSENCRYPT_HOST=psmb.ru,dev.psmb.ru,www.psmb.ru,en.psmb.ru,festival.psmb.ru
+    - LETSENCRYPT_EMAIL=dimaip@gmail.com
+    - PHP_TIMEZONE=Europe/Moscow
+    - AWS_ENDPOINT=https://hb.bizmrg.com
+    - AWS_BACKUP_ARN=s3://psmb-neos-resources/db/psmb/
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
