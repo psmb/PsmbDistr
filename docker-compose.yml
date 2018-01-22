@@ -24,6 +24,9 @@ services:
     secrets:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
+      - PSMB_SMTP_PASS
+      - GA_SECRET
+      - GA_DEVKEY
     deploy:
       labels:
         - "traefik.enable=true"
@@ -43,6 +46,12 @@ secrets:
   AWS_ACCESS_KEY_ID:
     external: true
   AWS_SECRET_ACCESS_KEY:
+    external: true
+  PSMB_SMTP_PASS:
+    external: true
+  GA_SECRET:
+    external: true
+  GA_DEVKEY:
     external: true
 networks:
   main:
