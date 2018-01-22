@@ -15,6 +15,7 @@ Psmb:
   GoogleFormsCaptcha:
     forms:
       contactUs: '1MAsEybLT5iHkaYgn-Y2kLjZTilZG2ayPGZLR_8oV7NA'
+    secret: '%env:PSMB_CAPTCHA_SECRET%'
   Newsletter:
     globalSettings:
       senderAddress: no-reply@psmb.ru
@@ -130,9 +131,23 @@ Neos:
         dimensions: 'ga:source'
         sort: '-ga:uniquePageviews'
         max-results: 25
+    authentication:
+      applicationName: 'Neos GA'
+      clientId: '4730774009-h57rl51jmjbrljt2mii1ebn74a8hsrr3.apps.googleusercontent.com'
+      clientSecret: '%env:GA_SECRET%'
+      developerKey: '%env:GA_DEVKEY%'
     fusion:
       autoInclude:
         Sfi.Site: true
+  SwiftMailer:
+    transport:
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'smtp.gmail.com'
+        port: '465'
+        encryption: 'ssl'
+        username: 'no-reply@psmb.ru'
+        password: '%env:PSMB_SMTP_PASS%'
   ContentRepository:
     contentDimensions:
       language:
