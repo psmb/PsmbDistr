@@ -1,11 +1,11 @@
-version: "3.1"
+version: "3.4"
 services:
   redis:
     image: redis:3.2
   es:
-    image: elasticsearch:2.3
+    image: nikdro/elasticsearch-neos:2.4
     volumes:
-      - ./elasticsearch:/usr/share/elasticsearch/config
+      - es-data:/usr/share/elasticsearch/data 
   db:
     image: mariadb:10.3
     volumes:
@@ -18,6 +18,9 @@ services:
   web:
     volumes:
       - /data/www/Web/_Resources
+    deploy:
+      update_config:
+        order: start-first
     image: dimaip/psmbdistr:latest
     hostname: 'psmbru'
     networks:
@@ -29,6 +32,7 @@ services:
       - PSMB_SMTP_PASS
       - GA_SECRET
       - GA_DEVKEY
+      - PSMB_CAPTCHA_SECRET
     deploy:
       labels:
         - "traefik.enable=true"
@@ -44,6 +48,7 @@ services:
       - es
 volumes:
   db-data:
+  es-data:
 secrets:
   AWS_ACCESS_KEY_ID:
     external: true
@@ -54,6 +59,8 @@ secrets:
   GA_SECRET:
     external: true
   GA_DEVKEY:
+    external: true
+  PSMB_CAPTCHA_SECRET:
     external: true
 networks:
   main:
