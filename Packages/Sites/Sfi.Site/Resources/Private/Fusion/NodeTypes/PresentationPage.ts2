@@ -37,6 +37,8 @@ prototype(Sfi.Site:PresentationPage) < prototype(Sfi.Site:AbstractPage) {
 	principlesUri = NodeUri {
 		node = ${q(site).find('#10c8b043-7348-4e94-866d-a49c0a6e2281').get(0)}
 	}
+	
+	year = ${Date.format(Date.now(), 'Y')}
 
 	ourTeachers = T:Collection {
 		@process.tmpl = ${'<ul class="teachers [ large-block-grid-5 medium-block-grid-5 small-block-grid-2 ]">' + value + '</ul>'}
