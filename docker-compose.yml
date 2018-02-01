@@ -16,6 +16,8 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: pass
   web:
+    labels:
+      - "neos"
     volumes:
       - /data/www/Web/_Resources
     image: dimaip/psmbdistr:latest
