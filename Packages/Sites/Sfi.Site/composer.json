@@ -10,6 +10,7 @@
         "psmb/createnodebutton": "*",
         "psmb/newsletter": "*",
         "psmb/googleformscaptcha": "*",
+        "psmb/newsletter": "*",
         "sfi/grid": "*",
         "flowpack/elasticsearch-contentrepositoryadaptor": "*",
         "flownative/aws-s3": "*"
