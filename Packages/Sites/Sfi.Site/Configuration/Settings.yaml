@@ -168,7 +168,7 @@ Neos:
             uriSegment: en
 Yeebase:
   Graylog:
-    host: '172.17.42.1'
+    host: 'graylog'
     port: 12201
     chunksize: 'wan'
 Flownative:
