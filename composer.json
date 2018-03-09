@@ -19,7 +19,7 @@
         "neos/neos-development-collection": "~3.3@dev",
         "neos/flow-development-collection": "@dev",
 
-        "flowpack/elasticsearch-contentrepositoryadaptor": "@dev",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "^4.0",
         "neos/googleanalytics": "^2.0.0",
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
