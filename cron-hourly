@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/with-contenv /bin/bash
 
 cd /data/www && FLOW_CONTEXT=Production ./flow newsletter:send --interval=PT1H
 
