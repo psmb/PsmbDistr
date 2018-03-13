@@ -11,7 +11,7 @@
 			"name": "BUGFIX: remove nodes from index on discard",
 			"type": "github",
 			"repository": "neos/typo3cr-search",
-			"commit": "c78c1f458a176cd1ae73b0852f6063a19466bb20",
+			"commit": "c3b86add1a3d7eeb89eda2b5d05a1c478515ce60",
 			"ref": "dimaip-fix-discard",
 			"path": "Packages/Application/Neos.ContentRepository.Search"
 		}
