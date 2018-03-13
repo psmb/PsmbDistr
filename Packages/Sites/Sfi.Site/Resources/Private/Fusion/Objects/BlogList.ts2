@@ -1,5 +1,5 @@
 prototype(Sfi.Site:BlogList) < prototype(T:Collection) {
-	@context.limit = ${limit ? limit : 10000}
+	@context.limit = ${limit ? limit : 1000}
 	@context.node = ${q(site).children('blogs').get(0)}
 	query = ${Search.query(site).nodeType('Sfi.Site:Blog').sortDesc('__sortIndex')}
 	query.@process.filterOutSelf = ${value.queryFilter('bool', {must_not: [
