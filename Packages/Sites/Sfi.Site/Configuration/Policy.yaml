@@ -2,8 +2,7 @@ privilegeTargets:
   'Neos\Neos\Security\Authorization\Privilege\NodeTreePrivilege':
     'Sfi.Sfi:SystemPages':
       matcher: >-
-          isDescendantNodeOf("d32a6975-b2aa-437f-bd67-ff1e0f7afe93")
-          || isDescendantNodeOf("edb7ed12-bc60-4d56-9ffe-5d66b08c9203")
+          isDescendantNodeOf("edb7ed12-bc60-4d56-9ffe-5d66b08c9203")
 roles:
   'Neos.Neos:Administrator':
     privileges:
