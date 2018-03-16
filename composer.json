@@ -28,7 +28,7 @@
         "neos/neos-ui-compiled": "dev-master",
 
         "flowpack/nodetemplates": "dev-master@dev",
-        "sfi/youtube": "@dev",
+        "sfi/youtube": "^2.1",
         "sfi/grid": "@dev",
         "psmb/term": "^3.0",
         "psmb/nodetypes": "^3.2",
