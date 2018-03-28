@@ -71,15 +71,6 @@ Neos:
       defaultLocale: ru
     http:
       baseUri: 'https://psmb.ru/'
-    log:
-      systemLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      securityLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      sqlLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
-      i18nLogger:
-        backend: Yeebase\Graylog\Log\Backend\GraylogBackend
     resource:
       collections:
         persistent:
@@ -131,23 +122,9 @@ Neos:
         dimensions: 'ga:source'
         sort: '-ga:uniquePageviews'
         max-results: 25
-    authentication:
-      applicationName: 'Neos GA'
-      clientId: '4730774009-h57rl51jmjbrljt2mii1ebn74a8hsrr3.apps.googleusercontent.com'
-      clientSecret: '%env:GA_SECRET%'
-      developerKey: '%env:GA_DEVKEY%'
     fusion:
       autoInclude:
         Sfi.Site: true
-  SwiftMailer:
-    transport:
-      type: 'Swift_SmtpTransport'
-      options:
-        host: 'smtp.gmail.com'
-        port: '465'
-        encryption: 'ssl'
-        username: 'no-reply@psmb.ru'
-        password: '%env:PSMB_SMTP_PASS%'
   ContentRepository:
     contentDimensions:
       language:
