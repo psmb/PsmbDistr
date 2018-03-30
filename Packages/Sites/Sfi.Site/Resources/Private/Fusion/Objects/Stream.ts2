@@ -57,4 +57,5 @@ prototype(Neos.Fusion:GlobalCacheIdentifiers) {
 	place = ${request.arguments.place}
 	media = ${request.arguments.media}
 	type = ${request.arguments.type}
+	dateTill = ${request.arguments.dateTill}
 }

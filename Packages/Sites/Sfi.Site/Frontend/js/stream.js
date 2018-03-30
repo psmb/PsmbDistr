@@ -25,6 +25,7 @@
 			var loadMore = node.querySelector('.js-stream__loadmore');
 			var autoload = node.querySelector('.js-stream__autoload');
 			var filterBar = node.querySelector('.js-filter-bar');
+			var datePicker = node.querySelector('.js-filter-bar__datePicker');
 
 			if (loadMore && content && filterBar) {
 				setupIsotope();
@@ -44,6 +45,30 @@
 				if (autoload) {
 					load(autoload.dataset.url);
 				}
+			}
+
+			if (datePicker) {
+				datePicker.addEventListener('change', e => {
+					var activeItem = document.querySelector('.js-filter-bar__item.active');
+					if (activeItem) {
+						activeItem.classList.remove('active');
+					}
+					content.innerHTML = '';
+					load(e.target.value);
+					e.target.blur();
+				});
+				datePicker.addEventListener('focus', e => {
+					const currentOption = e.target.options[e.target.selectedIndex];
+					if (currentOption.dataset.labelShort) {
+						currentOption.setAttribute('label', currentOption.dataset.labelShort);
+					}
+				});
+				datePicker.addEventListener('blur', e => {
+					const currentOption = e.target.options[e.target.selectedIndex];
+					if (currentOption.dataset.labelFull) {
+						currentOption.setAttribute('label', currentOption.dataset.labelFull);
+					}
+				});
 			}
 
 			function activate(item) {

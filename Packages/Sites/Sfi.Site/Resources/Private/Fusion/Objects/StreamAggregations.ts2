@@ -21,10 +21,17 @@ prototype(Sfi.Site:StreamAggregations) < prototype(T:Value) {
 			size = 100
 		}
 	}
+	dateHistogram = T:RawArray {
+		date_histogram = T:RawArray {
+			field = 'date'
+			interval = '1M'
+			format = 'yyyy-MM-dd'
+		}
+	}
 	query = Sfi.Site:StreamQuery {
 		@context.isAggregation = ${true}
 	}
-	value = ${this.query.aggregation('media', this.mediaConfig).aggregation('collections', this.collectionsConfig)}
+	value = ${this.query.aggregation('media', this.mediaConfig).aggregation('collections', this.collectionsConfig).aggregation('dateHistogram', this.dateHistogram)}
 	value.@process.addPlaces = ${showPlaces ? value.aggregation('places', this.placesConfig) : value}
 	value.@process.execute = ${value.execute().aggregations}
 }

@@ -77,6 +77,58 @@ prototype(Sfi.Site:StreamFilterBar) < prototype(T:Case) {
 				# Set from Exhibitions
 				@if.notMain = ${showPlaces ? true : false}
 			}
+			dateFilter = T:Collection {
+				@context.dateAggregation = Neos.Fusion:RawCollection {
+					collection = ${Array.reverse(aggregations.dateHistogram.buckets)}
+					itemName = 'item'
+					itemRenderer = Neos.Fusion:RawArray {
+						value = ${item}
+						year = ${Date.year(Date.parse(item.key_as_string, "Y-m-d"))}
+					}
+					@process.group = ${Neos.Array.groupBy(value, 'year')}
+				}
+
+				@process.option = Neos.Fusion:Array {
+					option = Neos.Fusion:Tag {
+						tagName = 'option'
+						attributes.data-label-full = ${Translation.translate('byDate', null, [], null, 'Sfi.Site')}
+						attributes.data-label-short = ${Translation.translate('allArticles', null, [], null, 'Sfi.Site')}
+						attributes.label = ${this.data-label-full}
+					}
+					value = ${value}
+				}
+				@process.wrap = ${'<select style="width: 160px; margin: 0 0 0 24px !important; padding: 6px 12px !important" class="filter-bar__item input js-filter-bar__datePicker">' + value + '</select>'}
+				collection = ${dateAggregation}
+				itemName = 'yearBucket'
+				itemKey = 'year'
+				itemRenderer = Neos.Fusion:Collection {
+					@process.wrap = ${'<optgroup label="' + year + '">' + value + '</optgroup>'}
+					collection = ${yearBucket}
+					itemName = 'bucket'
+					itemKey = 'bucketName'
+					itemRenderer = T:Tag {
+						@if.notEmpty = ${bucket.value.doc_count > 0}
+						tagName = 'option'
+						attributes.href = NodeUri {
+							node = ${documentNode}
+							additionalParams {
+								dateTill = ${bucket.value.key_as_string}
+							}
+						}
+						attributes.selected = ${request.arguments.dateTill == bucket.value.key_as_string}
+						attributes.value = NodeUri {
+							node = ${documentNode}
+							additionalParams {
+								dateTill = ${bucket.value.key_as_string}
+							}
+						}
+						attributes.data-label-full = ${Date.formatCldr(Date.parse(bucket.value.key_as_string, "Y-m-d"), 'LLLL y')}
+						attributes.data-label-short = ${Date.formatCldr(Date.parse(bucket.value.key_as_string, "Y-m-d"), 'LLLL')}
+						attributes.data-label-short.@process.count = ${value + ' (' + bucket.value.doc_count + ')'}
+						attributes.label = ${this.data-label-short}
+					}
+				}
+			}
 		}
 	}
 }

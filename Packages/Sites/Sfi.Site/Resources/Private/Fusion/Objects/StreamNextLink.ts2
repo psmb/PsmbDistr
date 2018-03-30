@@ -6,6 +6,7 @@ prototype(Sfi.Site:StreamNextLink) < prototype(Neos.Fusion:Value) {
 			media = ${request.arguments.media}
 			place = ${request.arguments.place}
 			collection = ${request.arguments.collection}
+			dateTill = ${request.arguments.dateTill}
 		}
 		@if.notAll = ${query.count() > currentPage * itemsPerPage}
 	}

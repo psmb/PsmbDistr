@@ -98,6 +98,18 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 					renderer = ${value}
 				}
 			}
+			value.@process.dateFilters = T:Case {
+				dateFilter {
+					condition = ${request.arguments.dateTill}
+					dateLower = ${Date.parse(request.arguments.dateTill, "Y-m-d")}
+					dateHigher = ${Date.add(this.dateLower, "P1M")}
+					renderer = ${value.greaterThan('date', Date.format(this.dateLower, "Y-m-d\TH:i:sP")).lessThan('date', Date.format(this.dateHigher, "Y-m-d\TH:i:sP"))}
+				}
+				default {
+					condition = ${true}
+					renderer = ${value}
+				}
+			}
 		}
 	}
 }

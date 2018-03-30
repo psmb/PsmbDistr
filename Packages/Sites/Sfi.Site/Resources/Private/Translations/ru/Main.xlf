@@ -59,6 +59,9 @@
 			<trans-unit id="latestArticles">
 				<source>Последние материалы</source>
 			</trans-unit>
+			<trans-unit id="byDate">
+				<source>По дате</source>
+			</trans-unit>
 			<trans-unit id="allArticles">
 				<source>Все материалы</source>
 			</trans-unit>
