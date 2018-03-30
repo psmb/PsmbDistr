@@ -59,7 +59,7 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 			value.@process.postFilters = T:Case {
 				skipAggregation {
 					condition = ${isAggregation}
-					renderer = ${value}
+					renderer = ${site == node ? value.exactMatch('type', 'ourNews') : value}
 				}
 				place {
 					condition = ${request.arguments.place}
@@ -89,13 +89,9 @@ prototype(Sfi.Site:StreamQuery) < prototype(T:Case) {
 						{term: {type: 'announcement'}}
 					]})}
 				}
-				defaultMain {
-					condition = ${site == node}
-					renderer = ${value.exactMatch('type', 'ourNews')}
-				}
 				default {
 					condition = ${true}
-					renderer = ${value}
+					renderer = ${site == node ? value.exactMatch('type', 'ourNews') : value}
 				}
 			}
 			value.@process.dateFilters = T:Case {
