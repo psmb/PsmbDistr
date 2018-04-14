@@ -98,7 +98,26 @@ Neos:
           type: 'Sfi.Site:News'
           referenceNodePath: '/sites/site/a'
           placeholder: 'Заголовок материала...'
-
+        Psmb_FlatNav:
+          presets:
+            news:
+              type: flat
+              label: Новости
+              icon: newspaper
+              query: 'Search.query(node).nodeType("Sfi.Site:News").sortDesc("date").from((page - 1) * 20).limit(20).execute().toArray()'
+              newReferenceNodePath: '/sites/site'
+              newNodeType: 'Sfi.Site:News'
+            tree:
+              type: tree
+              label: Дерево
+              icon: tree
+            tags:
+              type: flat
+              label: Тэги
+              icon: tag
+              query: 'Search.query(node).nodeType("Sfi.Site:Tag").sortAsc("title").from((page - 1) * 20).limit(20).execute().toArray()'
+              newReferenceNodePath: '/sites/site'
+              newNodeType: 'Sfi.Site:Tag'
     userInterface:
       navigateComponent:
         structureTree:

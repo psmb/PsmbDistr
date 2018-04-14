@@ -7,7 +7,15 @@ prototype(Sfi.Site:NewsContent) < prototype(Neos.Fusion:Template) {
 	announcementPlace = ${node.properties.announcementPlace}
 	credit = ${node.properties.credit}
 	date = ${node.properties.date}
-
+	dateEditable = ContentElementEditable {
+		property = 'date'
+	}
+	typeEditable = ContentElementEditable {
+		property = 'type'
+	}
+	tagsEditable = ContentElementEditable {
+		property = 'tags'
+	}
 	tagList = Sfi.Site:TagList
 	newsList = Sfi.Site:NewsRelatedList
 	languageLink = Sfi.Site:LanguageLink

@@ -25,6 +25,7 @@ blah:
     'Psmb.Newsletter:NewsletterMixin': true
   ui:
     label: Материал
+    icon: newspaper
     inspector:
       groups:
         news:
@@ -161,10 +162,11 @@ blah:
       ui:
         label: Дата
         reloadIfChanged: true
-        inspector:
-          group: news
+        inline:
+          editor: 'Flowpack.StructuredEditing/EditorEnvelope'
           editorOptions:
             format: 'd-m-Y H:i'
+            editor: 'Neos.Neos/Inspector/Editors/DateTimeEditor'
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
       search:
@@ -243,10 +245,10 @@ blah:
       ui:
         label: 'Тип новости'
         reloadIfChanged: true
-        inspector:
-          group: relations
-          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+        inline:
+          editor: 'Flowpack.StructuredEditing/EditorEnvelope'
           editorOptions:
+            editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
             allowEmpty: true
             placeholder: 'Выберите тип новости'
             values:

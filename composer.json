@@ -43,7 +43,9 @@
         "neos/seo": "dev-master@dev",
         "yeebase/graylog": "@dev",
         "sandstorm/optimizedrediscachebackend": "dev-patch-1@dev",
-        "flownative/aws-s3": "2.*"
+        "flownative/aws-s3": "2.*",
+        "psmb/flatnav": "@dev",
+        "flowpack/structuredediting": "@dev"
     },
     "extra": {
         "neos": {
