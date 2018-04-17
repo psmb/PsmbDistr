@@ -166,6 +166,7 @@ blah:
           editor: 'Flowpack.StructuredEditing/EditorEnvelope'
           editorOptions:
             format: 'd-m-Y H:i'
+            icon: 'calendar'
             editor: 'Neos.Neos/Inspector/Editors/DateTimeEditor'
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }

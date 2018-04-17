@@ -51,6 +51,7 @@
             createNew:
               path: /sites/site/tags/people
               type: 'Sfi.Site:Tag'
+            icon: tags
     sections:
       type: references
       ui:
