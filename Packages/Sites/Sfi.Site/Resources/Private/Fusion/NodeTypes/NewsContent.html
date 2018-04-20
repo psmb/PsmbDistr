@@ -5,7 +5,7 @@
 	<f:if condition="{type} != 'announcement'">
 		{dateEditable -> f:format.raw()}
 		<span class="news-detail__date">
-			<f:format.date  forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
+			<f:format.date forceLocale="{true}" cldrFormat="dd MMMM yyyy">{date}</f:format.date>
 		</span>
 	</f:if>
 	<div class="marginTop-double">

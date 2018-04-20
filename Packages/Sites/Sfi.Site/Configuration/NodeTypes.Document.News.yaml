@@ -162,6 +162,10 @@ blah:
       ui:
         label: Дата
         reloadIfChanged: true
+        inspector:
+          group: news
+          editorOptions:
+            format: 'd-m-Y H:i'
         inline:
           editor: 'Flowpack.StructuredEditing/EditorEnvelope'
           editorOptions:
