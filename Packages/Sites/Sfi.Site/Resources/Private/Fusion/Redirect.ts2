@@ -3,8 +3,8 @@ root.redirect {
 	condition = ${q(documentNode).property('uriPathSegment') == 'redirect' && node.context.workspaceName == 'live'}
 	@context.originalIdentifier = ${request.arguments.ancientLink ? Site.resolveAncientUrl(request.arguments.ancientLink) : request.arguments.id}
 	renderer = Neos.Fusion:Http.Message {
-		@context.targetNode = ${q(Search.query(site).nodeType('Sfi.Site:News').exactMatch('originalIdentifier', originalIdentifier).execute()).get(0)}
-		# @context.targetNode = ${q(site).find('[instanceof Sfi.Site:News]').filter('[originalIdentifier = "' + originalIdentifier + '"]').get(0)}
+		# @context.targetNode = ${q(Search.query(site).nodeType('Sfi.Site:News').exactMatch('originalIdentifier', originalIdentifier).execute()).get(0)}
+		@context.targetNode = ${q(site).find('[instanceof Sfi.Site:News]').filter('[originalIdentifier = "' + originalIdentifier + '"]').get(0)}
 		httpResponseHead {
 			statusCode = 301
 			headers.Location = Neos.Neos:NodeUri{
@@ -19,6 +19,7 @@ root.redirect {
 			mode = 'cached'
 			entryIdentifier {
 				1 = ${request.arguments.id}
+				2 = ${request.arguments.ancientLink}
 			}
 			entryTags {
 				1 = 'NodeType_Sfi.Site:News'
@@ -28,3 +29,4 @@ root.redirect {
 }
 
 root.@cache.entryIdentifier.id = ${request.arguments.id}
+root.@cache.entryIdentifier.ancientLink = ${request.arguments.ancientLink}
