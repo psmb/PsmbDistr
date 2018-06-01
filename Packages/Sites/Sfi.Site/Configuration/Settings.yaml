@@ -64,6 +64,9 @@ Psmb:
           language:
             - en
 Neos:
+  Fusion:
+    defaultContext:
+      Site: Sfi\Site\Helper\SiteHelper
   Flow:
     session:
       inactivityTimeout: 604800
