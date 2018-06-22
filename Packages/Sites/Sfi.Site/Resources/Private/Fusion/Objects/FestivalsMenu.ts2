@@ -1,6 +1,6 @@
 prototype(Sfi.Site:FestivalsMenu) < prototype(Neos.Fusion:Collection) {
 	@process.tmpl = ${'<div class="FestivalsMenu">' + value + '</div>'}
-	collection = ${Array.reverse(q(site).find('[instanceof Sfi.Site:Festival]').get())}
+	collection = ${Array.reverse(q(site).find('[instanceof Sfi.Site:Festival][_hiddenInIndex = false]').get())}
 	itemRenderer = Neos.Fusion:Tag {
 		tagName = 'a'
 		attributes.class = Neos.Fusion:RawArray {
