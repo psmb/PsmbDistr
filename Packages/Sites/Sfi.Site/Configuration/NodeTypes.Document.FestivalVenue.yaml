@@ -6,6 +6,7 @@
   ui:
     label: 'Фестивальная площадка'
     group: festival
+    icon: building
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

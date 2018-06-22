@@ -4,6 +4,7 @@
   ui:
     label: 'Человек в кружочке'
     group: festival
+    icon: male
   properties:
     title:
       type: string
@@ -29,6 +30,7 @@
               resize: true
             crop:
               aspectRatio:
+                forceCrop: true
                 enableOriginal: false
                 allowCustom: false
                 locked:
