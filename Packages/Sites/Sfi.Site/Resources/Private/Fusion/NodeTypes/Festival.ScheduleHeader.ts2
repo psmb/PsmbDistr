@@ -1,5 +1,5 @@
 prototype(Sfi.Site:Festival.ScheduleHeader) < prototype(Neos.Fusion:Tag) {
-	@process.tmpl = ${'<div class="marginTop-triple marginHorizontal-none marginBottom-single">' + value + '</div>'}
+	@process.tmpl = ${'<div class="marginTop-triple marginHorizontal-none marginBottom-double">' + value + '</div>'}
 	attributes.class = 'beta'
 	content = Neos.Fusion:Tag {
 		content = ${q(node).property('title')}

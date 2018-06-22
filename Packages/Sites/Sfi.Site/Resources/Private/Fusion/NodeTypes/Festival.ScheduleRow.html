@@ -1,6 +1,6 @@
 {namespace neos=Neos\Neos\ViewHelpers}
 
-<div class="row">
+<div class="row Schedule">
 	<div class="columns" style="overflow: hidden">
 		<div class="flex">
 			<p class="paragraph--large section-alt-color marginRight-double marginVertical-none" style="width: 110px; min-width: 110px">
@@ -8,8 +8,8 @@
 			</p>
 			<div class="flex-grow flex-shrink">
 				<div class="RteText">
-					<p class="paragraph--large marginTop-none marginBottom-single"><strong>{neos:contentElement.editable(property: 'title', tag: 'span')}</strong></p>
-					<p class="paragraph--small">{neos:contentElement.editable(property: 'text', tag: 'span')}</p>
+					<p class="Schedule-title paragraph--large marginTop-none marginBottom-single"><strong>{neos:contentElement.editable(property: 'title', tag: 'span')}</strong></p>
+					<p class="Schedule-text paragraph--small">{neos:contentElement.editable(property: 'text', tag: 'span')}</p>
 					{main -> f:format.raw()}
 				</div>
 			</div>
