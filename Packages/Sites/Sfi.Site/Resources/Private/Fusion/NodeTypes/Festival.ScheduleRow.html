@@ -3,11 +3,11 @@
 <div class="row marginBottom-single">
 	<div class="columns" style="overflow: hidden">
 		<div class="flex">
-			<p class="paragraph section-alt-color marginRight-double" style="width: 110px">
-				<strong>{neos:contentElement.editable(property: 'time', tag: 'span')}</strong>
+			<p class="paragraph--large section-alt-color marginRight-double" style="width: 110px; min-width: 110px">
+				{neos:contentElement.editable(property: 'time', tag: 'span')}
 			</p>
 			<div class="flex-grow RteText">
-				<p class="paragraph marginBottom-single">{neos:contentElement.editable(property: 'title', tag: 'span')}</p>
+				<p class="paragraph--large marginBottom-single">{neos:contentElement.editable(property: 'title', tag: 'span')}</p>
 				{main -> f:format.raw()}
 			</div>
 		</div>

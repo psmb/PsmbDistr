@@ -57,8 +57,8 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
 	@process.tmpl = afx`<ul class={!compact && 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'}>{value}</ul>`
 	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
 	itemRenderer = Neos.Fusion:Component {
-		title = ${String.pregReplace(q(node).property('title'), '/\d{1,2}\.\s(.*)/', '$1')}
-		number = ${String.pregReplace(q(node).property('title'), '/(\d{1,2})\.\s(.*)/', '$1')}
+		title = ${q(node).property('title')}
+		number = ${iterator.cycle}
 		isActive = ${node == documentNode}
 		fullTitle = ${q(node).property('fullTitle')}
 		description = Editable {
