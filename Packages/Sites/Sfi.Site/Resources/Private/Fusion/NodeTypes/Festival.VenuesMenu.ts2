@@ -68,7 +68,6 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
 			node = ${node}
 			@process.hideLinkInBE = ${node.context.inBackend ? null : value}
 		}
-		nodeUri = ${null}
 		renderer = Neos.Fusion:Case {
 			compact {
 				condition = ${compact}
