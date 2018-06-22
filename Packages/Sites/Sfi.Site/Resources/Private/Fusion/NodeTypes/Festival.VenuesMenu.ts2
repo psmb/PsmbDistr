@@ -9,9 +9,9 @@ prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
 						</div>
 					</div>
 					<div class="columns large-9 medium-10 small-10">
-						<h3 class="beta marginBottom-sesquialteral">{props.fullTitle}</h3>
+						<h3 class="beta">{props.fullTitle}</h3>
 						<div class="paragraph--small lineHeight-tight">{props.description}</div>
-						<div class="service marginTop-double">Подробнее</div>
+						<div class="paragraph--small color-gray marginTop-single">Подробнее</div>
 					</div>
 				</div>
 			</a>

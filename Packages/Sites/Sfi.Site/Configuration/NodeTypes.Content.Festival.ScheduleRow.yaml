@@ -22,3 +22,11 @@
           placeholder: Название
           link:
             a: true
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Еще какой-то текст (опционально)
+          link:
+            a: true
