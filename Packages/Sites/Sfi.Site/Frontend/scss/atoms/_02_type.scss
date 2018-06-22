@@ -292,7 +292,7 @@
 .Aside {
 	background: $gray-bg;
 	&,p {
-		font-size: rem-calc(13) !important;
+		font-size: rem-calc(14) !important;
 		margin: $u 0;
 	}
 	padding: $u 2*$u;
@@ -300,14 +300,14 @@
 .Section {
 	background: $gray-bg;
 	&,p,li {
-		font-size: rem-calc(13) !important;
+		font-size: rem-calc(14) !important;
 		margin: $u 0;
 	}
 	padding: $u 2*$u;
 }
 .Small {
 	&,p {
-		font-size: rem-calc(13) !important;
+		font-size: rem-calc(14) !important;
 	}
 }
 

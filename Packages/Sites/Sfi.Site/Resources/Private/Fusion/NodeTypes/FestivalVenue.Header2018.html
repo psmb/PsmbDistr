@@ -1,9 +1,21 @@
-<div class="fixedWidth">
-	<div class="primary-color Freeset marginVertical-triple paddingHorizontal-single">
-		<a href="{homeUri}">
-			<div class="Festival17-title">{headline -> f:format.raw()}</div>
-			<div class="Festival17-subTitle">{subHeadline -> f:format.raw()}</div>
-		</a>
-		<a class="light-button" href="{homeUri}">↩ {toMain}</a>
+<style>
+	.FestivalVenue-header {
+		background: url('https://psmb-neos-resources.hb.bizmrg.com/target/psmb/a3228fc5ffb97cbe945a5ea1595e39773b5d7a58/Festival2018-venue-m.svg') no-repeat top center;
+		background-size: 1024px;
+		height: 89px;
+	}
+	@media (min-width: 1024px) {
+		.FestivalVenue-header {
+			background: url('https://psmb-neos-resources.hb.bizmrg.com/target/psmb/2ded415112c11bc8fbee784db045a56c25195e03/Festival2018-venue.svg') no-repeat top center;
+			background-size: 1920px;
+			height: 291px;
+		}
+	}
+</style>
+
+<a href="{homeUri}">
+	<div class="FestivalVenue-header">
+		&nbsp;
 	</div>
-</div>
+</a>
+

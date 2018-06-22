@@ -3,13 +3,13 @@
 <div class="row">
 	<div class="columns" style="overflow: hidden">
 		<div class="flex">
-			<p class="paragraph--large section-alt-color marginRight-double" style="width: 110px; min-width: 110px">
+			<p class="paragraph--large section-alt-color marginRight-double marginVertical-none" style="width: 110px; min-width: 110px">
 				<strong>{neos:contentElement.editable(property: 'time', tag: 'span')}</strong>
 			</p>
 			<div class="flex-grow flex-shrink">
 				<div class="RteText">
-					<p class="paragraph--large marginBottom-single"><strong>{neos:contentElement.editable(property: 'title', tag: 'span')}</strong></p>
-					<p class="paragraph--small marginBottom-single">{neos:contentElement.editable(property: 'text', tag: 'span')}</p>
+					<p class="paragraph--large marginTop-none marginBottom-single"><strong>{neos:contentElement.editable(property: 'title', tag: 'span')}</strong></p>
+					<p class="paragraph--small">{neos:contentElement.editable(property: 'text', tag: 'span')}</p>
 					{main -> f:format.raw()}
 				</div>
 			</div>

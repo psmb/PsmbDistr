@@ -1,6 +1,6 @@
 prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
 	value = afx`
-		<li class={'Link marginBottom-single ' + (props.isActive && 'isActive')}>
+		<li class={'Link ' + (props.isActive && 'isActive')}>
 			<a href={props.nodeUri}>
 				<div class="row">
 					<div class="columns large-3 medium-2 small-2">
