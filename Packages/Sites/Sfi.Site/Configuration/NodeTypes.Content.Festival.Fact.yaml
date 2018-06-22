@@ -1,0 +1,19 @@
+'Sfi.Site:Festival.Fact':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Фестиваль - Факт'
+    group: festival
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: Заголовок
+    subTitle:
+      type: string
+      ui:
+        inlineEditable: true
+        aloha:
+          placeholder: 'Текст какой-то'

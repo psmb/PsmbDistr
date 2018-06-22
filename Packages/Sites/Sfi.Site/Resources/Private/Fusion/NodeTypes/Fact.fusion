@@ -1,0 +1,18 @@
+prototype(Sfi.Site:Festival.Fact)>
+prototype(Sfi.Site:Festival.Fact) < prototype(Neos.Fusion:Component) {
+    title = Editable {
+        property = 'title'
+    }
+    subTitle = Editable {
+        property = 'subTitle'
+    }
+    renderer = afx`
+        <li class="Fact padding-single">
+            <div class="section-color-bg padding-double">
+                <h3 class="Fact-title color-white page-title marginBottom-double" style="line-height: 1.1">{props.title}</h3>
+                <h3 class="Fact-subTitle color-white paragraph--small">{props.subTitle}</h3>
+            </div>
+        </li>
+    `
+    @process.contentElementWrapping = ContentElementWrapping
+}
