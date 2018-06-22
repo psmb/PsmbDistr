@@ -3,7 +3,7 @@ prototype(Sfi.Site:NavSectionMenu) < prototype(Neos.Fusion:Collection) {
 	collection = ${q(documentNode).children('main').find('[instanceof Sfi.Site:NavSection]').get()}
 	itemRenderer = Neos.Fusion:Tag {
 		tagName = 'a'
-		attributes.class = 'NavSectionMenu-item light-button color-white button--alt marginHorizontal-half marginVertical-single'
+		attributes.class = 'NavSectionMenu-item light-button color-white section-alt-color-bg button--alt marginHorizontal-half marginVertical-single'
 		attributes.title = ${node.properties.title}
 		attributes.href = NodeUri {
 			node = ${documentNode}

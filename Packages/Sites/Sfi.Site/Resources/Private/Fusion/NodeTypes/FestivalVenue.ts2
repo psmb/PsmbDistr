@@ -1,5 +1,6 @@
 prototype(Sfi.Site:FestivalVenue.Document) < prototype(Sfi.Site:AbstractPage.Document) {
 	body = Sfi.Site:FestivalVenue
+	bodyTag.attributes.id = ${'Festival-' + q(node).parent().property('uriPathSegment')}
 }
 prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 	@context.festivalNode = ${q(documentNode).closest('[instanceof Sfi.Site:Festival]').get(0)}
@@ -55,5 +56,7 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 	}
 
 	# articles = Sfi.Site:ArticleLinkList
-	venuesMenu = Sfi.Site:Festival.VenuesMenu
+	venuesMenu = Sfi.Site:Festival.VenuesMenu {
+		@context.compact = ${true}
+	}
 }

@@ -4,3 +4,4 @@
   ui:
     label: 'Фестиваль - Меню площадок'
     group: 'festival'
+    inlineEditable: true

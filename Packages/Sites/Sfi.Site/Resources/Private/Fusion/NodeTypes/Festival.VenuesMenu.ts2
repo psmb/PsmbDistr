@@ -1,14 +1,85 @@
+prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
+	value = afx`
+		<li class={'Link marginBottom-single ' + (props.isActive && 'isActive')}>
+			<a href={props.nodeUri}>
+				<div class="row">
+					<div class="columns large-3 medium-2 small-2">
+						<div class="marginTop-single textAlign-right">
+							<div class="section-alt-color-bg festival-number-circle">{props.number}</div>
+						</div>
+					</div>
+					<div class="columns large-9 medium-10 small-10">
+						<h3 class="beta marginBottom-sesquialteral">{props.fullTitle}</h3>
+						<div class="paragraph--small lineHeight-tight">{props.description}</div>
+						<div class="service marginTop-double">Подробнее</div>
+					</div>
+				</div>
+			</a>
+		</li>
+	`
+}
+prototype(Sfi.Site:Festival.VenuesMenu.ItemCompact) < prototype(Neos.Fusion:Value) {
+	value = afx`
+		<li style="overflow: hidden" class={'Link marginBottom-single ' + (props.isActive && 'isActive')}>
+			<a href={props.nodeUri}>
+				<div class="left">
+					<div class="marginTop-single textAlign-right">
+						<div class="marginRight-single section-alt-color-bg festival-number-circle">{props.number}</div>
+					</div>
+				</div>
+				<h3 class="gamma">{props.title}</h3>
+			</a>
+		</li>
+	`
+}
+
 prototype(Sfi.Site:Festival.VenuesMenu)>
 prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
-	@process.tmpl = ${'<ul class="VenuesMenu">' + value + '</ul>'}
-	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
-	itemRenderer = Neos.Fusion:Tag {
-		@process.tmpl = ${'<li class="VenusMenu-item Link marginBottom-single gamma color-warning ' + (node == documentNode && 'isActive') + '">' + value + '</li>'}
-		tagName = 'a'
-		attributes.href = NodeUri {
-			node = ${node}
+	@process.styles = afx`{'
+	<style>
+		.festival-number-circle {
+			border-radius: 50%;
+			color: white;
+			font-size: 14px;
+			font-weight: bold;
+			display: inline-block;
+			width: 25px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
 		}
-		content = ${node.properties.title}
+		@media (min-width: 640px) {
+			.festival-number-circle {
+			}
+		}
+	</style>
+	'}{value}`
+	@process.tmpl = afx`<ul class={!compact && 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'}>{value}</ul>`
+	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
+	itemRenderer = Neos.Fusion:Component {
+		title = ${String.pregReplace(q(node).property('title'), '/\d{1,2}\.\s(.*)/', '$1')}
+		number = ${String.pregReplace(q(node).property('title'), '/(\d{1,2})\.\s(.*)/', '$1')}
+		isActive = ${node == documentNode}
+		fullTitle = ${q(node).property('fullTitle')}
+		description = Editable {
+			property = 'description'
+		}
+		nodeUri = NodeUri {
+			node = ${node}
+			@process.hideLinkInBE = ${node.context.inBackend ? null : value}
+		}
+		nodeUri = ${null}
+		renderer = Neos.Fusion:Case {
+			compact {
+				condition = ${compact}
+				renderer = Sfi.Site:Festival.VenuesMenu.ItemCompact
+			}
+			default {
+				condition = ${true}
+				renderer = Sfi.Site:Festival.VenuesMenu.Item
+			}
+		}
+		@process.contentElementWrapping = ContentElementWrapping
 	}
 	@cache {
 		mode = 'cached'

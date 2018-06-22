@@ -4,8 +4,8 @@ prototype(Sfi.Site:FestivalsMenu) < prototype(Neos.Fusion:Collection) {
 	itemRenderer = Neos.Fusion:Tag {
 		tagName = 'a'
 		attributes.class = Neos.Fusion:RawArray {
-			class = 'FestivalsMenu-item'
-			active = ${node == documentNode || q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0 ? 'isActive' : ''}
+			class = 'FestivalsMenu-item backgroundColor-gray'
+			active = ${node == documentNode || q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0 ? 'isActive section-color-bg color-white' : ''}
 		}
 		attributes.href = NodeUri {
 			node = ${node}

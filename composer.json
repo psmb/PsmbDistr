@@ -45,7 +45,8 @@
         "sandstorm/optimizedrediscachebackend": "dev-patch-1@dev",
         "flownative/aws-s3": "2.*",
         "psmb/flatnav": "@dev",
-        "flowpack/structuredediting": "@dev"
+        "flowpack/structuredediting": "@dev",
+        "neos/fusion-afx": "^1.0"
     },
     "extra": {
         "neos": {

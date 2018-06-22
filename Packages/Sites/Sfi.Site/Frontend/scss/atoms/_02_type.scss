@@ -1,73 +1,9 @@
 
-/*doc
----
-title: Typography
-name: 02_type
-category: atoms
----
- */
-
-/*doc
----
-title: Heading defaults
-name: 00_heading-defaults
-parent: 02_type
----
-Most of the headings inherit default line-height and margins.
-
-```
 %heading-defaults{
 	@extend %vertical-margins;
 	line-height: 1.2;
 }
-```
-*/
-%heading-defaults{
-	@extend %vertical-margins;
-	line-height: 1.2;
-}
-/*doc
----
-title: Basic styles
-name: 03_basic-styles
-parent: 02_type
----
-These styles generally follow html tags, but are only directly matched in RTE-text.
-*/
-/*doc
----
-title: Paragraph
-name: 02_paragraph
-parent: 03_basic-styles
-category:
-- atoms
-- 02_paragraph
----
-Diferent vatants of paragraph text. `.paragraph--large` is extnded in `.rte-text p`.
 
-```html_example
-<p class="paragraph">This is a paragraph styling.</p>
-<p class="paragraph--small">This is a smaller paragraph styling.</p>
-<p class="paragraph--large">This is a larger paragraph styling.  Extended for P's wihin .rte-text.</p>
-```
-```
-.paragraph{
-	@extend %vertical-margins;
-	line-height: 1.5;
-	font-size: rem-calc(16);
-	color: $gray--dark;
-}
-.paragraph--small{
-	@extend .paragraph;
-	font-size: rem-calc(14);
-}
-.paragraph--large{
-	@extend .paragraph;
-	margin: 2*$u 0;
-	font-size: rem-calc(18);
-}
-```
- */
 .paragraph{
 	@extend %vertical-margins;
 	line-height: 1.5;
@@ -83,30 +19,6 @@ Diferent vatants of paragraph text. `.paragraph--large` is extnded in `.rte-text
 	font-size: rem-calc(18);
 }
 
-/*doc
----
-title: Hyperlink
-name: 03_link
-parent: 03_basic-styles
-category:
-- atoms
-- 03_link
----
-Link styling
-
-```html_example
-<p>This is how <a class="link" href="#">a hyperlink</a> will look</p>
-```
-```
-.link{
-	color: $primary-color;
-	text-decoration: none;
-
-	&:hover,
-	&:focus { color: scale-color($primary-color, $lightness: -14%); }
-}
-```
- */
 .link{
 	color: $primary-color;
 	text-decoration: none;
@@ -115,57 +27,6 @@ Link styling
 	&:focus { color: scale-color($primary-color, $lightness: -14%); }
 }
 
-
-
-/*doc
----
-title: Blockquote
-name: 04_blockquote
-parent: 03_basic-styles
-category:
-- atoms
-- 04_blockquote
----
-We need an override of P in BLOCKQUOTE, when we use this class inside of .rte-text, which does have P styled.
-
-```html_example
-<blockquote class="blockquote">В основе концепции факультета религиоведения СФИ — внимание к человеку и его
-личному опыту веры, что позволяет не сводить представление о религии только к уровню идей</blockquote>
-<blockquote class="blockquote--small">В основе концепции факультета религиоведения СФИ — внимание к человеку и его
-личному опыту веры, что позволяет не сводить представление о религии только к уровню идей</blockquote>
-```
-```
-.blockquote{
-	&:before{
-		content: '';
-		display: block;
-		width: 48px;
-		height: 3px;
-		margin-bottom: 18px;
-		background: $primary-color;
-	}
-	&,p{
-		font-size: rem-calc(25) !important;
-		font-weight: 300;
-		color: $gray;
-		line-height: 1.2;
-	}
-	font-style: italic;
-	border-left: 0;
-}
-.blockquote--small{
-	@extend %vertical-margins;
-	&,p{
-		font-size: rem-calc(14
-		) !important;
-		font-weight: 300;
-		color: $gray;
-		line-height: 1.2;
-	}
-	font-style: italic;
-}
-```
- */
 .blockquote{
 	&:before{
 		content: '';
@@ -197,26 +58,6 @@ We need an override of P in BLOCKQUOTE, when we use this class inside of .rte-te
 	font-style: italic;
 }
 
-/*doc
----
-title: Unordered list
-name: 05_ul
-parent: 03_basic-styles
-category:
-- atoms
-- 05_ul
----
-
-```html_example
-<ul class="ul"><li>An unordered list</li><li>An unordered list</li></ul>
-```
-```
-.ul{
-	list-style-type: disc;
-	margin-left: 2*$u;
-}
-```
- */
 .ul{
 	list-style-type: disc;
 	margin-left: 2*$u;
@@ -234,77 +75,26 @@ category:
 	}
 }
 
-
-
-/*doc
----
-title: Main headings
-name: 04_main-headings
-parent: 02_type
-category:
-- atoms
-- 04_main-headings
----
-Main headings use greek letters, to be completely decoupled from tags.
-
-```html_example
-<div class="alpha">Heading alpha example</div>
-<div class="alpha--light">Heading alpha example</div>
-<div class="beta">Heading beta example</div>
-<div class="gamma">Heading gamma example</div>
-<div class="delta">Heading delta example</div>
-<div class="delta--navy">Heading delta--navy example</div>
-<div class="epsilon">Heading epsilon example</div>
-<div class="zeta">Heading zeta example</div>
-```
-```
-.alpha,.beta,.gamma,.delta,.epsilon,.zeta{
-	@extend %vertical-margins;
-	line-height: 1.2;
-}
-.alpha{
-	font-size: rem-calc(36);
-	font-weight: 600;
-}
-.beta{
-	font-size: rem-calc(24);
-	font-weight: 600;
-}
-.gamma{
-	font-size: rem-calc(16);
-	font-weight: 600;
-}
-.delta{
-	font-size: rem-calc(13);
-	text-transform: uppercase;
-	font-weight: 400;
-	color: $gray;
-}
-.epsilon{
-	font-size: rem-calc(15);
-	font-weight: 400;
-}
-.zeta{
-	font-size: rem-calc(14);
-	font-weight: 400;
-	color: $gray;
-}
-```
- */
 .alpha,.beta,.gamma,.delta,.epsilon,.zeta{
 	@extend %heading-defaults;
 }
 .alpha{
-	font-size: rem-calc(36);
+	font-size: rem-calc(32);
 	font-weight: 600;
+	@media (min-width: 640px) {
+		font-size: rem-calc(48);
+	}
 }
 .alpha--light{
 	@extend .alpha;
 	font-weight: 300;
 }
 .beta{
-	font-size: rem-calc(24);
 	font-weight: 600;
+	font-size: rem-calc(18);
+	@media (min-width: 640px) {
+		font-size: rem-calc(24);
+	}
 }
 .gamma{
 	font-size: rem-calc(16);
@@ -330,52 +120,15 @@ Main headings use greek letters, to be completely decoupled from tags.
 	color: $gray;
 }
 
-
-
-/*doc
----
-title: Alternative headings strand
-name: 20_alt-headings
-parent: 02_type
----
-Secondary headings strand. Should always override tag style.
- */
-
-/*doc
----
-title: Page title
-name: 01_page-title
-parent: 20_alt-headings
-category:
-- atoms
-- 01_page-title
----
-Used mainly in page title headings.
-
-```html_example
-<h1 class="page-title">page title example</h1>
-```
-```
 .page-title{
 	@extend %vertical-margins;
 	font-weight: 600;
 	font-size: rem-calc(28);
-	line-height: 1.8;
+	line-height: 1.3;
 	letter-spacing: 2px;
 	word-spacing: 2px;
 	text-transform: uppercase;
 }
-```
- */
-	.page-title{
-		@extend %vertical-margins;
-		font-weight: 600;
-		font-size: rem-calc(28);
-		line-height: 1.3;
-		letter-spacing: 2px;
-		word-spacing: 2px;
-		text-transform: uppercase;
-	}
 
 
 .important-title{
@@ -398,27 +151,9 @@ Used mainly in page title headings.
 	font-size: rem-calc(16);
 }
 
-/*doc
----
-title: Block title
-name: 02_block-title
-parent: 20_alt-headings
-category:
-- atoms
-- 02_block-title
----
-Used as a basis for molecule .block-title-divider
-
-```html_example
-<h1 class="block-title">Block title heading example</h1>
-<h1 class="block-title--inv">Block title heading example</h1>
-<h1 class="block-title--strong">Block title heading example</h1>
-```
-```
 .block-title{
-	text-transform: lowercase;
-	font-variant: small-caps;
-	font-size: rem-calc(15);
+	font-size: rem-calc(13);
+	text-transform: uppercase;
 	font-weight: 400;
 }
 .block-title--inv{
@@ -429,259 +164,77 @@ Used as a basis for molecule .block-title-divider
 	@extend .block-title;
 	font-weight: 600;
 }
-```
- */
-	.block-title{
-		font-size: rem-calc(13);
-		text-transform: uppercase;
-		font-weight: 400;
-	}
-	.block-title--inv{
-		@extend .block-title;
-		color: white;
-	}
-	.block-title--strong{
-		@extend .block-title;
-		font-weight: 600;
-	}
-	.block-title--primary{
-		@extend .block-title;
-		color: $primary-color;
-	}
+.block-title--primary{
+	@extend .block-title;
+	color: $primary-color;
+}
 
-
-
-/*doc
----
-title: Service
-name: service
-parent: 20_alt-headings
-category:
-- atoms
-- service
----
-Service heading, used for sections in stream
-
-```html_example
-<h4 class="service">Service heading example</h4>
-```
-```
 .service{
-	@extend %vertical-margins;
-	a{color: inherit;}
+	@extend %heading-defaults;
 	font-size: rem-calc(13);
+	font-weight: 400;
+	line-height: 0.7;
 	text-transform: lowercase;
 	font-variant: small-caps;
 	letter-spacing: 1px;
 	color: $gray;
 }
-```
- */
-	.service{
-		@extend %heading-defaults;
-		font-size: rem-calc(13);
-		font-weight: 400;
-		line-height: 0.7;
-		text-transform: lowercase;
-		font-variant: small-caps;
-		letter-spacing: 1px;
-		color: $gray;
-	}
 
-
-/*doc
----
-title: Service small
-name: service-small
-parent: 20_alt-headings
-category:
-- atoms
-- service-small
----
-Small service headings
-
-```html_example
-<h4 class="service-small--gray">Service heading example</h4>
-<h4 class="service-small--gray-light">Service heading example</h4>
-<h4 class="service-small--gray-dark">Service heading example</h4>
-<h4 class="service-small--inv" style="background: black;">Service heading example</h4>
-<h4 class="service-small--navy-light">Service heading example</h4>
-```
-```
-	.service-small{
-		@extend %heading-defaults;
-		line-height: 1.5;
-		font-size: rem-calc(13);
-		font-weight: 400;
-		color: $gray;
-	}
-	.service-small--gray{
-		@extend .service-small;
-		color: $gray;
-	}
-	.service-small--gray-light{
-		@extend .service-small;
-		color: $gray--light;
-	}
-	.service-small--gray-dark{
-		@extend .service-small;
-		color: $gray--dark;
-	}
-	.service-small--inv{
-		@extend .service-small;
-		color: white;
-	}
-	.service-small--navy-light{
-		@extend .service-small;
-		color: $navy--light;
-	}
-```
- */
-	.service-small{
-		@extend %heading-defaults;
-		line-height: 1.5;
-		font-size: rem-calc(13);
-		font-weight: 400;
-		color: $gray;
-	}
-	.service-small--gray{
-		@extend .service-small;
-		color: $gray;
-	}
-	.service-small--gray-light{
-		@extend .service-small;
-		color: $gray--light;
-	}
-	.service-small--gray-dark{
-		@extend .service-small;
-		color: $gray--dark;
-	}
-	.service-small--inv{
-		@extend .service-small;
-		color: white;
-	}
-	.service-small--navy-light{
-		@extend .service-small;
-		color: $navy--light;
-	}
-
-/*doc
----
-title: Service large
-name: service-large
-parent: 20_alt-headings
-category:
-- atoms
-- service-large
----
-large service headings
-
-```html_example
-<h4 class="service-large">Service heading example</h4>
-<h4 class="service-large--inv" style="background:black;">Service heading example</h4>
-<h4 class="service-large--gray-light" style="background:black;">Service heading example</h4>
-```
-```
-	.service-large{
-		@extend %vertical-margins;
-		font-size: rem-calc(16);
-		font-weight: 400;
-		color: $navy;
-	}
-	.service-large--inv{
-		@extend .service-large;
-		color: white;
-	}
-```
- */
-	.service-large{
-		@extend %heading-defaults;
-		font-size: rem-calc(16);
-		font-weight: 400;
-		color: $navy--light;
-	}
-	.service-large--inv{
-		@extend .service-large;
-		color: white;
-	}
-	.service-large--gray-light{
-		@extend .service-large;
-		line-height: 1.5;
-		color: $gray--light;
-	}
-
-/*doc
----
-title: Service caps
-name: service-caps
-parent: 20_alt-headings
-category:
-- atoms
-- service-caps
----
-caps service headings
-
-```html_example
-<h4 class="service-caps">Service heading example</h4>
-<h4 class="service-caps--navy-light" style="background:black;">Service heading example</h4>
-<h4 class="service-caps--gray-light" style="background:black;">Service heading example</h4>
-```
-```
-	.service-caps{
-		@extend %vertical-margins;
-		font-size: rem-calc(16);
-		font-weight: 400;
-		color: $navy;
-	}
-	.service-caps--navy-light{
-		@extend .service-caps;
-		color: white;
-	}
-```
- */
-	.service-caps{
-		@extend %heading-defaults;
-		font-size: rem-calc(16);
-		text-transform: uppercase;
-		font-weight: 400;
-	}
-	.service-caps--navy-light{
-		@extend .service-caps;
-		color: $primary-color;
-	}
-
-/*doc
----
-title: Action
-name: action
-parent: 20_alt-headings
-category:
-- atoms
-- 20_alt-headings
----
-Used in call to actions like go to comments.
-
-```html_example
-<h1 class="action">Action style</h1>
-<h1 class="action--small">Action small style</h1>
-```
-```
-.action{
+.service-small{
+	@extend %heading-defaults;
+	line-height: 1.5;
+	font-size: rem-calc(13);
 	font-weight: 400;
-	text-transform: lowercase;
-	font-variant: small-caps;
-	font-size: rem-calc(18);
-	font-style: italic;
-	color: $navy--light;
-	letter-spacing: 1px;
+	color: $gray;
 }
-.action--small{
-	@extend .action;
-	font-size: rem-calc(14);
+.service-small--gray{
+	@extend .service-small;
+	color: $gray;
+}
+.service-small--gray-light{
+	@extend .service-small;
+	color: $gray--light;
+}
+.service-small--gray-dark{
+	@extend .service-small;
 	color: $gray--dark;
 }
-```
- */
+.service-small--inv{
+	@extend .service-small;
+	color: white;
+}
+.service-small--navy-light{
+	@extend .service-small;
+	color: $navy--light;
+}
+
+.service-large{
+	@extend %heading-defaults;
+	font-size: rem-calc(16);
+	font-weight: 400;
+	color: $navy--light;
+}
+.service-large--inv{
+	@extend .service-large;
+	color: white;
+}
+.service-large--gray-light{
+	@extend .service-large;
+	line-height: 1.5;
+	color: $gray--light;
+}
+
+.service-caps{
+	@extend %heading-defaults;
+	font-size: rem-calc(16);
+	text-transform: uppercase;
+	font-weight: 400;
+}
+.service-caps--navy-light{
+	@extend .service-caps;
+	color: $primary-color;
+}
+
 .action{
 	@extend %heading-defaults;
 	font-weight: 400;
@@ -698,44 +251,6 @@ Used in call to actions like go to comments.
 	color: $gray--dark;
 }
 
-
-
-/*doc
----
-title: Additional text styles
-name: 30_additional-styles
-parent: 02_type
----
-*/
-
-
-/*doc
----
-title: Lead
-name: lead
-parent: 30_additional-styles
-category:
-- atoms
-- 30_additional-styles
----
-Lead text. Normally precedes .rte-text.
-
-```html_example
-<p class="lead">.lead В течение двух дней работали 15 секций, в том числе:
-«Конструирование истории и память о прошлом», «Конструирование социальной
-памяти: мифы и идеологии», «Знание о религии и религиозное знание», «Новые
-образовательные технологии для освоения новых профессий: ответ на вызовы
-современности»</p>
-```
-```
-.lead,.lead p{
-	@extend %vertical-margins;
-	font-size: rem-calc(22);
-	letter-spacing: 1px;
-	line-height: 1.4;
-}
-```
- */
 .lead,.lead p, .Lead, .Lead p{
 	@extend %vertical-margins;
 	font-size: rem-calc(22);
@@ -743,51 +258,6 @@ Lead text. Normally precedes .rte-text.
 	line-height: 1.4;
 }
 
-
-
-
-
-
-
-
-
-/*doc
----
-title: RTE text
-name: 99_rte-text
-parent: 02_type
----
-Mapping atoms to tags for content within .rte-text, for contet coming from CMS.
-
-```html_example
-<div class="rte-text">
-	<h1>Heading 1</h1>
-	<h2>Heading 2</h2>
-	<h3>Heading 3</h3>
-	<h4>Heading 4</h4>
-	<h5>Heading 5</h5>
-	<h6>Heading 6</h6>
-	<p>В основе концепции факультета религиоведения СФИ — внимание к человеку и его личному опыту веры, что позволяет не сводить представление о религии только к уровню идей: догматов, мифологии — и культа, избежать в преподавании идеологических крайностей.</p>
-	<p><a href="#">This is a link</a> within paragraph</p>
-	<blockquote>В основе концепции факультета религиоведения СФИ</blockquote>
-	<ul><li>An unordered list</li><li>An unordered list</li></ul>
-</div>
-```
-```
-.rte-text, .csc-default{
-	h1{@extend .alpha;}
-	h2{@extend .beta;}
-	h3{@extend .gamma;}
-	h4{@extend .delta;}
-	h5{@extend .epsilon;}
-	h6{@extend .zeta;}
-	p(@extend .paragraph--large;)
-	a{@extend .link;}
-	blockquote{@extend .blockquote;}
-	ul{@extend .paragraph--large; @extend .ul;}
-}
-```
- */
 .Text.rte-text > div {
 	@extend .paragraph--large
 }

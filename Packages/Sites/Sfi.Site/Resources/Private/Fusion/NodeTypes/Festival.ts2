@@ -3,6 +3,7 @@ prototype(Sfi.Site:Festival.Document) < prototype(Sfi.Site:AbstractPage.Document
 	head {
 		openGraphMetaTags = Neos.Seo:OpenGraphMetaTags
 	}
+	bodyTag.attributes.id = ${'Festival-' + q(node).property('uriPathSegment')}
 	body = Sfi.Site:Festival
 }
 prototype(Sfi.Site:Festival) < prototype(Sfi.Site:AbstractPage) {

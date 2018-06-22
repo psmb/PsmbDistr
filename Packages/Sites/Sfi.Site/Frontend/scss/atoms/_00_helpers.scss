@@ -47,7 +47,15 @@ Limits width for container. TODO: check what's up with that float thing
 	}
 }
 
-
+.flex {
+	display: flex;
+}
+.flex-shrink {
+	flex-shrink: 1;
+}
+.flex-grow {
+	flex-grow: 1;
+}
 
 .round {
 	border-radius: 50%;

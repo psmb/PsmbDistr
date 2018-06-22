@@ -1,33 +1,3 @@
-/*doc
----
-title: Colors
-name: 01_color
-category: atoms
----
- */
-/*doc
----
-title: Base colors
-name: 01_base-colors
-parent: 01_color
-category:
-- atoms
-- 01_base-colors
----
-Base colors for the project. Try to not use this directly, but through proxy variables like `$primary-color` etc.
-
-```html_example
-<div style="padding: 30px;">
-	<span style="background:#1e5a86; padding:30px;color:white;">navy--dark</span>
-	<span style="background:#2a4072; padding:30px;">navy--light</span>
-	<span style="background:#151515; padding:30px;color:white;">gray--dark</span>
-	<span style="background:#656565; padding:30px;">gray</span>
-	<span style="background:#878787; padding:30px;">gray--light</span>
-	<span style="background:#d7d7d7; padding:30px;">gray-line</span>
-	<span style="background:#eae7e4; padding:30px;">gray-bg</span>
-</div>
-```
- */
 $navy--light: #1e5a86;
 $navy--dark: darken($navy--light,10%);
 //#2a4072;
@@ -35,34 +5,10 @@ $gray: #656565;
 $gray--dark: #151515;
 $gray--light: #878787;
 $gray-line: #d7d7d7;
-$gray-bg: #eae7e4;
+$gray-bg: #dae0e3;
 // Second order of mappings. TODO: document this section.
 $primary-color: $navy--light;
 
-/*doc
----
-title: Section colors
-name: 02_section-colors
-parent: 01_color
-category:
-- atoms
-- 02_section-colors
----
-Section colors. Applied using helper classes: `.section-color` `.section-color-bg` `.section-color-bd`
-
-```html_example
-<div style="padding: 30px;">
-	<span style="background:#ed492e; padding:30px;">scarlet</span>
-	<span style="background:#dc3067; padding:30px;">pink</span>
-	<span style="background:#af52aa; padding:30px;">violet</span>
-	<span style="background:#008899; padding:30px;">marine</span>
-	<span style="background:#1e9463; padding:30px;">emerald</span>
-	<span style="background:#61902f; padding:30px;">grass</span>
-	<span style="background:#edad00; padding:30px;">yellow</span>
-	<span style="background:#e87f23; padding:30px;">orange</span>
-</div>
-```
- */
 $scarlet: #ed492e;
 $pink: #dc3067;
 $violet: #af52aa;
@@ -72,23 +18,10 @@ $grass: #61902f;
 $yellow: #edad00;
 $orange: #e87f23;
 
+$festivalBlue: #6297ff;
+$festivalPink: #ff7396;
 
-/*doc
----
-title: Gray background
-name: backgroundColor-gray
-parent: 00_helpers
-category:
-- atoms
-- backgroundColor-gray
----
-TODO: refactor color;
-
-```html_example
-<p class="backgroundColor-gray">This block has gray background</p>
-```
- */
-.backgroundColor-gray, .backgroundColor-gray {
+.backgroundColor-gray {
 	background: $gray-bg;
 }
 .bg-navy--light {
@@ -126,46 +59,59 @@ TODO: refactor color;
 	color: $gray--light;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@mixin colormix($pageclass, $color){
+@mixin colormixPrimary($pageclass, $color){
 	#{$pageclass}{
-		.section-color{
+		.section-color {
 			color: $color;
 			border-color: $color;
 		}
-		.section-color-bg{
+		.section-color-bg {
 			background: $color;
 		}
-		.section-color-bd{
+		.section-color-bd {
 			border-color: $color;
 		}
-		.section-color-bg--darken{
+		.section-color-bg--darken {
 			background: darken($color,20%);
 		}
-		.section-color-bd--darken{
+		.section-color-bd--darken {
 			border-color: darken($color,20%);
 		}
-		blockquote{
+		blockquote {
 			:before{background: $color;}
 		}
 	}
 }
 
+@mixin colormixAlt($pageclass, $color){
+	#{$pageclass}{
+		.section-alt-color {
+			color: $color;
+			border-color: $color;
+		}
+		.section-alt-color-bg {
+			background: $color;
+		}
+		.section-alt-color-bd {
+			border-color: $color;
+		}
+		.section-alt-color-bg--darken {
+			background: darken($color,20%);
+		}
+		.section-alt-color-bd--darken {
+			border-color: darken($color,20%);
+		}
+		blockquote {
+			:before{background: $color;}
+		}
+	}
+}
 
 //main
-@include colormix("body",$navy--light);
+@include colormixPrimary("body", $navy--light);
+
+@include colormixPrimary("#Festival-2017", $navy--light);
+@include colormixAlt("#Festival-2017", $scarlet);
+
+@include colormixPrimary("#Festival-2018", $festivalBlue);
+@include colormixAlt("#Festival-2018", $festivalPink);
