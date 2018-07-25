@@ -95,6 +95,7 @@ Neos:
   Neos:
     Ui:
       frontendConfiguration:
+        defaultInlineEditor: 'ckeditor5'
         'Psmb.CreateNodeButton':
           enabled: true
           position: 'into'
