@@ -3,7 +3,7 @@ prototype(Sfi.Site:AbstractPage.Document) < prototype(Page) {
 	@context.altLang = ${Array.first(node.context.dimensions.language) == 'ru' ? 'en' : 'ru'}
 
 	head {
-		titleTag.content = ${String.stripTags(q(node).property('title')) + ' | ' + Translation.translate('global.shorttitle', null, [], null, 'Sfi.Site')}
+		titleTag.content = ${String.stripTags(q(node).property('titleOverride') || q(node).property('title')) + ' | ' + Translation.translate('global.shorttitle', null, [], null, 'Sfi.Site')}
 		miscStuff = ${'
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 			<!-- Generate favicons with http://realfavicongenerator.net/ -->
