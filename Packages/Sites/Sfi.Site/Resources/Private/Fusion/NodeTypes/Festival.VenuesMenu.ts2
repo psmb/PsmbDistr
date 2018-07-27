@@ -20,7 +20,7 @@ prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
 }
 prototype(Sfi.Site:Festival.VenuesMenu.ItemCompact) < prototype(Neos.Fusion:Value) {
 	value = afx`
-		<li style="overflow: hidden" class={'Link marginBottom-single ' + (props.isActive && 'isActive')}>
+		<li style="overflow: hidden" class={'Link marginBottom-single ' + (props.isActive && 'isActive section-alt-color')}>
 			<a href={props.nodeUri}>
 				<div class="left">
 					<div class="marginTop-single textAlign-right">
