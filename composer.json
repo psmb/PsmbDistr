@@ -33,6 +33,7 @@
         "psmb/term": "^3.0",
         "psmb/nodetypes": "@dev",
         "psmb/createnodebutton": "@dev",
+        "psmb/splitadd": "^0.1",
         "flowpack/jobqueue-common": "~2.0.0",
         "psmb/newsletter": "^2.3",
         "psmb/mediaquery": "^2.0",
