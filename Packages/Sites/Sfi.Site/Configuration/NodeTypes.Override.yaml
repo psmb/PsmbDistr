@@ -40,6 +40,14 @@
                     height: 200
                     label: 'На главную -- неважная'
 
+'Psmb.NodeTypes:Text':
+  properties:
+    text:
+      ui:
+        aloha:
+          format:
+            splitAdd: true
+
 'Neos.Neos:Node':
   ui:
     inspector:

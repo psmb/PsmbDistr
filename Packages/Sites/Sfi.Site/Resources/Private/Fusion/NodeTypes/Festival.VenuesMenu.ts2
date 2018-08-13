@@ -23,7 +23,7 @@ prototype(Sfi.Site:Festival.VenuesMenu.ItemCompact) < prototype(Neos.Fusion:Valu
 		<li style="overflow: hidden" class={'Link marginBottom-single ' + (props.isActive && 'isActive section-alt-color')}>
 			<a href={props.nodeUri}>
 				<div style="display: flex; align-items: center">
-					<div class="marginTop-single textAlign-right">
+					<div class="textAlign-right">
 						<div class="marginRight-single section-alt-color-bg festival-number-circle">{props.number}</div>
 					</div>
 					<h3 class="gamma">{props.title}</h3>
