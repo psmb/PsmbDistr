@@ -4,7 +4,7 @@
     'Neos.Neos:Content': true
   ui:
     label: История
-    position: last
+    position: end
     group: plugins
     inspector:
       groups:

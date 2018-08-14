@@ -5,7 +5,7 @@
   ui:
     label: Автор
     icon: icon-file-text-alt
-    position: last
+    position: end
   properties:
     text:
       type: string

@@ -3,5 +3,5 @@
     'Neos.Neos:Content': true
   ui:
     label: Фестиваль - блок с новостями
-    position: last
+    position: end
     group: festival
