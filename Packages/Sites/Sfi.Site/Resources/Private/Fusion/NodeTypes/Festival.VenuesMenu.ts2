@@ -83,7 +83,7 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
-			node = ${node.identifier}
+			node = ${node}
 		}
 		entryTags {
 			1 = ${'Sfi.Site:FestivalVenue'}
