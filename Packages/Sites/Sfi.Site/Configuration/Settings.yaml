@@ -1,3 +1,43 @@
+Sitegeist:
+  Silhouettes:
+    properties:
+      formatting:
+        inline:
+          type: string
+          ui:
+            inline:
+              editorOptions:
+                formatting:
+                  strong: true
+                  em: true
+                  sub: true
+                  sup: true
+                  underline: true
+                  strikethrough: true
+                  ol: true
+                  ul: true
+                  a: true
+        full:
+          type: string
+          ui:
+            inline:
+              editorOptions:
+                formatting:
+                  strong: true
+                  em: true
+                  u: true
+                  sub: true
+                  sup: true
+                  p: true
+                  h2: true
+                  h3: true
+                  underline: true
+                  strikethrough: true
+                  table: true
+                  ol: true
+                  ul: true
+                  a: true
+
 Flowpack:
   ElasticSearch:
     ContentRepositoryAdaptor:
