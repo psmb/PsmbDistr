@@ -17,6 +17,9 @@
 			<trans-unit id="more">
 				<source>еще</source>
 			</trans-unit>
+			<trans-unit id="details">
+				<source>Подробнее</source>
+			</trans-unit>
 			<trans-unit id="loadMore">
 				<source>загрузить еще</source>
 			</trans-unit>
@@ -171,6 +174,12 @@
 			</trans-unit>
 			<trans-unit id="festival.venueArticles.title">
 				<source>Материалы о площадке</source>
+			</trans-unit>
+			<trans-unit id="festival.festivalVenue">
+				<source>Фествальная площадка</source>
+			</trans-unit>
+			<trans-unit id="festival.otherFestivalVenues">
+				<source>Другие площадки фестиваля</source>
 			</trans-unit>
 		</body>
 	</file>

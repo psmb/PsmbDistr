@@ -22,6 +22,10 @@
 				<source>еще</source>
 				<target>more</target>
 			</trans-unit>
+			<trans-unit id="details">
+				<source>Подробнее</source>
+				<target>Read more</target>
+			</trans-unit>
 			<trans-unit id="loadMore">
 				<source>загрузить еще</source>
 				<target>load more</target>
@@ -230,6 +234,14 @@
 			<trans-unit id="festival.articles.title">
 				<source>Материалы по теме</source>
 				<target>Additional reading</target>
+			</trans-unit>
+			<trans-unit id="festival.festivalVenue">
+				<source>Фествальная площадка</source>
+				<target>Festival venue</target>
+			</trans-unit>
+			<trans-unit id="festival.otherFestivalVenues">
+				<source>Другие площадки фестиваля</source>
+				<target>Other Festival venues</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,4 +1,5 @@
 prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
+	@context.detailsLabel = ${Translation.translate('details', null, [], null, 'Sfi.Site')}
 	value = afx`
 		<li class={'Link ' + (props.isActive && 'isActive')}>
 			<a href={props.nodeUri}>
@@ -11,7 +12,7 @@ prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
 					<div class="columns large-9 medium-10 small-10">
 						<h3 class="beta">{props.fullTitle}</h3>
 						<div class="paragraph--small lineHeight-tight">{props.description}</div>
-						<div class="paragraph--small color-gray marginTop-single">Подробнее</div>
+						<div class="paragraph--small color-gray marginTop-single">{detailsLabel}</div>
 					</div>
 				</div>
 			</a>

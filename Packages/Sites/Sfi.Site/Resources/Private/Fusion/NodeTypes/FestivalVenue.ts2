@@ -7,6 +7,10 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 	@process.layout = Sfi.Site:FestivalLayout
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/FestivalVenue.html'
 	header = Sfi.Site:FestivalVenue.Header
+
+	festivalVenueI18n = ${Translation.translate('festival.festivalVenue', null, [], null, 'Sfi.Site')}
+	otherFestivalVenuesI18n = ${Translation.translate('festival.otherFestivalVenues', null, [], null, 'Sfi.Site')}
+
 	main = ContentCollection {
 		nodePath = 'main'
 	}
