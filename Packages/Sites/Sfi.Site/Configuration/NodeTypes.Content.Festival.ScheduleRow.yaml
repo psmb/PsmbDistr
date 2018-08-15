@@ -26,7 +26,15 @@
       type: string
       ui:
         inlineEditable: true
-        aloha:
-          placeholder: Еще какой-то текст (опционально)
-          link:
-            a: true
+        inline:
+          editorOptions:
+            placeholder: Еще какой-то текст (опционально)
+            formatting:
+              strong: true
+              em: true
+              sub: true
+              sup: true
+              underline: true
+              ol: true
+              ul: true
+              a: true
