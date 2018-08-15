@@ -13,11 +13,10 @@ prototype(Sfi.Site:FestivalLayout) < prototype(Neos.Fusion:Template) {
 			attributes.href = NodeUri {
 				node = ${q(documentNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).count() > 0 ?
 				q(documentNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).get(0) :
-				q(site).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).get(0)}
+				q(festivalNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).get(0)}
 			}
 			content = ${targetLang == 'en' ? 'English' : 'Русский'}
 		}
-		@context.documentNode = ${festivalNode}
 		@process.addLangLink {
 			expression = ${value + this.langLink}
 			@position = 'before tmpl'
