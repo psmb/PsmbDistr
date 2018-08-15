@@ -19,6 +19,14 @@ prototype(Sfi.Site:FestivalVenue.Header) < prototype(Neos.Fusion:Template) {
 		asset = ${q(festivalNode).property('coverImage')}
 	}
 	toMain = ${Translation.translate('festival.global.tomain', null, [], null, 'Sfi.Site')}
+
+	festival2018VenueAsset = Neos.Fusion:ResourceUri {
+		path = 'resource://Sfi.Site/Public/Images/festival2018-venue.svg'
+	}
+	festival2018VenueMAsset = Neos.Fusion:ResourceUri {
+		path = 'resource://Sfi.Site/Public/Images/festival2018-venue-m.svg'
+	}
+
 	@process.contentElementWrapping = ContentElementWrapping {
 		@context.node = ${festivalNode}
 	}

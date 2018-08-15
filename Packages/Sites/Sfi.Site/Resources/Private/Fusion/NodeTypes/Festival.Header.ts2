@@ -28,6 +28,15 @@ prototype(Sfi.Site:Festival.Header) < prototype(Neos.Fusion:Template) {
 	coverImageUri = ImageUri {
 		asset = ${q(festivalNode).property('coverImage')}
 	}
+
+
+	festival2018Asset = Neos.Fusion:ResourceUri {
+		path = 'resource://Sfi.Site/Public/Images/festival2018.svg'
+	}
+	festival2018MAsset = Neos.Fusion:ResourceUri {
+		path = 'resource://Sfi.Site/Public/Images/festival2018m.svg'
+	}
+
 	@process.contentElementWrapping = ContentElementWrapping {
 		@context.node = ${festivalNode}
 	}
