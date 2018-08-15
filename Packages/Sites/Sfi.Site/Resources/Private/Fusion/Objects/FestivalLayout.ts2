@@ -3,6 +3,7 @@ prototype(Sfi.Site:FestivalLayout) < prototype(Neos.Fusion:Template) {
 
 	festivalsMenu = Sfi.Site:FestivalsMenu
 
+
 	navSectionMenu = Sfi.Site:NavSectionMenu {
 		langLink = Neos.Fusion:Tag {
 			@context.targetLang = ${Array.first(node.context.dimensions.language) == 'ru' ? 'en' : 'ru'}
@@ -11,12 +12,14 @@ prototype(Sfi.Site:FestivalLayout) < prototype(Neos.Fusion:Template) {
 			attributes.class = 'NavSectionMenu-item light-button marginHorizontal-half marginVertical-single'
 			attributes.title = ${targetLang == 'en' ? 'English Version' : 'Русская версия сайта'}
 			attributes.href = NodeUri {
-				node = ${q(documentNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).count() > 0 ?
-				q(documentNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).get(0) :
+				node = ${q(originalDocumentNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).count() > 0 ?
+				q(originalDocumentNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).get(0) :
 				q(festivalNode).context({targetDimensions: {language: targetLang}, dimensions: {language: [targetLang]}}).get(0)}
 			}
 			content = ${targetLang == 'en' ? 'English' : 'Русский'}
 		}
+		@context.originalDocumentNode = ${documentNode}
+		@context.documentNode = ${festivalNode}
 		@process.addLangLink {
 			expression = ${value + this.langLink}
 			@position = 'before tmpl'
