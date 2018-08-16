@@ -108,6 +108,24 @@ Neos:
     defaultContext:
       Site: Sfi\Site\Helper\SiteHelper
   Flow:
+    package:
+      inactiveByDefault:
+        - 'Neos.NodeTypes.AssetList'
+        - 'Neos.NodeTypes.BaseMixins'
+        - 'Neos.NodeTypes.ColumnLayouts'
+        - 'Neos.NodeTypes.ContentReferences'
+        - 'Neos.NodeTypes.Form'
+        - 'Neos.NodeTypes.Html'
+        - 'Neos.NodeTypes.Navigation'
+        - 'neos/nodetypes'
+        - 'neos/form'
+        - 'neos/nodetypes-basemixins'
+        - 'neos/nodetypes-assetlist'
+        - 'neos/nodetypes-columnlayouts'
+        - 'neos/nodetypes-contentreferences'
+        - 'neos/nodetypes-html'
+        - 'neos/nodetypes-navigation'
+        - 'neos/nodetypes-form'
     session:
       inactivityTimeout: 604800
     i18n:
