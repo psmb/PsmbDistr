@@ -54,7 +54,15 @@
         "neos": {
             "default-disabled-packages": [
                 "flowpack/neos-frontendlogin",
-                "neos/nodetypes"
+                "neos/nodetypes",
+                "neos/form",
+                "neos/nodetypes-basemixins",
+                "neos/nodetypes-assetlist",
+                "neos/nodetypes-columnlayouts",
+                "neos/nodetypes-contentreferences",
+                "neos/nodetypes-html",
+                "neos/nodetypes-navigation",
+                "neos/nodetypes-form"
             ]
         }
     },
