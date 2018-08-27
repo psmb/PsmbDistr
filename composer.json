@@ -69,11 +69,11 @@
     "scripts": {
         "post-update-cmd": [
             "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-            "rm -rf Packages/Neos/Neos.NodeTypes*"
+            "rm -rf Packages/Neos/Neos.NodeTypes* && rm Configuration/PackageStates.php && rm -rf Data/Temporary"
         ],
         "post-install-cmd": [
             "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
-            "rm -rf Packages/Neos/Neos.NodeTypes*"
+            "rm -rf Packages/Neos/Neos.NodeTypes* && rm Configuration/PackageStates.php && rm -rf Data/Temporary"
         ],
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
         "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
