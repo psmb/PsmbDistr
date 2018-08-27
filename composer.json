@@ -67,7 +67,10 @@
         }
     },
     "scripts": {
-        "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-update-cmd": [
+            "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
+            "rm -rf Packages/Neos/Neos.NodeTypes*"
+        ],
         "post-install-cmd": [
             "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
             "rm -rf Packages/Neos/Neos.NodeTypes*"
