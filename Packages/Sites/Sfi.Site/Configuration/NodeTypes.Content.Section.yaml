@@ -4,8 +4,10 @@
     'Neos.Neos:ContentCollection': true
     'Sfi.Site:NavSection': true
   ui:
-    label: 'Секция с заголовком'
+    label: 'Секция для меню с заголовком'
     inlineEditable: true
+    group: structure
+    icon: tasks
   constraints:
     nodeTypes:
       '*': true

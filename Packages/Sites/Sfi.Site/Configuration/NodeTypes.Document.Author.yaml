@@ -4,6 +4,7 @@
     'Neos.Neos:Document': true
   ui:
     label: Автор
+    icon: user
     inspector:
       groups:
         author:

@@ -5,6 +5,8 @@
   ui:
     label: 'Секция для меню'
     inlineEditable: true
+    group: structure
+    icon: tasks
   constraints:
     nodeTypes:
       '*': true

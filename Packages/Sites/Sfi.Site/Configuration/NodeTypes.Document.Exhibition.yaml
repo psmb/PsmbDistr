@@ -6,6 +6,7 @@
     'Sfi.Site:TagMixin': true
   ui:
     label: Выставка
+    icon: images
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

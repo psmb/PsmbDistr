@@ -194,6 +194,7 @@ Neos:
         festival:
           position: 110
           label: 'Фестиваль'
+          collapsed: true
     eventLog:
       enabled: true
   GoogleAnalytics:

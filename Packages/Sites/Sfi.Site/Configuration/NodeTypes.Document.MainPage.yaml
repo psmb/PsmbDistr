@@ -5,6 +5,7 @@
     'Sfi.Site:ImageMixin': true
   ui:
     label: 'Главная страница'
+    icon: home
   childNodes:
     top:
       type: 'Neos.Neos:ContentCollection'
@@ -33,3 +34,8 @@
           link:
             a: true
           alignment: {  }
+
+'Neos.Neos:Document':
+  constraints:
+    nodeTypes:
+      'Sfi.Site:MainPage': false

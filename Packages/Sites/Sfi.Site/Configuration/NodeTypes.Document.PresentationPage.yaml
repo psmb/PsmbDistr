@@ -8,6 +8,7 @@
       type: 'Neos.Neos:ContentCollection'
   ui:
     label: 'О нас'
+    icon: fish
   properties:
     teachers:
       type: references
@@ -20,3 +21,8 @@
             nodeTypes:
               - 'Sfi.Site:TagMixin'
             startingPoint: /sites/site/tags/people
+
+'Neos.Neos:Document':
+  constraints:
+    nodeTypes:
+      'Sfi.Site:PresentationPage': false

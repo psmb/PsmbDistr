@@ -5,3 +5,4 @@
     'Sfi.Site:ImageMixin': true
   ui:
     label: Архив
+    icon: file-archive

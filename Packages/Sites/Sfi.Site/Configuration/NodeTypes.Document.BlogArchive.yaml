@@ -6,3 +6,9 @@
   ui:
     label: 'Архив блогов'
     inlineEditable: true
+    icon: file-archive
+
+'Neos.Neos:Document':
+  constraints:
+    nodeTypes:
+      'Sfi.Site:BlogArchive': false

@@ -4,7 +4,7 @@
     'Neos.Neos:Content': true
   ui:
     label: Автор
-    icon: icon-file-text-alt
+    icon: user
     position: end
   properties:
     text:

@@ -5,6 +5,7 @@
     'Sfi.Site:TaggableMixin': true
   ui:
     label: Блог
+    icon: users
     inspector:
       groups:
         blog:

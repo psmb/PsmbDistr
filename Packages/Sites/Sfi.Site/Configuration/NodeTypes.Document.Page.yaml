@@ -5,6 +5,7 @@
     'Sfi.Site:ImageMixin': true
   ui:
     label: 'Обычная страница'
+    icon: file
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'

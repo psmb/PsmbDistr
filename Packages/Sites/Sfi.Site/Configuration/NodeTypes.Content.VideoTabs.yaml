@@ -15,3 +15,8 @@
     nodeTypes:
       '*': false
       'Sfi.Site:VideoTabs.Tab': true
+
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'Sfi.Site:VideoTabs.Tab': false

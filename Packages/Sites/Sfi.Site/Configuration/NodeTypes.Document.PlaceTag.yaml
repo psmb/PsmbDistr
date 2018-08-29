@@ -7,6 +7,7 @@
     'Sfi.Site:TagMixin': true
   ui:
     label: Место
+    icon: map-marked
   properties:
     coordinates:
       type: string

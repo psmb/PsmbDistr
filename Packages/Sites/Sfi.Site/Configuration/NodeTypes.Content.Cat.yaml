@@ -5,6 +5,8 @@
   ui:
     label: 'Убрать под кат'
     inlineEditable: true
+    icon: file-download
+    group: structure
   constraints:
     nodeTypes:
       '*': true
