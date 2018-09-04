@@ -39,6 +39,7 @@
         "psmb/mediaquery": "^2.0",
         "psmb/mapreduce": "^2.0",
         "psmb/carousel": "@dev",
+        "psmb/bookmarklet": "^0.1",
         "dimaip/groupby": "^2.0",
         "opsdev/cache-breaker": "^3.0",
         "neos/seo": "dev-master@dev",
