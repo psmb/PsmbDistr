@@ -3,6 +3,7 @@ namespace Sfi\Site\Helper;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
+use Flowpack\ElasticSearch\ContentRepositoryAdaptor\LoggerInterface;
 
 class SiteHelper implements ProtectedContextAwareInterface
 {
@@ -11,6 +12,12 @@ class SiteHelper implements ProtectedContextAwareInterface
 	 * @var \Doctrine\Common\Persistence\ObjectManager
 	 */
     protected $entityManager;
+
+    /**
+     * @Flow\Inject
+     * @var LoggerInterface
+     */
+    protected $logger;
 
     /**
      * @param string $url
@@ -25,7 +32,8 @@ class SiteHelper implements ProtectedContextAwareInterface
         if ($result) {
             return intval($result[0]['value_id']);
         } else {
-            throw new \Exception('Ancient url not resolved: ' . $url);
+            $this->logger->log(sprintf('Ancient url not resolved: %s', $url), \LOG_NOTICE);
+            return null;
         }
     }
 
