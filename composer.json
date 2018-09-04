@@ -17,7 +17,7 @@
     ],
     "require": {
         "neos/neos-development-collection": "~3.3@dev",
-        "neos/flow-development-collection": "@dev",
+        "neos/flow-development-collection": "4.3.8",
 
         "flowpack/elasticsearch-contentrepositoryadaptor": "^4.0",
         "neos/googleanalytics": "^2.0.0",
