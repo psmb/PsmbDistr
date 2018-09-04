@@ -11,10 +11,10 @@ root.redirect {
 				@process.tmpl = ${'https://psmb.ru' + value}
 				node = ${targetNode}
 			}
-			@if.nodeIsFound = ${targetNode ? true : false}
+			@if.nodeIsFound = ${targetNode && originalIdentifier ? true : false}
 		}
 		errorMessage = "Извините, но мы потеряли эту статью"
-		errorMessage.@if.nodeIsNotFound = ${targetNode ? false : true}
+		errorMessage.@if.nodeIsNotFound = ${targetNode && originalIdentifier ? false : true}
 		@cache {
 			mode = 'cached'
 			entryIdentifier {
