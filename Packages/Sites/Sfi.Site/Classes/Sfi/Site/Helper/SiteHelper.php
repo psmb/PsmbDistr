@@ -25,6 +25,10 @@ class SiteHelper implements ProtectedContextAwareInterface
      */
     public function resolveAncientUrl($url)
     {
+		if (!$url) {
+			$this->logger->log('Ancient url not resolved: empty url', \LOG_NOTICE);
+			return null;
+		}
         $sql = "SELECT value_id FROM tx_realurl_uniqalias_old WHERE value_alias='" . $url . "'";
         $statement = $this->entityManager->getConnection()->prepare($sql);
         $statement->execute();
