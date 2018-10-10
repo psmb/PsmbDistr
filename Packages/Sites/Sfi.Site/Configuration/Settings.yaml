@@ -67,7 +67,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Site:News'
         label: 'Мгновенное уведомление'
         description: 'Полные версии материалов как только они опубликованы'
-        interval: PT1H
+        interval: manual
         senderName: 'Преображенское братство'
         dimensions:
           language:
