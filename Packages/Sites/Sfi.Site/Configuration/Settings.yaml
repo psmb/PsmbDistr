@@ -70,6 +70,9 @@ Flowpack:
         -
           host: shared-es_es
           port: 9200
+    ContentRepositoryQueueIndexer:
+      batchSize: 100
+      enableLiveAsyncIndexing: false
 Sfi:
   YouTube:
     className: 'YouTube flex-video widescreen'
