@@ -46,7 +46,7 @@ Flowpack:
     clients:
       default:
         -
-          host: es
+          host: shared-es_es
           port: 9200
 Sfi:
   YouTube:
@@ -67,7 +67,7 @@ Psmb:
         sendFromUiNodeType: 'Sfi.Site:News'
         label: 'Мгновенное уведомление'
         description: 'Полные версии материалов как только они опубликованы'
-        interval: manual
+        interval: PT1H
         senderName: 'Преображенское братство'
         dimensions:
           language:
@@ -162,23 +162,19 @@ Neos:
           placeholder: 'Заголовок материала...'
         Psmb_FlatNav:
           presets:
-            news:
+            tree:
               type: flat
               label: Новости
               icon: newspaper
               query: 'Search.query(node).nodeType("Sfi.Site:News").sortDesc("date").from((page - 1) * 20).limit(20).execute().toArray()'
-              newReferenceNodePath: '/sites/site'
+              newReferenceNodePath: '/sites/site/a'
               newNodeType: 'Sfi.Site:News'
-            tree:
-              type: tree
-              label: Дерево
-              icon: tree
             tags:
               type: flat
               label: Тэги
               icon: tag
               query: 'Search.query(node).nodeType("Sfi.Site:Tag").sortAsc("title").from((page - 1) * 20).limit(20).execute().toArray()'
-              newReferenceNodePath: '/sites/site'
+              newReferenceNodePath: '/sites/site/tags/people'
               newNodeType: 'Sfi.Site:Tag'
     userInterface:
       navigateComponent:
@@ -225,6 +221,10 @@ Neos:
             values:
               - en
             uriSegment: en
+    Search:
+      indexAllWorkspaces: false
+      elasticSearch:
+        indexName: psmb
 Yeebase:
   Graylog:
     host: 'graylog'
