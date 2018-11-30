@@ -39,6 +39,28 @@ Sitegeist:
                   a: true
 
 Flowpack:
+  JobQueue:
+    Common:
+      queues:
+        'Flowpack.ElasticSearch.ContentRepositoryQueueIndexer':
+          className: 'Flowpack\JobQueue\Redis\Queue\RedisQueue'
+          executeIsolated: true
+          options:
+            client:
+              host: redis
+              port: 6379
+              database: 15
+            defaultTimeout: 20
+
+        'Flowpack.ElasticSearch.ContentRepositoryQueueIndexer.Live':
+          className: 'Flowpack\JobQueue\Redis\Queue\RedisQueue'
+          executeIsolated: true
+          options:
+            client:
+              host: redis
+              port: 6379
+              database: 15
+            defaultTimeout: 20
   ElasticSearch:
     ContentRepositoryAdaptor:
       driver:
