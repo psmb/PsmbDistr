@@ -12,6 +12,7 @@
         "psmb/googleformscaptcha": "*",
         "sfi/grid": "*",
         "flowpack/elasticsearch-contentrepositoryadaptor": "*",
+        "flowpack/elasticsearch-contentrepositoryqueueindexer": "*",
         "flownative/aws-s3": "*",
         "psmb/flatnav": "*",
         "flowpack/structuredediting": "*"

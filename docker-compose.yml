@@ -44,7 +44,6 @@ services:
       - redis
 volumes:
   db-data:
-  es-data:
 secrets:
   AWS_ACCESS_KEY_ID:
     external: true
