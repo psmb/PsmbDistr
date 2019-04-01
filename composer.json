@@ -17,14 +17,12 @@
     ],
     "require": {
         "neos/neos-development-collection": "~3.3@dev",
-        "neos/flow-development-collection": "4.3.8",
 
         "neos/googleanalytics": "^2.0.0",
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
         "neos/redirecthandler-neosadapter": "@dev",
         "neos/neos-ui": "^2.0@dev",
-        "neos/neos-ui-compiled": "^2.0@dev",
 
         "flowpack/nodetemplates": "dev-master@dev",
         "sfi/youtube": "^2.1",

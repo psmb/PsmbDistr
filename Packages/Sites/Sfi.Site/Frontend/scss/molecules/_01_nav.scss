@@ -40,7 +40,6 @@ Main menu of website sections.
 	margin: $u 0;
 
 	.sections-menu__item {
-		float: left;
 		padding: $u/2 1.5*$u;
 
 		font-size: rem-calc(14);
@@ -165,12 +164,13 @@ Main menu of website sections.
 	}
 }
 .mobile-nav__menu {
+	background-color: white;
 	position: fixed;
 	top: 0;
 	right: -20*$u;
 	width: 20*$u;
 	height: 100%;
-	overflow: scroll;
+	overflow: auto;
 	box-shadow: $gray-line -2px 0 2px;
 	transition: ease-in-out 0.3s;
 }
@@ -190,6 +190,8 @@ Main menu of website sections.
 	top: 0;
 	right: 0;
 	padding: $u;
+	z-index: 1;
+	transition: 0.4s linear transform;
 
 	span {
 		display: block;
@@ -199,4 +201,8 @@ Main menu of website sections.
 		border-radius: 3px;
 		margin: $u/2 0;
 	}
+}
+
+.mobile-nav-is-open .mobile-nav__toggle {
+	transform: rotate(90deg);
 }

@@ -9,4 +9,8 @@ prototype(Sfi.Site:DefaultLayout) < prototype(T:Template) {
 	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
 
 	footer = Sfi.Site:Footer
+
+	mobileNav = Sfi.Site:SectionsNav {
+		@process.wrap = ${'<div class="mobile-nav__menu show-for-small-only">' + value + '</div>'}
+	}
 }
