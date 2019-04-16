@@ -201,9 +201,9 @@ Neos:
               query: 'Search.query(node).nodeType("Sfi.Site:Tag").sortAsc("title").from((page - 1) * 20).limit(20).execute().toArray()'
               newReferenceNodePath: '/sites/site/tags/people'
               newNodeType: 'Sfi.Site:Tag'
-            tree:	
-              type: tree	
-              label: Дерево	
+            tree:
+              type: tree
+              label: Дерево
               icon: tree
     userInterface:
       navigateComponent:
@@ -254,11 +254,6 @@ Neos:
       indexAllWorkspaces: false
       elasticSearch:
         indexName: psmb
-Yeebase:
-  Graylog:
-    host: 'graylog'
-    port: 12201
-    chunksize: 'wan'
 Flownative:
   Aws:
     S3:

@@ -40,7 +40,7 @@
         "dimaip/groupby": "^2.0",
         "opsdev/cache-breaker": "^3.0",
         "neos/seo": "dev-master@dev",
-        "yeebase/graylog": "@dev",
+        "yeebase/graylog": "^3.1",
         "sandstorm/optimizedrediscachebackend": "dev-patch-1@dev",
         "flownative/aws-s3": "2.*",
         "psmb/flatnav": "@dev",
