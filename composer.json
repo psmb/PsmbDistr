@@ -22,8 +22,7 @@
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
         "neos/redirecthandler-neosadapter": "@dev",
-        "neos/neos-ui": "^2.0@dev",
-
+        "neos/neos-ui": "^2.0",
         "flowpack/nodetemplates": "dev-master@dev",
         "sfi/youtube": "^2.1",
         "sfi/grid": "@dev",
