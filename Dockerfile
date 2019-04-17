@@ -7,6 +7,7 @@ ENV DONT_PUBLISH_PERSISTENT=1
 COPY --chown=80:80 composer.json /data/www-provisioned/composer.json
 RUN cd /data/www-provisioned && \
     composer install && \
+    cd /data/www-provisioned && \
     beard patch && \
     rm -rf /composer/cache && \
     mkdir -p /data/www-provisioned/Configuration && \
