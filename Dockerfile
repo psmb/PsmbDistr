@@ -18,4 +18,4 @@ COPY --chown=80:80 ./ /data/www-provisioned/
 RUN composer run-script post-update-cmd && \
     beard patch
 USER root
-HEALTHCHECK --interval=30s --timeout=15s --start-period=30s --retries=3 CMD curl -f http://localhost/ | grep "This website is powered by Neos"
+# HEALTHCHECK --interval=30s --timeout=15s --start-period=30s --retries=3 CMD curl -f http://localhost/ | grep "This website is powered by Neos"
