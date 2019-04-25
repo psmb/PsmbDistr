@@ -115,3 +115,6 @@ $festivalPink: #ff7396;
 
 @include colormixPrimary("#Festival-2018", $festivalBlue);
 @include colormixAlt("#Festival-2018", $festivalPink);
+
+@include colormixPrimary("#Festival-2019", #224698);
+@include colormixAlt("#Festival-2019", #e63f32);
