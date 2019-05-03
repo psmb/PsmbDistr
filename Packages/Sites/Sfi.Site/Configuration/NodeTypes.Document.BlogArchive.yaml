@@ -3,6 +3,10 @@
     'Neos.Neos:Document': true
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:ImageMixin': true
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Sfi.Site:Blog': true
   ui:
     label: 'Архив блогов'
     inlineEditable: true

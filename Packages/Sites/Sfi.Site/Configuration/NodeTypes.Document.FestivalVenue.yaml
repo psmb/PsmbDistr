@@ -3,6 +3,9 @@
     'Neos.Neos:Document': true
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:TagMixin': true
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
   ui:
     label: 'Фестивальная площадка'
     group: festival
@@ -67,3 +70,8 @@
             button: false
             formatlessPasteOption: true
             autoparagraph: true
+
+Neos.Neos:Document:
+  constraints:
+    nodeTypes:
+      'Sfi.Site:FestivalVenue': false

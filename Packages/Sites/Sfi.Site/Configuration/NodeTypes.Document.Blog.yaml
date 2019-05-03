@@ -1,8 +1,10 @@
-
 'Sfi.Site:Blog':
   superTypes:
     'Neos.Neos:Document': true
     'Sfi.Site:TaggableMixin': true
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
   ui:
     label: Блог
     icon: users
@@ -53,3 +55,8 @@
         label: 'Ссылка на блоговую запись'
         inspector:
           group: blog
+
+Neos.Neos:Document:
+  constraints:
+    nodeTypes:
+      'Sfi.Site:Blog': false

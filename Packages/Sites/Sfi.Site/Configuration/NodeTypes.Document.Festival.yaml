@@ -4,6 +4,10 @@
     'Sfi.Site:NavTitleMixin': true
     'Sfi.Site:TagMixin': true
     'Neos.Seo:OpenGraphMixin': true
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Sfi.Site:FestivalVenue': true
   ui:
     label: Фестиваль
     group: festival
