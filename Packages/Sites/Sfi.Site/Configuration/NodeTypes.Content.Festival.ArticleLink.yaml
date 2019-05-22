@@ -48,6 +48,7 @@
           group: general
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
     image:
       type: Neos\Media\Domain\Model\ImageInterface
       ui:

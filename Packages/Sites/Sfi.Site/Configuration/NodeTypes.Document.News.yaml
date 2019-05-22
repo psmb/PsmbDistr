@@ -154,6 +154,7 @@ blah:
           group: news
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
       validation:
         Neos.Neos/Validation/DateTimeValidator: {  }
     date:
@@ -166,10 +167,12 @@ blah:
           group: news
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
         inline:
           editor: 'Flowpack.StructuredEditing/EditorEnvelope'
           editorOptions:
             format: 'd-m-Y H:i'
+            minuteStep: 1
             icon: 'calendar'
             editor: 'Neos.Neos/Inspector/Editors/DateTimeEditor'
       validation:
