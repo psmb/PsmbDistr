@@ -28,8 +28,8 @@ prototype(Sfi.Site:BlogShort) < prototype(T:Template) {
 			1 = ${node.identifier}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = 'NodeType_Sfi.Site:Author'
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Author')}
 		}
 	}
 }

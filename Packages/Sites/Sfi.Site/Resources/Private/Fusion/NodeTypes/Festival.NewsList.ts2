@@ -19,7 +19,7 @@ prototype(Sfi.Site:Festival.NewsList) < prototype(Neos.Fusion:Collection) {
             node = ${node}
         }
         entryTags {
-            1 = 'NodeType_Sfi.Site:News'
+            1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:News')}
         }
     }
     @process.contentElementWrapping = ContentElementWrapping

@@ -32,8 +32,8 @@ prototype(Sfi.Site:NewsShort) < prototype(T:Template) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = ${'DescendantOf_' + q(node).children('cover').get(0).identifier}
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.descendantOfTag(q(node).children('cover').get(0))}
 		}
 	}
 }

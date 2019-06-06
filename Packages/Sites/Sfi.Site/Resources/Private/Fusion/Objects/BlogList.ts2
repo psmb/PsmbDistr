@@ -16,7 +16,7 @@ prototype(Sfi.Site:BlogList) < prototype(T:Collection) {
 			node = ${documentNode}
 		}
 		entryTags {
-			1 = 'NodeType_Sfi.Site:Blog'
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Blog')}
 		}
 	}
 }

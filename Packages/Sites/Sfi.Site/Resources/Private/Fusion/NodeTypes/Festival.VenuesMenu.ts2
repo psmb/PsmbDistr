@@ -108,7 +108,7 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'Sfi.Site:FestivalVenue'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:FestivalVenue')}
 		}
 	}
 	@process.contentElementWrapping = ContentElementWrapping

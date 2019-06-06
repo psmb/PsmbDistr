@@ -28,8 +28,8 @@ prototype(Sfi.Site:Story) {
 				node = ${node}
 			}
 			entryTags {
-				1 = ${'Node_' + node.identifier}
-				2 = 'NodeType_Sfi.Site:TaggableMixin'
+				1 = ${Neos.Caching.nodeTag(node)}
+				2 = ${Neos.Caching.nodeTypeTag('Sfi.Site:TaggableMixin')}
 			}
 		}
 	}

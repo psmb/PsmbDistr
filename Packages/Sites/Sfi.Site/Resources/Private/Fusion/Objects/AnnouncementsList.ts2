@@ -17,7 +17,7 @@ prototype(Sfi.Site:AnnouncementsList) < prototype(T:Array) {
 	@cache {
 		mode = 'cached'
 		entryTags {
-			1 = 'NodeType_Sfi.Site:News'
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:News')}
 		}
 	}
 }

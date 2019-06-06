@@ -31,11 +31,11 @@ prototype(Sfi.Site:SectionsNav) < prototype(T:Collection) {
 	}
 	@cache {
 		mode = 'cached'
-		entryTags {
+		entryIdentifier {
 			1 = ${documentNode}
 		}
 		entryTags {
-			1 = ${'DescendantOf_' + q(site).children('sections').get(0).identifier}
+			1 = ${Neos.Caching.descendantOfTag(q(site).children('sections').get(0))}
 		}
 	}
 }
@@ -67,7 +67,7 @@ prototype(Sfi.Site:OurProjectsNav) < prototype(T:Collection) {
 			1 = ${documentNode}
 		}
 		entryTags {
-			1 = ${'DescendantOf_' + q(site).children('projects').get(0).identifier}
+			1 = ${Neos.Caching.descendantOfTag(q(site).children('projects').get(0))}
 		}
 	}
 }
@@ -91,7 +91,7 @@ prototype(Sfi.Site:MiscNav) < prototype(T:Collection) {
 			1 = ${documentNode}
 		}
 		entryTags {
-			1 = ${'DescendantOf_' + q(site).children('collections').get(0).identifier}
+			1 = ${Neos.Caching.descendantOfTag(q(site).children('collections').get(0))}
 		}
 	}
 }

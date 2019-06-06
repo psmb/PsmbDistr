@@ -26,8 +26,8 @@ prototype(Sfi.Site:CollectionArticles) < prototype(T:Array) {
 			node = ${node}
 		}
 		entryTags {
-			1 = 'NodeType_Sfi.Site:Tag'
-			2 = 'NodeType_Sfi.Site:News'
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Tag')}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.Site:News')}
 		}
 	}
 }

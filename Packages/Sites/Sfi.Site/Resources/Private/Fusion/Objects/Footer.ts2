@@ -17,7 +17,7 @@ prototype(Sfi.Site:Footer) < prototype(T:Template) {
 	@cache {
 		mode = 'cached'
 		entryTags {
-			1 = ${'Node_' + site.identifier}
+			1 = ${Neos.Caching.nodeTag(site)}
 		}
 	}
 }

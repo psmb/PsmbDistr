@@ -29,7 +29,7 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 	@cache {
 		mode = 'cached'
 		entryTags {
-			1 = 'NodeType_Sfi.Site:Tag'
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Tag')}
 		}
 	}
 }

@@ -31,7 +31,7 @@ prototype(Sfi.Site:Blog) < prototype(Sfi.Site:AbstractPage) {
 				node = ${documentNode}
 			}
 			entryTags {
-				1 = 'NodeType_Sfi.Site:Blog'
+				1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Blog')}
 			}
 		}
 	}
@@ -64,8 +64,8 @@ prototype(Sfi.Site:Blog) < prototype(Sfi.Site:AbstractPage) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'Node_' + node.identifier}
-			2 = 'NodeType_Sfi.Site:Author'
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Author')}
 		}
 	}
 }

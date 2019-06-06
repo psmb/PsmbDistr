@@ -30,7 +30,7 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 				node = ${documentNode}
 			}
 			entryTags {
-				1 = 'NodeType_Sfi.Site:News'
+				1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:News')}
 			}
 		}
 	}
@@ -54,7 +54,7 @@ prototype(Sfi.Site:FestivalVenue) < prototype(Sfi.Site:AbstractPage) {
 				node = ${node}
 			}
 			entryTags {
-				1 = ${'DescendantOf_' + node.identifier}
+				1 = ${Neos.Caching.descendantOfTag(node)}
 			}
 		}
 	}

@@ -22,7 +22,7 @@ root.redirect {
 				2 = ${request.arguments.ancientLink}
 			}
 			entryTags {
-				1 = 'NodeType_Sfi.Site:News'
+				1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:News')}
 			}
 		}
 	}

@@ -12,7 +12,7 @@ prototype(Sfi.Site:RssList) < prototype(Neos.Fusion:Template) {
 		# Elements should be removed, once their age reaches 1W. Find out the time last element in collection has left to live
 		maximumLifetime = ${q(collection).last().property('date').timestamp - Date.subtract(Date.now(), 'P7D').timestamp}
 		entryTags {
-			1 = ${'NodeType_Sfi.Site:News'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:News'}
 		}
 	}
 }

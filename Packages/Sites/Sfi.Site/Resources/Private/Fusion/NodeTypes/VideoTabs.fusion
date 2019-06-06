@@ -41,8 +41,8 @@ prototype(Sfi.Site:VideoTabs) < prototype(Neos.Fusion:Array) {
             node = ${node}
         }
         entryTags {
-            1 = ${'Node_' + node.identifier}
-            2 = ${'DescendantOf_' + node.identifier}
+            1 = ${Neos.Caching.nodeTag(node)}
+            2 = ${Neos.Caching.descendantOfTag(node)}
         }
     }
 }

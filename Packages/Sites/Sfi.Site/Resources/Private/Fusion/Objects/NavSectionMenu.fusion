@@ -18,7 +18,7 @@ prototype(Sfi.Site:NavSectionMenu) < prototype(Neos.Fusion:Collection) {
 			node = ${node}
 		}
 		entryTags {
-			1 = ${'NodeType_Sfi.Site:NavSection'}
+			1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:NavSection')}
 		}
 	}
 }
