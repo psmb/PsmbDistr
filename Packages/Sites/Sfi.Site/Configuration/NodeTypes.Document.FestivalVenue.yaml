@@ -75,3 +75,8 @@ Neos.Neos:Document:
   constraints:
     nodeTypes:
       'Sfi.Site:FestivalVenue': false
+
+Neos.Neos:Shortcut:
+  constraints:
+    nodeTypes:
+      'Sfi.Site:FestivalVenue': true

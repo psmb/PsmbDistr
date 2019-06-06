@@ -7,6 +7,7 @@
   constraints:
     nodeTypes:
       'Neos.Neos:Document': false
+      'Neos.Neos:Shortcut': true
       'Sfi.Site:FestivalVenue': true
   ui:
     label: Фестиваль
@@ -115,7 +116,3 @@
         label: 'Фото обложки'
         inspector:
           group: general
-  constraints:
-    nodeTypes:
-      'Neos.Neos:Document': false
-      'Sfi.Site:FestivalVenue': true

@@ -34,27 +34,7 @@ prototype(Sfi.Site:Festival.VenuesMenu.ItemCompact) < prototype(Neos.Fusion:Valu
 	`
 }
 
-prototype(Sfi.Site:Festival.VenuesMenu)>
-prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
-	@process.styles = afx`{'
-	<style>
-		.festival-number-circle {
-			border-radius: 50%;
-			color: white;
-			font-size: 14px;
-			font-weight: bold;
-			display: inline-block;
-			width: 25px;
-			height: 25px;
-			line-height: 25px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			.festival-number-circle {
-			}
-		}
-	</style>
-	'}{value}`
+prototype(Sfi.Site:Festival.VenuesMenuRenderer) < prototype(Neos.Fusion:Collection) {
 	@process.tmpl = afx`<ul class={!compact && 'large-block-grid-3 medium-block-grid-2 small-block-grid-1'}>{value}</ul>`
 	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
 	itemRenderer = Neos.Fusion:Component {
@@ -81,6 +61,47 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Collection) {
 		}
 		@process.contentElementWrapping = ContentElementWrapping
 	}
+}
+
+prototype(Sfi.Site:Festival.VenuesMenu)>
+prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
+	@context.subGroups = ${q(festivalNode).children('[instanceof Neos.Neos:Shortcut]').get()}
+	@process.styles = afx`{'
+	<style>
+		.festival-number-circle {
+			border-radius: 50%;
+			color: white;
+			font-size: 14px;
+			font-weight: bold;
+			display: inline-block;
+			width: 25px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+		}
+		@media (min-width: 640px) {
+			.festival-number-circle {
+			}
+		}
+	</style>
+	'}{value}`
+
+	hasSubGroups {
+		condition = ${q(subGroups).count() > 0}
+		renderer = Neos.Fusion:Collection {
+			collection = ${subGroups}
+			itemName = 'festivalNode'
+			itemRenderer = Sfi.Site:Festival.VenuesMenuRenderer {
+				@process.title = afx`<h2 class="beta marginBottom-double textAlign-center">{festivalNode.properties.title}</h2>{value}`
+			}
+		}
+	}
+
+	default {
+		condition = ${true}
+		renderer = Sfi.Site:Festival.VenuesMenuRenderer
+	}
+
 	@cache {
 		mode = 'cached'
 		entryIdentifier {
