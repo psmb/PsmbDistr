@@ -27,6 +27,13 @@ prototype(Sfi.Site:FestivalVenue.Header) < prototype(Neos.Fusion:Template) {
 		path = 'resource://Sfi.Site/Public/Images/festival2018-venue-m.svg'
 	}
 
+	festival2019VenueAsset = Neos.Fusion:ResourceUri {
+		path = 'resource://Sfi.Site/Public/Images/festival2019-venue.svg'
+	}
+	festival2019VenueMAsset = Neos.Fusion:ResourceUri {
+		path = 'resource://Sfi.Site/Public/Images/festival2019-venue-m.svg'
+	}
+
 	@process.contentElementWrapping = ContentElementWrapping {
 		@context.node = ${festivalNode}
 	}
