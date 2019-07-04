@@ -176,7 +176,7 @@
 				<source>Материалы о площадке</source>
 			</trans-unit>
 			<trans-unit id="festival.festivalVenue">
-				<source>Фествальная площадка</source>
+				<source>Фестивальная площадка</source>
 			</trans-unit>
 			<trans-unit id="festival.otherFestivalVenues">
 				<source>Другие площадки фестиваля</source>

@@ -236,7 +236,7 @@
 				<target>Additional reading</target>
 			</trans-unit>
 			<trans-unit id="festival.festivalVenue">
-				<source>Фествальная площадка</source>
+				<source>Фестивальная площадка</source>
 				<target>Festival venue</target>
 			</trans-unit>
 			<trans-unit id="festival.otherFestivalVenues">
