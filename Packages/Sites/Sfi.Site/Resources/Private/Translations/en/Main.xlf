@@ -236,11 +236,11 @@
 				<target>Additional reading</target>
 			</trans-unit>
 			<trans-unit id="festival.festivalVenue">
-				<source>Фестивальная площадка</source>
+				<source>Фестивальное событие</source>
 				<target>Festival venue</target>
 			</trans-unit>
 			<trans-unit id="festival.otherFestivalVenues">
-				<source>Другие площадки фестиваля</source>
+				<source>Другие фестивальные события</source>
 				<target>Other Festival venues</target>
 			</trans-unit>
 		</body>

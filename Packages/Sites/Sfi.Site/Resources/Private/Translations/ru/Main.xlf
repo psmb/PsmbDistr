@@ -173,13 +173,13 @@
 				<source>Материалы по теме</source>
 			</trans-unit>
 			<trans-unit id="festival.venueArticles.title">
-				<source>Материалы о площадке</source>
+				<source>Материалы о событии</source>
 			</trans-unit>
 			<trans-unit id="festival.festivalVenue">
-				<source>Фестивальная площадка</source>
+				<source>Фестивальное событие</source>
 			</trans-unit>
 			<trans-unit id="festival.otherFestivalVenues">
-				<source>Другие площадки фестиваля</source>
+				<source>Другие события фестиваля</source>
 			</trans-unit>
 		</body>
 	</file>
