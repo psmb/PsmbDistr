@@ -5,9 +5,6 @@ prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
 			<a href={props.nodeUri}>
 				<div class="row">
 					<div class="columns large-3 medium-2 small-2">
-						<div class="marginTop-single textAlign-right">
-							<div class="section-alt-color-bg festival-number-circle">{props.number}</div>
-						</div>
 					</div>
 					<div class="columns large-9 medium-10 small-10">
 						<h3 class="beta">{props.fullTitle}</h3>
@@ -24,9 +21,6 @@ prototype(Sfi.Site:Festival.VenuesMenu.ItemCompact) < prototype(Neos.Fusion:Valu
 		<li style="overflow: hidden" class={'Link marginBottom-single ' + (props.isActive && 'isActive section-alt-color')}>
 			<a href={props.nodeUri}>
 				<div style="display: flex; align-items: center">
-					<div class="textAlign-right">
-						<div class="marginRight-single section-alt-color-bg festival-number-circle">{props.number}</div>
-					</div>
 					<h3 class="gamma">{props.title}</h3>
 				</div>
 			</a>
@@ -66,25 +60,6 @@ prototype(Sfi.Site:Festival.VenuesMenuRenderer) < prototype(Neos.Fusion:Collecti
 prototype(Sfi.Site:Festival.VenuesMenu)>
 prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
 	@context.subGroups = ${q(festivalNode).children('[instanceof Neos.Neos:Shortcut]').get()}
-	@process.styles = afx`{'
-	<style>
-		.festival-number-circle {
-			border-radius: 50%;
-			color: white;
-			font-size: 14px;
-			font-weight: bold;
-			display: inline-block;
-			width: 25px;
-			height: 25px;
-			line-height: 25px;
-			text-align: center;
-		}
-		@media (min-width: 640px) {
-			.festival-number-circle {
-			}
-		}
-	</style>
-	'}{value}`
 
 	hasSubGroups {
 		condition = ${q(subGroups).count() > 0}
