@@ -9,7 +9,7 @@ prototype(Sfi.Site:Festival.VenuesMenu.Item) < prototype(Neos.Fusion:Value) {
 					<div class="columns large-9 medium-10 small-10">
 						<h3 class="beta">{props.fullTitle}</h3>
 						<div class="paragraph--small lineHeight-tight">{props.description}</div>
-						<div class="paragraph--small color-gray marginTop-single">{detailsLabel}</div>
+						<div class="section-color paragraph--small color-gray marginTop-single">{detailsLabel}</div>
 					</div>
 				</div>
 			</a>
@@ -67,7 +67,7 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
 			collection = ${subGroups}
 			itemName = 'festivalNode'
 			itemRenderer = Sfi.Site:Festival.VenuesMenuRenderer {
-				@process.title = afx`<h2 class="beta marginBottom-double textAlign-center">{festivalNode.properties.title}</h2>{value}`
+				@process.title = afx`<h2 class="section-color page-title marginBottom-double marginTop-triple textAlign-center">{festivalNode.properties.title}</h2>{value}`
 			}
 		}
 	}
