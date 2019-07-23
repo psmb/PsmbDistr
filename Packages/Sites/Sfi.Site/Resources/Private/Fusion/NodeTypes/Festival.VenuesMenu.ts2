@@ -91,8 +91,8 @@ prototype(Sfi.Site:Festival.EveningProgram) < prototype(Neos.Fusion:Collection) 
 		}
 		imageUri = ImageUri {
 			asset = Sfi.Site:NewsThumb
-			maximumWidth = 640
-			maximumHeight = 420
+			maximumWidth = 500
+			maximumHeight = 500
 			allowCropping = ${true}
 		}
 		nodeUri = NodeUri {

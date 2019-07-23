@@ -61,8 +61,8 @@
                 enableOriginal: false
                 allowCustom: false
                 locked:
-                  width: 640
-                  height: 420
+                  width: 500
+                  height: 500
     description:
       type: string
       ui:
