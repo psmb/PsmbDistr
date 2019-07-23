@@ -9,6 +9,10 @@
   ui:
     label: 'Фестивальная площадка'
     group: festival
+    inspector:
+      groups:
+        festival:
+          label: 'Атрибуты материала'
     icon: building
   childNodes:
     main:
@@ -43,6 +47,22 @@
             button: false
             formatlessPasteOption: true
             autoparagraph: true
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Фото снаружи'
+        reloadIfChanged: true
+        inspector:
+          group: festival
+          editorOptions:
+            crop:
+              aspectRatio:
+                forceCrop: true
+                enableOriginal: false
+                allowCustom: false
+                locked:
+                  width: 640
+                  height: 420
     description:
       type: string
       ui:

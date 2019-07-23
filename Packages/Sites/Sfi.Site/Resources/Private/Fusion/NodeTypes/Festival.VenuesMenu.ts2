@@ -57,6 +57,62 @@ prototype(Sfi.Site:Festival.VenuesMenuRenderer) < prototype(Neos.Fusion:Collecti
 	}
 }
 
+prototype(Sfi.Site:Festival.EveningProgram.Item) < prototype(Neos.Fusion:Value) {
+	value = afx`
+		<li class="AnnouncementShort">
+			<a href={props.nodeUri} class="AnnouncementShort-bg" style={"display: block; background-image: url(" + props.imageUri + ")"}>
+				<div class="AnnouncementShort-overlay">
+					<div class="margin-single">
+						<div class="gamma marginBottom-none color-white">
+							<strong>
+								{props.fullTitle}
+							</strong>
+						</div>
+					</div>
+					<div class="AnnouncementShort-inner">
+						<div class="epsilon color-white"><strong>{props.description}</strong></div>
+					</div>
+				</div>
+			</a>
+		</li>
+	`
+}
+
+prototype(Sfi.Site:Festival.EveningProgram) < prototype(Neos.Fusion:Collection) {
+	@process.tmpl = ${'<div data-carousel data-carousel-preset="announcements" class="marginTop-single js_slider"><div class="frame js_frame"><ul class="slides js_slides">' + value + '</ul></div><span class="js_prev prev"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M302.67 90.877l55.77 55.508L254.575 250.75 358.44 355.116l-55.77 55.506L143.56 250.75z"/></g></svg></span><span class="js_next next"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 501.5 501.5"><g><path fill="#2E435A" d="M199.33 410.622l-55.77-55.508L247.425 250.75 143.56 146.384l55.77-55.507L358.44 250.75z"/></g></svg></span></div>'}
+	collection = ${q(festivalNode).children('[instanceof Sfi.Site:FestivalVenue]').get()}
+	itemRenderer = Neos.Fusion:Component {
+		title = ${q(node).property('title')}
+		number = ${iterator.cycle}
+		isActive = ${node == documentNode}
+		fullTitle = ${q(node).property('fullTitle')}
+		description = Editable {
+			property = 'description'
+		}
+		imageUri = ImageUri {
+			asset = Sfi.Site:NewsThumb
+			maximumWidth = 640
+			maximumHeight = 420
+			allowCropping = ${true}
+		}
+		nodeUri = NodeUri {
+			node = ${node}
+			@process.hideLinkInBE = ${node.context.inBackend ? null : value}
+		}
+		renderer = Neos.Fusion:Case {
+			compact {
+				condition = ${compact}
+				renderer = Sfi.Site:Festival.VenuesMenu.ItemCompact
+			}
+			default {
+				condition = ${true}
+				renderer = Sfi.Site:Festival.EveningProgram.Item
+			}
+		}
+		@process.contentElementWrapping = ContentElementWrapping
+	}
+}
+
 prototype(Sfi.Site:Festival.VenuesMenu)>
 prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
 	@context.subGroups = ${q(festivalNode).children('[instanceof Neos.Neos:Shortcut]').get()}
@@ -66,8 +122,16 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
 		renderer = Neos.Fusion:Collection {
 			collection = ${subGroups}
 			itemName = 'festivalNode'
-			itemRenderer = Sfi.Site:Festival.VenuesMenuRenderer {
+			itemRenderer = Neos.Fusion:Case {
 				@process.title = afx`<h2 class="section-color page-title marginBottom-double marginTop-triple textAlign-center">{festivalNode.properties.title}</h2>{value}`
+				evening {
+					condition = ${festivalNode.properties.uriPathSegment == 'evening'}
+					renderer = Sfi.Site:Festival.EveningProgram
+				}
+				default {
+					condition = ${true}
+					renderer = Sfi.Site:Festival.VenuesMenuRenderer
+				}
 			}
 		}
 	}
