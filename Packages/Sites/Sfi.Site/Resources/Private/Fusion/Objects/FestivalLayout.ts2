@@ -5,6 +5,12 @@ prototype(Sfi.Site:FestivalLayout) < prototype(Neos.Fusion:Template) {
 
 
 	navSectionMenu = Sfi.Site:NavSectionMenu {
+		evening = Neos.Fusion:Tag {
+			tagName = 'a'
+			attributes.class = 'NavSectionMenu-item light-button color-white section-alt-color-bg button--alt marginHorizontal-half marginVertical-single'
+			attributes.href = '#evening'
+			content = ${Array.first(node.context.dimensions.language) == 'en' ? 'Evening Programme' : 'Вечерняя программа'}
+		}
 		langLink = Neos.Fusion:Tag {
 			@context.targetLang = ${Array.first(node.context.dimensions.language) == 'ru' ? 'en' : 'ru'}
 			tagName = 'a'
@@ -20,6 +26,10 @@ prototype(Sfi.Site:FestivalLayout) < prototype(Neos.Fusion:Template) {
 		}
 		@context.originalDocumentNode = ${documentNode}
 		@context.documentNode = ${festivalNode}
+		@process.program {
+			expression = ${this.evening + value}
+			@position = 'after addLangLink'
+		}
 		@process.addLangLink {
 			expression = ${value + this.langLink}
 			@position = 'before tmpl'

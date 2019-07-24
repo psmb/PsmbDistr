@@ -123,9 +123,9 @@ prototype(Sfi.Site:Festival.VenuesMenu) < prototype(Neos.Fusion:Case) {
 			collection = ${subGroups}
 			itemName = 'festivalNode'
 			itemRenderer = Neos.Fusion:Case {
-				@process.title = afx`<h2 class="section-color page-title marginBottom-double marginTop-triple textAlign-center">{festivalNode.properties.title}</h2>{value}`
+				@process.title = afx`<h2 id={!compact && festivalNode.properties.uriPathSegment} class="section-color page-title marginBottom-double marginTop-triple textAlign-center">{festivalNode.properties.title}</h2>{value}`
 				evening {
-					condition = ${festivalNode.properties.uriPathSegment == 'evening'}
+					condition = ${festivalNode.properties.uriPathSegment == 'evening' && !compact}
 					renderer = Sfi.Site:Festival.EveningProgram
 				}
 				default {
