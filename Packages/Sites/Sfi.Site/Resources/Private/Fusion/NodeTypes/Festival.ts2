@@ -2,9 +2,17 @@ prototype(Sfi.Site:Festival.Document) < prototype(Sfi.Site:AbstractPage.Document
 	htmlTag.attributes.lang = Neos.Seo:LangAttribute
 	head {
 		openGraphMetaTags = Neos.Seo:OpenGraphMetaTags
+		gaNoop = "<script>function gtag_report_conversion() {}</script>"
 	}
 	bodyTag.attributes.id = ${'Festival-' + q(node).property('uriPathSegment')}
 	body = Sfi.Site:Festival
+	body.javascripts.festivalAnalytics = ${"
+		<script>gtag('config', 'AW-734344856');</script>
+		<script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-734344856/2ozrCKSJnacBEJjtlN4C', 'event_callback': callback }); return false; } </script>
+		<script> gtag('config', 'AW-734344856/FkuqCPT5nKcBEJjtlN4C', { 'phone_conversion_number': '+7 916 584-48-56' }); </script>
+		<script> gtag('config', 'AW-734344856/9ue_CMfqlacBEJjtlN4C', { 'phone_conversion_number': '+7 965 359-59-47' }); </script>
+	"}
+	body.javascripts.festivalAnalytics.@position = 'after analytics'
 }
 prototype(Sfi.Site:Festival) < prototype(Sfi.Site:AbstractPage) {
 	@context.festivalNode = ${q(documentNode).closest('[instanceof Sfi.Site:Festival]').get(0)}
