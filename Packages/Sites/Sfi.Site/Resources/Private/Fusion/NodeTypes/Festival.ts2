@@ -7,7 +7,7 @@ prototype(Sfi.Site:Festival.Document) < prototype(Sfi.Site:AbstractPage.Document
 	bodyTag.attributes.id = ${'Festival-' + q(node).property('uriPathSegment')}
 	body = Sfi.Site:Festival
 	body.javascripts.festivalAnalytics = ${"
-		<script async src="https://www.googletagmanager.com/gtag/js?id=AW-734344856"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-734344856'); </script>
+		<script async src='https://www.googletagmanager.com/gtag/js?id=AW-734344856'></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-734344856'); </script>
 		<script> function gtag_report_conversion(url) { var callback = function () { if (typeof(url) != 'undefined') { window.location = url; } }; gtag('event', 'conversion', { 'send_to': 'AW-734344856/2ozrCKSJnacBEJjtlN4C', 'event_callback': callback }); return false; } </script>
 		<script> gtag('config', 'AW-734344856/FkuqCPT5nKcBEJjtlN4C', { 'phone_conversion_number': '+7 916 584-48-56' }); </script>
 		<script> gtag('config', 'AW-734344856/9ue_CMfqlacBEJjtlN4C', { 'phone_conversion_number': '+7 965 359-59-47' }); </script>
