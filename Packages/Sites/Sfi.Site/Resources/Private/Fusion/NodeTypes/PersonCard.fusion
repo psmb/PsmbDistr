@@ -1,4 +1,5 @@
 prototype(Sfi.Site:PersonCard) {
+	title = ${String.stripTags(node.properties.title)}
 	templatePath = 'resource://Sfi.Site/Private/Fusion/NodeTypes/PersonCard.html'
 	imageUri = ImageUri {
 		asset = ${q(node).property('image')}
