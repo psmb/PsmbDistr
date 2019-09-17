@@ -1,12 +1,12 @@
-.header{
-	border-bottom: 2px solid;
+.header {
+    border-bottom: 2px solid;
 }
-.header__upper-bar{
-	border-bottom: 1px solid $gray-bg;
+.header__upper-bar {
+    border-bottom: 1px solid $gray-bg;
 }
 
 .header .light-button {
-	margin-left: 2*$u;
-	/*Magic number*/
-	margin-top: 14px;
+    margin-left: 2 * $u;
+    /*Magic number*/
+    margin-top: 7px;
 }

@@ -1,15 +1,36 @@
-{namespace gcse}
-<div class="search-box">
-	<script>
-		(function () {
-			var cx = '018114637120266180637:giwypvp527e';
-			var gcse = document.createElement('script');
-			gcse.type = 'text/javascript';
-			gcse.async = true;
-			gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(gcse, s);
-		})();
-	</script>
-	<gcse:search>
-</div>
+<style>
+    .nooutline {
+        outline: 0;
+    }
+</style>
+<form action="https://www.google.ru/cse" target="_blank">
+    <input name="cx" type="hidden" value="018114637120266180637:giwypvp527e" />
+    <input name="ie" type="hidden" value="UTF-8" />
+    <div style="width: 185px; display: flex">
+        <input
+            name="q"
+            placeholder="поиск"
+            class="nooutline"
+            style="padding: 8px; margin-right: 4px; border: 1px solid #ccc"
+        />
+        <button
+            class="nooutline"
+            name="sa"
+            type="submit"
+            title="поиск"
+            style="background: white; padding: 0; margin: 0; margin-top: 4px;"
+        >
+            <svg
+                style="fill: #999"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 56.966 56.966"
+                width="16"
+                height="16"
+            >
+                <path
+                    d="M55.146 51.887L41.588 37.786A22.926 22.926 0 0 0 46.984 23c0-12.682-10.318-23-23-23s-23 10.318-23 23 10.318 23 23 23c4.761 0 9.298-1.436 13.177-4.162l13.661 14.208c.571.593 1.339.92 2.162.92.779 0 1.518-.297 2.079-.837a3.004 3.004 0 0 0 .083-4.242zM23.984 6c9.374 0 17 7.626 17 17s-7.626 17-17 17-17-7.626-17-17 7.626-17 17-17z"
+                />
+            </svg>
+        </button>
+    </div>
+</form>
