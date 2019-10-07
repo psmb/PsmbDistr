@@ -1,54 +1,57 @@
 [data-carousel] {
-  position: relative;
-
-  .frame {
     position: relative;
-    font-size: 0;
-    line-height: 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
 
-  .slides {
-    width: 100%;
-    display: inline-block;
-  }
-
-  li {
-    position: relative;
-    display: inline-block;
-    white-space: normal;
-    width: 100%;
-  }
-
-  li > * {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .prev, .next {
-    position: absolute;
-    top: 50%;
-    margin-top: -25px;
-    display: block;
-    cursor: pointer;
-    background: white;
-    fill: $primary-color;
-
-    &.disabled {
-      display: none;
+    .frame {
+        position: relative;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+        white-space: nowrap;
     }
-  }
 
-  .next {
-    right: -4px;
-  }
+    .slides {
+        width: 100%;
+        display: inline-block;
+    }
 
-  .prev {
-    left: -4px;
-  }
+    li {
+        position: relative;
+        display: inline-block;
+        white-space: normal;
+        width: 100%;
+        vertical-align: top;
+    }
 
-  .next svg, .prev svg {
-    width: 25px;
-  }
+    li > * {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .prev,
+    .next {
+        position: absolute;
+        top: 50%;
+        margin-top: -25px;
+        display: block;
+        cursor: pointer;
+        background: white;
+        fill: $primary-color;
+
+        &.disabled {
+            display: none;
+        }
+    }
+
+    .next {
+        right: -4px;
+    }
+
+    .prev {
+        left: -4px;
+    }
+
+    .next svg,
+    .prev svg {
+        width: 25px;
+    }
 }
