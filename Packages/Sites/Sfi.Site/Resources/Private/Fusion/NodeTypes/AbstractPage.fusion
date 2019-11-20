@@ -26,14 +26,6 @@ prototype(Sfi.Site:AbstractPage.Document) < prototype(Page) {
 			<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 			<meta name="theme-color" content="#ffffff">
 		'}
-		stylesheets.fonts = T:Tag {
-			tagName = 'link'
-			attributes {
-				href = 'https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700&subset=latin,cyrillic'
-				type = 'text/css'
-				rel = 'stylesheet'
-			}
-		}
 		stylesheets.index = T:Tag {
 			tagName = 'link'
 			attributes {

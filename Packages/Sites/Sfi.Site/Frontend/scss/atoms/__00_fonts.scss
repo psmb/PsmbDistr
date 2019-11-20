@@ -1,3 +1,22 @@
+@font-face {
+  font-family: "PTRoot";
+  src:
+    url("/_Resources/Static/Packages/Sfi.Site/fonts/PTRootUI_Regular.woff2") format("woff2"),
+    url("/_Resources/Static/Packages/Sfi.Site/fonts/PTRootUI_Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PTRoot";
+  src:
+    url("/_Resources/Static/Packages/Sfi.Site/fonts/PTRootUI_Bold.woff2") format("woff2"),
+    url("/_Resources/Static/Packages/Sfi.Site/fonts/PTRootUI_Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
 
 /*
  * Foundation Icons v 3.0
