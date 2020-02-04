@@ -1,0 +1,53 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div class="fixedWidth">
+    <div class="large-8 large-offset-2 columns">
+        <f:if condition="{thumbUri}">
+            <div class="media-quote__image media-quote--blog__image">
+                <img src="{thumbUri}" alt="{authorName}" />
+            </div>
+        </f:if>
+        <div class="media-quote__body media-quote--blog__body">
+            <span class="media-quote__author media-quote--blog__author">
+                {authorName}
+            </span>
+        </div>
+        <h1 class="alpha textAlign-center">
+            {neos:contentElement.editable(property: 'title')}
+        </h1>
+        <div class="lead">
+            {neos:contentElement.editable(property: 'teaser')}
+        </div>
+        {main -> f:format.raw()}
+
+        <f:if condition="{node.properties.url}">
+            <div class="marginVertical-double"
+                ><a class="link" href="{node.properties.url}" title="Источник"
+                    >Источник</a
+                ></div
+            >
+        </f:if>
+
+        {share -> f:format.raw()}
+
+        <div class="to-comments">
+            <a href="#disqus_thread">Комментировать</a>
+        </div>
+
+        {sermonsByAuthor -> f:format.raw()}
+    </div>
+</div>
+<div class="fixedWidth">
+    <div class="row">
+        <div class="columns">
+            {sermons -> f:format.raw()}
+        </div>
+    </div>
+</div>
+<div class="fixedWidth">
+    <div class="row">
+        <div class="large-8 large-offset-2 columns">
+            {disqus -> f:format.raw()}
+        </div>
+    </div>
+</div>

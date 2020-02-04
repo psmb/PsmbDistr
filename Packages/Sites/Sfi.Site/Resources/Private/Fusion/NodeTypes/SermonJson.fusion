@@ -1,0 +1,54 @@
+# Json helper objects
+prototype(Sfi.Site:JsonObject) < prototype(Neos.Fusion:RawArray) {
+    @process.1 = ${Json.stringify(value)}
+}
+prototype(Sfi.Site:JsonObjectRenderer) < prototype(Neos.Fusion:RawArray) {
+    @process.1 = ${Json.stringify(value)}
+    @process.2 = ${'"' + this.id + '": ' + value}
+    @process.3 = ${iterator.isLast ? value : value + ','}
+}
+prototype(Sfi.Site:JsonArrayRenderer) < prototype(Neos.Fusion:RawArray) {
+    @process.1 = ${Json.stringify(value)}
+    @process.2 = ${iterator.isLast ? value : value + ','}
+}
+
+# Rendering object for all json endponts
+root.sermonJson{
+  condition = ${request.arguments.sermonDate}
+  renderer = Neos.Fusion:Http.Message {
+    httpResponseHead {
+      headers.Content-Type = 'application/json;charset=utf-8'
+    }
+    content = Sfi.Site:SermonsJson
+  }
+
+	@cache {
+		mode = 'cached'
+    entryIdentifier {
+      sermonDate = ${request.arguments.sermonDate}
+    }
+		entryTags {
+      1 = ${Neos.Caching.nodeTypeTag('NodeType_Sfi.Site:Sermon')}
+		}
+	}
+}
+root.@cache.entryIdentifier.sermonDate = ${request.arguments.sermonDate}
+
+prototype(Sfi.Site:SermonsJson) < prototype(Neos.Fusion:Collection) {
+  # collection = ${q(Search.query(site).nodeType("Sfi.Site:Sermon").execute().toArray()).filtterSermonsByDate(request.arguments.sermonDate).get()}
+  collection = ${q(site).find('[instanceof Sfi.Site:Sermon]').filtterSermonsByDate(request.arguments.sermonDate).get()}
+  itemName = 'node'
+  itemRenderer = Sfi.Site:SermonJson
+  @process.1 = ${'[' + value + ']'}
+}
+prototype(Sfi.Site:SermonJson) < prototype(Sfi.Site:JsonObject) {
+	id = ${q(node).property('uriPathSegment')}
+	title = ${String.stripTags(q(node).property('title'))}
+	teaser = ${q(node).property('teaser')}
+  authorName = ${node.properties.author.properties.title}
+	bodytext = Neos.Fusion:Collection {
+		collection = ${q(node).children('main').children()}
+		itemRenderer = Neos.Neos:ContentCase
+		itemName = 'node'
+	}
+}

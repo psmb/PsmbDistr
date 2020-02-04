@@ -1,0 +1,18 @@
+{
+    "description": "Package for importing data for psmb.ru. Created with a lot of help from of @dfeyer!",
+    "type": "neos-package",
+    "name": "psmb/psmbimport",
+    "require": {
+        "ttree/contentrepositoryimporter": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Psmb\\PsmbImport": "Classes"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Psmb.PsmbImport"
+        }
+    }
+}

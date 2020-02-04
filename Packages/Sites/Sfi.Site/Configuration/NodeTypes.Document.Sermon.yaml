@@ -1,0 +1,65 @@
+"Sfi.Site:Sermon":
+  superTypes:
+    "Neos.Neos:Document": true
+    "Sfi.Site:TaggableMixin": true
+  constraints:
+    nodeTypes:
+      "Neos.Neos:Document": false
+  ui:
+    label: Проповедь
+    icon: bible
+    inspector:
+      groups:
+        sermon:
+          label: "Атрибуты проповеди"
+          position: 1
+  childNodes:
+    main:
+      type: "Neos.Neos:ContentCollection"
+  options:
+    template:
+      childNodes:
+        main:
+          name: "main"
+          childNodes:
+            firstTextNode:
+              type: "Psmb.NodeTypes:Text"
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: "Заголовок проповеди"
+    teaser:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: "Подзаголовок проповеди"
+    author:
+      type: reference
+      ui:
+        label: Автор
+        inspector:
+          group: sermon
+          editorOptions:
+            nodeTypes:
+              - "Sfi.Site:Tag"
+            startingPoint: /sites/site/tags/people
+            createNew:
+              path: /sites/site/tags/people
+              type: "Sfi.Site:Tag"
+    magicDate:
+      type: string
+      ui:
+        label: Дата
+        inspector:
+          group: sermon
+
+Neos.Neos:Document:
+  constraints:
+    nodeTypes:
+      "Sfi.Site:Sermon": false

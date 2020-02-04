@@ -17,7 +17,6 @@
     ],
     "require": {
         "neos/neos-development-collection": "~3.3@dev",
-
         "neos/googleanalytics": "^2.0.0",
         "neos/redirecthandler": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
@@ -77,5 +76,8 @@
         ],
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
         "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+    },
+    "require-dev": {
+        "ttree/contentrepositoryimporter": "^3.1"
     }
 }
