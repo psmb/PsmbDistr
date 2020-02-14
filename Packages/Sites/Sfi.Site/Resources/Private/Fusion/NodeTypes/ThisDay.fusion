@@ -1,0 +1,6 @@
+prototype(Sfi.Site:ThisDay.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:ThisDay
+}
+prototype(Sfi.Site:ThisDay) < prototype(Neos.Fusion:Value) {
+	value = 'См. направо'
+}

@@ -134,19 +134,12 @@ function easter($year)
 }
 
 
-/**
- * Sort Nodes by their position in the node tree.
- *
- * Use it like this:
- *
- *    ${q(node).children().sortRecursive(['ASC'|'DESC'])}
- */
-class FilterSermonsByDateOperation extends AbstractOperation
+class FilterByMagicDateOperation extends AbstractOperation
 {
   /**
    * {@inheritdoc}
    */
-  protected static $shortName = 'filtterSermonsByDate';
+  protected static $shortName = 'filtterByMagicDate';
 
   /**
    * {@inheritdoc}

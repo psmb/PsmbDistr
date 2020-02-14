@@ -19,3 +19,13 @@ Ttree:
               targetNode: "s"
               siteNodePath: "/sites/site"
             batchSize: 100
+      "saints":
+        parts:
+          "saints":
+            label: "Import Saints"
+            dataProviderClassName: 'Psmb\PsmbImport\DataProvider\SaintDataProvider'
+            importerClassName: 'Psmb\PsmbImport\SaintImporter'
+            importerOptions:
+              targetNode: "sv"
+              siteNodePath: "/sites/site"
+            batchSize: 100

@@ -6,7 +6,7 @@
     nodeTypes:
       "Neos.Neos:Document": false
   ui:
-    label: Проповедь
+    label: "Календарь: Проповедь"
     icon: bible
     inspector:
       groups:

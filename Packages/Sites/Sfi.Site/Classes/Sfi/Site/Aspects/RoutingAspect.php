@@ -1,4 +1,5 @@
 <?php
+
 namespace Sfi\Site\Aspects;
 
 use Neos\Flow\Annotations as Flow;
@@ -12,7 +13,8 @@ use Neos\ContentRepository\Domain\Service\NodeTypeManager;
  * @Flow\Aspect
  * @Flow\Scope("singleton")
  */
-class RoutingAspect {
+class RoutingAspect
+{
 
 	/**
 	 * @Flow\Inject
@@ -44,7 +46,8 @@ class RoutingAspect {
 	 * @var string
 	 * @return array
 	 */
-	protected function getRequest($pathSegment) {
+	protected function getRequest($pathSegment)
+	{
 		return array(
 			'query' => array(
 				'bool' => array(
@@ -70,7 +73,8 @@ class RoutingAspect {
 	 * @Flow\Around("method(Neos\Neos\Routing\FrontendNodeRoutePartHandler->getRelativeNodePathByUriPathSegmentProperties())")
 	 * @return void
 	 */
-	public function speedupRouting(JoinPointInterface $joinPoint) {
+	public function speedupRouting(JoinPointInterface $joinPoint)
+	{
 		$relativeRequestPath = $joinPoint->getMethodArgument('relativeRequestPath');
 
 		// If within /a/path

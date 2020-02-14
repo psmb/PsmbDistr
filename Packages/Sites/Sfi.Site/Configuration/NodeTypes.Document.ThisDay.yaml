@@ -1,0 +1,65 @@
+"Sfi.Site:ThisDay":
+  superTypes:
+    "Neos.Neos:Document": true
+  constraints:
+    nodeTypes:
+      "Neos.Neos:Document": false
+  ui:
+    label: "Календарь: в этот день"
+    icon: bible
+    inspector:
+      groups:
+        thisday:
+          label: "Атрибуты"
+          position: 1
+  properties:
+    title:
+      type: string
+      validation:
+        Neos.Neos/Validation/StringLengthValidator:
+          minimum: 1
+      ui:
+        label: Название
+        inspector:
+          group: thisday
+    link:
+      type: string
+      validation:
+        Neos.Neos/Validation/StringLengthValidator:
+          minimum: 1
+      ui:
+        label: Ссылка
+        inspector:
+          group: thisday
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    magicDate:
+      type: string
+      validation:
+        Neos.Neos/Validation/StringLengthValidator:
+          minimum: 1
+      ui:
+        label: Дата
+        inspector:
+          group: thisday
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Фотка
+        reloadIfChanged: true
+        inspector:
+          group: thisday
+          editorOptions:
+            features:
+              resize: true
+            crop:
+              aspectRatio:
+                forceCrop: true
+                enableOriginal: false
+                allowCustom: false
+                locked:
+                  width: 310
+                  height: 175
+# Neos.Neos:Document:
+#   constraints:
+#     nodeTypes:
+#       "Sfi.Site:ThisDay": false

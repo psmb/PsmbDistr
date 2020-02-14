@@ -1,0 +1,16 @@
+prototype(Sfi.Site:Saint.Document) < prototype(Sfi.Site:AbstractPage.Document) {
+	body = Sfi.Site:Saint
+}
+prototype(Sfi.Site:Saint) < prototype(Neos.Neos:ContentComponent) {
+	title = Neos.Neos:Editable {
+		property = 'title'
+		block = false
+	}
+	main = Neos.Neos:ContentCollection {
+		nodePath = 'main'
+	}
+	renderer = afx`
+	<h1 class="alpha">{props.title}</h1>
+	{props.main}
+	`
+}

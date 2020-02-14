@@ -1,0 +1,70 @@
+# Rendering object for all json endponts
+root.calendarJson {
+  condition = ${request.arguments.calendarDate}
+  renderer = Neos.Fusion:Http.Message {
+    httpResponseHead {
+      headers.Content-Type = 'application/json;charset=utf-8'
+    }
+    content = Sfi.Site:CalendarJson
+  }
+}
+root.@cache.entryIdentifier.calendarDate = ${request.arguments.calendarDate}
+
+prototype(Sfi.Site:CalendarJson) < prototype(Neos.Fusion:RawArray) {
+  sermons = Sfi.Site:SermonsJson
+  thisDays = Sfi.Site:ThisDaysJson
+
+  @process.1 = ${Json.stringify(value)}
+
+  @cache {
+    mode = 'cached'
+    entryIdentifier {
+      calendarDate = ${request.arguments.calendarDate}
+    }
+    entryTags {
+      1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Sermon')}
+      2 = ${Neos.Caching.nodeTypeTag('Sfi.Site:ThisDay')}
+    }
+  }
+}
+
+prototype(Sfi.Site:SermonsJson) < prototype(Neos.Fusion:RawCollection) {
+  # collection = ${q(Search.query(site).nodeType("Sfi.Site:Sermon").execute().toArray()).filtterByMagicDate(request.arguments.calendarDate).get()}
+  collection = ${q(site).find('[instanceof Sfi.Site:Sermon]').filtterByMagicDate(request.arguments.calendarDate).get()}
+  itemName = 'node'
+  itemRenderer = Sfi.Site:SermonJson
+}
+
+prototype(Sfi.Site:SermonJson) < prototype(Neos.Fusion:RawArray) {
+  id = ${node.properties.uriPathSegment}
+  title = ${String.stripTags(node.properties.title)}
+  teaser = ${q(node).property('teaser')}
+  authorName = ${node.properties.author.properties.title}
+  bodytext = Neos.Fusion:Collection {
+    collection = ${q(node).children('main').children()}
+    itemRenderer = Neos.Neos:ContentCase
+    itemName = 'node'
+  }
+}
+
+prototype(Sfi.Site:ThisDaysJson) < prototype(Neos.Fusion:RawCollection) {
+  # collection = ${q(Search.query(site).nodeType("Sfi.Site:ThisDay").execute().toArray()).filtterByMagicDate(request.arguments.calendarDate).get()}
+  collection = ${q(site).find('[instanceof Sfi.Site:ThisDay]').filtterByMagicDate(request.arguments.calendarDate).get()}
+  itemName = 'node'
+  itemRenderer = Sfi.Site:ThisDayJson
+}
+
+prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
+  id = ${node.properties.uriPathSegment}
+  title = ${String.stripTags(node.properties.title)}
+  link = ${node.properties.link}
+	link.@process.convertUris = Neos.Neos:ConvertUris {
+    absolute = TRUE
+  }
+  image = Neos.Neos:ImageUri {
+    asset = ${node.properties.image}
+    width = 620
+    heght = 350
+    allowCropping = TRUE
+  }
+}

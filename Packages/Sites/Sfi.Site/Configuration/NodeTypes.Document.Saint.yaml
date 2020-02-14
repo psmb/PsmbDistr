@@ -1,0 +1,46 @@
+"Sfi.Site:Saint":
+  superTypes:
+    "Neos.Neos:Document": true
+    "Sfi.Site:TaggableMixin": true
+  constraints:
+    nodeTypes:
+      "Neos.Neos:Document": false
+  ui:
+    label: "Календарь: Святой"
+    icon: bible
+    inspector:
+      groups:
+        saint:
+          label: "Атрибуты"
+          position: 1
+  childNodes:
+    main:
+      type: "Neos.Neos:ContentCollection"
+  options:
+    template:
+      childNodes:
+        main:
+          name: "main"
+          childNodes:
+            firstTextNode:
+              type: "Psmb.NodeTypes:Text"
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: "Имя святого"
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Икона
+        reloadIfChanged: true
+        inspector:
+          group: saint
+
+Neos.Neos:Document:
+  constraints:
+    nodeTypes:
+      "Sfi.Site:Saint": false
