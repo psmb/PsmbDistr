@@ -63,23 +63,30 @@ class SaintImporter extends Importer
 
 		$title = $data['title'];
 		$externalIdentifier = $data['__externalIdentifier'];
-		$desiredNodeName = Slug::create($title)->getValue();
-		if ($this->skipNodeProcessing($externalIdentifier, '123', $this->siteNode, false)) {
-			return null;
+
+		$recordMapping = $this->getNodeProcessing($externalIdentifier);
+		if ($recordMapping !== null) {
+			$node = $this->storageNode->getContext()->getNodeByIdentifier($recordMapping->getNodeIdentifier());
+			if ($node === null) {
+				throw new \Exception(sprintf('Failed retrieving existing node for update. External identifier: %s Node identifier: %s. Maybe the record mapping in the database does not match the existing (imported) nodes anymore.', $externalIdentifier, $recordMapping->getNodeIdentifier()), 1462971366086);
+			}
+			if ($data['icon']) {
+				$image = $this->importImage($data['icon']);
+				$node->setProperty('image', $image);
+			}
+		} else {
+			$nodeTemplate->setProperty('title', $title);
+			$nodeTemplate->setProperty('uriPathSegment', $externalIdentifier);
+			$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
+
+			$node = $this->storageNode->createNodeFromTemplate($nodeTemplate);
+
+			$this->importBodytext($node, $data['bodytext']);
+
+
+
+			$this->registerNodeProcessing($node, $externalIdentifier);
 		}
-		$nodeTemplate->setProperty('title', $title);
-		$nodeTemplate->setProperty('uriPathSegment', $externalIdentifier);
-		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
-
-		$node = $this->createUniqueNode($this->storageNode, $nodeTemplate, $desiredNodeName);
-
-		$this->importBodytext($node, $data['bodytext']);
-
-		$image = $this->importImage($data['icon']);
-
-		$nodeTemplate->setProperty('image', $image);
-
-		$this->registerNodeProcessing($node, $externalIdentifier);
 	}
 
 	protected function importBodytext($sermonNode, $bodytext)
