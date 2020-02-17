@@ -1,6 +1,22 @@
-prototype(Sfi.Site:Saint.Document) < prototype(Sfi.Site:AbstractPage.Document) {
-	body = Sfi.Site:Saint
+prototype(Sfi.Site:Saint.Document) < prototype(Neos.Fusion:Case) {
+	json {
+		condition = ${request.arguments.json}
+		renderer = Neos.Fusion:Http.Message {
+			httpResponseHead {
+      	headers.Content-Type = 'application/json;charset=utf-8'
+			}
+			content = Sfi.Site:SaintJson
+		}
+	}
+	default {
+		condition = ${true}
+		renderer = Sfi.Site:AbstractPage.Document {
+			body = Sfi.Site:Saint
+		}
+	}
 }
+root.@cache.entryIdentifier.json = ${request.arguments.json}
+
 prototype(Sfi.Site:Saint) < prototype(Neos.Neos:ContentComponent) {
 	title = Neos.Neos:Editable {
 		property = 'title'
@@ -13,4 +29,30 @@ prototype(Sfi.Site:Saint) < prototype(Neos.Neos:ContentComponent) {
 	<h1 class="alpha">{props.title}</h1>
 	{props.main}
 	`
+}
+
+
+prototype(Sfi.Site:SaintJson) < prototype(Neos.Fusion:RawArray) {
+  id = ${node.properties.uriPathSegment}
+  title = ${String.stripTags(node.properties.title)}
+  icon = Neos.Neos:ImageUri {
+    asset = ${node.properties.image}
+  }
+  bodytext = Neos.Fusion:Collection {
+    collection = ${q(node).children('main').children()}
+    itemRenderer = Neos.Neos:ContentCase
+    itemName = 'node'
+  }
+  @process.1 = ${Json.stringify(value)}
+
+  @cache {
+    mode = 'cached'
+    entryIdentifier {
+      node = ${node}
+    }
+    entryTags {
+      1 = ${Neos.Caching.nodeTag(node)}
+      2 = ${Neos.Caching.descendantOfTag(node)}
+    }
+  }
 }

@@ -2117,6 +2117,8 @@ class SaintDataProvider extends AbstractDatabaseDataProvider
       $key = str_replace("https://www.holytrinityorthodox.com/ru/calendar/los/", "", $link);
       $key = str_replace(".html", "", $key);
       $key = str_replace("/", "-", $key);
+      $key = str_replace(".htm", "", $key);
+      $key = strtolower($key);
 
       $folder = 'Saints';
 
@@ -2147,8 +2149,18 @@ class SaintDataProvider extends AbstractDatabaseDataProvider
       if ($iconFileName) {
         $parentFolder = basename(dirname($link));
         $iconUrl = $imgNode ? dirname($link) . '/' . $iconFileName : "";
-        $iconLocalFileName = $folder . '/' . $parentFolder . $iconFileName;
+        if (strpos($iconFileName, '../') !== false) {
+          $iconLocalFileName = $folder . '/' . str_replace('../', '', $iconFileName);
+        } else {
+          $iconLocalFileName = $folder . '/' . $parentFolder . $iconFileName;
+        }
+
+
         if (!file_exists($iconLocalFileName)) {
+          $imageFolder = pathinfo($iconLocalFileName, PATHINFO_DIRNAME);
+          if (!file_exists($imageFolder)) {
+            mkdir($imageFolder, 0777, true);
+          }
           file_put_contents($iconLocalFileName, fopen($iconUrl, 'r'));
         }
       }

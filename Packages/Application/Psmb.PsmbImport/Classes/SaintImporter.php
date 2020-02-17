@@ -59,7 +59,6 @@ class SaintImporter extends Importer
 	 */
 	public function processRecord(NodeTemplate $nodeTemplate, array $data)
 	{
-		return null;
 		$this->unsetAllNodeTemplateProperties($nodeTemplate);
 
 		$title = $data['title'];
@@ -69,6 +68,7 @@ class SaintImporter extends Importer
 			return null;
 		}
 		$nodeTemplate->setProperty('title', $title);
+		$nodeTemplate->setProperty('uriPathSegment', $externalIdentifier);
 		$nodeTemplate->setProperty('originalIdentifier', $externalIdentifier);
 
 		$node = $this->createUniqueNode($this->storageNode, $nodeTemplate, $desiredNodeName);
