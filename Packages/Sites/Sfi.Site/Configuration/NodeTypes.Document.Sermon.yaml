@@ -1,4 +1,5 @@
 "Sfi.Site:Sermon":
+  label: "${String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('magicDate') + ' ~ ' + q(node).property('title'), '/<br\\W*?\\/?>|\\x{00a0}|[^[:print:]]|\\s+/u', ' '))), 100, '...')}"
   superTypes:
     "Neos.Neos:Document": true
     "Sfi.Site:TaggableMixin": true
@@ -55,6 +56,24 @@
     magicDate:
       type: string
       ui:
+        help:
+          message: >
+            ## Переходящие
+
+            #### **1;0** Пасха
+
+            #### **1;3** Среда Светлой седмицы
+
+            ## Непереходящие
+
+            #### **25/12-0** Суббота перед 25.12
+
+            #### **25/12-0#1** Суббота перед 25.12 -1 неделя
+
+            #### **25/12~6** ближайшая суббота
+
+            #### **25/12-w** ближайший рабочий день отматывая назад
+
         label: Дата
         inspector:
           group: sermon

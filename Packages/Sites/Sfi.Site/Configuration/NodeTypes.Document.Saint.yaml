@@ -1,4 +1,5 @@
 "Sfi.Site:Saint":
+  label: "${String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('uriPathSegment') + ' ~ ' + q(node).property('title'), '/<br\\W*?\\/?>|\\x{00a0}|[^[:print:]]|\\s+/u', ' '))), 100, '...')}"
   superTypes:
     "Neos.Neos:Document": true
     "Sfi.Site:TaggableMixin": true
