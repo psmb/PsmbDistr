@@ -216,6 +216,10 @@ Neos:
               baseNodeType: 'Neos.Neos:Document,!Sfi.Site:News'
     nodeTypes:
       groups:
+        calendar:
+          position: 105
+          label: "Календарь"
+          collapsed: true
         festival:
           position: 110
           label: 'Фестиваль'

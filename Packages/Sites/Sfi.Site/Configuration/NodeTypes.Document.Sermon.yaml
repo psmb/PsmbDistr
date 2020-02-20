@@ -9,6 +9,7 @@
   ui:
     label: "Календарь: Проповедь"
     icon: bible
+    group: calendar
     inspector:
       groups:
         sermon:
@@ -77,8 +78,3 @@
         label: Дата
         inspector:
           group: sermon
-
-Neos.Neos:Document:
-  constraints:
-    nodeTypes:
-      "Sfi.Site:Sermon": false

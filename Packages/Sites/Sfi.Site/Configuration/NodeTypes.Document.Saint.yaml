@@ -8,7 +8,8 @@
       "Neos.Neos:Document": false
   ui:
     label: "Календарь: Святой"
-    icon: bible
+    icon: cross
+    group: calendar
     inspector:
       groups:
         saint:
@@ -40,8 +41,3 @@
         reloadIfChanged: true
         inspector:
           group: saint
-
-Neos.Neos:Document:
-  constraints:
-    nodeTypes:
-      "Sfi.Site:Saint": false
