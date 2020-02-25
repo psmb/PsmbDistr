@@ -9,9 +9,10 @@ prototype(Sfi.Site:ThisDay) < prototype(Neos.Neos:ContentComponent) {
 	main = Neos.Neos:ContentCollection {
 		nodePath = 'main'
 	}
+	link = ${node.properties.link}
 	renderer = afx`
 	<h1 class="alpha">{props.title}</h1>
-	<div @if.link={link}>Режим ссылки: {link}</div>
-	<div @if.link={!link}>{props.main}</div>
+	<div @if.link={props.link ? true : false}>Режим ссылки: {props.link} <br/>Уберите ссылку, тогда можно будет ставить текст прямо сюда</div>
+	<div @if.link={props.link ? false : true}>{props.main}</div>
 	`
 }

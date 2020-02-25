@@ -8,6 +8,14 @@
   childNodes:
     main:
       type: "Neos.Neos:ContentCollection"
+  options:
+    template:
+      childNodes:
+        main:
+          name: "main"
+          childNodes:
+            firstTextNode:
+              type: "Psmb.NodeTypes:Text"
   ui:
     label: "Календарь: в этот день"
     icon: calendar-day
