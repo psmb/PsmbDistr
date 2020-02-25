@@ -5,6 +5,9 @@
   constraints:
     nodeTypes:
       "Neos.Neos:Document": false
+  childNodes:
+    main:
+      type: "Neos.Neos:ContentCollection"
   ui:
     label: "Календарь: в этот день"
     icon: calendar-day
