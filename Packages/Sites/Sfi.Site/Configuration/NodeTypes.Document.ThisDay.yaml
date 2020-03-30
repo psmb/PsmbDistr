@@ -88,5 +88,5 @@
                 enableOriginal: false
                 allowCustom: false
                 locked:
-                  width: 310
-                  height: 175
+                  width: 640
+                  height: 533
