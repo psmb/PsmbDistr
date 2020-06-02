@@ -67,6 +67,7 @@ prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
     width = 640
     heght = 533
     allowCropping = TRUE
+	allowUpscaling = TRUE
   }
   bodytext = Neos.Fusion:Collection {
     collection = ${q(node).children('main').children()}
