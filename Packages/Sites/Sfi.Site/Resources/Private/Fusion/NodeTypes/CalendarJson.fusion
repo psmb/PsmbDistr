@@ -67,7 +67,7 @@ prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
     width = 640
     heght = 533
 	maximumWidth = 640
-    maximumHeght = 533
+    maximumHeight = 533
     allowCropping = TRUE
     allowUpscaling = TRUE
   }
