@@ -66,6 +66,8 @@ prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
     asset = ${node.properties.image}
     width = 640
     heght = 363
+    maximumWidth = 640
+    maximumHeight = 363
     allowCropping = TRUE
     allowUpscaling = TRUE
   }
