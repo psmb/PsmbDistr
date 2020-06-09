@@ -42,7 +42,7 @@ Flowpack:
   JobQueue:
     Common:
       queues:
-        'Flowpack.ElasticSearch.ContentRepositoryQueueIndexer':
+        "Flowpack.ElasticSearch.ContentRepositoryQueueIndexer":
           className: 'Flowpack\JobQueue\Redis\Queue\RedisQueue'
           executeIsolated: true
           options:
@@ -52,7 +52,7 @@ Flowpack:
               database: 15
             defaultTimeout: 20
 
-        'Flowpack.ElasticSearch.ContentRepositoryQueueIndexer.Live':
+        "Flowpack.ElasticSearch.ContentRepositoryQueueIndexer.Live":
           className: 'Flowpack\JobQueue\Redis\Queue\RedisQueue'
           executeIsolated: true
           options:
@@ -67,64 +67,59 @@ Flowpack:
         version: 2.x
     clients:
       default:
-        -
-          host: shared-es_es
+        - host: es
           port: 9200
     ContentRepositoryQueueIndexer:
       batchSize: 100
       enableLiveAsyncIndexing: false
 Sfi:
   YouTube:
-    className: 'YouTube flex-video widescreen'
+    className: "YouTube flex-video widescreen"
 Psmb:
   GoogleFormsCaptcha:
     forms:
-      contactUs: '1MAsEybLT5iHkaYgn-Y2kLjZTilZG2ayPGZLR_8oV7NA'
-    secret: '%env:PSMB_CAPTCHA_SECRET%'
+      contactUs: "1MAsEybLT5iHkaYgn-Y2kLjZTilZG2ayPGZLR_8oV7NA"
+    secret: "%env:PSMB_CAPTCHA_SECRET%"
   Newsletter:
     globalSettings:
       senderAddress: no-reply@psmb.ru
       senderName: PSMB.ru
     subscriptions:
-      -
-        identifier: instant_ru
-        renderer: 'Sfi.Site:InstantMail'
-        sendFromUiNodeType: 'Sfi.Site:News'
-        label: 'Мгновенное уведомление'
-        description: 'Полные версии материалов как только они опубликованы'
+      - identifier: instant_ru
+        renderer: "Sfi.Site:InstantMail"
+        sendFromUiNodeType: "Sfi.Site:News"
+        label: "Мгновенное уведомление"
+        description: "Полные версии материалов как только они опубликованы"
         interval: PT1H
-        senderName: 'Преображенское братство'
+        senderName: "Преображенское братство"
         dimensions:
           language:
             - ru
-      -
-        identifier: digest_ru
-        renderer: 'Sfi.Site:DigestMail'
-        label: 'Еженедельный дайджест'
-        description: 'Письмо с лучшими публикациями за неделю'
+      - identifier: digest_ru
+        renderer: "Sfi.Site:DigestMail"
+        label: "Еженедельный дайджест"
+        description: "Письмо с лучшими публикациями за неделю"
         interval: P1W
-        senderName: 'Преображенское братство'
+        senderName: "Преображенское братство"
         dimensions:
           language:
             - ru
-      -
-        identifier: instant_en
-        renderer: 'Sfi.Site:InstantMail'
-        sendFromUiNodeType: 'Sfi.Site:News'
-        label: 'Instant Notification'
-        description: 'Recevie full versions of articles as they are published'
+      - identifier: instant_en
+        renderer: "Sfi.Site:InstantMail"
+        sendFromUiNodeType: "Sfi.Site:News"
+        label: "Instant Notification"
+        description: "Recevie full versions of articles as they are published"
         interval: PT1H
-        senderName: 'Transfiguration Brotherhood'
+        senderName: "Transfiguration Brotherhood"
         dimensions:
           language:
             - en
-      -
-        identifier: digest_en
-        renderer: 'Sfi.Site:DigestMail'
-        label: 'Monthly Digest'
-        description: 'Receive newsletter by Sofia Androsenko to your inbox'
+      - identifier: digest_en
+        renderer: "Sfi.Site:DigestMail"
+        label: "Monthly Digest"
+        description: "Receive newsletter by Sofia Androsenko to your inbox"
         interval: P1W
-        senderName: 'Transfiguration Brotherhood'
+        senderName: "Transfiguration Brotherhood"
         dimensions:
           language:
             - en
@@ -135,28 +130,28 @@ Neos:
   Flow:
     package:
       inactiveByDefault:
-        - 'Neos.NodeTypes.AssetList'
-        - 'Neos.NodeTypes.BaseMixins'
-        - 'Neos.NodeTypes.ColumnLayouts'
-        - 'Neos.NodeTypes.ContentReferences'
-        - 'Neos.NodeTypes.Form'
-        - 'Neos.NodeTypes.Html'
-        - 'Neos.NodeTypes.Navigation'
-        - 'neos/nodetypes'
-        - 'neos/form'
-        - 'neos/nodetypes-basemixins'
-        - 'neos/nodetypes-assetlist'
-        - 'neos/nodetypes-columnlayouts'
-        - 'neos/nodetypes-contentreferences'
-        - 'neos/nodetypes-html'
-        - 'neos/nodetypes-navigation'
-        - 'neos/nodetypes-form'
+        - "Neos.NodeTypes.AssetList"
+        - "Neos.NodeTypes.BaseMixins"
+        - "Neos.NodeTypes.ColumnLayouts"
+        - "Neos.NodeTypes.ContentReferences"
+        - "Neos.NodeTypes.Form"
+        - "Neos.NodeTypes.Html"
+        - "Neos.NodeTypes.Navigation"
+        - "neos/nodetypes"
+        - "neos/form"
+        - "neos/nodetypes-basemixins"
+        - "neos/nodetypes-assetlist"
+        - "neos/nodetypes-columnlayouts"
+        - "neos/nodetypes-contentreferences"
+        - "neos/nodetypes-html"
+        - "neos/nodetypes-navigation"
+        - "neos/nodetypes-form"
     session:
       inactivityTimeout: 604800
     i18n:
       defaultLocale: ru
     http:
-      baseUri: 'https://psmb.ru/'
+      baseUri: "http://dev.localhost:10000/"
     resource:
       collections:
         persistent:
@@ -166,25 +161,25 @@ Neos:
         s3PersistentResourcesStorage:
           storage: 'Flownative\Aws\S3\S3Storage'
           storageOptions:
-            bucket: 'psmb-neos-resources'
-            keyPrefix: 'storage/psmb/'
+            bucket: "psmb-neos-resources"
+            keyPrefix: "storage/psmb/"
       targets:
         s3PersistentResourcesTarget:
           target: 'Flownative\Aws\S3\S3Target'
           targetOptions:
-            bucket: 'psmb-neos-resources'
-            keyPrefix: 'target/psmb/'
-            baseUri: 'https://psmb-neos-resources.hb.bizmrg.com/target/psmb/'
+            bucket: "psmb-neos-resources"
+            keyPrefix: "target/psmb/"
+            baseUri: "https://psmb-neos-resources.hb.bizmrg.com/target/psmb/"
   Neos:
     Ui:
       frontendConfiguration:
-        defaultInlineEditor: 'ckeditor5'
-        'Psmb.CreateNodeButton':
+        defaultInlineEditor: "ckeditor5"
+        "Psmb.CreateNodeButton":
           enabled: true
-          position: 'into'
-          type: 'Sfi.Site:News'
-          referenceNodePath: '/sites/site/a'
-          placeholder: 'Заголовок материала...'
+          position: "into"
+          type: "Sfi.Site:News"
+          referenceNodePath: "/sites/site/a"
+          placeholder: "Заголовок материала..."
         Psmb_FlatNav:
           presets:
             news:
@@ -192,15 +187,15 @@ Neos:
               label: Новости
               icon: newspaper
               query: 'Search.query(node).nodeType("Sfi.Site:News").sortDesc("date").from((page - 1) * 20).limit(20).execute().toArray()'
-              newReferenceNodePath: '/sites/site/a'
-              newNodeType: 'Sfi.Site:News'
+              newReferenceNodePath: "/sites/site/a"
+              newNodeType: "Sfi.Site:News"
             tags:
               type: flat
               label: Тэги
               icon: tag
               query: 'Search.query(node).nodeType("Sfi.Site:Tag").sortAsc("title").from((page - 1) * 20).limit(20).execute().toArray()'
-              newReferenceNodePath: '/sites/site/tags/people'
-              newNodeType: 'Sfi.Site:Tag'
+              newReferenceNodePath: "/sites/site/tags/people"
+              newNodeType: "Sfi.Site:Tag"
             tree:
               type: tree
               label: Дерево
@@ -213,7 +208,7 @@ Neos:
           loadingDepth: 1
           presets:
             default:
-              baseNodeType: 'Neos.Neos:Document,!Sfi.Site:News'
+              baseNodeType: "Neos.Neos:Document,!Sfi.Site:News"
     nodeTypes:
       groups:
         calendar:
@@ -222,16 +217,16 @@ Neos:
           collapsed: true
         festival:
           position: 110
-          label: 'Фестиваль'
+          label: "Фестиваль"
           collapsed: true
     eventLog:
       enabled: true
   GoogleAnalytics:
     stats:
       uniquePageviewsBySource:
-        metrics: 'ga:uniquePageviews'
-        dimensions: 'ga:source'
-        sort: '-ga:uniquePageviews'
+        metrics: "ga:uniquePageviews"
+        dimensions: "ga:source"
+        sort: "-ga:uniquePageviews"
         max-results: 25
     fusion:
       autoInclude:
@@ -248,7 +243,7 @@ Neos:
             label: Russian
             values:
               - ru
-            uriSegment: ''
+            uriSegment: ""
           en:
             label: English
             values:
@@ -264,6 +259,6 @@ Flownative:
       profiles:
         default:
           credentials:
-            key: '%env:AWS_ACCESS_KEY_ID%'
-            secret: '%env:AWS_SECRET_ACCESS_KEY%'
-          endpoint: 'https://hb.bizmrg.com'
+            key: "%env:AWS_ACCESS_KEY_ID%"
+            secret: "%env:AWS_SECRET_ACCESS_KEY%"
+          endpoint: "https://hb.bizmrg.com"

@@ -1,40 +1,19 @@
 version: "3.4"
 services:
-  redis:
-    image: redis:3.2
-  db:
-    image: mariadb:10.3
-    volumes:
-      - db-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: db
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: pass
-  web:
-    labels:
-      - "neos"
-    volumes:
-      - ./:/data/www
-      - /data/www/Data
-      - /data/www/Packages/Neos
-      - /data/www/Packages/Framework
-    image: dimaip/psmbdistr:latest
-    hostname: 'psmbru'
-    networks:
-      - default
-      - main
-    ports:
-      - '10000:80'
-    depends_on:
-      - db
-      - redis
-    environment:
-      AWS_ACCESS_KEY_ID: a
-      AWS_SECRET_ACCESS_KEY: a
+    redis:
+        image: redis:3.2
+    db:
+        image: mariadb:10.3
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: pass
+            MYSQL_DATABASE: db
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: pass
 volumes:
-  db-data:
+    db-data:
 networks:
-  main:
-    external:
-      name: main
+    main:
+        external:
+            name: main
