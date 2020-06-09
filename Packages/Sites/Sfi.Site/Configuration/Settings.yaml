@@ -67,7 +67,7 @@ Flowpack:
         version: 2.x
     clients:
       default:
-        - host: es
+        - host: shared-es_es
           port: 9200
     ContentRepositoryQueueIndexer:
       batchSize: 100
@@ -151,7 +151,7 @@ Neos:
     i18n:
       defaultLocale: ru
     http:
-      baseUri: "http://dev.localhost:10000/"
+      baseUri: "https://psmb.ru/"
     resource:
       collections:
         persistent:
