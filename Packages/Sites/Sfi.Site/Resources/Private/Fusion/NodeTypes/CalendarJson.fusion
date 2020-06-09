@@ -65,8 +65,9 @@ prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
   image = Neos.Neos:ImageUri {
     asset = ${node.properties.image}
     width = 640
-    heght = 533
+    heght = 363
     allowCropping = TRUE
+    allowUpscaling = TRUE
   }
   bodytext = Neos.Fusion:Collection {
     collection = ${q(node).children('main').children()}
