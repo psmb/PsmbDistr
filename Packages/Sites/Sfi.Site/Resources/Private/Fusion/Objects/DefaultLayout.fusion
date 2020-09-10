@@ -6,7 +6,8 @@ prototype(Sfi.Site:DefaultLayout) < prototype(T:Template) {
 	}
 	main = ${value}
 	main.@if.notSubscription = ${request.pluginArguments['newsletter']['@package'] != 'Psmb.Newsletter'}
-	subscriptionPlugin = Psmb.Newsletter:SubscriptionPlugin
+	subscriptionPlugin = ""
+	# Temporarily disable the subscription: Psmb.Newsletter:SubscriptionPlugin
 
 	footer = Sfi.Site:Footer
 
