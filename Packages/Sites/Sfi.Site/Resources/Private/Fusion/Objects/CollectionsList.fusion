@@ -12,17 +12,17 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 			collection = ${this.aggregations.collections.buckets}
 			itemName = 'bucket'
 			itemRenderer = ${q(site).find('#' + bucket.key).get(0)}
-			@process.sort = ${value && value.length > 0 && q(value).sort('index', 'ASC')}
+			@process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
 		}
 		itemName = 'node'
 		itemRenderer = T:Tag {
 			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item ' + (node.properties.pinned && 'js-interesting-themes__item--pinned') + '">' + value + '</li>'}
 			tagName = 'a'
-			attributes.class = ${(request.arguments.collection == bucket.key && 'active ') + 'js-filter-bar__item'}
+			attributes.class = ${(request.arguments.collection == node.identifier && 'active ') + 'js-filter-bar__item'}
 			attributes.href = NodeUri {
 				node = ${site}
 				additionalParams {
-					collection = ${bucket.key}
+					collection = ${node.identifier}
 				}
 			}
 			content = ${q(node).property('title')}
