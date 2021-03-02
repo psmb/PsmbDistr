@@ -6,13 +6,16 @@ prototype(Sfi.Site:CollectionsList) < prototype(T:Array) {
 			<span class="interesting-themes__label">' + collectionsNode.properties.title + '</span>
 			<section class="filters js-filter-bar"><ul>' + value + '</ul></section>
 		</div>'}
-
 		@context.query = Sfi.Site:StreamQuery
-		aggregations = Sfi.Site:StreamAggregations
-		collection = ${this.aggregations.collections.buckets}
-		itemName = 'bucket'
+		collection = T:RawCollection {
+			aggregations = Sfi.Site:StreamAggregations
+			collection = ${this.aggregations.collections.buckets}
+			itemName = 'bucket'
+			itemRenderer = ${q(site).find('#' + bucket.key).get(0)}
+			@process.sort = ${value && value.length > 0 && q(value).sort('index', 'ASC')}
+		}
+		itemName = 'node'
 		itemRenderer = T:Tag {
-			@context.node = ${q(site).find('#' + bucket.key).get(0)}
 			@process.tmpl = ${'<li class="interesting-themes__item js-interesting-themes__item ' + (node.properties.pinned && 'js-interesting-themes__item--pinned') + '">' + value + '</li>'}
 			tagName = 'a'
 			attributes.class = ${(request.arguments.collection == bucket.key && 'active ') + 'js-filter-bar__item'}
