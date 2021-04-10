@@ -78,5 +78,8 @@ prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
     prototype(Neos.Neos:ConvertUris) {
       absolute = TRUE
     }
+    prototype(Psmb.Term:ReplaceTerms) {
+      absolute = TRUE
+    }
   }
 }
