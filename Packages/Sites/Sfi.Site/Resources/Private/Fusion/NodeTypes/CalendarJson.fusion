@@ -75,5 +75,8 @@ prototype(Sfi.Site:ThisDayJson) < prototype(Neos.Fusion:RawArray) {
     collection = ${q(node).children('main').children()}
     itemRenderer = Neos.Neos:ContentCase
     itemName = 'node'
+    prototype(Neos.Neos:ConvertUris) {
+      absolute = TRUE
+    }
   }
 }
