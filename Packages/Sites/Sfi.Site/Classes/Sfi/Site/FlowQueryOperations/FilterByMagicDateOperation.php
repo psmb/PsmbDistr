@@ -139,7 +139,7 @@ class FilterByMagicDateOperation extends AbstractOperation
   /**
    * {@inheritdoc}
    */
-  protected static $shortName = 'filtterByMagicDate';
+  protected static $shortName = 'filterByMagicDate';
 
   /**
    * {@inheritdoc}
@@ -164,6 +164,7 @@ class FilterByMagicDateOperation extends AbstractOperation
   public function evaluate(FlowQuery $flowQuery, array $arguments)
   {
     $date = $arguments[0] ?? date('Ymd');
+    $verseArgument = $arguments[1] ?? null;
     $date = date('Ymd', strtotime("-13 days", strtotime($date)));
     $dateStampO = strtotime($date);
     $dateStamp = strtotime("+13 days", $dateStampO);
@@ -193,7 +194,11 @@ class FilterByMagicDateOperation extends AbstractOperation
 
 
     $todayDateSlashy = date('d/m', $dateStampO);
-    $filteredNodes = array_filter($nodes, function ($node) use ($dateStampO, $todayDateSlashy, $dayweek) {
+    $filteredNodes = array_filter($nodes, function ($node) use ($dateStampO, $todayDateSlashy, $dayweek, $verseArgument) {
+      $verse = $node->getProperty('verse');
+      if (strpos($verseArgument, $verse) !== false) {
+        return true;
+      }
       $magicDate = $node->getProperty('magicDate');
       if ($magicDate) {
         if (strstr($magicDate, ";")) {

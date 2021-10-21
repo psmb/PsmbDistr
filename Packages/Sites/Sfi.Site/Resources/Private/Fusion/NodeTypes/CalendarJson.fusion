@@ -10,6 +10,7 @@ root.calendarJson {
   }
 }
 root.@cache.entryIdentifier.calendarDate = ${request.arguments.calendarDate}
+root.@cache.entryIdentifier.verses = ${request.arguments.verses}
 
 prototype(Sfi.Site:CalendarJson) < prototype(Neos.Fusion:RawArray) {
   sermons = Sfi.Site:SermonsJson
@@ -21,6 +22,7 @@ prototype(Sfi.Site:CalendarJson) < prototype(Neos.Fusion:RawArray) {
     mode = 'cached'
     entryIdentifier {
       calendarDate = ${request.arguments.calendarDate}
+      verses = ${request.arguments.verses}
     }
     entryTags {
       1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Sermon')}
@@ -30,8 +32,8 @@ prototype(Sfi.Site:CalendarJson) < prototype(Neos.Fusion:RawArray) {
 }
 
 prototype(Sfi.Site:SermonsJson) < prototype(Neos.Fusion:RawCollection) {
-  # collection = ${q(Search.query(site).nodeType("Sfi.Site:Sermon").execute().toArray()).filtterByMagicDate(request.arguments.calendarDate).get()}
-  collection = ${q(site).find('[instanceof Sfi.Site:Sermon]').filtterByMagicDate(request.arguments.calendarDate).get()}
+  # collection = ${q(Search.query(site).nodeType("Sfi.Site:Sermon").execute().toArray()).filterByMagicDate(request.arguments.calendarDate).get()}
+  collection = ${q(site).find('[instanceof Sfi.Site:Sermon]').filterByMagicDate(request.arguments.calendarDate, request.arguments.verses).get()}
   itemName = 'node'
   itemRenderer = Sfi.Site:SermonJson
 }
@@ -49,8 +51,8 @@ prototype(Sfi.Site:SermonJson) < prototype(Neos.Fusion:RawArray) {
 }
 
 prototype(Sfi.Site:ThisDaysJson) < prototype(Neos.Fusion:RawCollection) {
-  # collection = ${q(Search.query(site).nodeType("Sfi.Site:ThisDay").execute().toArray()).filtterByMagicDate(request.arguments.calendarDate).get()}
-  collection = ${q(site).find('[instanceof Sfi.Site:ThisDay]').filtterByMagicDate(request.arguments.calendarDate).get()}
+  # collection = ${q(Search.query(site).nodeType("Sfi.Site:ThisDay").execute().toArray()).filterByMagicDate(request.arguments.calendarDate).get()}
+  collection = ${q(site).find('[instanceof Sfi.Site:ThisDay]').filterByMagicDate(request.arguments.calendarDate, request.arguments.verses).get()}
   itemName = 'node'
   itemRenderer = Sfi.Site:ThisDayJson
 }

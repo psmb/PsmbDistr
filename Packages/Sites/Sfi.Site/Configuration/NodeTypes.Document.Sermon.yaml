@@ -78,3 +78,15 @@
         label: Дата
         inspector:
           group: sermon
+    verse:
+      type: string
+      ui:
+        help:
+          message: >
+            Зачало, в точности как указано в приложении, к примеру
+
+            Мф., 43 зач., XI, 27-30.
+
+        label: Отрывок
+        inspector:
+          group: sermon
