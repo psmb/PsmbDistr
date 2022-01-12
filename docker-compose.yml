@@ -16,7 +16,7 @@ services:
       - "neos"
     volumes:
       - /data/www-provisioned/Web/_Resources
-    image: dimaip/psmbdistr:latest
+    image: ghcr.io/psmb/psmbdistr:master
     hostname: 'psmbru'
     networks:
       - default
