@@ -1,19 +1,4 @@
 {
 	"changes": [
-		{
-			"name": "TASK: improve performance of `setUniqueUriPathSegment`",
-			"type": "github",
-			"repository": "neos/neos-development-collection",
-			"pull_request": "673",
-			"path": "Packages/Neos"
-		},
-		{
-			"name": "BUGFIX: remove nodes from index on discard",
-			"type": "github",
-			"repository": "neos/typo3cr-search",
-			"commit": "c3b86add1a3d7eeb89eda2b5d05a1c478515ce60",
-			"ref": "dimaip-fix-discard",
-			"path": "Packages/Application/Neos.ContentRepository.Search"
-		}
 	]
 }
