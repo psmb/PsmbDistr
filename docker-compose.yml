@@ -30,15 +30,12 @@ services:
       - GA_SECRET
       - GA_DEVKEY
       - PSMB_CAPTCHA_SECRET
-    deploy:
-      update_config:
-        order: start-first
-      labels:
-        - "traefik.enable=true"
-        - "traefik.port=80"
-        - "traefik.default.protocol=http"
-        - "traefik.docker.network=main"
-        - "traefik.frontend.rule=Host:psmb.ru,www.psmb.ru,en.psmb.ru,festival.psmb.ru,server.psmb.ru"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.default.protocol=http"
+      - "traefik.docker.network=main"
+      - "traefik.frontend.rule=Host:psmb.ru,www.psmb.ru,en.psmb.ru,festival.psmb.ru,server.psmb.ru"
     ports:
       - '80'
     depends_on:
