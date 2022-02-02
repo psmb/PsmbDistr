@@ -21,7 +21,7 @@ services:
     networks:
       - default
       - main
-    secrets:
+    environment:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
       - PSMB_SMTP_PASS
@@ -44,19 +44,6 @@ services:
       - redis
 volumes:
   db-data:
-secrets:
-  AWS_ACCESS_KEY_ID:
-    external: true
-  AWS_SECRET_ACCESS_KEY:
-    external: true
-  PSMB_SMTP_PASS:
-    external: true
-  GA_SECRET:
-    external: true
-  GA_DEVKEY:
-    external: true
-  PSMB_CAPTCHA_SECRET:
-    external: true
 networks:
   main:
     external:
