@@ -262,6 +262,7 @@ class FilterByMagicDateOperation extends AbstractOperation
     $currentDayNumber = date('N', $day_stamp);
     if ($currentDayNumber == 7)
       $currentDayNumber = 0;
+    $shiftToDay = 0;
     if ($currentDayNumber < $dayNumber) {
       $shiftToDay = $dayNumber - $currentDayNumber;
     } else if ($currentDayNumber == $dayNumber) {
@@ -283,6 +284,7 @@ class FilterByMagicDateOperation extends AbstractOperation
       $currentDayNumber = 0;
     }
 
+    $shiftToDay = 0;
     if ($dayNumber === 'w') {
       if ($currentDayNumber == 0) {
         $shiftToDay = 2;
