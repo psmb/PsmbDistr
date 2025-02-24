@@ -54,6 +54,19 @@
             createNew:
               path: /sites/site/tags/people
               type: "Sfi.Site:Tag"
+    themes:
+      type: references
+      ui:
+        label: Темы
+        inspector:
+          group: sermon
+          editorOptions:
+            nodeTypes:
+              - "Sfi.Site:Tag"
+            startingPoint: /sites/site/tags/themes
+            createNew:
+              path: /sites/site/tags/themes
+              type: "Sfi.Site:Tag"
     magicDate:
       type: string
       ui:
