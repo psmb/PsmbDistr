@@ -1,0 +1,29 @@
+root.sermonsFilteredJson {
+  condition = ${request.arguments.author}
+  renderer = Neos.Fusion:Http.Message {
+    httpResponseHead {
+      headers.Content-Type = 'application/json;charset=utf-8'
+      headers.Access-Control-Allow-Origin = '*'
+    }
+    content = Sfi.Site:SermonsFilteredJson
+  }
+}
+root.@cache.entryIdentifier.author = ${request.arguments.author}
+
+prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
+  collection = ${Search.query(site).nodeType("Sfi.Site:Sermon").exactMatch('authro', request.arguments.author).execute().toArray()}
+  itemName = 'node'
+  itemRenderer = Sfi.Site:SermonJson
+
+  @process.1 = ${Json.stringify(value)}
+
+  @cache {
+    mode = 'cached'
+    entryIdentifier {
+      calendarDate = ${request.arguments.author}
+    }
+    entryTags {
+      1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Sermon')}
+    }
+  }
+}
