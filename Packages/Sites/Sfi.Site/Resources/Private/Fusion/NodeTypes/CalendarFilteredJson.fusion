@@ -11,7 +11,8 @@ root.sermonsFilteredJson {
 root.@cache.entryIdentifier.author = ${request.arguments.author}
 
 prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
-  collection = ${Search.query(site).nodeType("Sfi.Site:Sermon").exactMatch('authro', request.arguments.author).execute().toArray()}
+  # collection = ${Search.query(site).nodeType("Sfi.Site:Sermon").exactMatch('authro', request.arguments.author).execute().toArray()}
+  collection = ${q(site).find('[instanceof Sfi.Site:Sermon]').get()}
   itemName = 'node'
   itemRenderer = Sfi.Site:SermonJson
 
