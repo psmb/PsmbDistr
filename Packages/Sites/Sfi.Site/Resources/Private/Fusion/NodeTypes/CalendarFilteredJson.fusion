@@ -12,7 +12,8 @@ root.@cache.entryIdentifier.author = ${request.arguments.author}
 
 prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
   # collection = ${Search.query(site).nodeType("Sfi.Site:Sermon").exactMatch('authro', request.arguments.author).execute().toArray()}
-  collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").from((request.arguments.author - 1) * 20).limit(20).execute().toArray()}
+  # collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").from((request.arguments.author - 1) * 20).limit(20).execute().toArray()}
+  collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").from(0).limit(1000).execute().toArray()}
   itemName = 'node'
   itemRenderer = Sfi.Site:SermonJson
 
