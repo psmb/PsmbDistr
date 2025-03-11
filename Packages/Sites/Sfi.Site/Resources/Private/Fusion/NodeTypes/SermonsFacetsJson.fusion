@@ -5,12 +5,12 @@ root.sermonsFacetsJson {
       headers.Content-Type = 'application/json;charset=utf-8'
       headers.Access-Control-Allow-Origin = '*'
     }
-    content = Sfi.Site:SermonsFilteredJson
+    content = Sfi.Site:SermonsFacetsJson
   }
 }
 root.@cache.entryIdentifier.facets = ${request.arguments.facets}
 
-prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawArray) {
+prototype(Sfi.Site:SermonsFacetsJson) < prototype(Neos.Fusion:RawArray) {
   authorConfig = T:RawArray {
 		terms = T:RawArray {
 			field = 'author'
