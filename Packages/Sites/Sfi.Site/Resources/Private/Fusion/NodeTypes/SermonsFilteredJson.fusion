@@ -1,5 +1,5 @@
 root.sermonsFilteredJson {
-  condition = ${request.arguments.author}
+  condition = ${request.arguments.author || request.arguments.theme}
   renderer = Neos.Fusion:Http.Message {
     httpResponseHead {
       headers.Content-Type = 'application/json;charset=utf-8'
@@ -9,11 +9,13 @@ root.sermonsFilteredJson {
   }
 }
 root.@cache.entryIdentifier.author = ${request.arguments.author}
+root.@cache.entryIdentifier.theme = ${request.arguments.theme}
 
 prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
-  # collection = ${Search.query(site).nodeType("Sfi.Site:Sermon").exactMatch('authro', request.arguments.author).execute().toArray()}
-  # collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").from((request.arguments.author - 1) * 20).limit(20).execute().toArray()}
-  collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").from(0).limit(1000).execute().toArray()}
+  collection = ${Search.query(node).nodeType("Sfi.Site:Sermon")}
+  collection.@process.filterByAuthor = ${request.arguments.author ? value.exactMatch('author', request.arguments.author) : value}
+  collection.@process.filterByTheme = ${request.arguments.theme ? value.exactMatch('themes', request.arguments.theme) : value}
+  collection.@process.exec = ${value.from(0).limit(1000).execute().toArray()}
   itemName = 'node'
   itemRenderer = Sfi.Site:SermonJson
 
@@ -22,7 +24,8 @@ prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
   @cache {
     mode = 'cached'
     entryIdentifier {
-      calendarDate = ${request.arguments.author}
+      authro = ${request.arguments.author}
+      theme = ${request.arguments.theme}
     }
     entryTags {
       1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Sermon')}
