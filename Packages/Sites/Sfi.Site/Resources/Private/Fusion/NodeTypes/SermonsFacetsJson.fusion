@@ -11,31 +11,46 @@ root.sermonsFacetsJson {
 root.@cache.entryIdentifier.facets = ${request.arguments.facets}
 
 prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
-    value = T:RawCollection {
-      authorConfig = T:RawArray {
-      terms = T:RawArray {
-        field = 'author'
-        size = 100
-      }
+  authorConfig = T:RawArray {
+    terms = T:RawArray {
+      field = 'author'
+      size = 100
     }
-    themeConfig = T:RawArray {
-      terms = T:RawArray {
-        field = 'themes'
-        size = 100
-      }
-    }
-
-    collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").aggregation('author', this.authorConfig).aggregation('theme', this.themeConfig)}
-    collection.@process.execute = ${value.execute().aggregations}
-    itemName = 'bucket'
-    itemRenderer = T:RawArray {
-      id = ${bucket.key}
-      label = ${q(site).find('#' + bucket.key).get(0).properties.title}
-      count = ${bucket.doc_count}
-    }
-    
-    # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
   }
+  themeConfig = T:RawArray {
+    terms = T:RawArray {
+      field = 'themes'
+      size = 100
+    }
+  }
+  @context.agg = ${Search.query(node).nodeType("Sfi.Site:Sermon").aggregation('author', this.authorConfig).aggregation('theme', this.themeConfig).execute().aggregations}
+ 
+  value = T:Array {
+    authors = T:RawCollection {
+      collection = ${agg.author.buckets}
+      itemName = 'bucket'
+      itemRenderer = T:RawArray {
+        id = ${bucket.key}
+        label = ${q(site).find('#' + bucket.key).get(0).properties.title}
+        count = ${bucket.doc_count}
+      }
+      # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
+    }
+    themes = T:RawCollection {
+      collection = ${agg.theme.buckets}
+      itemName = 'bucket'
+      itemRenderer = T:RawArray {
+        id = ${bucket.key}
+        label = ${q(site).find('#' + bucket.key).get(0).properties.title}
+        count = ${bucket.doc_count}
+      }
+      # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
+    }
+  }
+  
+  
+  
+  
 
   @process.1 = ${Json.stringify(value)}
 
