@@ -10,7 +10,7 @@ root.sermonsFacetsJson {
 }
 root.@cache.entryIdentifier.facets = ${request.arguments.facets}
 
-prototype(Sfi.Site:SermonsFacetsJson) < prototype(Neos.Fusion:RawArray) {
+prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
   authorConfig = T:RawArray {
 		terms = T:RawArray {
 			field = 'author'
@@ -23,8 +23,19 @@ prototype(Sfi.Site:SermonsFacetsJson) < prototype(Neos.Fusion:RawArray) {
 			size = 100
 		}
 	}
-  value = ${Search.query(node).nodeType("Sfi.Site:Sermon").aggregation('author', this.authorConfig).aggregation('theme', this.themeConfig)}
-	value.@process.execute = ${value.execute().aggregations}
+
+  value = T:RawCollection {
+    collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").aggregation('author', this.authorConfig).aggregation('theme', this.themeConfig)}
+    collection.@process.execute = ${value.execute().aggregations}
+    itemName = 'bucket'
+    itemRenderer = T:RawArray {
+      id = ${bucket.key}
+      label = ${q(site).find('#' + bucket.key).get(0).properties.title}
+      count = ${bucket.doc_count}
+    }
+    
+    # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
+  }
 
   @process.1 = ${Json.stringify(value)}
 
