@@ -25,7 +25,7 @@ prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
   }
   @context.agg = ${Search.query(node).nodeType("Sfi.Site:Sermon").aggregation('author', this.authorConfig).aggregation('theme', this.themeConfig).execute().aggregations}
  
-  value = T:Array {
+  value = T:RawArray {
     authors = T:RawCollection {
       collection = ${agg.author.buckets}
       itemName = 'bucket'
