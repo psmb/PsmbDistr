@@ -11,20 +11,20 @@ root.sermonsFacetsJson {
 root.@cache.entryIdentifier.facets = ${request.arguments.facets}
 
 prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
-  authorConfig = T:RawArray {
-		terms = T:RawArray {
-			field = 'author'
-			size = 100
-		}
-	}
-  themeConfig = T:RawArray {
-		terms = T:RawArray {
-			field = 'themes'
-			size = 100
-		}
-	}
+    value = T:RawCollection {
+      authorConfig = T:RawArray {
+      terms = T:RawArray {
+        field = 'author'
+        size = 100
+      }
+    }
+    themeConfig = T:RawArray {
+      terms = T:RawArray {
+        field = 'themes'
+        size = 100
+      }
+    }
 
-  value = T:RawCollection {
     collection = ${Search.query(node).nodeType("Sfi.Site:Sermon").aggregation('author', this.authorConfig).aggregation('theme', this.themeConfig)}
     collection.@process.execute = ${value.execute().aggregations}
     itemName = 'bucket'
