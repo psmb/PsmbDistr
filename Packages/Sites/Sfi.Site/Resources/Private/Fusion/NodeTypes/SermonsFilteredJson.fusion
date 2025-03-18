@@ -17,7 +17,7 @@ prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
   collection = ${Search.query(node).nodeType("Sfi.Site:Sermon")}
   collection.@process.filterByAuthor = ${request.arguments.author ? value.exactMatch('author', request.arguments.author) : value}
   collection.@process.filterByTheme = ${request.arguments.theme ? value.exactMatch('themes', request.arguments.theme) : value}
-  collection.@process.exec = ${value.from(0).limit(request.arguments.limit || 1000).execute().toArray()}
+  collection.@process.exec = ${value.from(0).limit(Number(request.arguments.limit) || 1000).execute().toArray()}
   itemName = 'node'
   itemRenderer = Sfi.Site:SermonJson
 
