@@ -31,7 +31,7 @@ prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
       itemName = 'bucket'
       itemRenderer = T:RawArray {
         id = ${bucket.key}
-        label = ${q(site).find('#' + bucket.key).get(0).properties.title}
+        title = ${q(site).find('#' + bucket.key).get(0).properties.title}
         count = ${bucket.doc_count}
       }
       # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
@@ -41,7 +41,7 @@ prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
       itemName = 'bucket'
       itemRenderer = T:RawArray {
         id = ${bucket.key}
-        label = ${q(site).find('#' + bucket.key).get(0).properties.title}
+        title = ${q(site).find('#' + bucket.key).get(0).properties.title}
         count = ${bucket.doc_count}
       }
       # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
