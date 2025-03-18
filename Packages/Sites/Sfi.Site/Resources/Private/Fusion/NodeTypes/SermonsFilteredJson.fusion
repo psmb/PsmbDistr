@@ -11,6 +11,7 @@ root.sermonsFilteredJson {
 root.@cache.entryIdentifier.author = ${request.arguments.author}
 root.@cache.entryIdentifier.theme = ${request.arguments.theme}
 root.@cache.entryIdentifier.listSermons = ${request.arguments.listSermons}
+root.@cache.entryIdentifier.limit = ${request.arguments.limit}
 
 prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
   collection = ${Search.query(node).nodeType("Sfi.Site:Sermon")}
