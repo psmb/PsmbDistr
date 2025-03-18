@@ -25,7 +25,7 @@ prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
   @cache {
     mode = 'cached'
     entryIdentifier {
-      authro = ${request.arguments.author}
+      author = ${request.arguments.author}
       theme = ${request.arguments.theme}
     }
     entryTags {

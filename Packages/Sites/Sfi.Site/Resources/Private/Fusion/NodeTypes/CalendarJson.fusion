@@ -43,6 +43,7 @@ prototype(Sfi.Site:SermonJson) < prototype(Neos.Fusion:RawArray) {
   title = ${String.stripTags(node.properties.title)}
   teaser = ${q(node).property('teaser')}
   authorName = ${node.properties.author.properties.title}
+  authorId = ${node.properties.author.identifier}
   bodytext = Neos.Fusion:Collection {
     collection = ${q(node).children('main').children()}
     itemRenderer = Neos.Neos:ContentCase
