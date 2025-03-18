@@ -1,5 +1,5 @@
 root.sermonJson {
-  condition = ${request.format == 'json'}
+  condition = ${request.arguments.format == 'json'}
   renderer = Neos.Fusion:Http.Message {
     httpResponseHead {
       headers.Content-Type = 'application/json;charset=utf-8'
@@ -8,6 +8,7 @@ root.sermonJson {
     content = Sfi.Site:SermonJsonRenderer
   }
 }
+root.@cache.entryIdentifier.format = ${request.arguments.format}
 
 prototype(Sfi.Site:SermonJsonRenderer) < prototype(Sfi.Site:SermonJson) {
   @process.1 = ${Json.stringify(value)}
