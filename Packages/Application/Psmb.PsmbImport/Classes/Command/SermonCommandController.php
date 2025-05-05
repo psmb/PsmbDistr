@@ -274,7 +274,7 @@ class SermonCommandController extends CommandController
                 return null;
             }
         } else {
-            $this->logger->debug(sprintf('Found existing category "%s": %s', $trimmedName, $node->getPath()));
+            $this->logger->log(sprintf('Found existing category "%s": %s', $trimmedName, $node->getPath()));
             return $node;
         }
     }
