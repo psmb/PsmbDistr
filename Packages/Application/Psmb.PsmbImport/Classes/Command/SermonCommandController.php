@@ -23,31 +23,31 @@ class SermonCommandController extends CommandController
      * @Flow\Inject
      * @var ContextFactoryInterface
      */
-    protected ContextFactoryInterface $contextFactory;
+    protected $contextFactory;
 
     /**
      * @Flow\Inject
      * @var NodeServiceInterface
      */
-    protected NodeServiceInterface $nodeService;
+    protected $nodeService;
 
     /**
      * @Flow\Inject
      * @var NodeTypeManager
      */
-    protected NodeTypeManager $nodeTypeManager;
+    protected $nodeTypeManager;
 
     /**
      * @Flow\Inject
      * @var PersistenceManagerInterface
      */
-    protected PersistenceManagerInterface $persistenceManager;
+    protected $persistenceManager;
 
     /**
      * @Flow\Inject
      * @var LoggerInterface
      */
-    protected LoggerInterface $logger;
+    protected $logger;
 
     /**
      * Assign categories to sermons based on JSON mapping files.
