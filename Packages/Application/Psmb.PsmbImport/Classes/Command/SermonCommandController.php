@@ -130,7 +130,8 @@ class SermonCommandController extends CommandController
         // --- Process Sermons ---
         foreach ($sermonsData as $sermonEntry) {
             $hash = $sermonEntry['id'] ?? null;
-            $categoryNames = $sermonEntry['categories'] ?? [];
+            $categoryNamesOriginal = $sermonEntry['categories'] ?? [];
+            $categoryNames = array_slice($categoryNamesOriginal, 0, 3);
 
             if (!$hash || empty($categoryNames)) {
                 $this->logger->log(sprintf('Skipping entry due to missing hash or categories: %s', json_encode($sermonEntry, JSON_UNESCAPED_UNICODE)));
