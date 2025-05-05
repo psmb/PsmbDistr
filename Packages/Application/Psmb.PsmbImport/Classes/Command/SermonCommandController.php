@@ -65,7 +65,7 @@ class SermonCommandController extends CommandController
         $sermonDataPath = '/data/www-provisioned/sermons_out.json';
         $hashToIdPath = '/data/www-provisioned/hashToSermonId.json';
         $sermonParentNodePath = 's';
-        $categoryParentNodePath = 'tags/themes';
+        $categoryParentNodePath = 'themes';
         $sermonNodeType = 'Sfi.Site:Sermon';
         $categoryNodeType = 'Sfi.Site:Tag';
         $categoryPropertyName = 'categories';

@@ -63,9 +63,9 @@
           editorOptions:
             nodeTypes:
               - "Sfi.Site:Tag"
-            startingPoint: /sites/site/tags/themes
+            startingPoint: /sites/site/themes
             createNew:
-              path: /sites/site/tags/themes
+              path: /sites/site/themes
               type: "Sfi.Site:Tag"
     magicDate:
       type: string
