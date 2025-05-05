@@ -133,14 +133,14 @@ class SermonCommandController extends CommandController
             $categoryNames = $sermonEntry['categories'] ?? [];
 
             if (!$hash || empty($categoryNames)) {
-                $this->logger->warning(sprintf('Skipping entry due to missing hash or categories: %s', json_encode($sermonEntry, JSON_UNESCAPED_UNICODE)));
+                $this->logger->log(sprintf('Skipping entry due to missing hash or categories: %s', json_encode($sermonEntry, JSON_UNESCAPED_UNICODE)));
                 $skippedCount++;
                 continue;
             }
 
             $uriPathSegment = $hashToIdMap[$hash] ?? null;
             if (!$uriPathSegment) {
-                $this->logger->warning(sprintf('Skipping sermon hash %s: uriPathSegment not found in map.', $hash));
+                $this->logger->log(sprintf('Skipping sermon hash %s: uriPathSegment not found in map.', $hash));
                 $skippedCount++;
                 continue;
             }
@@ -149,13 +149,13 @@ class SermonCommandController extends CommandController
             $sermonNode = $sermonStorageNode->getNode($uriPathSegment);
 
             if ($sermonNode === null) {
-                $this->logger->warning(sprintf('Skipping sermon hash %s: Node with pathSegment "%s" not found under %s.', $hash, $uriPathSegment, $sermonStorageNode->getPath()));
+                $this->logger->log(sprintf('Skipping sermon hash %s: Node with pathSegment "%s" not found under %s.', $hash, $uriPathSegment, $sermonStorageNode->getPath()));
                 $skippedCount++;
                 continue;
             }
 
             if ($sermonNode->getNodeType()->getName() !== $sermonNodeType) {
-                $this->logger->warning(sprintf('Skipping node %s: Expected type %s, but got %s.', $sermonNode->getPath(), $sermonNodeType, $sermonNode->getNodeType()->getName()));
+                $this->logger->log(sprintf('Skipping node %s: Expected type %s, but got %s.', $sermonNode->getPath(), $sermonNodeType, $sermonNode->getNodeType()->getName()));
                 $skippedCount++;
                 continue;
             }
@@ -181,14 +181,14 @@ class SermonCommandController extends CommandController
                             $nodesToPublish[$sermonNode->getPath()] = $sermonNode;
                         }
                     }
-                    $this->logger->info(sprintf('Assigned %d categories to sermon %s', count($categoryNodes), $sermonNode->getPath()));
+                    $this->logger->log(sprintf('Assigned %d categories to sermon %s', count($categoryNodes), $sermonNode->getPath()));
                     $processedCount++;
                 } else {
-                    $this->logger->notice(sprintf('No valid category nodes found/created for sermon %s', $sermonNode->getPath()));
+                    $this->logger->log(sprintf('No valid category nodes found/created for sermon %s', $sermonNode->getPath()));
                     $skippedCount++;
                 }
             } catch (\Exception $e) {
-                $this->logger->error(sprintf('Error processing sermon %s (%s): %s', $uriPathSegment, $hash, $e->getMessage()), ['exception' => $e]);
+                $this->logger->log(sprintf('Error processing sermon %s (%s): %s', $uriPathSegment, $hash, $e->getMessage()), ['exception' => $e]);
                 $this->outputLine('<error>Error processing sermon %s (%s): %s</error>', [$uriPathSegment, $hash, $e->getMessage()]);
                 $errorCount++;
             }
@@ -203,7 +203,7 @@ class SermonCommandController extends CommandController
                 $this->persistenceManager->persistAll();
                 $this->outputLine('<success>Changes persisted successfully.</success>');
             } catch (\Exception $e) {
-                $this->logger->error('Error persisting changes: ' . $e->getMessage(), ['exception' => $e]);
+                $this->logger->log('Error persisting changes: ' . $e->getMessage(), ['exception' => $e]);
                 $this->outputLine('<error>Error persisting changes: %s</error>', [$e->getMessage()]);
                 $errorCount++; // Count persistence errors
             }
@@ -233,7 +233,7 @@ class SermonCommandController extends CommandController
     {
         $trimmedName = trim($name);
         if (empty($trimmedName)) {
-            $this->logger->warning('Skipping category creation/retrieval: name is empty.');
+            $this->logger->log('Skipping category creation/retrieval: name is empty.');
             return null;
         }
 
@@ -249,7 +249,7 @@ class SermonCommandController extends CommandController
             ->get(0);
 
         if ($node === null) {
-            $this->logger->info(sprintf('Category "%s" not found, creating new node.', $trimmedName));
+            $this->logger->log(sprintf('Category "%s" not found, creating new node.', $trimmedName));
             if ($dryRun) {
                 $this->outputLine('Dry Run: Would create category "%s"', [$trimmedName]);
                 return null; // Cannot return a non-existent node in dry run
@@ -261,12 +261,12 @@ class SermonCommandController extends CommandController
 
             try {
                 $node = $parentNode->createNodeFromTemplate($nodeTemplate);
-                $this->logger->info(sprintf('Created category node: %s', $node->getPath()));
+                $this->logger->log(sprintf('Created category node: %s', $node->getPath()));
                 $this->outputLine('Created category: %s', [$node->getPath()]);
                 // No need to persist here, handled at the end
                 return $node;
             } catch (\Exception $e) {
-                $this->logger->error(sprintf('Failed to create category node "%s": %s', $trimmedName, $e->getMessage()), ['exception' => $e]);
+                $this->logger->log(sprintf('Failed to create category node "%s": %s', $trimmedName, $e->getMessage()), ['exception' => $e]);
                 $this->outputLine('<error>Failed to create category node "%s": %s</error>', [$trimmedName, $e->getMessage()]);
                 // Re-throw or return null depending on desired error handling
                 // Returning null to allow the main loop to continue
