@@ -11,7 +11,6 @@ use Neos\ContentRepository\Domain\Model\NodeTemplate;
 use Neos\ContentRepository\Domain\Service\NodeServiceInterface;
 use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
-use Psr\Log\LoggerInterface;
 
 /**
  * CLI commands related to Sermon import and management.
@@ -45,7 +44,7 @@ class SermonCommandController extends CommandController
 
     /**
      * @Flow\Inject
-     * @var LoggerInterface
+     * @var \Neos\Flow\Log\SystemLoggerInterface
      */
     protected $logger;
 
