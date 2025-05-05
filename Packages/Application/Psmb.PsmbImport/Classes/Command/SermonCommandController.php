@@ -68,7 +68,7 @@ class SermonCommandController extends CommandController
         $categoryParentNodePath = 'node-iwmlbogowo5o2';
         $sermonNodeType = 'Sfi.Site:Sermon';
         $categoryNodeType = 'Sfi.Site:Tag';
-        $categoryPropertyName = 'categories';
+        $categoryPropertyName = 'themes';
 
         $context = $this->contextFactory->create(['workspaceName' => $workspace]);
         $siteNode = $context->getNode($siteNodePath);
