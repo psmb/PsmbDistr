@@ -84,6 +84,8 @@ class SermonCommandController extends CommandController
             $this->quit(1);
         }
 
+        $sermonFQ = new FlowQuery([$sermonStorageNode]);
+
         $categoryStorageNode = $siteNode->getNode($categoryParentNodePath);
         if ($categoryStorageNode === null) {
             $this->outputLine('<comment>Category storage node not found at path "%s" relative to site node "%s". Attempting to create.</comment>', [$categoryParentNodePath, $siteNodePath]);
@@ -146,8 +148,10 @@ class SermonCommandController extends CommandController
                 continue;
             }
 
-            /** @var NodeInterface $sermonNode */
-            $sermonNode = $sermonStorageNode->getNode($uriPathSegment);
+            /** @var NodeInterface $node */
+            $sermonNode = $sermonFQ->find(sprintf('[instanceof %s]', $sermonNodeType))
+                ->filter(sprintf('[uriPathSegment = "%s"]', $uriPathSegment))
+                ->get(0);
 
             if ($sermonNode === null) {
                 $this->logger->log(sprintf('Skipping sermon hash %s: Node with pathSegment "%s" not found under %s.', $hash, $uriPathSegment, $sermonStorageNode->getPath()));
