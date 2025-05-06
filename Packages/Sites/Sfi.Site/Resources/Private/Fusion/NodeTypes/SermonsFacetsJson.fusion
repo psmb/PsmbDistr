@@ -43,7 +43,6 @@ prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
         id = ${bucket.key}
         title = ${q(site).find('#' + bucket.key).get(0).properties.title}
         count = ${bucket.doc_count}
-        kkk = ${bucket.key}
       }
       # @process.sort = ${value && q(value).count() > 0 && q(value).sort('_index', 'ASC')}
     }

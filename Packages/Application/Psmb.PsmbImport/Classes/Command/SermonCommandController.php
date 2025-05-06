@@ -170,7 +170,7 @@ class SermonCommandController extends CommandController
                 foreach ($categoryNames as $categoryName) {
                     $categoryNode = $this->getOrCreateCategoryByName($categoryName, $categoryStorageNode, $categoryNodeType, $dryRun);
                     if ($categoryNode) {
-                        $categoryNodes[] = $categoryNode;
+                        $categoryNodes[] = $categoryNode->getIdentifier();
                         // Track nodes that might need publishing (newly created categories)
                         if (!isset($nodesToPublish[$categoryNode->getPath()])) {
                             $nodesToPublish[$categoryNode->getPath()] = $categoryNode;
