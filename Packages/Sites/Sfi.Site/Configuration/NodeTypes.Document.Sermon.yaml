@@ -67,11 +67,6 @@
             createNew:
               path: /sites/site/node-iwmlbogowo5o2
               type: "Sfi.Site:Tag"
-      search:
-        elasticSearchMapping:
-          type: string
-          index: not_analyzed
-        indexing: "${value}"
     magicDate:
       type: string
       ui:
