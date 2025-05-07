@@ -19,7 +19,7 @@ prototype(Sfi.Site:SermonsFacetsJson) < prototype(T:Value) {
   }
   themeConfig = T:RawArray {
     terms = T:RawArray {
-      field = 'themes.*'
+      field = 'themes'
       size = 100
     }
   }
