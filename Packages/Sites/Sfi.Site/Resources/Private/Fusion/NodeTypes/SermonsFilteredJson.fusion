@@ -12,14 +12,15 @@ root.@cache.entryIdentifier.author = ${request.arguments.author}
 root.@cache.entryIdentifier.theme = ${request.arguments.theme}
 root.@cache.entryIdentifier.listSermons = ${request.arguments.listSermons}
 root.@cache.entryIdentifier.limit = ${request.arguments.limit}
+root.@cache.entryIdentifier.offset = ${request.arguments.offset}
 
 prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
   collection = ${Search.query(node).nodeType("Sfi.Site:Sermon")}
   collection.@process.filterByAuthor = ${request.arguments.author ? value.exactMatch('author', request.arguments.author) : value}
   collection.@process.filterByTheme = ${request.arguments.theme ? value.exactMatch('themes', request.arguments.theme) : value}
-  collection.@process.exec = ${value.from(0).limit(request.arguments.limit || 1000).execute().toArray()}
+  collection.@process.exec = ${value.from(request.arguments.offset || 0).limit(request.arguments.limit || 1000).execute().toArray()}
   itemName = 'node'
-  itemRenderer = Sfi.Site:SermonJson
+  itemRenderer = Sfi.Site:SermonJsonLight
 
   @process.1 = ${Json.stringify(value)}
 
@@ -29,9 +30,21 @@ prototype(Sfi.Site:SermonsFilteredJson) < prototype(Neos.Fusion:RawCollection) {
       author = ${request.arguments.author}
       theme = ${request.arguments.theme}
       limit = ${request.arguments.limit}
+      offset = ${request.arguments.offset}
     }
     entryTags {
       1 = ${Neos.Caching.nodeTypeTag('Sfi.Site:Sermon')}
     }
   }
+}
+
+# Lightweight version of SermonJson without bodytext for list views
+prototype(Sfi.Site:SermonJsonLight) < prototype(Neos.Fusion:RawArray) {
+  id = ${node.properties.uriPathSegment}
+  title = ${String.stripTags(node.properties.title)}
+  teaser = ${q(node).property('teaser')}
+  authorName = ${node.properties.author.properties.title}
+  authorId = ${node.properties.author.identifier}
+  magicDate = ${node.properties.magicDate}
+  verse = ${node.properties.verse}
 }
